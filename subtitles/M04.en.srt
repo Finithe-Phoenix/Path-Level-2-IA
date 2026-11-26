@@ -1,0 +1,243 @@
+1
+00:00:00,340 --> 00:00:04,851
+You have planned several small fixes, and
+the same guidance shows up in your
+
+2
+00:00:04,851 --> 00:00:05,385
+messages.
+
+3
+00:00:05,565 --> 00:00:08,810
+Take one example and mark two kinds of
+information.
+
+4
+00:00:08,990 --> 00:00:12,925
+The issue number and target behavior
+belong to the current task.
+
+5
+00:00:13,105 --> 00:00:17,639
+Where tests live and how to run them are
+conventions for the repository.
+
+6
+00:00:17,819 --> 00:00:22,534
+Keeping them in the right place lets a
+teammate reuse the guidance without
+
+7
+00:00:22,534 --> 00:00:25,082
+copying an old issue or its assumptions.
+
+8
+00:00:26,548 --> 00:00:31,147
+Save this reusable prompt as Markdown in
+the training repository.
+
+9
+00:00:31,327 --> 00:00:35,972
+Each time you use it, fill in the issue
+and attach the current source and test
+
+10
+00:00:35,972 --> 00:00:36,330
+files.
+
+11
+00:00:36,510 --> 00:00:38,326
+Call out the output you want.
+
+12
+00:00:38,506 --> 00:00:43,772
+Here the agent should describe the source
+path, propose the smallest edit, name the
+
+13
+00:00:43,772 --> 00:00:45,930
+verification, and stop for review.
+
+14
+00:00:46,110 --> 00:00:50,973
+A teammate can copy the template into chat
+on the approved VS Code setup.
+
+15
+00:00:52,423 --> 00:00:54,816
+Start Plan and paste the filled template.
+
+16
+00:00:54,996 --> 00:00:59,714
+Attach the issue, the source file, and the
+tests from the revision you intend to
+
+17
+00:00:59,714 --> 00:01:00,127
+change.
+
+18
+00:01:00,307 --> 00:01:02,732
+Check the response against those sources.
+
+19
+00:01:02,912 --> 00:01:07,878
+If the plan talks about a file that does
+not exist, ask which available evidence
+
+20
+00:01:07,878 --> 00:01:09,119
+supports that claim.
+
+21
+00:01:09,299 --> 00:01:12,224
+These attachments are context for this
+request.
+
+22
+00:01:12,404 --> 00:01:17,855
+A reusable prompt is easier to trust when
+the task-specific evidence stays visible.
+
+23
+00:01:19,298 --> 00:01:23,840
+Open the repository root and confirm the
+selected Copilot setup.
+
+24
+00:01:24,020 --> 00:01:28,691
+In this example, use the project
+instructions file in the dot GitHub
+
+25
+00:01:28,691 --> 00:01:29,172
+folder.
+
+26
+00:01:29,352 --> 00:01:33,725
+Add the few conventions we want available
+when working on this project.
+
+27
+00:01:33,905 --> 00:01:38,919
+Tell the agent where tests go, which test
+framework is already in use, and where to
+
+28
+00:01:38,919 --> 00:01:40,731
+find the verification command.
+
+29
+00:01:40,911 --> 00:01:45,888
+If the repository already has project
+instructions, review them before adding
+
+30
+00:01:45,888 --> 00:01:47,245
+overlapping guidance.
+
+31
+00:01:48,715 --> 00:01:51,160
+Start a fresh session in the same
+workspace.
+
+32
+00:01:51,340 --> 00:01:55,438
+Use the customizations view to verify that
+the file is listed.
+
+33
+00:01:55,618 --> 00:02:00,386
+Where references are available, check that
+the file was included in the request.
+
+34
+00:02:00,566 --> 00:02:05,174
+Then ask for a small plan without
+repeating the conventions in your prompt.
+
+35
+00:02:05,354 --> 00:02:09,641
+Inspect whether it points to the expected
+test location and framework.
+
+36
+00:02:09,821 --> 00:02:14,836
+Check discovery and behavior separately so
+you know what to fix if the result
+
+37
+00:02:14,836 --> 00:02:15,357
+differs.
+
+38
+00:02:16,798 --> 00:02:19,329
+The template expresses the current
+request.
+
+39
+00:02:19,509 --> 00:02:23,914
+The instruction file supplies the
+project's rules when the selected setup
+
+40
+00:02:23,914 --> 00:02:24,458
+loads it.
+
+41
+00:02:24,638 --> 00:02:28,466
+Permissions and required checks enforce
+separate boundaries.
+
+42
+00:02:28,646 --> 00:02:33,864
+If your VS Code release offers runnable
+prompt files, confirm support for the
+
+43
+00:02:33,864 --> 00:02:36,710
+selected harness before using that format.
+
+44
+00:02:36,890 --> 00:02:40,805
+In this lesson the Markdown template works
+as text you can paste.
+
+45
+00:02:40,985 --> 00:02:45,528
+The next lesson turns a repeated procedure
+into an invocable skill.
+
+46
+00:02:47,007 --> 00:02:50,165
+Reuse the template on a second synthetic
+issue.
+
+47
+00:02:50,345 --> 00:02:54,174
+Replace the issue reference and
+attachments with the new evidence.
+
+48
+00:02:54,354 --> 00:02:59,247
+Check that the project convention still
+applies and the plan changes where the new
+
+49
+00:02:59,247 --> 00:03:00,381
+issue calls for it.
+
+50
+00:03:00,561 --> 00:03:03,913
+Review the prompt template and instruction
+diff with a teammate.
+
+51
+00:03:04,093 --> 00:03:08,461
+You should be able to point to the task
+inputs, the convention that carried over,
+
+52
+00:03:08,461 --> 00:03:10,995
+and the check that would establish
+correctness.

@@ -1,0 +1,229 @@
+1
+00:00:00,340 --> 00:00:05,544
+Suppose your team keeps asking Copilot to
+organize the same evidence before
+
+2
+00:00:05,544 --> 00:00:06,931
+requesting a review.
+
+3
+00:00:07,111 --> 00:00:12,317
+Each time, the agent needs the issue, a
+summary of the diff, and the test result.
+
+4
+00:00:12,497 --> 00:00:17,189
+A skill is a package the agent can use
+when that kind of task comes up.
+
+5
+00:00:17,369 --> 00:00:22,015
+We will start with three steps and one
+result that a human can inspect before
+
+6
+00:00:22,015 --> 00:00:23,523
+sending it to a teammate.
+
+7
+00:00:24,965 --> 00:00:30,180
+In the training repository, create a
+project skill named prepare p r evidence.
+
+8
+00:00:30,360 --> 00:00:35,830
+Under the dot GitHub skills folder, give
+it a directory with the same name and add
+
+9
+00:00:35,830 --> 00:00:37,698
+a file called skill dot M D.
+
+10
+00:00:37,878 --> 00:00:40,366
+The header contains a name and
+description.
+
+11
+00:00:40,546 --> 00:00:45,268
+State which request it is for, so both the
+teammate invoking it and the client
+
+12
+00:00:45,268 --> 00:00:47,266
+selecting it have a clear signal.
+
+13
+00:00:48,715 --> 00:00:53,807
+In the body, ask for the issue, the
+changed behavior, and the result of a real
+
+14
+00:00:53,807 --> 00:00:54,395
+test run.
+
+15
+00:00:54,575 --> 00:00:56,912
+Define how to handle missing inputs.
+
+16
+00:00:57,092 --> 00:01:01,562
+If the test output is absent, call that
+out so the author can supply it.
+
+17
+00:01:01,742 --> 00:01:04,454
+Keep this first skill as a short
+procedure.
+
+18
+00:01:04,634 --> 00:01:09,337
+The human author reviews the resulting
+draft and decides what to publish.
+
+19
+00:01:09,517 --> 00:01:13,241
+Tool permissions and repository controls
+still apply.
+
+20
+00:01:14,715 --> 00:01:17,510
+Open a fresh Copilot chat in the project.
+
+21
+00:01:17,690 --> 00:01:22,551
+Verify discovery in the customizations
+view, then invoke the skill through the
+
+22
+00:01:22,551 --> 00:01:25,480
+slash menu when the approved setup
+supports it.
+
+23
+00:01:25,660 --> 00:01:29,746
+Give it the synthetic issue, the diff, and
+the passing test output.
+
+24
+00:01:29,926 --> 00:01:33,627
+Read the draft and map each claim back to
+a supplied source.
+
+25
+00:01:33,807 --> 00:01:38,814
+Check that the procedure gives a teammate
+a more consistent result than rewriting
+
+26
+00:01:38,814 --> 00:01:40,174
+the request each time.
+
+27
+00:01:41,632 --> 00:01:46,080
+Repeat the invocation in a new chat, this
+time without the test output.
+
+28
+00:01:46,260 --> 00:01:49,642
+Expect the draft to say that verification
+is missing.
+
+29
+00:01:49,822 --> 00:01:54,182
+If it reports a green run from the issue
+description alone, tighten the
+
+30
+00:01:54,182 --> 00:01:56,146
+instructions and rerun the case.
+
+31
+00:01:56,326 --> 00:02:01,563
+Now ask an unrelated question, such as
+explaining a Python expression, and check
+
+32
+00:02:01,563 --> 00:02:03,526
+whether the skill is relevant.
+
+33
+00:02:03,706 --> 00:02:07,419
+This gives you a small repeatable test of
+behavior and scope.
+
+34
+00:02:08,882 --> 00:02:12,914
+Place this skill beside the instruction
+file from the previous lesson.
+
+35
+00:02:13,094 --> 00:02:16,294
+The instruction file carries project
+conventions.
+
+36
+00:02:16,474 --> 00:02:19,144
+The skill carries the reusable procedure.
+
+37
+00:02:19,324 --> 00:02:22,460
+Tools perform actions such as reading a
+file.
+
+38
+00:02:22,640 --> 00:02:28,594
+An approved M C P connection can expose
+additional tools or resources in another
+
+39
+00:02:28,594 --> 00:02:29,488
+environment.
+
+40
+00:02:29,668 --> 00:02:32,753
+This skill works using supplied files and
+outputs.
+
+41
+00:02:32,933 --> 00:02:38,404
+Access remains governed by the selected
+client, its tools, and the organization's
+
+42
+00:02:38,404 --> 00:02:39,012
+settings.
+
+43
+00:02:40,465 --> 00:02:45,359
+Pick a second recurring task, such as
+summarizing a failed training test for the
+
+44
+00:02:45,359 --> 00:02:45,788
+author.
+
+45
+00:02:45,968 --> 00:02:50,554
+Write a name, a description, a short
+procedure, and the expected output.
+
+46
+00:02:50,734 --> 00:02:54,158
+Try it with complete input and with one
+item missing.
+
+47
+00:02:54,338 --> 00:02:58,882
+Ask a teammate to judge both responses
+using the same criteria.
+
+48
+00:02:59,062 --> 00:03:03,780
+Share the versioned file once you can
+explain when it applies and show that it
+
+49
+00:03:03,780 --> 00:03:05,837
+handles the missing input clearly.
