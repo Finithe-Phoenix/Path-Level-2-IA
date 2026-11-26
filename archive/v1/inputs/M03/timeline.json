@@ -1,0 +1,108 @@
+{
+  "id": "M03",
+  "title": "Review a Pull Request with GitHub CLI",
+  "subtitle": "Human peer review · Intermediate",
+  "sources": [
+    {
+      "label": "GitHub CLI pull request commands",
+      "url": "https://cli.github.com/manual/gh_pr"
+    },
+    {
+      "label": "Required checks with GitHub CLI",
+      "url": "https://cli.github.com/manual/gh_pr_checks"
+    },
+    {
+      "label": "Review options with GitHub CLI",
+      "url": "https://cli.github.com/manual/gh_pr_review"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "reviewer",
+      "kind": "terminal",
+      "eyebrow": "REVIEWER · APPROVED TERMINAL",
+      "title": "Start in the reviewer’s account",
+      "body": "Confirm the account and the training repository before review.",
+      "narration": "In the pilot, the author opened a pull request. Here, you are the teammate reviewing it. Open the approved terminal with your own authorized account and confirm that the GitHub command line is pointed at the training repository. This example uses pull request forty-two. We will inspect the description, the actual patch, and the required checks before you record your own decision.",
+      "code": "gh auth status\ngh repo view --json nameWithOwner",
+      "result": "Training context confirmed: orders-lab.",
+      "durationFrames": 620,
+      "duration": 25.833333333333332
+    },
+    {
+      "id": "view",
+      "kind": "terminal",
+      "eyebrow": "GITHUB CLI · READ THE REQUEST",
+      "title": "Read the intent and the scope",
+      "body": "Find the linked issue, the change summary and test evidence.",
+      "narration": "Run g h p r view for pull request forty-two. Read what the author says they changed and which issue it closes. Here the business rule is that quantities must be positive, and the public function keeps the same signature. Note the claimed test result. When you read the next command's output, use the issue and its acceptance criteria as the reference.",
+      "code": "gh pr view 42",
+      "result": "Reject zero order quantities\nCloses #17\nValidation: four unit tests passed.",
+      "durationFrames": 577,
+      "duration": 24.041666666666668
+    },
+    {
+      "id": "diff",
+      "kind": "terminal",
+      "eyebrow": "GITHUB CLI · INSPECT THE PATCH",
+      "title": "Read the changed lines yourself",
+      "body": "Match the implementation and test to the stated behavior.",
+      "narration": "Run g h p r diff. The patch should show one changed comparison in the validator and one regression test. Read whether the assertion would have failed before the fix, and check that it exercises the public function. If you see unrelated edits, follow up on why they are present. The author's summary helps you navigate, while the diff is your evidence for what changed.",
+      "code": "gh pr diff 42",
+      "result": "-    return quantity >= 0\n+    return quantity > 0\n+    self.assertFalse(is_valid_quantity(0))",
+      "durationFrames": 589,
+      "duration": 24.541666666666668
+    },
+    {
+      "id": "checks",
+      "kind": "terminal",
+      "eyebrow": "GITHUB CLI · REQUIRED CHECKS",
+      "title": "Confirm the configured checks",
+      "body": "Review the state of the checks for the current revision.",
+      "narration": "Use g h p r checks with the required flag to focus on the checks configured as required for this pull request. Open the relevant run when you need to know what actually executed. If the check is pending, wait for the result. A failing check or missing expected evidence needs investigation. If the author pushes new commits, refresh the diff and checks before deciding.",
+      "code": "gh pr checks 42 --required\ngh pr view 42 --json headRefOid",
+      "result": "Unit tests    pass\nHead revision recorded for this review.",
+      "durationFrames": 625,
+      "duration": 26.041666666666668
+    },
+    {
+      "id": "request-changes",
+      "kind": "decision",
+      "eyebrow": "HUMAN DECISION · NEEDS WORK",
+      "title": "Request a specific correction",
+      "body": "Use this branch of the exercise if the evidence is incomplete.",
+      "narration": "Try the alternate scenario. The check is green, but the contributed test never calls the validator with zero. In this case you can request changes and explain the missing assertion. A precise review tells the author what observable behavior to verify. This is one possible decision for the reviewer. Use it when the change needs work, and wait for the next revision before reassessing.",
+      "code": "gh pr review 42 --request-changes \\\n  --body 'Add a test that calls the validator with zero.'",
+      "result": "Record a request with an actionable reason.",
+      "durationFrames": 627,
+      "duration": 26.125
+    },
+    {
+      "id": "approve",
+      "kind": "decision",
+      "eyebrow": "HUMAN DECISION · APPROVAL",
+      "title": "Approve when the evidence supports it",
+      "body": "The authorized peer submits the review under their own identity.",
+      "narration": "Return to the example where the diff matches the issue and the tests cover all four inputs. If that evidence supports your approval, submit it with g h p r review and a concise reason. The human reviewer takes this action. After submitting, confirm that the review was recorded for the pull request. Your approval indicates what you verified at this revision.",
+      "code": "gh pr review 42 --approve \\\n  --body 'Verified the zero regression and required checks.'\ngh pr view 42 --json reviews",
+      "result": "Review recorded for the peer account.",
+      "durationFrames": 581,
+      "duration": 24.208333333333332
+    },
+    {
+      "id": "exercise",
+      "kind": "diagram",
+      "eyebrow": "PRACTICE · REVIEW RECEIPT",
+      "title": "Explain the evidence behind your decision",
+      "body": "Give a teammate enough detail to verify the review.",
+      "narration": "Pair with a teammate and alternate author and reviewer roles on the training repository. The reviewer should be able to state the issue, identify the changed behavior, point to the relevant check, and explain the decision in one sentence. Change only the evidence in a second round and decide again. This gives you practice recognizing when the same looking pull request should receive a different review.",
+      "code": "Intent → Diff → Required checks → Decision",
+      "result": "A human review with a verifiable reason.",
+      "durationFrames": 634,
+      "duration": 26.416666666666668
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720
+}

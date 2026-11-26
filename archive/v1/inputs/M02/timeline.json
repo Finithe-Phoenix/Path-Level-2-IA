@@ -1,0 +1,104 @@
+{
+  "id": "M02",
+  "title": "Debug with a Failing Test",
+  "subtitle": "GitHub Copilot in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Test-driven development with AI in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/guides/test-driven-development-guide"
+    },
+    {
+      "label": "Python unittest",
+      "url": "https://docs.python.org/3/library/unittest.html"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "symptom",
+      "kind": "github",
+      "eyebrow": "TRAINING ISSUE · EXPECTED BEHAVIOR",
+      "title": "State the symptom precisely",
+      "body": "Reduce the issue to one input and two observable answers.",
+      "narration": "Our synthetic order service accepts an order of zero units. Start by reading the issue and identifying the behavior you can check. If we call the validator with zero, the current answer is true. The expected answer is false. One and five should still pass, and negative one should still fail. Write the expected answer down before opening an agent session.",
+      "code": "is_valid_quantity(0)\nExpected: False\nObserved: True",
+      "result": "Boundary case identified: zero units.",
+      "durationFrames": 583,
+      "duration": 24.291666666666668
+    },
+    {
+      "id": "baseline",
+      "kind": "terminal",
+      "eyebrow": "APPROVED RUNNER · BASELINE",
+      "title": "Check the starting suite",
+      "body": "Run the existing tests on the starting revision.",
+      "narration": "Use the approved runner to execute the existing unit tests. All three pass. Look at the names and compare them with the issue. The tests cover one, five, and negative one. Zero is missing, so a green run provides limited evidence here. Save the test command and starting revision in your notes. You will repeat that command after each change.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_accepts_one ... ok\ntest_accepts_five ... ok\ntest_rejects_negative_one ... ok\nRan 3 tests. OK",
+      "durationFrames": 576,
+      "duration": 24.0
+    },
+    {
+      "id": "hypothesis",
+      "kind": "editor",
+      "eyebrow": "VS CODE · COPILOT PLAN",
+      "title": "Turn a guess into a hypothesis",
+      "body": "Ask for a prediction tied to a specific line.",
+      "narration": "Use Plan with the issue, the validator, and its existing tests in context. Ask Copilot to find the return condition and predict what will happen when zero reaches it. Read that line yourself. The greater-than-or-equal comparison is true at zero. That gives us a prediction we can test. A regression test expecting false for zero should fail on this revision.",
+      "code": "return quantity >= 0",
+      "result": "Hypothesis: the equality admits zero.\nPrediction: an assertFalse for zero will fail.",
+      "durationFrames": 599,
+      "duration": 24.958333333333332
+    },
+    {
+      "id": "red-test",
+      "kind": "editor",
+      "eyebrow": "VS CODE · COPILOT AGENT",
+      "title": "Add one test before fixing the code",
+      "body": "Inspect the test diff and preserve the original validator.",
+      "narration": "Ask Agent to add only the regression test, inside the existing test class. Inspect the diff before running it. The new assertion calls the same public function as the surrounding tests and expects false. Confirm that the validator file has no edit. Then use the approved runner to execute the suite. Keeping the original code for this run lets you check whether the test exposes the reported defect.",
+      "code": "def test_rejects_zero(self):\n    self.assertFalse(is_valid_quantity(0))",
+      "result": "Changed file: tests/test_order_quantity.py",
+      "durationFrames": 657,
+      "duration": 27.375
+    },
+    {
+      "id": "read-red",
+      "kind": "terminal",
+      "eyebrow": "APPROVED RUNNER · RED",
+      "title": "Read why the test failed",
+      "body": "Confirm that the expected assertion failed for zero.",
+      "narration": "The new test runs, and the output says true is not false. That matches the predicted behavior on the original code. A failure due to an import error or an empty test run would tell us something different. Check the test name, the assertion, and the total of four tests. Capture this result in your notes so the next run can be compared with it.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false\nRan 4 tests. FAILED (failures=1)",
+      "durationFrames": 545,
+      "duration": 22.708333333333332
+    },
+    {
+      "id": "fix-green",
+      "kind": "terminal",
+      "eyebrow": "APPROVED RUNNER · GREEN",
+      "title": "Change the comparison and rerun",
+      "body": "The regression and the existing cases should all pass.",
+      "narration": "Now apply the smallest change that addresses the hypothesis. Replace greater than or equal to zero with greater than zero and preserve the function signature. Keep the new assertion as written. Rerun the same suite. The output shows the zero test passing with the three earlier tests. Check the diff so your explanation accounts for both changed files and nothing outside the issue.",
+      "code": "-    return quantity >= 0\n+    return quantity > 0",
+      "result": "test_rejects_zero ... ok\nRan 4 tests. OK",
+      "durationFrames": 628,
+      "duration": 26.166666666666668
+    },
+    {
+      "id": "practice",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · HANDOVER",
+      "title": "Leave evidence a teammate can replay",
+      "body": "Explain the cause and point to both test runs.",
+      "narration": "Write a short handover. Name the input that reproduced the bug, the comparison that caused it, and the command you ran before and after the fix. A teammate should be able to repeat the two runs and get the same result on each revision. As a final check, explain in your own words why one still passes and negative one still fails.",
+      "code": "Input: 0\nCause: equality in the boundary check\nBefore: one assertion fails\nAfter: four tests pass",
+      "result": "A testable explanation of the change.",
+      "durationFrames": 541,
+      "duration": 22.541666666666668
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720
+}

@@ -1,0 +1,56 @@
+;FFMETADATA1
+title=From issue to reviewed PR
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=0
+END=12000
+title=Fix a bug. Verify every step.
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=12000
+END=28000
+title=Read the issue and set the target
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=28000
+END=46000
+title=Scope the change in Plan
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=46000
+END=66000
+title=Make the test fail first
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=66000
+END=83000
+title=Fix the condition and run it again
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=83000
+END=96000
+title=Review the diff before publishing
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=96000
+END=113000
+title=Open the PR with evidence
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=113000
+END=146000
+title=Review the PR from the terminal
+
+[CHAPTER]
+TIMEBASE=1/1000
+START=146000
+END=158000
+title=Run the same workflow yourself

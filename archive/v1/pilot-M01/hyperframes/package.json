@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "hyperframes": "0.9.99"
+  },
+  "private": true,
+  "name": "training-pilot-hyperframes"
+}

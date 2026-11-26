@@ -1,0 +1,410 @@
+[
+  {
+    "id": "M02",
+    "title": "Debug with a Failing Test",
+    "subtitle": "GitHub Copilot in VS Code · Intermediate",
+    "sources": [
+      {"label": "Test-driven development with AI in VS Code", "url": "https://code.visualstudio.com/docs/agents/guides/test-driven-development-guide"},
+      {"label": "Python unittest", "url": "https://docs.python.org/3/library/unittest.html"}
+    ],
+    "scenes": [
+      {
+        "id": "symptom",
+        "kind": "github",
+        "eyebrow": "TRAINING ISSUE · EXPECTED BEHAVIOR",
+        "title": "State the symptom precisely",
+        "body": "Reduce the issue to one input and two observable answers.",
+        "narration": "Our synthetic order service accepts an order of zero units. Start by reading the issue and identifying the behavior you can check. If we call the validator with zero, the current answer is true. The expected answer is false. One and five should still pass, and negative one should still fail. Write the expected answer down before opening an agent session.",
+        "code": "is_valid_quantity(0)\nExpected: False\nObserved: True",
+        "result": "Boundary case identified: zero units."
+      },
+      {
+        "id": "baseline",
+        "kind": "terminal",
+        "eyebrow": "APPROVED RUNNER · BASELINE",
+        "title": "Check the starting suite",
+        "body": "Run the existing tests on the starting revision.",
+        "narration": "Use the approved runner to execute the existing unit tests. All three pass. Look at the names and compare them with the issue. The tests cover one, five, and negative one. Zero is missing, so a green run provides limited evidence here. Save the test command and starting revision in your notes. You will repeat that command after each change.",
+        "code": "python -B -m unittest discover -s tests -v",
+        "result": "test_accepts_one ... ok\ntest_accepts_five ... ok\ntest_rejects_negative_one ... ok\nRan 3 tests. OK"
+      },
+      {
+        "id": "hypothesis",
+        "kind": "editor",
+        "eyebrow": "VS CODE · COPILOT PLAN",
+        "title": "Turn a guess into a hypothesis",
+        "body": "Ask for a prediction tied to a specific line.",
+        "narration": "Use Plan with the issue, the validator, and its existing tests in context. Ask Copilot to find the return condition and predict what will happen when zero reaches it. Read that line yourself. The greater-than-or-equal comparison is true at zero. That gives us a prediction we can test. A regression test expecting false for zero should fail on this revision.",
+        "code": "return quantity >= 0",
+        "result": "Hypothesis: the equality admits zero.\nPrediction: an assertFalse for zero will fail."
+      },
+      {
+        "id": "red-test",
+        "kind": "editor",
+        "eyebrow": "VS CODE · COPILOT AGENT",
+        "title": "Add one test before fixing the code",
+        "body": "Inspect the test diff and preserve the original validator.",
+        "narration": "Ask Agent to add only the regression test, inside the existing test class. Inspect the diff before running it. The new assertion calls the same public function as the surrounding tests and expects false. Confirm that the validator file has no edit. Then use the approved runner to execute the suite. Keeping the original code for this run lets you check whether the test exposes the reported defect.",
+        "code": "def test_rejects_zero(self):\n    self.assertFalse(is_valid_quantity(0))",
+        "result": "Changed file: tests/test_order_quantity.py"
+      },
+      {
+        "id": "read-red",
+        "kind": "terminal",
+        "eyebrow": "APPROVED RUNNER · RED",
+        "title": "Read why the test failed",
+        "body": "Confirm that the expected assertion failed for zero.",
+        "narration": "The new test runs, and the output says true is not false. That matches the predicted behavior on the original code. A failure due to an import error or an empty test run would tell us something different. Check the test name, the assertion, and the total of four tests. Capture this result in your notes so the next run can be compared with it.",
+        "code": "python -B -m unittest discover -s tests -v",
+        "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false\nRan 4 tests. FAILED (failures=1)"
+      },
+      {
+        "id": "fix-green",
+        "kind": "terminal",
+        "eyebrow": "APPROVED RUNNER · GREEN",
+        "title": "Change the comparison and rerun",
+        "body": "The regression and the existing cases should all pass.",
+        "narration": "Now apply the smallest change that addresses the hypothesis. Replace greater than or equal to zero with greater than zero and preserve the function signature. Keep the new assertion as written. Rerun the same suite. The output shows the zero test passing with the three earlier tests. Check the diff so your explanation accounts for both changed files and nothing outside the issue.",
+        "code": "-    return quantity >= 0\n+    return quantity > 0",
+        "result": "test_rejects_zero ... ok\nRan 4 tests. OK"
+      },
+      {
+        "id": "practice",
+        "kind": "decision",
+        "eyebrow": "PRACTICE · HANDOVER",
+        "title": "Leave evidence a teammate can replay",
+        "body": "Explain the cause and point to both test runs.",
+        "narration": "Write a short handover. Name the input that reproduced the bug, the comparison that caused it, and the command you ran before and after the fix. A teammate should be able to repeat the two runs and get the same result on each revision. As a final check, explain in your own words why one still passes and negative one still fails.",
+        "code": "Input: 0\nCause: equality in the boundary check\nBefore: one assertion fails\nAfter: four tests pass",
+        "result": "A testable explanation of the change."
+      }
+    ]
+  },
+  {
+    "id": "M03",
+    "title": "Review a Pull Request with GitHub CLI",
+    "subtitle": "Human peer review · Intermediate",
+    "sources": [
+      {"label": "GitHub CLI pull request commands", "url": "https://cli.github.com/manual/gh_pr"},
+      {"label": "Required checks with GitHub CLI", "url": "https://cli.github.com/manual/gh_pr_checks"},
+      {"label": "Review options with GitHub CLI", "url": "https://cli.github.com/manual/gh_pr_review"}
+    ],
+    "scenes": [
+      {
+        "id": "reviewer",
+        "kind": "terminal",
+        "eyebrow": "REVIEWER · APPROVED TERMINAL",
+        "title": "Start in the reviewer’s account",
+        "body": "Confirm the account and the training repository before review.",
+        "narration": "In the pilot, the author opened a pull request. Here, you are the teammate reviewing it. Open the approved terminal with your own authorized account and confirm that the GitHub command line is pointed at the training repository. This example uses pull request forty-two. We will inspect the description, the actual patch, and the required checks before you record your own decision.",
+        "code": "gh auth status\ngh repo view --json nameWithOwner",
+        "result": "Training context confirmed: orders-lab."
+      },
+      {
+        "id": "view",
+        "kind": "terminal",
+        "eyebrow": "GITHUB CLI · READ THE REQUEST",
+        "title": "Read the intent and the scope",
+        "body": "Find the linked issue, the change summary and test evidence.",
+        "narration": "Run g h p r view for pull request forty-two. Read what the author says they changed and which issue it closes. Here the business rule is that quantities must be positive, and the public function keeps the same signature. Note the claimed test result. When you read the next command's output, use the issue and its acceptance criteria as the reference.",
+        "code": "gh pr view 42",
+        "result": "Reject zero order quantities\nCloses #17\nValidation: four unit tests passed."
+      },
+      {
+        "id": "diff",
+        "kind": "terminal",
+        "eyebrow": "GITHUB CLI · INSPECT THE PATCH",
+        "title": "Read the changed lines yourself",
+        "body": "Match the implementation and test to the stated behavior.",
+        "narration": "Run g h p r diff. The patch should show one changed comparison in the validator and one regression test. Read whether the assertion would have failed before the fix, and check that it exercises the public function. If you see unrelated edits, follow up on why they are present. The author's summary helps you navigate, while the diff is your evidence for what changed.",
+        "code": "gh pr diff 42",
+        "result": "-    return quantity >= 0\n+    return quantity > 0\n+    self.assertFalse(is_valid_quantity(0))"
+      },
+      {
+        "id": "checks",
+        "kind": "terminal",
+        "eyebrow": "GITHUB CLI · REQUIRED CHECKS",
+        "title": "Confirm the configured checks",
+        "body": "Review the state of the checks for the current revision.",
+        "narration": "Use g h p r checks with the required flag to focus on the checks configured as required for this pull request. Open the relevant run when you need to know what actually executed. If the check is pending, wait for the result. A failing check or missing expected evidence needs investigation. If the author pushes new commits, refresh the diff and checks before deciding.",
+        "code": "gh pr checks 42 --required\ngh pr view 42 --json headRefOid",
+        "result": "Unit tests    pass\nHead revision recorded for this review."
+      },
+      {
+        "id": "request-changes",
+        "kind": "decision",
+        "eyebrow": "HUMAN DECISION · NEEDS WORK",
+        "title": "Request a specific correction",
+        "body": "Use this branch of the exercise if the evidence is incomplete.",
+        "narration": "Try the alternate scenario. The check is green, but the contributed test never calls the validator with zero. In this case you can request changes and explain the missing assertion. A precise review tells the author what observable behavior to verify. This is one possible decision for the reviewer. Use it when the change needs work, and wait for the next revision before reassessing.",
+        "code": "gh pr review 42 --request-changes \\\n  --body 'Add a test that calls the validator with zero.'",
+        "result": "Record a request with an actionable reason."
+      },
+      {
+        "id": "approve",
+        "kind": "decision",
+        "eyebrow": "HUMAN DECISION · APPROVAL",
+        "title": "Approve when the evidence supports it",
+        "body": "The authorized peer submits the review under their own identity.",
+        "narration": "Return to the example where the diff matches the issue and the tests cover all four inputs. If that evidence supports your approval, submit it with g h p r review and a concise reason. The human reviewer takes this action. After submitting, confirm that the review was recorded for the pull request. Your approval indicates what you verified at this revision.",
+        "code": "gh pr review 42 --approve \\\n  --body 'Verified the zero regression and required checks.'\ngh pr view 42 --json reviews",
+        "result": "Review recorded for the peer account."
+      },
+      {
+        "id": "exercise",
+        "kind": "diagram",
+        "eyebrow": "PRACTICE · REVIEW RECEIPT",
+        "title": "Explain the evidence behind your decision",
+        "body": "Give a teammate enough detail to verify the review.",
+        "narration": "Pair with a teammate and alternate author and reviewer roles on the training repository. The reviewer should be able to state the issue, identify the changed behavior, point to the relevant check, and explain the decision in one sentence. Change only the evidence in a second round and decide again. This gives you practice recognizing when the same looking pull request should receive a different review.",
+        "code": "Intent → Diff → Required checks → Decision",
+        "result": "A human review with a verifiable reason."
+      }
+    ]
+  },
+  {
+    "id": "M04",
+    "title": "Reusable Prompts and Repository Instructions",
+    "subtitle": "GitHub Copilot in VS Code · Intermediate",
+    "sources": [
+      {"label": "Custom instructions in VS Code", "url": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"},
+      {"label": "Prompt files and harness support", "url": "https://code.visualstudio.com/docs/agent-customization/prompt-files"},
+      {"label": "Context engineering in VS Code", "url": "https://code.visualstudio.com/docs/agents/guides/context-engineering-guide"}
+    ],
+    "scenes": [
+      {
+        "id": "sort-guidance",
+        "kind": "diagram",
+        "eyebrow": "REUSABLE GUIDANCE · TWO SCOPES",
+        "title": "Identify what changes from one task to the next",
+        "body": "Keep task inputs and durable project conventions easy to find.",
+        "narration": "You have planned several small fixes, and the same guidance shows up in your messages. Take one example and mark two kinds of information. The issue number and target behavior belong to the current task. Where tests live and how to run them are conventions for the repository. Keeping them in the right place lets a teammate reuse the guidance without copying an old issue or its assumptions.",
+        "code": "Current task: issue #17 and expected behavior\nRepository: tests live in tests/\nRepository: use the existing unittest suite",
+        "result": "Task inputs and durable conventions identified."
+      },
+      {
+        "id": "prompt-template",
+        "kind": "editor",
+        "eyebrow": "VS CODE · PORTABLE PROMPT TEMPLATE",
+        "title": "Capture a prompt your team can reuse",
+        "body": "Keep a named template and fill in its variable inputs.",
+        "narration": "Save this reusable prompt as Markdown in the training repository. Each time you use it, fill in the issue and attach the current source and test files. Call out the output you want. Here the agent should describe the source path, propose the smallest edit, name the verification, and stop for review. A teammate can copy the template into chat on the approved VS Code setup.",
+        "code": "Read issue [id] and the attached source and tests.\nPropose the smallest edit and a regression test.\nList the files, validation steps and open questions.\nStop after the plan for human review.",
+        "result": "Template: docs/prompts/plan-a-fix.md"
+      },
+      {
+        "id": "context-run",
+        "kind": "editor",
+        "eyebrow": "COPILOT PLAN · TASK CONTEXT",
+        "title": "Supply current evidence at invocation",
+        "body": "Use the template with source files and tests from the same revision.",
+        "narration": "Start Plan and paste the filled template. Attach the issue, the source file, and the tests from the revision you intend to change. Check the response against those sources. If the plan talks about a file that does not exist, ask which available evidence supports that claim. These attachments are context for this request. A reusable prompt is easier to trust when the task-specific evidence stays visible.",
+        "code": "Issue #17\norder_quantity.py\ntests/test_order_quantity.py",
+        "result": "Plan names the condition and the missing zero test."
+      },
+      {
+        "id": "instructions",
+        "kind": "editor",
+        "eyebrow": "REPOSITORY · PROJECT INSTRUCTIONS",
+        "title": "Record a project convention once",
+        "body": "Keep the instructions concrete and versioned with the code.",
+        "narration": "Open the repository root and confirm the selected Copilot setup. In this example, use the project instructions file in the dot GitHub folder. Add the few conventions we want available when working on this project. Tell the agent where tests go, which test framework is already in use, and where to find the verification command. If the repository already has project instructions, review them before adding overlapping guidance.",
+        "code": "# Order validator conventions\n- Use unittest for unit tests under tests/.\n- Preserve public signatures unless the issue says otherwise.\n- See README.md for the approved verification command.",
+        "result": "Saved: .github/copilot-instructions.md"
+      },
+      {
+        "id": "discovery",
+        "kind": "editor",
+        "eyebrow": "COPILOT · FRESH SESSION",
+        "title": "Check that Copilot loaded the instructions",
+        "body": "Verify discovery and actual behavior in a new chat.",
+        "narration": "Start a fresh session in the same workspace. Use the customizations view to verify that the file is listed. Where references are available, check that the file was included in the request. Then ask for a small plan without repeating the conventions in your prompt. Inspect whether it points to the expected test location and framework. Check discovery and behavior separately so you know what to fix if the result differs.",
+        "code": "Plan one regression test for the zero-quantity issue.",
+        "result": "File discovered. Plan uses the existing unittest suite."
+      },
+      {
+        "id": "roles",
+        "kind": "diagram",
+        "eyebrow": "TEAM USE · ACTIVATION AND CONTROLS",
+        "title": "Give each type of guidance a clear role",
+        "body": "Use a task template, project instructions and real review controls.",
+        "narration": "The template expresses the current request. The instruction file supplies the project's rules when the selected setup loads it. Permissions and required checks enforce separate boundaries. If your VS Code release offers runnable prompt files, confirm support for the selected harness before using that format. In this lesson the Markdown template works as text you can paste. The next lesson turns a repeated procedure into an invocable skill.",
+        "code": "Prompt template → task request\nInstruction file → project conventions\nPermissions and checks → enforcement",
+        "result": "Review each file where its behavior is observable."
+      },
+      {
+        "id": "practice",
+        "kind": "decision",
+        "eyebrow": "PRACTICE · TRANSFER",
+        "title": "Try a second issue and compare the plan",
+        "body": "Change the issue and check which guidance still applies.",
+        "narration": "Reuse the template on a second synthetic issue. Replace the issue reference and attachments with the new evidence. Check that the project convention still applies and the plan changes where the new issue calls for it. Review the prompt template and instruction diff with a teammate. You should be able to point to the task inputs, the convention that carried over, and the check that would establish correctness.",
+        "code": "New issue → new attachments → new plan\nSame repository → same test conventions",
+        "result": "A teammate can reproduce the setup in a fresh chat."
+      }
+    ]
+  },
+  {
+    "id": "M05",
+    "title": "What Is a Skill? Build Your First One",
+    "subtitle": "Agent Skills in VS Code · Intermediate",
+    "sources": [
+      {"label": "Create Agent Skills in VS Code", "url": "https://code.visualstudio.com/docs/agent-customization/agent-skills"},
+      {"label": "Agent Skills format specification", "url": "https://agentskills.io/specification"}
+    ],
+    "scenes": [
+      {
+        "id": "select-procedure",
+        "kind": "diagram",
+        "eyebrow": "AGENT SKILLS · CHOOSE A PROCEDURE",
+        "title": "Find a task the team repeats",
+        "body": "Package a pull request evidence checklist for reuse.",
+        "narration": "Suppose your team keeps asking Copilot to organize the same evidence before requesting a review. Each time, the agent needs the issue, a summary of the diff, and the test result. A skill is a package the agent can use when that kind of task comes up. We will start with three steps and one result that a human can inspect before sending it to a teammate.",
+        "code": "Input: issue, diff and test output\nProcedure: check and summarize the evidence\nOutput: a draft for the human author",
+        "result": "Chosen skill: prepare pull request evidence."
+      },
+      {
+        "id": "create",
+        "kind": "editor",
+        "eyebrow": "VS CODE · PROJECT SKILL",
+        "title": "Name the skill and say when it applies",
+        "body": "Use the skill folder supported by the Copilot setup.",
+        "narration": "In the training repository, create a project skill named prepare p r evidence. Under the dot GitHub skills folder, give it a directory with the same name and add a file called skill dot M D. The header contains a name and description. State which request it is for, so both the teammate invoking it and the client selecting it have a clear signal.",
+        "code": "---\nname: prepare-pr-evidence\ndescription: Draft evidence for a training pull request.\n---",
+        "result": ".github/skills/prepare-pr-evidence/SKILL.md"
+      },
+      {
+        "id": "procedure",
+        "kind": "editor",
+        "eyebrow": "SKILL.MD · WRITE THE BODY",
+        "title": "Define the steps and intended output",
+        "body": "Make missing evidence visible in the draft.",
+        "narration": "In the body, ask for the issue, the changed behavior, and the result of a real test run. Define how to handle missing inputs. If the test output is absent, call that out so the author can supply it. Keep this first skill as a short procedure. The human author reviews the resulting draft and decides what to publish. Tool permissions and repository controls still apply.",
+        "code": "1. Read the provided issue and diff.\n2. Check the supplied test output.\n3. Draft: Issue, Change, Verification, Gaps.\nIf data is missing, identify the gap.\nReturn text for the human author to review.",
+        "result": "The scope ends with a draft."
+      },
+      {
+        "id": "invoke",
+        "kind": "editor",
+        "eyebrow": "COPILOT · INVOKE IN A FRESH CHAT",
+        "title": "Discover and try the skill",
+        "body": "Invoke it with the synthetic order validator change.",
+        "narration": "Open a fresh Copilot chat in the project. Verify discovery in the customizations view, then invoke the skill through the slash menu when the approved setup supports it. Give it the synthetic issue, the diff, and the passing test output. Read the draft and map each claim back to a supplied source. Check that the procedure gives a teammate a more consistent result than rewriting the request each time.",
+        "code": "/prepare-pr-evidence\nAttach issue #17, the diff and the test output.",
+        "result": "Issue #17\nChange: zero is rejected.\nVerification: four unit tests passed.\nGaps: none in the supplied training evidence."
+      },
+      {
+        "id": "missing-evidence",
+        "kind": "decision",
+        "eyebrow": "SKILL TEST · MISSING INPUT",
+        "title": "Check what happens when proof is missing",
+        "body": "Run the same skill with the test output omitted.",
+        "narration": "Repeat the invocation in a new chat, this time without the test output. Expect the draft to say that verification is missing. If it reports a green run from the issue description alone, tighten the instructions and rerun the case. Now ask an unrelated question, such as explaining a Python expression, and check whether the skill is relevant. This gives you a small repeatable test of behavior and scope.",
+        "code": "Inputs: issue and diff only\nExpected: mark verification as missing",
+        "result": "Verification gap surfaced for the human author."
+      },
+      {
+        "id": "map-controls",
+        "kind": "diagram",
+        "eyebrow": "SKILLS · FIT WITH OTHER FEATURES",
+        "title": "Separate procedures from access",
+        "body": "A procedure can refer to tools inside the approved boundary.",
+        "narration": "Place this skill beside the instruction file from the previous lesson. The instruction file carries project conventions. The skill carries the reusable procedure. Tools perform actions such as reading a file. An approved M C P connection can expose additional tools or resources in another environment. This skill works using supplied files and outputs. Access remains governed by the selected client, its tools, and the organization's settings.",
+        "code": "Instructions → project conventions\nSkill → reusable procedure\nTool → callable action\nMCP → connection to a server",
+        "result": "Review the skill and its dependencies before sharing."
+      },
+      {
+        "id": "small-exercise",
+        "kind": "decision",
+        "eyebrow": "PRACTICE · CREATE A SKILL",
+        "title": "Write a second skill with two test cases",
+        "body": "Choose a recurring task and define its limits.",
+        "narration": "Pick a second recurring task, such as summarizing a failed training test for the author. Write a name, a description, a short procedure, and the expected output. Try it with complete input and with one item missing. Ask a teammate to judge both responses using the same criteria. Share the versioned file once you can explain when it applies and show that it handles the missing input clearly.",
+        "code": "Candidate: summarize a failing test\nCase A: failure output supplied\nCase B: failure output missing",
+        "result": "An invocable procedure with two observable tests."
+      }
+    ]
+  },
+  {
+    "id": "M06",
+    "title": "Build a Workflow with Review Checkpoints",
+    "subtitle": "Copilot, CI and human review · Intermediate",
+    "sources": [
+      {"label": "Plan work in VS Code", "url": "https://code.visualstudio.com/docs/agents/run/planning"},
+      {"label": "GitHub protected branches and checks", "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"},
+      {"label": "Agent workflows and checkpoints", "url": "https://www.anthropic.com/research/building-effective-agents"}
+    ],
+    "scenes": [
+      {
+        "id": "map",
+        "kind": "diagram",
+        "eyebrow": "WORKFLOW · TRAINING ISSUE",
+        "title": "Map the work before delegating a step",
+        "body": "Give every checkpoint an owner and evidence.",
+        "narration": "Bring the previous lessons together in one workflow. Start with the issue and plan the smallest verifiable change. Then demonstrate a failing regression, apply the fix, and verify the passing regression. The author reviews the diff and submits the pull request. A teammate reviews it independently. At each checkpoint, write down what evidence lets the work continue and who makes that decision.",
+        "code": "Issue → Plan → Human scope review\nFailing test → Fix → Passing tests\nAuthor diff review → PR → Peer review",
+        "result": "Each handoff has evidence and an owner."
+      },
+      {
+        "id": "scope",
+        "kind": "editor",
+        "eyebrow": "CHECKPOINT ONE · SCOPE",
+        "title": "Review the plan before editing",
+        "body": "The author checks the intended behavior and allowed change.",
+        "narration": "Use the reusable prompt in Plan with the issue, the validator file, and its tests. The agent proposes an edit and verification steps. Review the suggestion against the issue yourself. In this example, it may add a regression test and change one comparison. If it proposes a new dependency or changes the public interface, revise the plan with the original requirement visible before moving into Agent.",
+        "code": "Keep is_valid_quantity(quantity: int) -> bool.\nAdd an assertion for quantity zero.\nChange only the boundary comparison.",
+        "result": "Author accepts scope after checking the issue."
+      },
+      {
+        "id": "red",
+        "kind": "terminal",
+        "eyebrow": "CHECKPOINT TWO · RED TEST",
+        "title": "Verify that the test detects the defect",
+        "body": "Let the expected failure authorize the next coding step.",
+        "narration": "Add the new test first and run it using the approved runner. A useful failure identifies the zero case and shows that the validator returned true. If the failure comes from a broken import, fix the test setup and repeat the run before accepting the evidence. The checkpoint requires a failing assertion tied to the issue. Record the result and use it to justify applying the small fix.",
+        "code": "python -B -m unittest discover -s tests -v",
+        "result": "Expected before the fix\ntest_rejects_zero ... FAIL\nAssertionError: True is not false"
+      },
+      {
+        "id": "green",
+        "kind": "terminal",
+        "eyebrow": "CHECKPOINT THREE · PASSING TESTS",
+        "title": "Stop when validation remains red",
+        "body": "Review the approved change and require the expected passing run.",
+        "narration": "Ask Agent to make the agreed edit. Check the diff and rerun the same suite. If another test starts failing or the expected regression still fails, return to the fix and inspect the new behavior. In a passing run, capture the command and the result. This pause keeps a plausible explanation from becoming your only evidence. It also helps keep the next review focused on the actual change.",
+        "code": "Pass → attach the test output\nFail → inspect, adjust and rerun",
+        "result": "All four tests pass in the completed example."
+      },
+      {
+        "id": "pr-evidence",
+        "kind": "github",
+        "eyebrow": "CHECKPOINT FOUR · AUTHOR HANDOFF",
+        "title": "Prepare evidence for the pull request",
+        "body": "Tie the issue, patch and checks to the same change.",
+        "narration": "Use the skill from the previous lesson to draft the handoff. Provide the linked training issue, the diff, and the output you just checked. Review its draft and correct any claim that does not match those artifacts. Push the feature branch and open the pull request through your approved workflow. The configured checks run on the reviewed change. A passing local or runner result gives the reviewer additional evidence.",
+        "code": "Closes #17\nChanged: reject zero at the validator boundary\nRegression: test_rejects_zero\nVerification: four unit tests passed",
+        "result": "PR #42 is ready for separate peer review."
+      },
+      {
+        "id": "review",
+        "kind": "terminal",
+        "eyebrow": "CHECKPOINT FIVE · INDEPENDENT REVIEW",
+        "title": "Let the peer make the review decision",
+        "body": "A teammate reviews the revision and required checks with GitHub CLI.",
+        "narration": "The peer now uses the approved terminal and their own account. They view the pull request, read the diff and check the required results. If the evidence is sufficient, they can submit an approval. If something is missing, they can request changes and name what needs to be checked. The repository's configured checks and review rules protect the merge. The agent's draft helps prepare the handoff.",
+        "code": "gh pr view 42\ngh pr diff 42\ngh pr checks 42 --required",
+        "result": "Peer decision: approve or request a specific change."
+      },
+      {
+        "id": "dry-run",
+        "kind": "decision",
+        "eyebrow": "PRACTICE · TEST THE CHECKPOINTS",
+        "title": "Dry-run both outcomes",
+        "body": "Demonstrate a successful handoff and one blocked branch.",
+        "narration": "Try the workflow with a teammate on the synthetic repository. During the first run, walk all the way to the peer decision with passing checks and a small patch. During the second, introduce missing test evidence or a failing required check and say where you stop. Write down the evidence needed to resume and who decides. That is the workflow you can reuse on the next issue.",
+        "code": "A: Scope accepted, tests pass, peer reviews\nB: Verification missing, work returns to author",
+        "result": "A documented workflow with a tested stop condition."
+      }
+    ]
+  }
+]

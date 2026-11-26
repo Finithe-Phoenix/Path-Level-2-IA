@@ -1,0 +1,178 @@
+1
+00:00:00,350 --> 00:00:05,172
+In this walkthrough, we'll fix a small bug
+with Copilot in Visual Studio Code.
+
+2
+00:00:05,352 --> 00:00:09,789
+Then a teammate will review the pull
+request using the GitHub command line.
+
+3
+00:00:12,350 --> 00:00:14,145
+Start with issue seventeen.
+
+4
+00:00:14,325 --> 00:00:18,913
+The validator accepts zero, even though an
+order needs at least one item.
+
+5
+00:00:19,093 --> 00:00:20,845
+Keep the function signature.
+
+6
+00:00:21,025 --> 00:00:22,669
+One and five should pass.
+
+7
+00:00:22,849 --> 00:00:25,197
+Zero and negative one should fail.
+
+8
+00:00:28,350 --> 00:00:30,461
+In VS Code, select Plan.
+
+9
+00:00:30,641 --> 00:00:34,043
+Give Copilot the issue, the validator, and
+its tests.
+
+10
+00:00:34,223 --> 00:00:37,786
+Ask where the bug is and what regression
+test would expose it.
+
+11
+00:00:37,966 --> 00:00:40,785
+Check the plan against the files before
+moving on.
+
+12
+00:00:46,350 --> 00:00:49,667
+Switch to Agent and ask for just the
+regression test.
+
+13
+00:00:49,847 --> 00:00:54,231
+Review the proposed test command and run
+it in the approved environment.
+
+14
+00:00:54,411 --> 00:00:57,878
+The new test should fail because zero
+still returns true.
+
+15
+00:00:58,058 --> 00:00:59,704
+That's the bug we're fixing.
+
+16
+00:01:06,350 --> 00:01:08,987
+Now ask Agent to change the comparison.
+
+17
+00:01:09,167 --> 00:01:11,983
+Review the edit, then rerun the same
+tests.
+
+18
+00:01:12,163 --> 00:01:14,352
+The zero case should pass this time.
+
+19
+00:01:14,532 --> 00:01:18,360
+The tests for one, five, and negative one
+should still pass.
+
+20
+00:01:23,350 --> 00:01:24,932
+Open Source Control.
+
+21
+00:01:25,112 --> 00:01:26,691
+Read the diff yourself.
+
+22
+00:01:26,871 --> 00:01:30,551
+There should be one changed comparison and
+one added test.
+
+23
+00:01:30,731 --> 00:01:33,791
+Commit both files and publish the feature
+branch.
+
+24
+00:01:36,350 --> 00:01:39,592
+From the authorized terminal, open the
+pull request.
+
+25
+00:01:39,772 --> 00:01:44,133
+Link issue seventeen and include the test
+result in the description.
+
+26
+00:01:44,313 --> 00:01:46,971
+The example creates pull request forty
+two.
+
+27
+00:01:47,151 --> 00:01:49,021
+Hand that number to the reviewer.
+
+28
+00:01:53,350 --> 00:01:54,740
+Now you're the reviewer.
+
+29
+00:01:54,920 --> 00:01:57,803
+Use gh pr view to read the description.
+
+30
+00:01:59,350 --> 00:02:01,587
+Next, run gh pr diff.
+
+31
+00:02:01,767 --> 00:02:04,629
+Check the one line fix and the test for
+zero.
+
+32
+00:02:06,350 --> 00:02:08,303
+Use gh pr checks.
+
+33
+00:02:08,483 --> 00:02:12,129
+Wait for required checks to finish, and
+confirm they pass.
+
+34
+00:02:12,750 --> 00:02:16,843
+Once you've checked the diff and the
+evidence, use approve to record your
+
+35
+00:02:16,843 --> 00:02:17,347
+decision.
+
+36
+00:02:19,350 --> 00:02:23,808
+If the change needs work, request changes
+and tell the author what to fix.
+
+37
+00:02:26,350 --> 00:02:29,521
+Try the same workflow in the training
+repository.
+
+38
+00:02:29,701 --> 00:02:32,917
+Show the failing test, the fix, and the
+passing test.
+
+39
+00:02:33,097 --> 00:02:37,332
+Then ask a teammate to review the pull
+request with GitHub CLI.

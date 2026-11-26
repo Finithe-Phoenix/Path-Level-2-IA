@@ -1,0 +1,108 @@
+{
+  "id": "M06",
+  "title": "Build a Workflow with Review Checkpoints",
+  "subtitle": "Copilot, CI and human review · Intermediate",
+  "sources": [
+    {
+      "label": "Plan work in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/run/planning"
+    },
+    {
+      "label": "GitHub protected branches and checks",
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+    },
+    {
+      "label": "Agent workflows and checkpoints",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "map",
+      "kind": "diagram",
+      "eyebrow": "WORKFLOW · TRAINING ISSUE",
+      "title": "Map the work before delegating a step",
+      "body": "Give every checkpoint an owner and evidence.",
+      "narration": "Bring the previous lessons together in one workflow. Start with the issue and plan the smallest verifiable change. Then demonstrate a failing regression, apply the fix, and verify the passing regression. The author reviews the diff and submits the pull request. A teammate reviews it independently. At each checkpoint, write down what evidence lets the work continue and who makes that decision.",
+      "code": "Issue → Plan → Human scope review\nFailing test → Fix → Passing tests\nAuthor diff review → PR → Peer review",
+      "result": "Each handoff has evidence and an owner.",
+      "durationFrames": 644,
+      "duration": 26.833333333333332
+    },
+    {
+      "id": "scope",
+      "kind": "editor",
+      "eyebrow": "CHECKPOINT ONE · SCOPE",
+      "title": "Review the plan before editing",
+      "body": "The author checks the intended behavior and allowed change.",
+      "narration": "Use the reusable prompt in Plan with the issue, the validator file, and its tests. The agent proposes an edit and verification steps. Review the suggestion against the issue yourself. In this example, it may add a regression test and change one comparison. If it proposes a new dependency or changes the public interface, revise the plan with the original requirement visible before moving into Agent.",
+      "code": "Keep is_valid_quantity(quantity: int) -> bool.\nAdd an assertion for quantity zero.\nChange only the boundary comparison.",
+      "result": "Author accepts scope after checking the issue.",
+      "durationFrames": 683,
+      "duration": 28.458333333333332
+    },
+    {
+      "id": "red",
+      "kind": "terminal",
+      "eyebrow": "CHECKPOINT TWO · RED TEST",
+      "title": "Verify that the test detects the defect",
+      "body": "Let the expected failure authorize the next coding step.",
+      "narration": "Add the new test first and run it using the approved runner. A useful failure identifies the zero case and shows that the validator returned true. If the failure comes from a broken import, fix the test setup and repeat the run before accepting the evidence. The checkpoint requires a failing assertion tied to the issue. Record the result and use it to justify applying the small fix.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "Expected before the fix\ntest_rejects_zero ... FAIL\nAssertionError: True is not false",
+      "durationFrames": 639,
+      "duration": 26.625
+    },
+    {
+      "id": "green",
+      "kind": "terminal",
+      "eyebrow": "CHECKPOINT THREE · PASSING TESTS",
+      "title": "Stop when validation remains red",
+      "body": "Review the approved change and require the expected passing run.",
+      "narration": "Ask Agent to make the agreed edit. Check the diff and rerun the same suite. If another test starts failing or the expected regression still fails, return to the fix and inspect the new behavior. In a passing run, capture the command and the result. This pause keeps a plausible explanation from becoming your only evidence. It also helps keep the next review focused on the actual change.",
+      "code": "Pass → attach the test output\nFail → inspect, adjust and rerun",
+      "result": "All four tests pass in the completed example.",
+      "durationFrames": 637,
+      "duration": 26.541666666666668
+    },
+    {
+      "id": "pr-evidence",
+      "kind": "github",
+      "eyebrow": "CHECKPOINT FOUR · AUTHOR HANDOFF",
+      "title": "Prepare evidence for the pull request",
+      "body": "Tie the issue, patch and checks to the same change.",
+      "narration": "Use the skill from the previous lesson to draft the handoff. Provide the linked training issue, the diff, and the output you just checked. Review its draft and correct any claim that does not match those artifacts. Push the feature branch and open the pull request through your approved workflow. The configured checks run on the reviewed change. A passing local or runner result gives the reviewer additional evidence.",
+      "code": "Closes #17\nChanged: reject zero at the validator boundary\nRegression: test_rejects_zero\nVerification: four unit tests passed",
+      "result": "PR #42 is ready for separate peer review.",
+      "durationFrames": 644,
+      "duration": 26.833333333333332
+    },
+    {
+      "id": "review",
+      "kind": "terminal",
+      "eyebrow": "CHECKPOINT FIVE · INDEPENDENT REVIEW",
+      "title": "Let the peer make the review decision",
+      "body": "A teammate reviews the revision and required checks with GitHub CLI.",
+      "narration": "The peer now uses the approved terminal and their own account. They view the pull request, read the diff and check the required results. If the evidence is sufficient, they can submit an approval. If something is missing, they can request changes and name what needs to be checked. The repository's configured checks and review rules protect the merge. The agent's draft helps prepare the handoff.",
+      "code": "gh pr view 42\ngh pr diff 42\ngh pr checks 42 --required",
+      "result": "Peer decision: approve or request a specific change.",
+      "durationFrames": 624,
+      "duration": 26.0
+    },
+    {
+      "id": "dry-run",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · TEST THE CHECKPOINTS",
+      "title": "Dry-run both outcomes",
+      "body": "Demonstrate a successful handoff and one blocked branch.",
+      "narration": "Try the workflow with a teammate on the synthetic repository. During the first run, walk all the way to the peer decision with passing checks and a small patch. During the second, introduce missing test evidence or a failing required check and say where you stop. Write down the evidence needed to resume and who decides. That is the workflow you can reuse on the next issue.",
+      "code": "A: Scope accepted, tests pass, peer reviews\nB: Verification missing, work returns to author",
+      "result": "A documented workflow with a tested stop condition.",
+      "durationFrames": 618,
+      "duration": 25.75
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720
+}

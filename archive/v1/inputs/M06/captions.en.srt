@@ -1,0 +1,224 @@
+1
+00:00:00,340 --> 00:00:03,287
+Bring the previous lessons together in one
+workflow.
+
+2
+00:00:03,467 --> 00:00:07,329
+Start with the issue and plan the smallest
+verifiable change.
+
+3
+00:00:07,509 --> 00:00:12,457
+Then demonstrate a failing regression,
+apply the fix, and verify the passing
+
+4
+00:00:12,457 --> 00:00:13,173
+regression.
+
+5
+00:00:13,353 --> 00:00:16,799
+The author reviews the diff and submits
+the pull request.
+
+6
+00:00:16,979 --> 00:00:19,437
+A teammate reviews it independently.
+
+7
+00:00:19,617 --> 00:00:24,433
+At each checkpoint, write down what
+evidence lets the work continue and who
+
+8
+00:00:24,433 --> 00:00:25,717
+makes that decision.
+
+9
+00:00:27,173 --> 00:00:32,495
+Use the reusable prompt in Plan with the
+issue, the validator file, and its tests.
+
+10
+00:00:32,675 --> 00:00:36,151
+The agent proposes an edit and
+verification steps.
+
+11
+00:00:36,331 --> 00:00:39,286
+Review the suggestion against the issue
+yourself.
+
+12
+00:00:39,466 --> 00:00:44,277
+In this example, it may add a regression
+test and change one comparison.
+
+13
+00:00:44,457 --> 00:00:50,220
+If it proposes a new dependency or changes
+the public interface, revise the plan with
+
+14
+00:00:50,220 --> 00:00:54,153
+the original requirement visible before
+moving into Agent.
+
+15
+00:00:55,632 --> 00:00:59,249
+Add the new test first and run it using
+the approved runner.
+
+16
+00:00:59,429 --> 00:01:04,975
+A useful failure identifies the zero case
+and shows that the validator returned
+
+17
+00:01:04,975 --> 00:01:05,326
+true.
+
+18
+00:01:05,506 --> 00:01:10,462
+If the failure comes from a broken import,
+fix the test setup and repeat the run
+
+19
+00:01:10,462 --> 00:01:12,321
+before accepting the evidence.
+
+20
+00:01:12,501 --> 00:01:16,394
+The checkpoint requires a failing
+assertion tied to the issue.
+
+21
+00:01:16,574 --> 00:01:20,786
+Record the result and use it to justify
+applying the small fix.
+
+22
+00:01:22,257 --> 00:01:24,564
+Ask Agent to make the agreed edit.
+
+23
+00:01:24,744 --> 00:01:27,095
+Check the diff and rerun the same suite.
+
+24
+00:01:27,275 --> 00:01:32,468
+If another test starts failing or the
+expected regression still fails, return to
+
+25
+00:01:32,468 --> 00:01:34,869
+the fix and inspect the new behavior.
+
+26
+00:01:35,049 --> 00:01:38,314
+In a passing run, capture the command and
+the result.
+
+27
+00:01:38,494 --> 00:01:43,346
+This pause keeps a plausible explanation
+from becoming your only evidence.
+
+28
+00:01:43,526 --> 00:01:47,328
+It also helps keep the next review focused
+on the actual change.
+
+29
+00:01:48,798 --> 00:01:52,446
+Use the skill from the previous lesson to
+draft the handoff.
+
+30
+00:01:52,626 --> 00:01:56,819
+Provide the linked training issue, the
+diff, and the output you just checked.
+
+31
+00:01:56,999 --> 00:02:01,488
+Review its draft and correct any claim
+that does not match those artifacts.
+
+32
+00:02:01,668 --> 00:02:06,224
+Push the feature branch and open the pull
+request through your approved workflow.
+
+33
+00:02:06,404 --> 00:02:09,296
+The configured checks run on the reviewed
+change.
+
+34
+00:02:09,476 --> 00:02:14,158
+A passing local or runner result gives the
+reviewer additional evidence.
+
+35
+00:02:15,632 --> 00:02:19,343
+The peer now uses the approved terminal
+and their own account.
+
+36
+00:02:19,523 --> 00:02:23,799
+They view the pull request, read the diff
+and check the required results.
+
+37
+00:02:23,979 --> 00:02:27,532
+If the evidence is sufficient, they can
+submit an approval.
+
+38
+00:02:27,712 --> 00:02:32,662
+If something is missing, they can request
+changes and name what needs to be checked.
+
+39
+00:02:32,842 --> 00:02:37,310
+The repository's configured checks and
+review rules protect the merge.
+
+40
+00:02:37,490 --> 00:02:40,189
+The agent's draft helps prepare the
+handoff.
+
+41
+00:02:41,632 --> 00:02:45,622
+Try the workflow with a teammate on the
+synthetic repository.
+
+42
+00:02:45,802 --> 00:02:50,820
+During the first run, walk all the way to
+the peer decision with passing checks and
+
+43
+00:02:50,820 --> 00:02:51,666
+a small patch.
+
+44
+00:02:51,846 --> 00:02:57,301
+During the second, introduce missing test
+evidence or a failing required check and
+
+45
+00:02:57,301 --> 00:02:58,564
+say where you stop.
+
+46
+00:02:58,744 --> 00:03:02,328
+Write down the evidence needed to resume
+and who decides.
+
+47
+00:03:02,508 --> 00:03:05,923
+That is the workflow you can reuse on the
+next issue.

@@ -1,0 +1,299 @@
+{
+  "title": "From issue to reviewed PR",
+  "subtitle": "GitHub Copilot in VS Code · Intermediate",
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "audio": "narracion-v2.wav",
+  "scenes": [
+    {
+      "id": "intro",
+      "duration": 12,
+      "eyebrow": "THE WALKTHROUGH",
+      "title": "Fix a bug. Verify every step.",
+      "body": "One order validator. One small change. One peer-reviewed PR.",
+      "lines": [
+        "VS Code · Plan and Agent",
+        "GitHub · Issues and pull requests",
+        "Authorized terminal · GitHub CLI"
+      ],
+      "narration": "In this walkthrough, we'll fix a small bug with Copilot in Visual Studio Code. Then a teammate will review the pull request using the GitHub command line.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "The defect",
+          "code": "is_valid_quantity(0)",
+          "result": "True  ← zero should be rejected"
+        },
+        {
+          "at": 5.7,
+          "title": "The outcome",
+          "code": "Issue #17  →  Fix  →  Review PR #42",
+          "result": "A tested change, ready for a teammate"
+        }
+      ]
+    },
+    {
+      "id": "issue",
+      "duration": 16,
+      "eyebrow": "GITHUB ISSUE  ·  #17",
+      "title": "Read the issue and set the target",
+      "body": "The validator currently accepts an order with zero items.",
+      "lines": [
+        "1 and 5 are valid.",
+        "0 and −1 are invalid.",
+        "Keep the function signature."
+      ],
+      "narration": "Start with issue seventeen. The validator accepts zero, even though an order needs at least one item. Keep the function signature. One and five should pass. Zero and negative one should fail.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Open issue #17",
+          "code": "Reject zero order quantities",
+          "result": "Bug: quantity = 0 currently returns True."
+        },
+        {
+          "at": 7,
+          "title": "Check the acceptance criteria",
+          "code": "quantity       1      5      0     -1\nexpected    True   True  False  False",
+          "result": "Scope: keep is_valid_quantity(quantity: int) -> bool."
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "duration": 18,
+      "eyebrow": "VS CODE  ·  COPILOT PLAN",
+      "title": "Scope the change in Plan",
+      "body": "Give Copilot the issue and the relevant source and test files.",
+      "lines": [
+        "Find the return condition.",
+        "Propose the regression test.",
+        "Read the plan before editing."
+      ],
+      "narration": "In VS Code, select Plan. Give Copilot the issue, the validator, and its tests. Ask where the bug is and what regression test would expose it. Check the plan against the files before moving on.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Select Plan and attach context",
+          "code": "Plan    #order_quantity.py    #tests/test_order_quantity.py",
+          "result": "Context from issue #17 has been added."
+        },
+        {
+          "at": 5,
+          "title": "Ask for a bounded plan",
+          "code": "Find why zero is accepted.\nPropose a regression test and the smallest fix.",
+          "result": "Plan: test zero, then change one comparison."
+        },
+        {
+          "at": 12.7,
+          "title": "Check what will change",
+          "code": "return quantity >= 0",
+          "result": "Confirmed: the equality allows zero."
+        }
+      ]
+    },
+    {
+      "id": "regression",
+      "duration": 20,
+      "eyebrow": "VS CODE  ·  COPILOT AGENT",
+      "title": "Make the test fail first",
+      "body": "Switch to Agent and ask it to add only the regression test.",
+      "lines": [
+        "Add the test for zero.",
+        "Run the existing suite.",
+        "Read the actual failure."
+      ],
+      "narration": "Switch to Agent and ask for just the regression test. Review the proposed test command and run it in the approved environment. The new test should fail because zero still returns true. That's the bug we're fixing.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Switch to Agent and limit the edit",
+          "code": "Add only a regression test for quantity zero.\nLeave order_quantity.py intact.",
+          "result": "Agent proposes one test in tests/test_order_quantity.py."
+        },
+        {
+          "at": 6.4,
+          "title": "Inspect the new assertion",
+          "code": "def test_rejects_zero(self):\n    self.assertFalse(is_valid_quantity(0))",
+          "result": "Expected result for zero: False."
+        },
+        {
+          "at": 12.2,
+          "title": "Run the tests against the original code",
+          "code": "python -B -m unittest discover -s tests -v",
+          "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false\nRan 4 tests. FAILED (failures=1)"
+        }
+      ]
+    },
+    {
+      "id": "fix",
+      "duration": 17,
+      "eyebrow": "VS CODE  ·  COPILOT AGENT",
+      "title": "Fix the condition and run it again",
+      "body": "The comparison changes. The interface stays the same.",
+      "lines": [
+        "Ask Agent for the one-line fix.",
+        "Check the proposed edit.",
+        "Rerun the same suite."
+      ],
+      "narration": "Now ask Agent to change the comparison. Review the edit, then rerun the same tests. The zero case should pass this time. The tests for one, five, and negative one should still pass.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Ask Agent to implement the scoped fix",
+          "code": "Change >= 0 to > 0 in order_quantity.py.\nKeep the function signature.",
+          "result": "One line changed."
+        },
+        {
+          "at": 7.8,
+          "title": "Run the same test suite again",
+          "code": "python -B -m unittest discover -s tests -v",
+          "result": "test_rejects_zero ... ok\nRan 4 tests. OK"
+        }
+      ]
+    },
+    {
+      "id": "diff",
+      "duration": 13,
+      "eyebrow": "VS CODE  ·  SOURCE CONTROL",
+      "title": "Review the diff before publishing",
+      "body": "Match both files to the issue and the test evidence.",
+      "lines": [
+        "One line in the validator.",
+        "One regression test.",
+        "Publish the feature branch."
+      ],
+      "narration": "Open Source Control. Read the diff yourself. There should be one changed comparison and one added test. Commit both files and publish the feature branch.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Review the code diff",
+          "code": "-    return quantity >= 0\n+    return quantity > 0",
+          "result": "The regression test is the only other change."
+        },
+        {
+          "at": 7.8,
+          "title": "Commit and publish the checked branch",
+          "code": "fix/reject-zero-quantity",
+          "result": "Origin branch published from VS Code."
+        }
+      ]
+    },
+    {
+      "id": "pr",
+      "duration": 17,
+      "eyebrow": "GITHUB CLI  ·  AUTHOR",
+      "title": "Open the PR with evidence",
+      "body": "Use the approved remote terminal once the branch is published.",
+      "lines": [
+        "Link the GitHub issue.",
+        "Describe what changed.",
+        "Include the test result."
+      ],
+      "narration": "From the authorized terminal, open the pull request. Link issue seventeen and include the test result in the description. The example creates pull request forty two. Hand that number to the reviewer.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Prepare pr-body.md",
+          "code": "Closes #17\n\nReject zero quantities. Added a regression test.\nValidation: all four unit tests passed.",
+          "result": "Feature branch already published."
+        },
+        {
+          "at": 7,
+          "title": "Create the pull request",
+          "code": "gh pr create --base main \\\n  --title \"Reject zero order quantities\" \\\n  --body-file pr-body.md",
+          "result": "Created PR #42 · Reject zero order quantities"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "duration": 33,
+      "eyebrow": "GITHUB CLI  ·  PEER REVIEWER",
+      "title": "Review the PR from the terminal",
+      "body": "A teammate uses their own authorized account and reviews the evidence.",
+      "lines": [
+        "Read the PR and inspect its diff.",
+        "Confirm required checks are green.",
+        "Record your own review decision."
+      ],
+      "narration": "Now you're the reviewer. Use gh pr view to read the description. Next, run gh pr diff. Check the one line fix and the test for zero. Use gh pr checks. Wait for required checks to finish, and confirm they pass. Once you've checked the diff and the evidence, use approve to record your decision. If the change needs work, request changes and tell the author what to fix.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "Read the PR as the reviewer",
+          "code": "gh pr view 42",
+          "result": "Reject zero order quantities  ·  OPEN\nCloses #17 · Validation: four unit tests passed."
+        },
+        {
+          "at": 6,
+          "title": "Inspect the actual change",
+          "code": "gh pr diff 42",
+          "result": "-    return quantity >= 0\n+    return quantity > 0\n+    self.assertFalse(is_valid_quantity(0))"
+        },
+        {
+          "at": 13,
+          "title": "Check continuous integration",
+          "code": "gh pr checks 42",
+          "result": "Unit tests    pass"
+        },
+        {
+          "at": 19.4,
+          "title": "Record a human approval when warranted",
+          "code": "gh pr review 42 --approve \\\n  --body \"Regression and checks verified.\"",
+          "result": "Review submitted by the peer reviewer."
+        },
+        {
+          "at": 26,
+          "title": "If further changes are needed",
+          "code": "gh pr review 42 --request-changes \\\n  --body \"Please verify the zero case in CI.\"",
+          "result": "Alternative when the PR needs a correction."
+        }
+      ],
+      "narrationBeats": [
+        {
+          "at": 0,
+          "text": "Now you're the reviewer. Use gh pr view to read the description."
+        },
+        {
+          "at": 6,
+          "text": "Next, run gh pr diff. Check the one line fix and the test for zero."
+        },
+        {
+          "at": 13,
+          "text": "Use gh pr checks. Wait for required checks to finish, and confirm they pass."
+        },
+        {
+          "at": 19.4,
+          "text": "Once you've checked the diff and the evidence, use approve to record your decision."
+        },
+        {
+          "at": 26,
+          "text": "If the change needs work, request changes and tell the author what to fix."
+        }
+      ]
+    },
+    {
+      "id": "closure",
+      "duration": 12,
+      "eyebrow": "YOUR TURN",
+      "title": "Run the same workflow yourself",
+      "body": "Try it on another issue in the training repository.",
+      "lines": [
+        "Plan the smallest change.",
+        "Show the failing and passing test.",
+        "Ask a teammate to review via gh."
+      ],
+      "narration": "Try the same workflow in the training repository. Show the failing test, the fix, and the passing test. Then ask a teammate to review the pull request with GitHub CLI.",
+      "actions": [
+        {
+          "at": 0,
+          "title": "What you should be able to hand over",
+          "code": "Issue → Plan → Agent → Diff → PR → Peer review",
+          "result": "A pull request with evidence someone else can verify."
+        }
+      ]
+    }
+  ]
+}

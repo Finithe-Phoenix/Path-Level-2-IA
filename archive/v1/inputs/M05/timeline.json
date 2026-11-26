@@ -1,0 +1,104 @@
+{
+  "id": "M05",
+  "title": "What Is a Skill? Build Your First One",
+  "subtitle": "Agent Skills in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Create Agent Skills in VS Code",
+      "url": "https://code.visualstudio.com/docs/agent-customization/agent-skills"
+    },
+    {
+      "label": "Agent Skills format specification",
+      "url": "https://agentskills.io/specification"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "select-procedure",
+      "kind": "diagram",
+      "eyebrow": "AGENT SKILLS · CHOOSE A PROCEDURE",
+      "title": "Find a task the team repeats",
+      "body": "Package a pull request evidence checklist for reuse.",
+      "narration": "Suppose your team keeps asking Copilot to organize the same evidence before requesting a review. Each time, the agent needs the issue, a summary of the diff, and the test result. A skill is a package the agent can use when that kind of task comes up. We will start with three steps and one result that a human can inspect before sending it to a teammate.",
+      "code": "Input: issue, diff and test output\nProcedure: check and summarize the evidence\nOutput: a draft for the human author",
+      "result": "Chosen skill: prepare pull request evidence.",
+      "durationFrames": 591,
+      "duration": 24.625
+    },
+    {
+      "id": "create",
+      "kind": "editor",
+      "eyebrow": "VS CODE · PROJECT SKILL",
+      "title": "Name the skill and say when it applies",
+      "body": "Use the skill folder supported by the Copilot setup.",
+      "narration": "In the training repository, create a project skill named prepare p r evidence. Under the dot GitHub skills folder, give it a directory with the same name and add a file called skill dot M D. The header contains a name and description. State which request it is for, so both the teammate invoking it and the client selecting it have a clear signal.",
+      "code": "---\nname: prepare-pr-evidence\ndescription: Draft evidence for a training pull request.\n---",
+      "result": ".github/skills/prepare-pr-evidence/SKILL.md",
+      "durationFrames": 570,
+      "duration": 23.75
+    },
+    {
+      "id": "procedure",
+      "kind": "editor",
+      "eyebrow": "SKILL.MD · WRITE THE BODY",
+      "title": "Define the steps and intended output",
+      "body": "Make missing evidence visible in the draft.",
+      "narration": "In the body, ask for the issue, the changed behavior, and the result of a real test run. Define how to handle missing inputs. If the test output is absent, call that out so the author can supply it. Keep this first skill as a short procedure. The human author reviews the resulting draft and decides what to publish. Tool permissions and repository controls still apply.",
+      "code": "1. Read the provided issue and diff.\n2. Check the supplied test output.\n3. Draft: Issue, Change, Verification, Gaps.\nIf data is missing, identify the gap.\nReturn text for the human author to review.",
+      "result": "The scope ends with a draft.",
+      "durationFrames": 624,
+      "duration": 26.0
+    },
+    {
+      "id": "invoke",
+      "kind": "editor",
+      "eyebrow": "COPILOT · INVOKE IN A FRESH CHAT",
+      "title": "Discover and try the skill",
+      "body": "Invoke it with the synthetic order validator change.",
+      "narration": "Open a fresh Copilot chat in the project. Verify discovery in the customizations view, then invoke the skill through the slash menu when the approved setup supports it. Give it the synthetic issue, the diff, and the passing test output. Read the draft and map each claim back to a supplied source. Check that the procedure gives a teammate a more consistent result than rewriting the request each time.",
+      "code": "/prepare-pr-evidence\nAttach issue #17, the diff and the test output.",
+      "result": "Issue #17\nChange: zero is rejected.\nVerification: four unit tests passed.\nGaps: none in the supplied training evidence.",
+      "durationFrames": 646,
+      "duration": 26.916666666666668
+    },
+    {
+      "id": "missing-evidence",
+      "kind": "decision",
+      "eyebrow": "SKILL TEST · MISSING INPUT",
+      "title": "Check what happens when proof is missing",
+      "body": "Run the same skill with the test output omitted.",
+      "narration": "Repeat the invocation in a new chat, this time without the test output. Expect the draft to say that verification is missing. If it reports a green run from the issue description alone, tighten the instructions and rerun the case. Now ask an unrelated question, such as explaining a Python expression, and check whether the skill is relevant. This gives you a small repeatable test of behavior and scope.",
+      "code": "Inputs: issue and diff only\nExpected: mark verification as missing",
+      "result": "Verification gap surfaced for the human author.",
+      "durationFrames": 654,
+      "duration": 27.25
+    },
+    {
+      "id": "map-controls",
+      "kind": "diagram",
+      "eyebrow": "SKILLS · FIT WITH OTHER FEATURES",
+      "title": "Separate procedures from access",
+      "body": "A procedure can refer to tools inside the approved boundary.",
+      "narration": "Place this skill beside the instruction file from the previous lesson. The instruction file carries project conventions. The skill carries the reusable procedure. Tools perform actions such as reading a file. An approved M C P connection can expose additional tools or resources in another environment. This skill works using supplied files and outputs. Access remains governed by the selected client, its tools, and the organization's settings.",
+      "code": "Instructions → project conventions\nSkill → reusable procedure\nTool → callable action\nMCP → connection to a server",
+      "result": "Review the skill and its dependencies before sharing.",
+      "durationFrames": 758,
+      "duration": 31.583333333333332
+    },
+    {
+      "id": "small-exercise",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · CREATE A SKILL",
+      "title": "Write a second skill with two test cases",
+      "body": "Choose a recurring task and define its limits.",
+      "narration": "Pick a second recurring task, such as summarizing a failed training test for the author. Write a name, a description, a short procedure, and the expected output. Try it with complete input and with one item missing. Ask a teammate to judge both responses using the same criteria. Share the versioned file once you can explain when it applies and show that it handles the missing input clearly.",
+      "code": "Candidate: summarize a failing test\nCase A: failure output supplied\nCase B: failure output missing",
+      "result": "An invocable procedure with two observable tests.",
+      "durationFrames": 644,
+      "duration": 26.833333333333332
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720
+}

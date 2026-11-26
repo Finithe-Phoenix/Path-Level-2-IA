@@ -1,0 +1,108 @@
+{
+  "id": "M04",
+  "title": "Reusable Prompts and Repository Instructions",
+  "subtitle": "GitHub Copilot in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Custom instructions in VS Code",
+      "url": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+    },
+    {
+      "label": "Prompt files and harness support",
+      "url": "https://code.visualstudio.com/docs/agent-customization/prompt-files"
+    },
+    {
+      "label": "Context engineering in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/guides/context-engineering-guide"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "sort-guidance",
+      "kind": "diagram",
+      "eyebrow": "REUSABLE GUIDANCE · TWO SCOPES",
+      "title": "Identify what changes from one task to the next",
+      "body": "Keep task inputs and durable project conventions easy to find.",
+      "narration": "You have planned several small fixes, and the same guidance shows up in your messages. Take one example and mark two kinds of information. The issue number and target behavior belong to the current task. Where tests live and how to run them are conventions for the repository. Keeping them in the right place lets a teammate reuse the guidance without copying an old issue or its assumptions.",
+      "code": "Current task: issue #17 and expected behavior\nRepository: tests live in tests/\nRepository: use the existing unittest suite",
+      "result": "Task inputs and durable conventions identified.",
+      "durationFrames": 629,
+      "duration": 26.208333333333332
+    },
+    {
+      "id": "prompt-template",
+      "kind": "editor",
+      "eyebrow": "VS CODE · PORTABLE PROMPT TEMPLATE",
+      "title": "Capture a prompt your team can reuse",
+      "body": "Keep a named template and fill in its variable inputs.",
+      "narration": "Save this reusable prompt as Markdown in the training repository. Each time you use it, fill in the issue and attach the current source and test files. Call out the output you want. Here the agent should describe the source path, propose the smallest edit, name the verification, and stop for review. A teammate can copy the template into chat on the approved VS Code setup.",
+      "code": "Read issue [id] and the attached source and tests.\nPropose the smallest edit and a regression test.\nList the files, validation steps and open questions.\nStop after the plan for human review.",
+      "result": "Template: docs/prompts/plan-a-fix.md",
+      "durationFrames": 621,
+      "duration": 25.875
+    },
+    {
+      "id": "context-run",
+      "kind": "editor",
+      "eyebrow": "COPILOT PLAN · TASK CONTEXT",
+      "title": "Supply current evidence at invocation",
+      "body": "Use the template with source files and tests from the same revision.",
+      "narration": "Start Plan and paste the filled template. Attach the issue, the source file, and the tests from the revision you intend to change. Check the response against those sources. If the plan talks about a file that does not exist, ask which available evidence supports that claim. These attachments are context for this request. A reusable prompt is easier to trust when the task-specific evidence stays visible.",
+      "code": "Issue #17\norder_quantity.py\ntests/test_order_quantity.py",
+      "result": "Plan names the condition and the missing zero test.",
+      "durationFrames": 645,
+      "duration": 26.875
+    },
+    {
+      "id": "instructions",
+      "kind": "editor",
+      "eyebrow": "REPOSITORY · PROJECT INSTRUCTIONS",
+      "title": "Record a project convention once",
+      "body": "Keep the instructions concrete and versioned with the code.",
+      "narration": "Open the repository root and confirm the selected Copilot setup. In this example, use the project instructions file in the dot GitHub folder. Add the few conventions we want available when working on this project. Tell the agent where tests go, which test framework is already in use, and where to find the verification command. If the repository already has project instructions, review them before adding overlapping guidance.",
+      "code": "# Order validator conventions\n- Use unittest for unit tests under tests/.\n- Preserve public signatures unless the issue says otherwise.\n- See README.md for the approved verification command.",
+      "result": "Saved: .github/copilot-instructions.md",
+      "durationFrames": 706,
+      "duration": 29.416666666666668
+    },
+    {
+      "id": "discovery",
+      "kind": "editor",
+      "eyebrow": "COPILOT · FRESH SESSION",
+      "title": "Check that Copilot loaded the instructions",
+      "body": "Verify discovery and actual behavior in a new chat.",
+      "narration": "Start a fresh session in the same workspace. Use the customizations view to verify that the file is listed. Where references are available, check that the file was included in the request. Then ask for a small plan without repeating the conventions in your prompt. Inspect whether it points to the expected test location and framework. Check discovery and behavior separately so you know what to fix if the result differs.",
+      "code": "Plan one regression test for the zero-quantity issue.",
+      "result": "File discovered. Plan uses the existing unittest suite.",
+      "durationFrames": 674,
+      "duration": 28.083333333333332
+    },
+    {
+      "id": "roles",
+      "kind": "diagram",
+      "eyebrow": "TEAM USE · ACTIVATION AND CONTROLS",
+      "title": "Give each type of guidance a clear role",
+      "body": "Use a task template, project instructions and real review controls.",
+      "narration": "The template expresses the current request. The instruction file supplies the project's rules when the selected setup loads it. Permissions and required checks enforce separate boundaries. If your VS Code release offers runnable prompt files, confirm support for the selected harness before using that format. In this lesson the Markdown template works as text you can paste. The next lesson turns a repeated procedure into an invocable skill.",
+      "code": "Prompt template → task request\nInstruction file → project conventions\nPermissions and checks → enforcement",
+      "result": "Review each file where its behavior is observable.",
+      "durationFrames": 725,
+      "duration": 30.208333333333332
+    },
+    {
+      "id": "practice",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · TRANSFER",
+      "title": "Try a second issue and compare the plan",
+      "body": "Change the issue and check which guidance still applies.",
+      "narration": "Reuse the template on a second synthetic issue. Replace the issue reference and attachments with the new evidence. Check that the project convention still applies and the plan changes where the new issue calls for it. Review the prompt template and instruction diff with a teammate. You should be able to point to the task inputs, the convention that carried over, and the check that would establish correctness.",
+      "code": "New issue → new attachments → new plan\nSame repository → same test conventions",
+      "result": "A teammate can reproduce the setup in a fresh chat.",
+      "durationFrames": 611,
+      "duration": 25.458333333333332
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720
+}
