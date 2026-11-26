@@ -1,227 +1,226 @@
 1
-00:00:00,340 --> 00:00:04,381
-Our synthetic order service accepts an
-order of zero units.
+00:00:00,408 --> 00:00:03,137
+The report says zero orders slip
+through.
 
 2
-00:00:04,561 --> 00:00:08,859
-Start by reading the issue and identifying
-the behavior you can check.
+00:00:03,216 --> 00:00:06,102
+Let’s translate that into a call we can
+test.
 
 3
-00:00:09,039 --> 00:00:12,784
-If we call the validator with zero, the
-current answer is true.
+00:00:06,155 --> 00:00:09,621
+When the validator receives zero, it
+currently returns true.
 
 4
-00:00:12,964 --> 00:00:14,950
-The expected answer is false.
+00:00:10,264 --> 00:00:12,205
+The issue requires false.
 
 5
-00:00:15,130 --> 00:00:18,981
-One and five should still pass, and
-negative one should still fail.
+00:00:12,258 --> 00:00:14,646
+The inputs one and five should still
+pass,
 
 6
-00:00:19,161 --> 00:00:23,172
-Write the expected answer down before
-opening an agent session.
+00:00:14,698 --> 00:00:17,033
+and negative one should still fail.
 
 7
-00:00:24,632 --> 00:00:28,545
-Use the approved runner to execute the
-existing unit tests.
+00:00:17,112 --> 00:00:20,628
+Keep that expected behavior in view
+while we investigate what the code
 
 8
-00:00:28,725 --> 00:00:30,064
-All three pass.
+00:00:20,681 --> 00:00:21,584
+actually does.
 
 9
-00:00:30,244 --> 00:00:33,094
-Look at the names and compare them with
-the issue.
+00:00:23,586 --> 00:00:27,915
+Run the existing tests from the training
+checkout in the approved environment.
 
 10
-00:00:33,274 --> 00:00:36,380
-The tests cover one, five, and negative
-one.
+00:00:27,968 --> 00:00:29,542
+The suite goes green.
 
 11
-00:00:36,560 --> 00:00:40,732
-Zero is missing, so a green run provides
-limited evidence here.
+00:00:29,631 --> 00:00:31,062
+Now read the test names.
 
 12
-00:00:40,912 --> 00:00:44,420
-Save the test command and starting
-revision in your notes.
+00:00:31,717 --> 00:00:35,390
+There’s one test each for one, five, and
+negative one.
 
 13
-00:00:44,600 --> 00:00:47,176
-You will repeat that command after each
-change.
+00:00:35,443 --> 00:00:37,175
+There’s no zero case.
 
 14
-00:00:48,632 --> 00:00:53,506
-Use Plan with the issue, the validator,
-and its existing tests in context.
+00:00:37,227 --> 00:00:39,970
+That's why a green result can coexist
+with the bug.
 
 15
-00:00:53,686 --> 00:00:58,686
-Ask Copilot to find the return condition
-and predict what will happen when zero
+00:00:40,651 --> 00:00:44,954
+Record the checkout and the exact test
+command so we can repeat the check
 
 16
-00:00:58,686 --> 00:00:59,382
-reaches it.
+00:00:45,006 --> 00:00:45,856
+consistently.
 
 17
-00:00:59,562 --> 00:01:01,205
-Read that line yourself.
+00:00:48,079 --> 00:00:52,346
+Open the issue, the validator, and the
+tests in VS Code.
 
 18
-00:01:01,385 --> 00:01:04,608
-The greater-than-or-equal comparison is
-true at zero.
+00:00:52,425 --> 00:00:56,636
+In Copilot Plan, ask which expression
+could explain this behavior.
 
 19
-00:01:04,788 --> 00:01:07,127
-That gives us a prediction we can test.
+00:00:57,264 --> 00:01:00,833
+The proposed cause is the greater-than-
+or-equal comparison.
 
 20
-00:01:07,307 --> 00:01:12,119
-A regression test expecting false for zero
-should fail on this revision.
+00:01:00,912 --> 00:01:03,273
+Read the line and substitute zero.
 
 21
-00:01:13,590 --> 00:01:18,677
-Ask Agent to add only the regression test,
-inside the existing test class.
+00:01:03,378 --> 00:01:06,059
+Zero equals zero, so the expression is
+true.
 
 22
-00:01:18,857 --> 00:01:20,929
-Inspect the diff before running it.
+00:01:06,750 --> 00:01:08,561
+Now we have a prediction.
 
 23
-00:01:21,109 --> 00:01:25,983
-The new assertion calls the same public
-function as the surrounding tests and
+00:01:08,639 --> 00:01:12,761
+An assertion expecting false for zero
+should fail on the original revision.
 
 24
-00:01:25,983 --> 00:01:26,869
-expects false.
+00:01:14,981 --> 00:01:19,494
+Ask Agent to add just the zero
+regression to the existing test class.
 
 25
-00:01:27,049 --> 00:01:30,035
-Confirm that the validator file has no
-edit.
+00:01:19,573 --> 00:01:21,567
+Inspect the proposed patch.
 
 26
-00:01:30,215 --> 00:01:33,279
-Then use the approved runner to execute
-the suite.
+00:01:21,645 --> 00:01:24,999
+It should call the public function with
+zero and expect false.
 
 27
-00:01:33,459 --> 00:01:38,263
-Keeping the original code for this run
-lets you check whether the test exposes
+00:01:25,620 --> 00:01:29,740
+The validator itself should still have
+its original comparison.
 
 28
-00:01:38,263 --> 00:01:39,495
-the reported defect.
+00:01:29,818 --> 00:01:33,781
+This separation is useful because the
+next run will tell us whether the new
 
 29
-00:01:40,965 --> 00:01:44,570
-The new test runs, and the output says
-true is not false.
+00:01:33,833 --> 00:01:37,994
+test can detect the reported behavior
+before any fix is applied.
 
 30
-00:01:44,750 --> 00:01:48,452
-That matches the predicted behavior on the
-original code.
+00:01:40,211 --> 00:01:42,966
+Run the same suite with the new test
+present.
 
 31
-00:01:48,632 --> 00:01:53,211
-A failure due to an import error or an
-empty test run would tell us something
+00:01:43,045 --> 00:01:46,429
+Look for the zero test name and the
+assertion message.
 
 32
-00:01:53,211 --> 00:01:53,806
-different.
+00:01:46,508 --> 00:01:48,907
+True was returned where false was
+expected.
 
 33
-00:01:53,986 --> 00:01:57,908
-Check the test name, the assertion, and
-the total of four tests.
+00:01:49,530 --> 00:01:52,128
+That failure supports the hypothesis.
 
 34
-00:01:58,088 --> 00:02:02,207
-Capture this result in your notes so the
-next run can be compared with it.
+00:01:52,206 --> 00:01:54,751
+If the suite stops because of a missing
+import,
 
 35
-00:02:03,673 --> 00:02:07,757
-Now apply the smallest change that
-addresses the hypothesis.
+00:01:54,804 --> 00:01:57,585
+it hasn't shown that the boundary is
+wrong.
 
 36
-00:02:07,937 --> 00:02:12,840
-Replace greater than or equal to zero with
-greater than zero and preserve the
+00:01:57,664 --> 00:02:02,261
+Fix the setup first and rerun until you
+have the failure you intended to test.
 
 37
-00:02:12,840 --> 00:02:14,049
-function signature.
+00:02:04,495 --> 00:02:08,379
+Change greater than or equal to zero to
+greater than zero.
 
 38
-00:02:14,229 --> 00:02:16,133
-Keep the new assertion as written.
+00:02:08,458 --> 00:02:11,764
+Keep the assertion and the function
+signature as they are.
 
 39
-00:02:16,313 --> 00:02:17,819
-Rerun the same suite.
+00:02:11,842 --> 00:02:14,965
+Rerun the same test command on the
+updated checkout.
 
 40
-00:02:17,999 --> 00:02:22,319
-The output shows the zero test passing
-with the three earlier tests.
+00:02:15,657 --> 00:02:17,966
+Now all four cases should pass.
 
 41
-00:02:22,499 --> 00:02:26,792
-Check the diff so your explanation
-accounts for both changed files and
+00:02:18,018 --> 00:02:20,904
+Check the source diff and the test diff
+together.
 
 42
-00:02:26,792 --> 00:02:28,387
-nothing outside the issue.
+00:02:20,983 --> 00:02:23,839
+Each one should answer a part of the
+issue you started with.
 
 43
-00:02:29,840 --> 00:02:31,391
-Write a short handover.
+00:02:26,022 --> 00:02:30,404
+Let’s turn the investigation into
+something another engineer can replay.
 
 44
-00:02:31,571 --> 00:02:36,471
-Name the input that reproduced the bug,
-the comparison that caused it, and the
+00:02:30,482 --> 00:02:35,383
+Record the zero input, the original
+comparison, and both test results.
 
 45
-00:02:36,471 --> 00:02:39,047
-command you ran before and after the fix.
+00:02:36,074 --> 00:02:38,698
+Say which revision produced each output.
 
 46
-00:02:39,227 --> 00:02:43,963
-A teammate should be able to repeat the
-two runs and get the same result on each
+00:02:38,751 --> 00:02:43,028
+Then explain why one still passes and
+negative one still fails.
 
 47
-00:02:43,963 --> 00:02:44,495
-revision.
+00:02:43,107 --> 00:02:45,599
+If you can answer from the source and
+the tests,
 
 48
-00:02:44,675 --> 00:02:49,849
-As a final check, explain in your own
-words why one still passes and negative
-
-49
-00:02:49,849 --> 00:02:50,924
-one still fails.
+00:02:45,652 --> 00:02:49,026
+you've verified the change as well as
+the proposed diagnosis.

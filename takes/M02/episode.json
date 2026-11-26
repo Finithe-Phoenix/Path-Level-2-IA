@@ -1,0 +1,374 @@
+{
+  "id": "M02",
+  "title": "Debug with a Failing Test",
+  "subtitle": "GitHub Copilot in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Test-driven development with AI in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/guides/test-driven-development-guide"
+    },
+    {
+      "label": "Python unittest",
+      "url": "https://docs.python.org/3/library/unittest.html"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "symptom",
+      "kind": "github",
+      "eyebrow": "TRAINING ISSUE · EXPECTED BEHAVIOR",
+      "title": "State the symptom precisely",
+      "body": "Reduce the issue to one input and two observable answers.",
+      "narration": "The report says zero orders slip through. Let’s translate that into a call we can test. When the validator receives zero, it currently returns true. The issue requires false. The inputs one and five should still pass, and negative one should still fail. Keep that expected behavior in view while we investigate what the code actually does.",
+      "code": "is_valid_quantity(0)\nExpected: False\nObserved: True",
+      "result": "Boundary case identified: zero units.",
+      "focus": "The observed value and required value disagree at zero",
+      "action": "Read the training issue and write down the exact failing example.",
+      "durationFrames": 520,
+      "duration": 21.666666666666668,
+      "cues": [
+        {
+          "start": 0.389,
+          "end": 2.989,
+          "text": "The report says zero orders slip\nthrough."
+        },
+        {
+          "start": 3.064,
+          "end": 5.814,
+          "text": "Let’s translate that into a call we can\ntest."
+        },
+        {
+          "start": 5.864,
+          "end": 9.167,
+          "text": "When the validator receives zero, it\ncurrently returns true."
+        },
+        {
+          "start": 9.779,
+          "end": 11.629,
+          "text": "The issue requires false."
+        },
+        {
+          "start": 11.679,
+          "end": 13.954,
+          "text": "The inputs one and five should still\npass,"
+        },
+        {
+          "start": 14.004,
+          "end": 16.229,
+          "text": "and negative one should still fail."
+        },
+        {
+          "start": 16.304,
+          "end": 19.654,
+          "text": "Keep that expected behavior in view\nwhile we investigate what the code"
+        },
+        {
+          "start": 19.704,
+          "end": 20.565,
+          "text": "actually does."
+        }
+      ]
+    },
+    {
+      "id": "baseline",
+      "kind": "terminal",
+      "eyebrow": "APPROVED RUNNER · BASELINE",
+      "title": "Check the starting suite",
+      "body": "Run the existing tests on the starting revision.",
+      "narration": "Run the existing tests from the training checkout in the approved environment. The suite goes green. Now read the test names. There’s one test each for one, five, and negative one. There’s no zero case. That's why a green result can coexist with the bug. Record the checkout and the exact test command so we can repeat the check consistently.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_accepts_one ... ok\ntest_accepts_five ... ok\ntest_rejects_negative_one ... ok\nRan 3 tests. OK",
+      "focus": "Three tests pass and none calls the validator with zero",
+      "action": "Run the baseline tests in the approved runner.",
+      "durationFrames": 546,
+      "duration": 22.75,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 4.564,
+          "text": "Run the existing tests from the training\ncheckout in the approved environment."
+        },
+        {
+          "start": 4.614,
+          "end": 6.114,
+          "text": "The suite goes green."
+        },
+        {
+          "start": 6.199,
+          "end": 7.562,
+          "text": "Now read the test names."
+        },
+        {
+          "start": 8.186,
+          "end": 11.686,
+          "text": "There’s one test each for one, five, and\nnegative one."
+        },
+        {
+          "start": 11.736,
+          "end": 13.386,
+          "text": "There’s no zero case."
+        },
+        {
+          "start": 13.436,
+          "end": 16.049,
+          "text": "That's why a green result can coexist\nwith the bug."
+        },
+        {
+          "start": 16.698,
+          "end": 20.798,
+          "text": "Record the checkout and the exact test\ncommand so we can repeat the check"
+        },
+        {
+          "start": 20.848,
+          "end": 21.657,
+          "text": "consistently."
+        }
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "kind": "editor",
+      "eyebrow": "VS CODE · COPILOT PLAN",
+      "title": "Turn a guess into a hypothesis",
+      "body": "Ask for a prediction tied to a specific line.",
+      "narration": "Open the issue, the validator, and the tests in VS Code. In Copilot Plan, ask which expression could explain this behavior. The proposed cause is the greater-than-or-equal comparison. Read the line and substitute zero. Zero equals zero, so the expression is true. Now we have a prediction. An assertion expecting false for zero should fail on the original revision.",
+      "code": "return quantity >= 0",
+      "result": "Hypothesis: the equality admits zero.\nPrediction: an assertFalse for zero will fail.",
+      "focus": "The comparison makes a testable prediction for zero",
+      "action": "Ask Plan to predict the result from the return line.",
+      "durationFrames": 600,
+      "duration": 25.0,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.458,
+          "text": "Open the issue, the validator, and the\ntests in VS Code."
+        },
+        {
+          "start": 4.533,
+          "end": 8.545,
+          "text": "In Copilot Plan, ask which expression\ncould explain this behavior."
+        },
+        {
+          "start": 9.144,
+          "end": 12.544,
+          "text": "The proposed cause is the greater-than-\nor-equal comparison."
+        },
+        {
+          "start": 12.619,
+          "end": 14.869,
+          "text": "Read the line and substitute zero."
+        },
+        {
+          "start": 14.969,
+          "end": 17.523,
+          "text": "Zero equals zero, so the expression is\ntrue."
+        },
+        {
+          "start": 18.182,
+          "end": 19.907,
+          "text": "Now we have a prediction."
+        },
+        {
+          "start": 19.982,
+          "end": 23.909,
+          "text": "An assertion expecting false for zero\nshould fail on the original revision."
+        }
+      ]
+    },
+    {
+      "id": "red-test",
+      "kind": "editor",
+      "eyebrow": "VS CODE · COPILOT AGENT",
+      "title": "Add one test before fixing the code",
+      "body": "Inspect the test diff and preserve the original validator.",
+      "narration": "Ask Agent to add just the zero regression to the existing test class. Inspect the proposed patch. It should call the public function with zero and expect false. The validator itself should still have its original comparison. This separation is useful because the next run will tell us whether the new test can detect the reported behavior before any fix is applied.",
+      "code": "def test_rejects_zero(self):\n    self.assertFalse(is_valid_quantity(0))",
+      "result": "Changed file: tests/test_order_quantity.py",
+      "focus": "The test-only diff adds one assertion against the public function",
+      "action": "Request the regression test and inspect the test-only patch.",
+      "durationFrames": 562,
+      "duration": 23.416666666666668,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 4.718,
+          "text": "Ask Agent to add just the zero\nregression to the existing test class."
+        },
+        {
+          "start": 4.793,
+          "end": 6.693,
+          "text": "Inspect the proposed patch."
+        },
+        {
+          "start": 6.768,
+          "end": 9.963,
+          "text": "It should call the public function with\nzero and expect false."
+        },
+        {
+          "start": 10.555,
+          "end": 14.48,
+          "text": "The validator itself should still have\nits original comparison."
+        },
+        {
+          "start": 14.555,
+          "end": 18.33,
+          "text": "This separation is useful because the\nnext run will tell us whether the new"
+        },
+        {
+          "start": 18.38,
+          "end": 22.344,
+          "text": "test can detect the reported behavior\nbefore any fix is applied."
+        }
+      ]
+    },
+    {
+      "id": "read-red",
+      "kind": "terminal",
+      "eyebrow": "APPROVED RUNNER · RED",
+      "title": "Read why the test failed",
+      "body": "Confirm that the expected assertion failed for zero.",
+      "narration": "Run the same suite with the new test present. Look for the zero test name and the assertion message. True was returned where false was expected. That failure supports the hypothesis. If the suite stops because of a missing import, it hasn't shown that the boundary is wrong. Fix the setup first and rerun until you have the failure you intended to test.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false\nRan 4 tests. FAILED (failures=1)",
+      "focus": "The expected assertion fails for the expected reason",
+      "action": "Run the updated suite and find the zero assertion failure.",
+      "durationFrames": 541,
+      "duration": 22.541666666666668,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 3.064,
+          "text": "Run the same suite with the new test\npresent."
+        },
+        {
+          "start": 3.139,
+          "end": 6.364,
+          "text": "Look for the zero test name and the\nassertion message."
+        },
+        {
+          "start": 6.439,
+          "end": 8.725,
+          "text": "True was returned where false was\nexpected."
+        },
+        {
+          "start": 9.318,
+          "end": 11.793,
+          "text": "That failure supports the hypothesis."
+        },
+        {
+          "start": 11.868,
+          "end": 14.293,
+          "text": "If the suite stops because of a missing\nimport,"
+        },
+        {
+          "start": 14.343,
+          "end": 16.993,
+          "text": "it hasn't shown that the boundary is\nwrong."
+        },
+        {
+          "start": 17.068,
+          "end": 21.448,
+          "text": "Fix the setup first and rerun until you\nhave the failure you intended to test."
+        }
+      ]
+    },
+    {
+      "id": "fix-green",
+      "kind": "terminal",
+      "eyebrow": "APPROVED RUNNER · GREEN",
+      "title": "Change the comparison and rerun",
+      "body": "The regression and the existing cases should all pass.",
+      "narration": "Change greater than or equal to zero to greater than zero. Keep the assertion and the function signature as they are. Rerun the same test command on the updated checkout. Now all four cases should pass. Check the source diff and the test diff together. Each one should answer a part of the issue you started with.",
+      "code": "-    return quantity >= 0\n+    return quantity > 0",
+      "result": "test_rejects_zero ... ok\nRan 4 tests. OK",
+      "focus": "The same four-case suite passes after the one-line fix",
+      "action": "Apply the one-line fix and rerun the same command.",
+      "durationFrames": 477,
+      "duration": 19.875,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.093,
+          "text": "Change greater than or equal to zero to\ngreater than zero."
+        },
+        {
+          "start": 4.168,
+          "end": 7.318,
+          "text": "Keep the assertion and the function\nsignature as they are."
+        },
+        {
+          "start": 7.393,
+          "end": 10.368,
+          "text": "Rerun the same test command on the\nupdated checkout."
+        },
+        {
+          "start": 11.027,
+          "end": 13.227,
+          "text": "Now all four cases should pass."
+        },
+        {
+          "start": 13.277,
+          "end": 16.027,
+          "text": "Check the source diff and the test diff\ntogether."
+        },
+        {
+          "start": 16.102,
+          "end": 18.823,
+          "text": "Each one should answer a part of the\nissue you started with."
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · HANDOVER",
+      "title": "Leave evidence a teammate can replay",
+      "body": "Explain the cause and point to both test runs.",
+      "narration": "Let’s turn the investigation into something another engineer can replay. Record the zero input, the original comparison, and both test results. Say which revision produced each output. Then explain why one still passes and negative one still fails. If you can answer from the source and the tests, you've verified the change as well as the proposed diagnosis.",
+      "code": "Input: 0\nCause: equality in the boundary check\nBefore: one assertion fails\nAfter: four tests pass",
+      "result": "A testable explanation of the change.",
+      "focus": "A teammate can replay the failure and the passing run",
+      "action": "Write a short reproduction note from the two outputs.",
+      "durationFrames": 572,
+      "duration": 23.833333333333332,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 4.593,
+          "text": "Let’s turn the investigation into\nsomething another engineer can replay."
+        },
+        {
+          "start": 4.668,
+          "end": 9.337,
+          "text": "Record the zero input, the original\ncomparison, and both test results."
+        },
+        {
+          "start": 9.996,
+          "end": 12.496,
+          "text": "Say which revision produced each output."
+        },
+        {
+          "start": 12.546,
+          "end": 16.621,
+          "text": "Then explain why one still passes and\nnegative one still fails."
+        },
+        {
+          "start": 16.696,
+          "end": 19.071,
+          "text": "If you can answer from the source and\nthe tests,"
+        },
+        {
+          "start": 19.121,
+          "end": 22.336,
+          "text": "you've verified the change as well as\nthe proposed diagnosis."
+        }
+      ]
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "durationFrames": 3818,
+  "voiceBuild": "6e4491b49b52c5155ddd1ddc0e7dd8dacb82710a65a63be05fafe35a68a5acb4"
+}
