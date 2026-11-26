@@ -1,178 +1,279 @@
 1
-00:00:00,350 --> 00:00:05,172
-In this walkthrough, we'll fix a small bug
-with Copilot in Visual Studio Code.
+00:00:00,443 --> 00:00:03,763
+Here’s a small bug that makes a useful
+full walkthrough.
 
 2
-00:00:05,352 --> 00:00:09,789
-Then a teammate will review the pull
-request using the GitHub command line.
+00:00:03,816 --> 00:00:06,306
+The order validator accepts zero.
 
 3
-00:00:12,350 --> 00:00:14,145
-Start with issue seventeen.
+00:00:06,360 --> 00:00:08,887
+The issue says an order needs at least
+one item.
 
 4
-00:00:14,325 --> 00:00:18,913
-The validator accepts zero, even though an
-order needs at least one item.
+00:00:09,542 --> 00:00:13,531
+We’ll trace the cause in Copilot Plan,
+make the change in Agent,
 
 5
-00:00:19,093 --> 00:00:20,845
-Keep the function signature.
+00:00:13,681 --> 00:00:15,876
+and show both test runs.
 
 6
-00:00:21,025 --> 00:00:22,669
-One and five should pass.
+00:00:15,957 --> 00:00:18,473
+Then we’ll hand the pull request to a
+teammate,
 
 7
-00:00:22,849 --> 00:00:25,197
-Zero and negative one should fail.
+00:00:18,527 --> 00:00:20,892
+who reviews it with GitHub CLI.
 
 8
-00:00:28,350 --> 00:00:30,461
-In VS Code, select Plan.
+00:00:22,838 --> 00:00:24,551
+Open the training issue.
 
 9
-00:00:30,641 --> 00:00:34,043
-Give Copilot the issue, the validator, and
-its tests.
+00:00:24,605 --> 00:00:28,754
+We want one and five to pass, and zero
+and negative one to fail.
 
 10
-00:00:34,223 --> 00:00:37,786
-Ask where the bug is and what regression
-test would expose it.
+00:00:28,808 --> 00:00:31,578
+We also want to keep the existing
+function signature.
 
 11
-00:00:37,966 --> 00:00:40,785
-Check the plan against the files before
-moving on.
+00:00:32,236 --> 00:00:35,207
+Those details make the work easy to
+check.
 
 12
-00:00:46,350 --> 00:00:49,667
-Switch to Agent and ask for just the
-regression test.
+00:00:35,261 --> 00:00:39,765
+For your own training repository, use
+the actual issue number GitHub assigned.
 
 13
-00:00:49,847 --> 00:00:54,231
-Review the proposed test command and run
-it in the approved environment.
+00:00:40,479 --> 00:00:43,051
+Seventeen is the number in this example.
 
 14
-00:00:54,411 --> 00:00:57,878
-The new test should fail because zero
-still returns true.
+00:00:45,031 --> 00:00:49,876
+In VS Code, open Copilot Chat and select
+Plan when it’s available.
 
 15
-00:00:58,058 --> 00:00:59,704
-That's the bug we're fixing.
+00:00:49,957 --> 00:00:53,084
+Add the issue, the validator, and the
+existing tests.
 
 16
-00:01:06,350 --> 00:01:08,987
-Now ask Agent to change the comparison.
+00:00:53,778 --> 00:00:57,821
+Ask why zero gets through and which test
+would expose it.
 
 17
-00:01:09,167 --> 00:01:11,983
-Review the edit, then rerun the same
-tests.
+00:00:57,874 --> 00:01:02,211
+The plan should point to the equality in
+the return line and propose a new zero
 
 18
-00:01:12,163 --> 00:01:14,352
-The zero case should pass this time.
+00:01:02,265 --> 00:01:02,766
+test.
 
 19
-00:01:14,532 --> 00:01:18,360
-The tests for one, five, and negative one
-should still pass.
+00:01:03,446 --> 00:01:06,796
+Read both files and agree on the scope
+before changing them.
 
 20
-00:01:23,350 --> 00:01:24,932
-Open Source Control.
+00:01:09,095 --> 00:01:12,120
+Switch to Agent and ask for the test
+first.
 
 21
-00:01:25,112 --> 00:01:26,691
-Read the diff yourself.
+00:01:12,201 --> 00:01:16,698
+Inspect the edit and confirm the source
+comparison has stayed the same.
 
 22
-00:01:26,871 --> 00:01:30,551
-There should be one changed comparison and
-one added test.
+00:01:16,778 --> 00:01:19,979
+Run the approved test command on a
+checkout with that edit.
 
 23
-00:01:30,731 --> 00:01:33,791
-Commit both files and publish the feature
-branch.
+00:01:20,663 --> 00:01:22,939
+Find the line for the zero test.
 
 24
-00:01:36,350 --> 00:01:39,592
-From the authorized terminal, open the
-pull request.
+00:01:22,993 --> 00:01:27,811
+We expected this failure because the old
+implementation still returns true.
 
 25
-00:01:39,772 --> 00:01:44,133
-Link issue seventeen and include the test
-result in the description.
+00:01:27,892 --> 00:01:31,981
+If you see an import error instead, sort
+out the test setup first.
 
 26
-00:01:44,313 --> 00:01:46,971
-The example creates pull request forty
-two.
+00:01:34,266 --> 00:01:36,515
+Now make the one-line fix.
 
 27
-00:01:47,151 --> 00:01:49,021
-Hand that number to the reviewer.
+00:01:36,569 --> 00:01:40,879
+When we remove equality, zero no longer
+satisfies the condition.
 
 28
-00:01:53,350 --> 00:01:54,740
-Now you're the reviewer.
+00:01:40,959 --> 00:01:44,265
+One and five still do, and negative one
+still fails it.
 
 29
-00:01:54,920 --> 00:01:57,803
-Use gh pr view to read the description.
+00:01:44,937 --> 00:01:47,962
+Run the same suite in the approved
+environment.
 
 30
-00:01:59,350 --> 00:02:01,587
-Next, run gh pr diff.
+00:01:48,016 --> 00:01:51,309
+The result should say four tests ran and
+passed.
 
 31
-00:02:01,767 --> 00:02:04,629
-Check the one line fix and the test for
-zero.
+00:01:51,389 --> 00:01:55,137
+Keep the red and green results together
+so your teammate can see what the new
 
 32
-00:02:06,350 --> 00:02:08,303
-Use gh pr checks.
+00:01:55,191 --> 00:01:56,050
+test proved.
 
 33
-00:02:08,483 --> 00:02:12,129
-Wait for required checks to finish, and
-confirm they pass.
+00:01:58,296 --> 00:02:01,187
+Open Source Control in VS Code.
 
 34
-00:02:12,750 --> 00:02:16,843
-Once you've checked the diff and the
-evidence, use approve to record your
+00:02:01,267 --> 00:02:04,212
+Check the validator diff for the
+comparison change,
 
 35
-00:02:16,843 --> 00:02:17,347
-decision.
+00:02:04,266 --> 00:02:07,242
+then open the test diff and find the
+zero assertion.
 
 36
-00:02:19,350 --> 00:02:23,808
-If the change needs work, request changes
-and tell the author what to fix.
+00:02:07,897 --> 00:02:10,949
+Check that no unrelated file came along.
 
 37
-00:02:26,350 --> 00:02:29,521
-Try the same workflow in the training
-repository.
+00:02:11,029 --> 00:02:15,313
+Commit these two changes on the training
+feature branch and publish the branch
 
 38
-00:02:29,701 --> 00:02:32,917
-Show the failing test, the fix, and the
-passing test.
+00:02:15,366 --> 00:02:16,478
+through Source Control.
 
 39
-00:02:33,097 --> 00:02:37,332
-Then ask a teammate to review the pull
-request with GitHub CLI.
+00:02:17,179 --> 00:02:20,803
+You now have a small patch, with each
+change tied to the issue.
+
+40
+00:02:23,068 --> 00:02:27,780
+In the approved remote terminal, use an
+authorized author account and a checkout
+
+41
+00:02:27,807 --> 00:02:29,440
+of the published branch.
+
+42
+00:02:29,493 --> 00:02:31,512
+Prepare a short pull request body.
+
+43
+00:02:32,167 --> 00:02:36,515
+Include the change, the red and green
+test evidence, and the issue link.
+
+44
+00:02:36,595 --> 00:02:39,861
+Open the pull request with GitHub CLI.
+
+45
+00:02:39,915 --> 00:02:42,137
+Our example receives number forty-two.
+
+46
+00:02:42,813 --> 00:02:45,662
+Give that number to a separate
+authorized teammate.
+
+47
+00:02:47,838 --> 00:02:51,586
+The reviewer uses their own account in
+the approved terminal.
+
+48
+00:02:51,666 --> 00:02:56,346
+Read the pull request, inspect the diff,
+and check the required results for that
+
+49
+00:02:56,399 --> 00:02:56,965
+revision.
+
+50
+00:02:57,633 --> 00:03:01,729
+If the evidence supports approval, the
+human reviewer records it.
+
+51
+00:03:01,809 --> 00:03:05,236
+If something is missing, they request a
+specific change.
+
+52
+00:03:05,316 --> 00:03:06,967
+This is the teammate’s decision.
+
+53
+00:03:07,632 --> 00:03:10,985
+We’ll practice both outcomes in the
+dedicated review lesson.
+
+54
+00:03:13,262 --> 00:03:15,511
+Look back at what you can hand over.
+
+55
+00:03:15,564 --> 00:03:18,504
+There’s an issue with clear inputs, a
+small diff,
+
+56
+00:03:18,557 --> 00:03:21,511
+a test that failed then passed, and a
+peer decision.
+
+57
+00:03:22,157 --> 00:03:25,530
+Try the same workflow on another
+synthetic issue.
+
+58
+00:03:25,610 --> 00:03:29,465
+Replace the example identifiers with
+your own training issue and pull
+
+59
+00:03:29,519 --> 00:03:30,188
+request.
+
+60
+00:03:30,890 --> 00:03:33,850
+Ask your teammate to tell you which
+evidence they used.
