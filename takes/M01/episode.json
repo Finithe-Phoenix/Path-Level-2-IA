@@ -1,0 +1,470 @@
+{
+  "id": "M01",
+  "title": "From Issue to Reviewed PR",
+  "subtitle": "GitHub Copilot in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Plan work in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/run/planning"
+    },
+    {
+      "label": "GitHub CLI pull request commands",
+      "url": "https://cli.github.com/manual/gh_pr"
+    },
+    {
+      "label": "GitHub CLI peer review",
+      "url": "https://cli.github.com/manual/gh_pr_review"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "eyebrow": "THE WALKTHROUGH",
+      "title": "Fix a bug. Verify every step.",
+      "body": "One order validator. One small change. One peer-reviewed PR.",
+      "kind": "diagram",
+      "code": "is_valid_quantity(0)",
+      "result": "True  ← zero should be rejected",
+      "focus": "Zero returns true even though the issue says reject it",
+      "action": "Compare the starting validator with the issue.",
+      "narration": "Here’s a small bug that makes a useful full walkthrough. The order validator accepts zero. The issue says an order needs at least one item. We’ll trace the cause in Copilot Plan, make the change in Agent, and show both test runs. Then we’ll hand the pull request to a teammate, who reviews it with GitHub CLI.",
+      "durationFrames": 494,
+      "duration": 20.583333333333332,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 3.514,
+          "text": "Here’s a small bug that makes a useful\nfull walkthrough."
+        },
+        {
+          "start": 3.564,
+          "end": 5.889,
+          "text": "The order validator accepts zero."
+        },
+        {
+          "start": 5.939,
+          "end": 8.299,
+          "text": "The issue says an order needs at least\none item."
+        },
+        {
+          "start": 8.911,
+          "end": 12.636,
+          "text": "We’ll trace the cause in Copilot Plan,\nmake the change in Agent,"
+        },
+        {
+          "start": 12.776,
+          "end": 14.826,
+          "text": "and show both test runs."
+        },
+        {
+          "start": 14.901,
+          "end": 17.251,
+          "text": "Then we’ll hand the pull request to a\nteammate,"
+        },
+        {
+          "start": 17.301,
+          "end": 19.51,
+          "text": "who reviews it with GitHub CLI."
+        }
+      ]
+    },
+    {
+      "id": "issue",
+      "eyebrow": "GITHUB ISSUE  ·  #17",
+      "title": "Read the issue and set the target",
+      "body": "The validator currently accepts an order with zero items.",
+      "kind": "github",
+      "code": "Issue #17: Reject zero quantities\nAccept 1 and 5. Reject 0 and -1.\nPreserve the public function signature.",
+      "result": "A checkable rule for the fix.",
+      "focus": "The issue lists accepted and rejected inputs",
+      "action": "Read issue seventeen and copy its acceptance cases.",
+      "narration": "Open the training issue. We want one and five to pass, and zero and negative one to fail. We also want to keep the existing function signature. Those details make the work easy to check. For your own training repository, use the actual issue number GitHub assigned. Seventeen is the number in this example.",
+      "durationFrames": 488,
+      "duration": 20.333333333333332,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 1.993,
+          "text": "Open the training issue."
+        },
+        {
+          "start": 2.043,
+          "end": 5.918,
+          "text": "We want one and five to pass, and zero\nand negative one to fail."
+        },
+        {
+          "start": 5.968,
+          "end": 8.555,
+          "text": "We also want to keep the existing\nfunction signature."
+        },
+        {
+          "start": 9.169,
+          "end": 11.944,
+          "text": "Those details make the work easy to\ncheck."
+        },
+        {
+          "start": 11.994,
+          "end": 16.2,
+          "text": "For your own training repository, use\nthe actual issue number GitHub assigned."
+        },
+        {
+          "start": 16.867,
+          "end": 19.269,
+          "text": "Seventeen is the number in this example."
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "eyebrow": "VS CODE  ·  COPILOT PLAN",
+      "title": "Scope the change in Plan",
+      "body": "Give Copilot the issue and the relevant source and test files.",
+      "kind": "editor",
+      "code": "Attach issue #17, order_quantity.py, and the tests.\nFind the cause and propose the smallest regression.\nList the affected files and stop after the plan.",
+      "result": "Cause: the equality admits zero.\nMissing test: an assertion for zero.",
+      "focus": "The plan names one condition and one missing boundary test",
+      "action": "Attach the issue and two files in Copilot Plan.",
+      "narration": "In VS Code, open Copilot Chat and select Plan when it’s available. Add the issue, the validator, and the existing tests. Ask why zero gets through and which test would expose it. The plan should point to the equality in the return line and propose a new zero test. Read both files and agree on the scope before changing them.",
+      "durationFrames": 524,
+      "duration": 21.833333333333332,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 4.943,
+          "text": "In VS Code, open Copilot Chat and select\nPlan when it’s available."
+        },
+        {
+          "start": 5.018,
+          "end": 7.939,
+          "text": "Add the issue, the validator, and the\nexisting tests."
+        },
+        {
+          "start": 8.587,
+          "end": 12.362,
+          "text": "Ask why zero gets through and which test\nwould expose it."
+        },
+        {
+          "start": 12.412,
+          "end": 16.462,
+          "text": "The plan should point to the equality in\nthe return line and propose a new zero"
+        },
+        {
+          "start": 16.512,
+          "end": 16.98,
+          "text": "test."
+        },
+        {
+          "start": 17.615,
+          "end": 20.743,
+          "text": "Read both files and agree on the scope\nbefore changing them."
+        }
+      ]
+    },
+    {
+      "id": "regression",
+      "eyebrow": "VS CODE  ·  COPILOT AGENT",
+      "title": "Make the test fail first",
+      "body": "Switch to Agent and ask it to add only the regression test.",
+      "kind": "terminal",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false",
+      "focus": "The new assertion fails because zero still returns true",
+      "action": "In Agent, request only the new test and run it remotely.",
+      "narration": "Switch to Agent and ask for the test first. Inspect the edit and confirm the source comparison has stayed the same. Run the approved test command on a checkout with that edit. Find the line for the zero test. We expected this failure because the old implementation still returns true. If you see an import error instead, sort out the test setup first.",
+      "durationFrames": 550,
+      "duration": 22.916666666666668,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 3.264,
+          "text": "Switch to Agent and ask for the test\nfirst."
+        },
+        {
+          "start": 3.339,
+          "end": 7.539,
+          "text": "Inspect the edit and confirm the source\ncomparison has stayed the same."
+        },
+        {
+          "start": 7.614,
+          "end": 10.603,
+          "text": "Run the approved test command on a\ncheckout with that edit."
+        },
+        {
+          "start": 11.242,
+          "end": 13.367,
+          "text": "Find the line for the zero test."
+        },
+        {
+          "start": 13.417,
+          "end": 17.917,
+          "text": "We expected this failure because the old\nimplementation still returns true."
+        },
+        {
+          "start": 17.992,
+          "end": 21.811,
+          "text": "If you see an import error instead, sort\nout the test setup first."
+        }
+      ]
+    },
+    {
+      "id": "fix",
+      "eyebrow": "VS CODE  ·  COPILOT AGENT",
+      "title": "Fix the condition and run it again",
+      "body": "The comparison changes. The interface stays the same.",
+      "kind": "terminal",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_rejects_zero ... ok\nRan 4 tests. OK",
+      "focus": "Four tests pass after equality is removed",
+      "action": "Apply the agreed comparison change and rerun the same suite.",
+      "narration": "Now make the one-line fix. When we remove equality, zero no longer satisfies the condition. One and five still do, and negative one still fails it. Run the same suite in the approved environment. The result should say four tests ran and passed. Keep the red and green results together so your teammate can see what the new test proved.",
+      "durationFrames": 525,
+      "duration": 21.875,
+      "cues": [
+        {
+          "start": 0.443,
+          "end": 2.543,
+          "text": "Now make the one-line fix."
+        },
+        {
+          "start": 2.593,
+          "end": 6.618,
+          "text": "When we remove equality, zero no longer\nsatisfies the condition."
+        },
+        {
+          "start": 6.693,
+          "end": 9.78,
+          "text": "One and five still do, and negative one\nstill fails it."
+        },
+        {
+          "start": 10.408,
+          "end": 13.233,
+          "text": "Run the same suite in the approved\nenvironment."
+        },
+        {
+          "start": 13.283,
+          "end": 16.358,
+          "text": "The result should say four tests ran and\npassed."
+        },
+        {
+          "start": 16.433,
+          "end": 19.933,
+          "text": "Keep the red and green results together\nso your teammate can see what the new"
+        },
+        {
+          "start": 19.983,
+          "end": 20.785,
+          "text": "test proved."
+        }
+      ]
+    },
+    {
+      "id": "diff",
+      "eyebrow": "VS CODE  ·  SOURCE CONTROL",
+      "title": "Review the diff before publishing",
+      "body": "Match both files to the issue and the test evidence.",
+      "kind": "editor",
+      "code": "-    return quantity >= 0\n+    return quantity > 0\n+    self.assertFalse(is_valid_quantity(0))",
+      "result": "Published branch: fix/reject-zero-quantity",
+      "focus": "The diff contains the validator change and its new test",
+      "action": "Open Source Control, inspect the two diffs and publish the branch.",
+      "narration": "Open Source Control in VS Code. Check the validator diff for the comparison change, then open the test diff and find the zero assertion. Check that no unrelated file came along. Commit these two changes on the training feature branch and publish the branch through Source Control. You now have a small patch, with each change tied to the issue.",
+      "durationFrames": 540,
+      "duration": 22.5,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.093,
+          "text": "Open Source Control in VS Code."
+        },
+        {
+          "start": 3.168,
+          "end": 5.918,
+          "text": "Check the validator diff for the\ncomparison change,"
+        },
+        {
+          "start": 5.968,
+          "end": 8.747,
+          "text": "then open the test diff and find the\nzero assertion."
+        },
+        {
+          "start": 9.359,
+          "end": 12.209,
+          "text": "Check that no unrelated file came along."
+        },
+        {
+          "start": 12.284,
+          "end": 16.284,
+          "text": "Commit these two changes on the training\nfeature branch and publish the branch"
+        },
+        {
+          "start": 16.334,
+          "end": 17.372,
+          "text": "through Source Control."
+        },
+        {
+          "start": 18.027,
+          "end": 21.411,
+          "text": "You now have a small patch, with each\nchange tied to the issue."
+        }
+      ]
+    },
+    {
+      "id": "pr",
+      "eyebrow": "GITHUB CLI  ·  AUTHOR",
+      "title": "Open the PR with evidence",
+      "body": "Use the approved remote terminal once the branch is published.",
+      "kind": "terminal",
+      "code": "gh pr create --base main \\\n  --title \"Reject zero order quantities\" \\\n  --body-file pr-body.md",
+      "result": "PR #42 created.\nBody links #17 and records red/green evidence.",
+      "focus": "The PR body links the issue and records the test results",
+      "action": "Create the PR from the published branch in the approved terminal.",
+      "narration": "In the approved remote terminal, use an authorized author account and a checkout of the published branch. Prepare a short pull request body. Include the change, the red and green test evidence, and the issue link. Open the pull request with GitHub CLI. Our example receives number forty-two. Give that number to a separate authorized teammate.",
+      "durationFrames": 541,
+      "duration": 22.541666666666668,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 4.814,
+          "text": "In the approved remote terminal, use an\nauthorized author account and a checkout"
+        },
+        {
+          "start": 4.839,
+          "end": 6.364,
+          "text": "of the published branch."
+        },
+        {
+          "start": 6.414,
+          "end": 8.299,
+          "text": "Prepare a short pull request body."
+        },
+        {
+          "start": 8.911,
+          "end": 12.971,
+          "text": "Include the change, the red and green\ntest evidence, and the issue link."
+        },
+        {
+          "start": 13.046,
+          "end": 16.096,
+          "text": "Open the pull request with GitHub CLI."
+        },
+        {
+          "start": 16.146,
+          "end": 18.221,
+          "text": "Our example receives number forty-two."
+        },
+        {
+          "start": 18.852,
+          "end": 21.513,
+          "text": "Give that number to a separate\nauthorized teammate."
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "eyebrow": "GITHUB CLI  ·  PEER REVIEWER",
+      "title": "Review the PR from the terminal",
+      "body": "A teammate uses their own authorized account and reviews the evidence.",
+      "kind": "terminal",
+      "code": "gh pr view 42\ngh pr diff 42\ngh pr checks 42\ngh pr review 42 --approve",
+      "result": "The authorized peer records their decision.",
+      "focus": "The peer checks intent, diff and CI before choosing a review",
+      "action": "Inspect the PR with GitHub CLI under the reviewer’s account.",
+      "narration": "The reviewer uses their own account in the approved terminal. Read the pull request, inspect the diff, and check the required results for that revision. If the evidence supports approval, the human reviewer records it. If something is missing, they request a specific change. This is the teammate’s decision. We’ll practice both outcomes in the dedicated review lesson.",
+      "durationFrames": 554,
+      "duration": 23.083333333333332,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.893,
+          "text": "The reviewer uses their own account in\nthe approved terminal."
+        },
+        {
+          "start": 3.968,
+          "end": 8.338,
+          "text": "Read the pull request, inspect the diff,\nand check the required results for that"
+        },
+        {
+          "start": 8.388,
+          "end": 8.916,
+          "text": "revision."
+        },
+        {
+          "start": 9.54,
+          "end": 13.365,
+          "text": "If the evidence supports approval, the\nhuman reviewer records it."
+        },
+        {
+          "start": 13.44,
+          "end": 16.64,
+          "text": "If something is missing, they request a\nspecific change."
+        },
+        {
+          "start": 16.715,
+          "end": 18.257,
+          "text": "This is the teammate’s decision."
+        },
+        {
+          "start": 18.878,
+          "end": 22.009,
+          "text": "We’ll practice both outcomes in the\ndedicated review lesson."
+        }
+      ]
+    },
+    {
+      "id": "closure",
+      "eyebrow": "YOUR TURN",
+      "title": "Run the same workflow yourself",
+      "body": "Try it on another issue in the training repository.",
+      "kind": "decision",
+      "code": "Issue → Plan → Agent → Verified diff → PR → Peer review",
+      "result": "A teammate can replay the evidence.",
+      "focus": "The final handover contains the issue, test proof and a peer decision",
+      "action": "Repeat the workflow on a second synthetic issue.",
+      "narration": "Look back at what you can hand over. There’s an issue with clear inputs, a small diff, a test that failed then passed, and a peer decision. Try the same workflow on another synthetic issue. Replace the example identifiers with your own training issue and pull request. Ask your teammate to tell you which evidence they used.",
+      "durationFrames": 507,
+      "duration": 21.125,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 2.539,
+          "text": "Look back at what you can hand over."
+        },
+        {
+          "start": 2.589,
+          "end": 5.334,
+          "text": "There’s an issue with clear inputs, a\nsmall diff,"
+        },
+        {
+          "start": 5.384,
+          "end": 8.142,
+          "text": "a test that failed then passed, and a\npeer decision."
+        },
+        {
+          "start": 8.745,
+          "end": 11.895,
+          "text": "Try the same workflow on another\nsynthetic issue."
+        },
+        {
+          "start": 11.97,
+          "end": 15.57,
+          "text": "Replace the example identifiers with\nyour own training issue and pull"
+        },
+        {
+          "start": 15.62,
+          "end": 16.245,
+          "text": "request."
+        },
+        {
+          "start": 16.901,
+          "end": 19.665,
+          "text": "Ask your teammate to tell you which\nevidence they used."
+        }
+      ]
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "durationFrames": 4723,
+  "voiceBuild": "cb70a66ae86b50101712ca0d134fb3cb3121af0d21d36a492061605125346c7c"
+}
