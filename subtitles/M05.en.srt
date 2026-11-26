@@ -1,229 +1,217 @@
 1
-00:00:00,340 --> 00:00:05,544
-Suppose your team keeps asking Copilot to
-organize the same evidence before
+00:00:00,443 --> 00:00:03,950
+Think about what you do before handing
+off a pull request.
 
 2
-00:00:05,544 --> 00:00:06,931
-requesting a review.
+00:00:04,030 --> 00:00:08,327
+You check the issue, summarize the diff,
+and share the result of the tests.
 
 3
-00:00:07,111 --> 00:00:12,317
-Each time, the agent needs the issue, a
-summary of the diff, and the test result.
+00:00:08,973 --> 00:00:13,148
+If you ask for that same draft often,
+you can give the assistant a skill with
 
 4
-00:00:12,497 --> 00:00:17,189
-A skill is a package the agent can use
-when that kind of task comes up.
+00:00:13,202 --> 00:00:14,728
+this procedure.
 
 5
-00:00:17,369 --> 00:00:22,015
-We will start with three steps and one
-result that a human can inspect before
+00:00:14,781 --> 00:00:19,251
+We’ll use a synthetic example and make
+the output a draft that the human author
 
 6
-00:00:22,015 --> 00:00:23,523
-sending it to a teammate.
+00:00:19,305 --> 00:00:19,973
+can review.
 
 7
-00:00:24,965 --> 00:00:30,180
-In the training repository, create a
-project skill named prepare p r evidence.
+00:00:21,963 --> 00:00:26,272
+In the training repository, open the
+supported project skills location for
 
 8
-00:00:30,360 --> 00:00:35,830
-Under the dot GitHub skills folder, give
-it a directory with the same name and add
+00:00:26,326 --> 00:00:27,691
+Copilot.
 
 9
-00:00:35,830 --> 00:00:37,698
-a file called skill dot M D.
+00:00:27,771 --> 00:00:32,871
+This example puts a folder named prepare
+P R evidence under dot GitHub skills.
 
 10
-00:00:37,878 --> 00:00:40,366
-The header contains a name and
-description.
+00:00:33,517 --> 00:00:36,220
+Add a file named skill dot M D.
 
 11
-00:00:40,546 --> 00:00:45,268
-State which request it is for, so both the
-teammate invoking it and the client
+00:00:36,301 --> 00:00:39,941
+Give it a matching name and a short
+description that says which task it
 
 12
-00:00:45,268 --> 00:00:47,266
-selecting it have a clear signal.
+00:00:39,995 --> 00:00:41,065
+helps with.
 
 13
-00:00:48,715 --> 00:00:53,807
-In the body, ask for the issue, the
-changed behavior, and the result of a real
+00:00:41,146 --> 00:00:44,175
+Both of those fields are useful when you
+verify discovery.
 
 14
-00:00:53,807 --> 00:00:54,395
-test run.
+00:00:46,401 --> 00:00:50,058
+In the body, tell the skill to read the
+supplied issue and diff,
 
 15
-00:00:54,575 --> 00:00:56,912
-Define how to handle missing inputs.
+00:00:50,111 --> 00:00:54,421
+check the test output, and return a
+draft with change and verification
 
 16
-00:00:57,092 --> 00:01:01,562
-If the test output is absent, call that
-out so the author can supply it.
+00:00:54,474 --> 00:00:55,122
+evidence.
 
 17
-00:01:01,742 --> 00:01:04,454
-Keep this first skill as a short
-procedure.
+00:00:55,779 --> 00:00:58,134
+Include a step for missing items.
 
 18
-00:01:04,634 --> 00:01:09,337
-The human author reviews the resulting
-draft and decides what to publish.
+00:00:58,214 --> 00:01:03,488
+If no test output is supplied, the draft
+should say verification is missing.
 
 19
-00:01:09,517 --> 00:01:13,241
-Tool permissions and repository controls
-still apply.
+00:01:03,568 --> 00:01:07,624
+Keep this first skill focused on
+preparing text for a human to review.
 
 20
-00:01:14,715 --> 00:01:17,510
-Open a fresh Copilot chat in the project.
+00:01:09,879 --> 00:01:13,867
+Open a fresh Copilot chat and confirm
+the skill is listed in the
 
 21
-00:01:17,690 --> 00:01:22,551
-Verify discovery in the customizations
-view, then invoke the skill through the
+00:01:13,921 --> 00:01:15,902
+customizations view.
 
 22
-00:01:22,551 --> 00:01:25,480
-slash menu when the approved setup
-supports it.
+00:01:15,982 --> 00:01:19,509
+If your setup supports it, choose the
+skill from the slash menu.
 
 23
-00:01:25,660 --> 00:01:29,746
-Give it the synthetic issue, the diff, and
-the passing test output.
+00:01:20,164 --> 00:01:24,420
+Attach the synthetic issue, patch, and
+passing test output.
 
 24
-00:01:29,926 --> 00:01:33,627
-Read the draft and map each claim back to
-a supplied source.
+00:01:24,500 --> 00:01:27,579
+Now compare each draft claim with its
+source.
 
 25
-00:01:33,807 --> 00:01:38,814
-Check that the procedure gives a teammate
-a more consistent result than rewriting
+00:01:27,659 --> 00:01:31,808
+In this example, the issue is seventeen,
+zero is rejected,
 
 26
-00:01:38,814 --> 00:01:40,174
-the request each time.
+00:01:31,861 --> 00:01:34,471
+and the supplied run shows four passing
+tests.
 
 27
-00:01:41,632 --> 00:01:46,080
-Repeat the invocation in a new chat, this
-time without the test output.
+00:01:36,713 --> 00:01:39,523
+Try again with the test output missing.
 
 28
-00:01:46,260 --> 00:01:49,642
-Expect the draft to say that verification
-is missing.
+00:01:39,604 --> 00:01:42,361
+Read what the skill says about
+verification.
 
 29
-00:01:49,822 --> 00:01:54,182
-If it reports a green run from the issue
-description alone, tighten the
+00:01:42,414 --> 00:01:45,977
+The expected result is a visible gap
+that the author can fill.
 
 30
-00:01:54,182 --> 00:01:56,146
-instructions and rerun the case.
+00:01:46,660 --> 00:01:50,782
+If it claims the tests passed based only
+on the PR description,
 
 31
-00:01:56,326 --> 00:02:01,563
-Now ask an unrelated question, such as
-explaining a Python expression, and check
+00:01:50,835 --> 00:01:53,218
+revise the body and rerun.
 
 32
-00:02:01,563 --> 00:02:03,526
-whether the skill is relevant.
+00:01:53,298 --> 00:01:57,206
+Then try an unrelated request and see
+whether the description makes the
 
 33
-00:02:03,706 --> 00:02:07,419
-This gives you a small repeatable test of
-behavior and scope.
+00:01:57,286 --> 00:01:59,050
+skill’s intended scope clear.
 
 34
-00:02:08,882 --> 00:02:12,914
-Place this skill beside the instruction
-file from the previous lesson.
+00:02:01,296 --> 00:02:04,963
+Compare this skill with the repository
+instruction file.
 
 35
-00:02:13,094 --> 00:02:16,294
-The instruction file carries project
-conventions.
+00:02:05,016 --> 00:02:09,246
+The instruction file describes
+conventions for work in this project.
 
 36
-00:02:16,474 --> 00:02:19,144
-The skill carries the reusable procedure.
+00:02:09,299 --> 00:02:12,502
+The skill carries a repeatable procedure
+you can invoke.
 
 37
-00:02:19,324 --> 00:02:22,460
-Tools perform actions such as reading a
-file.
+00:02:13,146 --> 00:02:17,858
+Tools let the agent perform actions such
+as reading a supplied file.
 
 38
-00:02:22,640 --> 00:02:28,594
-An approved M C P connection can expose
-additional tools or resources in another
+00:02:17,911 --> 00:02:22,000
+An approved M C P server can expose more
+tools or resources.
 
 39
-00:02:28,594 --> 00:02:29,488
-environment.
+00:02:22,631 --> 00:02:25,763
+Our example works with supplied training
+evidence,
 
 40
-00:02:29,668 --> 00:02:32,753
-This skill works using supplied files and
-outputs.
+00:02:25,816 --> 00:02:28,290
+and the environment still controls
+access.
 
 41
-00:02:32,933 --> 00:02:38,404
-Access remains governed by the selected
-client, its tools, and the organization's
+00:02:30,250 --> 00:02:35,389
+Pick another repeated task, like
+summarizing a failed test for an author.
 
 42
-00:02:38,404 --> 00:02:39,012
-settings.
+00:02:35,469 --> 00:02:39,563
+Write a small skill with a clear
+trigger, steps, and expected output.
 
 43
-00:02:40,465 --> 00:02:45,359
-Pick a second recurring task, such as
-summarizing a failed training test for the
+00:02:40,197 --> 00:02:44,186
+Try it with complete input and again
+with one item missing.
 
 44
-00:02:45,359 --> 00:02:45,788
-author.
+00:02:44,266 --> 00:02:47,826
+Ask a teammate to judge each result from
+the evidence.
 
 45
-00:02:45,968 --> 00:02:50,554
-Write a name, a description, a short
-procedure, and the expected output.
+00:02:47,907 --> 00:02:51,547
+If they can explain when the skill
+applies and spot missing proof,
 
 46
-00:02:50,734 --> 00:02:54,158
-Try it with complete input and with one
-item missing.
-
-47
-00:02:54,338 --> 00:02:58,882
-Ask a teammate to judge both responses
-using the same criteria.
-
-48
-00:02:59,062 --> 00:03:03,780
-Share the versioned file once you can
-explain when it applies and show that it
-
-49
-00:03:03,780 --> 00:03:05,837
-handles the missing input clearly.
+00:02:51,600 --> 00:02:53,528
+you have a useful procedure to share.
