@@ -1,0 +1,289 @@
+{
+  "fps": 24,
+  "voiceBuild": "dd084b2f843c5f888be9f1980fd093c910367abc5eeb9dc2dd27c737cd8e4b5e",
+  "paceBuild": "d42912e758bdc0a8faad801fafcce6132701fd0551e5d5ea518045590b3e15a8",
+  "delivery": {
+    "targetWordsPerMinute": 146,
+    "inputWordsPerMinute": 164.04,
+    "tempo": 0.90965483,
+    "outputWordsPerMinute": 146.02
+  },
+  "audioSha256": "1f053d4feddb2e018e4a264b86e48487f1241401c5afb50295a65c8c49414874",
+  "captionsSha256": "2f86fb051991e4f1412715cfa2b720366b4240361f30a9c8dfd6f39966a223a5",
+  "scenes": [
+    {
+      "id": "map",
+      "scriptSha256": "d5670add68dc45748263d35cf151e7f5ca0293eab3fc9127c543ff0224bb63d7",
+      "durationFrames": 538,
+      "cues": [
+        {
+          "start": 0.46,
+          "end": 2.796,
+          "text": "Let’s put the earlier lessons together."
+        },
+        {
+          "start": 2.878,
+          "end": 6.781,
+          "text": "A workflow tells us what happens next\nand when we should stop."
+        },
+        {
+          "start": 6.863,
+          "end": 10.926,
+          "text": "Begin with the issue and plan, then\nprove the bug with a failing test."
+        },
+        {
+          "start": 11.623,
+          "end": 15.938,
+          "text": "Apply the fix, run the suite, and hand\noff the pull request."
+        },
+        {
+          "start": 16.02,
+          "end": 20.038,
+          "text": "At each point, name the person who\nchecks the evidence before the next step"
+        },
+        {
+          "start": 20.093,
+          "end": 20.855,
+          "text": "goes ahead."
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "scriptSha256": "9d2fa66488f4507c4f105c905d7433af10c32f75fd4ab8a9a2cc5ca9b87a9c48",
+      "durationFrames": 588,
+      "cues": [
+        {
+          "start": 0.455,
+          "end": 4.484,
+          "text": "Start in Plan and supply the issue,\nsource, and tests."
+        },
+        {
+          "start": 4.539,
+          "end": 8.524,
+          "text": "The proposal should add one assertion\nand change one comparison while keeping"
+        },
+        {
+          "start": 8.552,
+          "end": 9.706,
+          "text": "the public signature."
+        },
+        {
+          "start": 10.38,
+          "end": 13.375,
+          "text": "The author reads the plan against the\nissue."
+        },
+        {
+          "start": 13.458,
+          "end": 16.673,
+          "text": "If a new dependency or signature change\nappears,"
+        },
+        {
+          "start": 16.756,
+          "end": 18.485,
+          "text": "send the plan back for revision."
+        },
+        {
+          "start": 19.144,
+          "end": 22.679,
+          "text": "Begin editing once the proposed scope\nfits the requirement."
+        }
+      ]
+    },
+    {
+      "id": "red",
+      "scriptSha256": "2da5c076d878ec7fbe0b3b3e8479c662143baef2e48769a3ba2f621e33f0e53e",
+      "durationFrames": 576,
+      "cues": [
+        {
+          "start": 0.432,
+          "end": 4.554,
+          "text": "Add the regression test and run it in\nthe approved environment."
+        },
+        {
+          "start": 4.609,
+          "end": 9.029,
+          "text": "The useful failure names zero and shows\nthat the validator returned true."
+        },
+        {
+          "start": 9.704,
+          "end": 13.496,
+          "text": "If the test command never ran, or an\nimport failed,"
+        },
+        {
+          "start": 13.551,
+          "end": 16.19,
+          "text": "return to the setup and repeat it."
+        },
+        {
+          "start": 16.245,
+          "end": 19.79,
+          "text": "The author should be able to point to\nevidence that this assertion detects"
+        },
+        {
+          "start": 19.845,
+          "end": 22.171,
+          "text": "this defect on the original revision."
+        }
+      ]
+    },
+    {
+      "id": "green",
+      "scriptSha256": "edc9e133502e05e1af984465dd6cad26ac04bd8c6fed7e5e085d22c730fa5da4",
+      "durationFrames": 621,
+      "cues": [
+        {
+          "start": 0.455,
+          "end": 3.258,
+          "text": "After the fix, rerun the same tests."
+        },
+        {
+          "start": 3.341,
+          "end": 6.886,
+          "text": "If the zero case still fails or an\nexisting case breaks,"
+        },
+        {
+          "start": 6.969,
+          "end": 8.771,
+          "text": "pause and inspect the change."
+        },
+        {
+          "start": 9.472,
+          "end": 14.144,
+          "text": "If all four pass, check the remaining\ndiff and save the run output."
+        },
+        {
+          "start": 14.226,
+          "end": 17.854,
+          "text": "This checkpoint uses the result of the\nactual suite."
+        },
+        {
+          "start": 17.936,
+          "end": 22.664,
+          "text": "A plausible summary from the agent can\nexplain the change while the test output"
+        },
+        {
+          "start": 22.719,
+          "end": 23.999,
+          "text": "provides the evidence."
+        }
+      ]
+    },
+    {
+      "id": "pr-evidence",
+      "scriptSha256": "c3b879de6a67a7af9dc34d60043405d77148c85de8ecf9b5b1c4a50248a02267",
+      "durationFrames": 606,
+      "cues": [
+        {
+          "start": 0.483,
+          "end": 4.468,
+          "text": "Use the skill from the previous lesson\nto organize the handover."
+        },
+        {
+          "start": 4.55,
+          "end": 8.348,
+          "text": "Give it the issue, the patch, and the\ntest output you verified."
+        },
+        {
+          "start": 9.039,
+          "end": 12.584,
+          "text": "Read its draft and correct any\nunsupported claim."
+        },
+        {
+          "start": 12.639,
+          "end": 16.871,
+          "text": "The author then opens the pull request\nthrough the approved workflow."
+        },
+        {
+          "start": 16.954,
+          "end": 21.241,
+          "text": "In the training repository, the\nconfigured CI checks provide additional"
+        },
+        {
+          "start": 21.296,
+          "end": 23.683,
+          "text": "evidence about the revision the peer\nwill see."
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "scriptSha256": "c01b154886a0ca58959c0933cc05cd679a7c2bfcc9230fd21e510abfd419cc93",
+      "durationFrames": 620,
+      "cues": [
+        {
+          "start": 0.483,
+          "end": 3.588,
+          "text": "Now hand the pull request number to a\nteammate."
+        },
+        {
+          "start": 3.643,
+          "end": 7.656,
+          "text": "They use their authorized terminal\naccount to read the PR,"
+        },
+        {
+          "start": 7.711,
+          "end": 10.765,
+          "text": "inspect the patch, and check the\nrequired results."
+        },
+        {
+          "start": 11.427,
+          "end": 15.055,
+          "text": "They decide whether to approve or ask\nfor a correction."
+        },
+        {
+          "start": 15.138,
+          "end": 19.123,
+          "text": "Their review and the configured merge\nrules are part of the workflow."
+        },
+        {
+          "start": 19.178,
+          "end": 21.788,
+          "text": "The author's agent can assist with the\ndraft,"
+        },
+        {
+          "start": 21.843,
+          "end": 23.988,
+          "text": "while the peer records their own\ndecision."
+        }
+      ]
+    },
+    {
+      "id": "dry-run",
+      "scriptSha256": "b67e9fb8de06cadff1022698a7b0c89a8b60d7677abf3c95680a4e450af64b33",
+      "durationFrames": 593,
+      "cues": [
+        {
+          "start": 0.432,
+          "end": 2.96,
+          "text": "Try the workflow twice with a teammate."
+        },
+        {
+          "start": 3.043,
+          "end": 7.677,
+          "text": "Once, run it with the complete evidence\nand record the review outcome."
+        },
+        {
+          "start": 7.786,
+          "end": 12.489,
+          "text": "Again, remove the regression output or\nsimulate a failing required check."
+        },
+        {
+          "start": 13.214,
+          "end": 16.374,
+          "text": "Say where work stops and what would let\nit resume."
+        },
+        {
+          "start": 16.429,
+          "end": 20.678,
+          "text": "The rehearsal is successful when both of\nyou can name the owner, evidence,"
+        },
+        {
+          "start": 20.733,
+          "end": 22.743,
+          "text": "and next action for either outcome."
+        }
+      ]
+    }
+  ]
+}

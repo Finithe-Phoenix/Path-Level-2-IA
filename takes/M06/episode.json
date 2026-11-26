@@ -1,0 +1,363 @@
+{
+  "id": "M06",
+  "title": "Build a Workflow with Review Checkpoints",
+  "subtitle": "Copilot, CI and human review · Intermediate",
+  "sources": [
+    {
+      "label": "Plan work in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/run/planning"
+    },
+    {
+      "label": "GitHub protected branches and checks",
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+    },
+    {
+      "label": "Agent workflows and checkpoints",
+      "url": "https://www.anthropic.com/research/building-effective-agents"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "map",
+      "kind": "diagram",
+      "eyebrow": "WORKFLOW · TRAINING ISSUE",
+      "title": "Map the work before delegating a step",
+      "body": "Give every checkpoint an owner and evidence.",
+      "narration": "Let’s put the earlier lessons together. A workflow tells us what happens next and when we should stop. Begin with the issue and plan, then prove the bug with a failing test. Apply the fix, run the suite, and hand off the pull request. At each point, name the person who checks the evidence before the next step goes ahead.",
+      "code": "Issue → Plan → Human scope review\nFailing test → Fix → Passing tests\nAuthor diff review → PR → Peer review",
+      "result": "Each handoff has evidence and an owner.",
+      "focus": "Every handoff names a decision owner and evidence",
+      "action": "Draw the workflow from issue through independent review.",
+      "durationFrames": 481,
+      "duration": 20.041666666666668,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 2.543,
+          "text": "Let’s put the earlier lessons together."
+        },
+        {
+          "start": 2.618,
+          "end": 6.168,
+          "text": "A workflow tells us what happens next\nand when we should stop."
+        },
+        {
+          "start": 6.243,
+          "end": 9.939,
+          "text": "Begin with the issue and plan, then\nprove the bug with a failing test."
+        },
+        {
+          "start": 10.573,
+          "end": 14.498,
+          "text": "Apply the fix, run the suite, and hand\noff the pull request."
+        },
+        {
+          "start": 14.573,
+          "end": 18.228,
+          "text": "At each point, name the person who\nchecks the evidence before the next step"
+        },
+        {
+          "start": 18.278,
+          "end": 18.971,
+          "text": "goes ahead."
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "kind": "editor",
+      "eyebrow": "CHECKPOINT ONE · SCOPE",
+      "title": "Review the plan before editing",
+      "body": "The author checks the intended behavior and allowed change.",
+      "narration": "Start in Plan and supply the issue, source, and tests. The proposal should add one assertion and change one comparison while keeping the public signature. The author reads the plan against the issue. If a new dependency or signature change appears, send the plan back for revision. Begin editing once the proposed scope fits the requirement.",
+      "code": "Keep is_valid_quantity(quantity: int) -> bool.\nAdd an assertion for quantity zero.\nChange only the boundary comparison.",
+      "result": "Author accepts scope after checking the issue.",
+      "focus": "The author approves a specific scope with an unchanged signature",
+      "action": "Compare the Plan output with the issue before allowing edits.",
+      "durationFrames": 521,
+      "duration": 21.708333333333332,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 4.079,
+          "text": "Start in Plan and supply the issue,\nsource, and tests."
+        },
+        {
+          "start": 4.129,
+          "end": 7.754,
+          "text": "The proposal should add one assertion\nand change one comparison while keeping"
+        },
+        {
+          "start": 7.779,
+          "end": 8.829,
+          "text": "the public signature."
+        },
+        {
+          "start": 9.442,
+          "end": 12.167,
+          "text": "The author reads the plan against the\nissue."
+        },
+        {
+          "start": 12.242,
+          "end": 15.167,
+          "text": "If a new dependency or signature change\nappears,"
+        },
+        {
+          "start": 15.242,
+          "end": 16.815,
+          "text": "send the plan back for revision."
+        },
+        {
+          "start": 17.414,
+          "end": 20.63,
+          "text": "Begin editing once the proposed scope\nfits the requirement."
+        }
+      ]
+    },
+    {
+      "id": "red",
+      "kind": "terminal",
+      "eyebrow": "CHECKPOINT TWO · RED TEST",
+      "title": "Verify that the test detects the defect",
+      "body": "Let the expected failure authorize the next coding step.",
+      "narration": "Add the regression test and run it in the approved environment. The useful failure names zero and shows that the validator returned true. If the test command never ran, or an import failed, return to the setup and repeat it. The author should be able to point to evidence that this assertion detects this defect on the original revision.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "Expected before the fix\ntest_rejects_zero ... FAIL\nAssertionError: True is not false",
+      "focus": "The red check proves the specific regression before the fix",
+      "action": "Run the test-only revision and confirm the expected assertion failure.",
+      "durationFrames": 510,
+      "duration": 21.25,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.143,
+          "text": "Add the regression test and run it in\nthe approved environment."
+        },
+        {
+          "start": 4.193,
+          "end": 8.213,
+          "text": "The useful failure names zero and shows\nthat the validator returned true."
+        },
+        {
+          "start": 8.827,
+          "end": 12.277,
+          "text": "If the test command never ran, or an\nimport failed,"
+        },
+        {
+          "start": 12.327,
+          "end": 14.727,
+          "text": "return to the setup and repeat it."
+        },
+        {
+          "start": 14.777,
+          "end": 18.002,
+          "text": "The author should be able to point to\nevidence that this assertion detects"
+        },
+        {
+          "start": 18.052,
+          "end": 20.168,
+          "text": "this defect on the original revision."
+        }
+      ]
+    },
+    {
+      "id": "green",
+      "kind": "terminal",
+      "eyebrow": "CHECKPOINT THREE · PASSING TESTS",
+      "title": "Stop when validation remains red",
+      "body": "Review the approved change and require the expected passing run.",
+      "narration": "After the fix, rerun the same tests. If the zero case still fails or an existing case breaks, pause and inspect the change. If all four pass, check the remaining diff and save the run output. This checkpoint uses the result of the actual suite. A plausible summary from the agent can explain the change while the test output provides the evidence.",
+      "code": "Pass → attach the test output\nFail → inspect, adjust and rerun",
+      "result": "All four tests pass in the completed example.",
+      "focus": "A failing verification returns the work to the author",
+      "action": "Rerun the suite and choose whether the workflow can continue.",
+      "durationFrames": 550,
+      "duration": 22.916666666666668,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 2.964,
+          "text": "After the fix, rerun the same tests."
+        },
+        {
+          "start": 3.039,
+          "end": 6.264,
+          "text": "If the zero case still fails or an\nexisting case breaks,"
+        },
+        {
+          "start": 6.339,
+          "end": 7.979,
+          "text": "pause and inspect the change."
+        },
+        {
+          "start": 8.616,
+          "end": 12.866,
+          "text": "If all four pass, check the remaining\ndiff and save the run output."
+        },
+        {
+          "start": 12.941,
+          "end": 16.241,
+          "text": "This checkpoint uses the result of the\nactual suite."
+        },
+        {
+          "start": 16.316,
+          "end": 20.616,
+          "text": "A plausible summary from the agent can\nexplain the change while the test output"
+        },
+        {
+          "start": 20.666,
+          "end": 21.831,
+          "text": "provides the evidence."
+        }
+      ]
+    },
+    {
+      "id": "pr-evidence",
+      "kind": "github",
+      "eyebrow": "CHECKPOINT FOUR · AUTHOR HANDOFF",
+      "title": "Prepare evidence for the pull request",
+      "body": "Tie the issue, patch and checks to the same change.",
+      "narration": "Use the skill from the previous lesson to organize the handover. Give it the issue, the patch, and the test output you verified. Read its draft and correct any unsupported claim. The author then opens the pull request through the approved workflow. In the training repository, the configured CI checks provide additional evidence about the revision the peer will see.",
+      "code": "Closes #17\nChanged: reject zero at the validator boundary\nRegression: test_rejects_zero\nVerification: four unit tests passed",
+      "result": "PR #42 is ready for separate peer review.",
+      "focus": "The PR ties the issue, exact diff and run output together",
+      "action": "Run the evidence skill and check the resulting draft.",
+      "durationFrames": 543,
+      "duration": 22.625,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 4.064,
+          "text": "Use the skill from the previous lesson\nto organize the handover."
+        },
+        {
+          "start": 4.139,
+          "end": 7.594,
+          "text": "Give it the issue, the patch, and the\ntest output you verified."
+        },
+        {
+          "start": 8.222,
+          "end": 11.447,
+          "text": "Read its draft and correct any\nunsupported claim."
+        },
+        {
+          "start": 11.497,
+          "end": 15.347,
+          "text": "The author then opens the pull request\nthrough the approved workflow."
+        },
+        {
+          "start": 15.422,
+          "end": 19.322,
+          "text": "In the training repository, the\nconfigured CI checks provide additional"
+        },
+        {
+          "start": 19.372,
+          "end": 21.543,
+          "text": "evidence about the revision the peer\nwill see."
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "kind": "terminal",
+      "eyebrow": "CHECKPOINT FIVE · INDEPENDENT REVIEW",
+      "title": "Let the peer make the review decision",
+      "body": "A teammate reviews the revision and required checks with GitHub CLI.",
+      "narration": "Now hand the pull request number to a teammate. They use their authorized terminal account to read the PR, inspect the patch, and check the required results. They decide whether to approve or ask for a correction. Their review and the configured merge rules are part of the workflow. The author's agent can assist with the draft, while the peer records their own decision.",
+      "code": "gh pr view 42\ngh pr diff 42\ngh pr checks 42 --required",
+      "result": "Peer decision: approve or request a specific change.",
+      "focus": "The human reviewer decides after checking the current PR and CI",
+      "action": "Let the peer inspect the PR and submit their own decision.",
+      "durationFrames": 550,
+      "duration": 22.916666666666668,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 3.264,
+          "text": "Now hand the pull request number to a\nteammate."
+        },
+        {
+          "start": 3.314,
+          "end": 6.964,
+          "text": "They use their authorized terminal\naccount to read the PR,"
+        },
+        {
+          "start": 7.014,
+          "end": 9.792,
+          "text": "inspect the patch, and check the\nrequired results."
+        },
+        {
+          "start": 10.395,
+          "end": 13.695,
+          "text": "They decide whether to approve or ask\nfor a correction."
+        },
+        {
+          "start": 13.77,
+          "end": 17.395,
+          "text": "Their review and the configured merge\nrules are part of the workflow."
+        },
+        {
+          "start": 17.445,
+          "end": 19.82,
+          "text": "The author's agent can assist with the\ndraft,"
+        },
+        {
+          "start": 19.87,
+          "end": 21.821,
+          "text": "while the peer records their own\ndecision."
+        }
+      ]
+    },
+    {
+      "id": "dry-run",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · TEST THE CHECKPOINTS",
+      "title": "Dry-run both outcomes",
+      "body": "Demonstrate a successful handoff and one blocked branch.",
+      "narration": "Try the workflow twice with a teammate. Once, run it with the complete evidence and record the review outcome. Again, remove the regression output or simulate a failing required check. Say where work stops and what would let it resume. The rehearsal is successful when both of you can name the owner, evidence, and next action for either outcome.",
+      "code": "A: Scope accepted, tests pass, peer reviews\nB: Verification missing, work returns to author",
+      "result": "A documented workflow with a tested stop condition.",
+      "focus": "The rehearsal demonstrates both success and a justified stop",
+      "action": "Dry-run a passing case and a case with missing evidence.",
+      "durationFrames": 532,
+      "duration": 22.166666666666668,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 2.693,
+          "text": "Try the workflow twice with a teammate."
+        },
+        {
+          "start": 2.768,
+          "end": 6.983,
+          "text": "Once, run it with the complete evidence\nand record the review outcome."
+        },
+        {
+          "start": 7.083,
+          "end": 11.361,
+          "text": "Again, remove the regression output or\nsimulate a failing required check."
+        },
+        {
+          "start": 12.02,
+          "end": 14.895,
+          "text": "Say where work stops and what would let\nit resume."
+        },
+        {
+          "start": 14.945,
+          "end": 18.81,
+          "text": "The rehearsal is successful when both of\nyou can name the owner, evidence,"
+        },
+        {
+          "start": 18.86,
+          "end": 20.688,
+          "text": "and next action for either outcome."
+        }
+      ]
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "durationFrames": 3687,
+  "voiceBuild": "dd084b2f843c5f888be9f1980fd093c910367abc5eeb9dc2dd27c737cd8e4b5e"
+}
