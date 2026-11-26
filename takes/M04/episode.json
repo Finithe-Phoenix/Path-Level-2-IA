@@ -1,0 +1,373 @@
+{
+  "id": "M04",
+  "title": "Reusable Prompts and Repository Instructions",
+  "subtitle": "GitHub Copilot in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Custom instructions in VS Code",
+      "url": "https://code.visualstudio.com/docs/agent-customization/custom-instructions"
+    },
+    {
+      "label": "Prompt files and harness support",
+      "url": "https://code.visualstudio.com/docs/agent-customization/prompt-files"
+    },
+    {
+      "label": "Context engineering in VS Code",
+      "url": "https://code.visualstudio.com/docs/agents/guides/context-engineering-guide"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "sort-guidance",
+      "kind": "diagram",
+      "eyebrow": "REUSABLE GUIDANCE · TWO SCOPES",
+      "title": "Identify what changes from one task to the next",
+      "body": "Keep task inputs and durable project conventions easy to find.",
+      "narration": "Picture two issues in the same repository. One is about zero quantities. Another asks for a clearer error message. The issue ID and expected behavior change. The location of the test suite may stay the same across both. Put recurring project conventions where the agent can load them, and keep the individual issue details in the prompt you send for that task.",
+      "code": "Current task: issue #17 and expected behavior\nRepository: tests live in tests/\nRepository: use the existing unittest suite",
+      "result": "Task inputs and durable conventions identified.",
+      "focus": "The issue changes but the test convention carries across tasks",
+      "action": "Sort the task details and enduring project conventions.",
+      "durationFrames": 560,
+      "duration": 23.333333333333332,
+      "cues": [
+        {
+          "start": 0.389,
+          "end": 2.964,
+          "text": "Picture two issues in the same\nrepository."
+        },
+        {
+          "start": 3.039,
+          "end": 5.089,
+          "text": "One is about zero quantities."
+        },
+        {
+          "start": 5.164,
+          "end": 7.639,
+          "text": "Another asks for a clearer error\nmessage."
+        },
+        {
+          "start": 7.689,
+          "end": 10.411,
+          "text": "The issue ID and expected behavior\nchange."
+        },
+        {
+          "start": 11.003,
+          "end": 14.853,
+          "text": "The location of the test suite may stay\nthe same across both."
+        },
+        {
+          "start": 14.903,
+          "end": 18.503,
+          "text": "Put recurring project conventions where\nthe agent can load them,"
+        },
+        {
+          "start": 18.553,
+          "end": 22.237,
+          "text": "and keep the individual issue details in\nthe prompt you send for that task."
+        }
+      ]
+    },
+    {
+      "id": "prompt-template",
+      "kind": "editor",
+      "eyebrow": "VS CODE · PORTABLE PROMPT TEMPLATE",
+      "title": "Capture a prompt your team can reuse",
+      "body": "Keep a named template and fill in its variable inputs.",
+      "narration": "Open a Markdown template in the training repository. Write a request that takes an issue and the current source and tests as inputs. Ask for the proposed edit, the affected files, and a way to verify it. The template should end at a plan you can review. On the approved Copilot setup, paste the filled-in text into chat to run it.",
+      "code": "Read issue [id] and the attached source and tests.\nPropose the smallest edit and a regression test.\nList the files, validation steps and open questions.\nStop after the plan for human review.",
+      "result": "Template: docs/prompts/plan-a-fix.md",
+      "focus": "The reusable template exposes its variable inputs",
+      "action": "Save a plain Markdown planning prompt with placeholders.",
+      "durationFrames": 507,
+      "duration": 21.125,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.718,
+          "text": "Open a Markdown template in the training\nrepository."
+        },
+        {
+          "start": 3.793,
+          "end": 7.936,
+          "text": "Write a request that takes an issue and\nthe current source and tests as inputs."
+        },
+        {
+          "start": 8.564,
+          "end": 12.929,
+          "text": "Ask for the proposed edit, the affected\nfiles, and a way to verify it."
+        },
+        {
+          "start": 12.979,
+          "end": 15.729,
+          "text": "The template should end at a plan you\ncan review."
+        },
+        {
+          "start": 15.829,
+          "end": 20.069,
+          "text": "On the approved Copilot setup, paste the\nfilled-in text into chat to run it."
+        }
+      ]
+    },
+    {
+      "id": "context-run",
+      "kind": "editor",
+      "eyebrow": "COPILOT PLAN · TASK CONTEXT",
+      "title": "Supply current evidence at invocation",
+      "body": "Use the template with source files and tests from the same revision.",
+      "narration": "Start Plan in the current branch and attach the issue, validator, and matching test file. Paste the template with the issue reference filled in. The response should identify the existing comparison and explain why a zero test would expose it. Open the cited lines and check them yourself. If a file name is unfamiliar, confirm it in the workspace before accepting the plan.",
+      "code": "Issue #17\norder_quantity.py\ntests/test_order_quantity.py",
+      "result": "Plan names the condition and the missing zero test.",
+      "focus": "The plan traces observations to the three current attachments",
+      "action": "Fill the prompt and attach the original issue, function and tests.",
+      "durationFrames": 583,
+      "duration": 24.291666666666668,
+      "cues": [
+        {
+          "start": 0.435,
+          "end": 4.06,
+          "text": "Start Plan in the current branch and\nattach the issue, validator,"
+        },
+        {
+          "start": 4.11,
+          "end": 5.81,
+          "text": "and matching test file."
+        },
+        {
+          "start": 5.885,
+          "end": 8.277,
+          "text": "Paste the template with the issue\nreference filled in."
+        },
+        {
+          "start": 8.875,
+          "end": 12.95,
+          "text": "The response should identify the\nexisting comparison and explain why a"
+        },
+        {
+          "start": 13.0,
+          "end": 15.1,
+          "text": "zero test would expose it."
+        },
+        {
+          "start": 15.175,
+          "end": 17.681,
+          "text": "Open the cited lines and check them\nyourself."
+        },
+        {
+          "start": 18.305,
+          "end": 22.73,
+          "text": "If a file name is unfamiliar, confirm it\nin the workspace before accepting the"
+        },
+        {
+          "start": 22.78,
+          "end": 23.224,
+          "text": "plan."
+        }
+      ]
+    },
+    {
+      "id": "instructions",
+      "kind": "editor",
+      "eyebrow": "REPOSITORY · PROJECT INSTRUCTIONS",
+      "title": "Record a project convention once",
+      "body": "Keep the instructions concrete and versioned with the code.",
+      "narration": "Open the repository root in VS Code. For this Copilot example, find or create the project instructions file in the dot GitHub folder. Add the convention that unit tests use the existing unittest suite under tests. Keep the rule short and include a reliable reference for the verification command. If instructions already exist, edit the existing guidance with your team.",
+      "code": "# Order validator conventions\n- Use unittest for unit tests under tests/.\n- Preserve public signatures unless the issue says otherwise.\n- See README.md for the approved verification command.",
+      "result": "Saved: .github/copilot-instructions.md",
+      "focus": "The repository instructions name test location and framework",
+      "action": "Add one concrete convention to the supported instruction file.",
+      "durationFrames": 599,
+      "duration": 24.958333333333332,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.318,
+          "text": "Open the repository root in VS Code."
+        },
+        {
+          "start": 3.393,
+          "end": 8.193,
+          "text": "For this Copilot example, find or create\nthe project instructions file in the dot"
+        },
+        {
+          "start": 8.243,
+          "end": 9.173,
+          "text": "GitHub folder."
+        },
+        {
+          "start": 9.801,
+          "end": 14.676,
+          "text": "Add the convention that unit tests use\nthe existing unittest suite under tests."
+        },
+        {
+          "start": 14.751,
+          "end": 18.476,
+          "text": "Keep the rule short and include a\nreliable reference for the verification"
+        },
+        {
+          "start": 18.526,
+          "end": 19.005,
+          "text": "command."
+        },
+        {
+          "start": 19.639,
+          "end": 23.875,
+          "text": "If instructions already exist, edit the\nexisting guidance with your team."
+        }
+      ]
+    },
+    {
+      "id": "discovery",
+      "kind": "editor",
+      "eyebrow": "COPILOT · FRESH SESSION",
+      "title": "Check that Copilot loaded the instructions",
+      "body": "Verify discovery and actual behavior in a new chat.",
+      "narration": "Open the agent customizations view and find the instruction file. Then start a fresh chat in the same workspace. Ask for a regression plan without repeating the test convention. Where your client shows references, confirm the file was included. Read the proposed test location and framework. File discovery and correct use give you two different things to check.",
+      "code": "Plan one regression test for the zero-quantity issue.",
+      "result": "File discovered. Plan uses the existing unittest suite.",
+      "focus": "A fresh session discovers the file and proposes the expected test",
+      "action": "Verify the instruction is loaded and test a fresh plan.",
+      "durationFrames": 550,
+      "duration": 22.916666666666668,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.618,
+          "text": "Open the agent customizations view and\nfind the instruction file."
+        },
+        {
+          "start": 4.693,
+          "end": 7.593,
+          "text": "Then start a fresh chat in the same\nworkspace."
+        },
+        {
+          "start": 7.668,
+          "end": 10.837,
+          "text": "Ask for a regression plan without\nrepeating the test convention."
+        },
+        {
+          "start": 11.45,
+          "end": 15.26,
+          "text": "Where your client shows references,\nconfirm the file was included."
+        },
+        {
+          "start": 15.335,
+          "end": 18.26,
+          "text": "Read the proposed test location and\nframework."
+        },
+        {
+          "start": 18.36,
+          "end": 21.819,
+          "text": "File discovery and correct use give you\ntwo different things to check."
+        }
+      ]
+    },
+    {
+      "id": "roles",
+      "kind": "diagram",
+      "eyebrow": "TEAM USE · ACTIVATION AND CONTROLS",
+      "title": "Give each type of guidance a clear role",
+      "body": "Use a task template, project instructions and real review controls.",
+      "narration": "The prompt asks for a particular piece of work. The instruction file supplies reusable project conventions. Required checks and actual tool permissions enforce separate boundaries. Some VS Code versions also offer runnable prompt files, with support depending on the selected harness. The Markdown template in this example is ready to paste. In the next lesson, we’ll make a recurring procedure into a skill.",
+      "code": "Prompt template → task request\nInstruction file → project conventions\nPermissions and checks → enforcement",
+      "result": "Review each file where its behavior is observable.",
+      "focus": "Task prompts, conventions and permission controls have distinct jobs",
+      "action": "Connect each piece of guidance to what it affects.",
+      "durationFrames": 635,
+      "duration": 26.458333333333332,
+      "cues": [
+        {
+          "start": 0.389,
+          "end": 3.164,
+          "text": "The prompt asks for a particular piece\nof work."
+        },
+        {
+          "start": 3.214,
+          "end": 7.039,
+          "text": "The instruction file supplies reusable\nproject conventions."
+        },
+        {
+          "start": 7.089,
+          "end": 10.837,
+          "text": "Required checks and actual tool\npermissions enforce separate boundaries."
+        },
+        {
+          "start": 11.506,
+          "end": 15.456,
+          "text": "Some VS Code versions also offer\nrunnable prompt files,"
+        },
+        {
+          "start": 15.506,
+          "end": 18.331,
+          "text": "with support depending on the selected\nharness."
+        },
+        {
+          "start": 18.381,
+          "end": 21.414,
+          "text": "The Markdown template in this example is\nready to paste."
+        },
+        {
+          "start": 22.058,
+          "end": 25.377,
+          "text": "In the next lesson, we’ll make a\nrecurring procedure into a skill."
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · TRANSFER",
+      "title": "Try a second issue and compare the plan",
+      "body": "Change the issue and check which guidance still applies.",
+      "narration": "Use the template for a second synthetic issue. Swap the issue reference and attach the current files for that task. Compare the two plans and find one part that changed because the requirement changed. Then find the test convention that carried over. A teammate should be able to reproduce that setup in a fresh session with the same project files.",
+      "code": "New issue → new attachments → new plan\nSame repository → same test conventions",
+      "result": "A teammate can reproduce the setup in a fresh chat.",
+      "focus": "A new issue changes the plan while the test convention remains",
+      "action": "Run the same template with a second issue and fresh attachments.",
+      "durationFrames": 527,
+      "duration": 21.958333333333332,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 3.368,
+          "text": "Use the template for a second synthetic\nissue."
+        },
+        {
+          "start": 3.443,
+          "end": 7.218,
+          "text": "Swap the issue reference and attach the\ncurrent files for that task."
+        },
+        {
+          "start": 7.293,
+          "end": 11.218,
+          "text": "Compare the two plans and find one part\nthat changed because the requirement"
+        },
+        {
+          "start": 11.268,
+          "end": 11.904,
+          "text": "changed."
+        },
+        {
+          "start": 12.538,
+          "end": 15.463,
+          "text": "Then find the test convention that\ncarried over."
+        },
+        {
+          "start": 15.538,
+          "end": 19.038,
+          "text": "A teammate should be able to reproduce\nthat setup in a fresh session with the"
+        },
+        {
+          "start": 19.113,
+          "end": 20.444,
+          "text": "same project files."
+        }
+      ]
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "durationFrames": 3961,
+  "voiceBuild": "1157e729b25afbbd96d6e8aec0eadce15579894c9d3cacdc26b6d48c991e5d74"
+}
