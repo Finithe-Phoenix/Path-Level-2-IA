@@ -1,0 +1,226 @@
+1
+00:00:00,389 --> 00:00:02,989
+The report says zero orders slip
+through.
+
+2
+00:00:03,064 --> 00:00:05,814
+Let’s translate that into a call we can
+test.
+
+3
+00:00:05,864 --> 00:00:09,167
+When the validator receives zero, it
+currently returns true.
+
+4
+00:00:09,779 --> 00:00:11,629
+The issue requires false.
+
+5
+00:00:11,679 --> 00:00:13,954
+The inputs one and five should still
+pass,
+
+6
+00:00:14,004 --> 00:00:16,229
+and negative one should still fail.
+
+7
+00:00:16,304 --> 00:00:19,654
+Keep that expected behavior in view
+while we investigate what the code
+
+8
+00:00:19,704 --> 00:00:20,565
+actually does.
+
+9
+00:00:22,106 --> 00:00:26,231
+Run the existing tests from the training
+checkout in the approved environment.
+
+10
+00:00:26,281 --> 00:00:27,781
+The suite goes green.
+
+11
+00:00:27,866 --> 00:00:29,229
+Now read the test names.
+
+12
+00:00:29,853 --> 00:00:33,353
+There’s one test each for one, five, and
+negative one.
+
+13
+00:00:33,403 --> 00:00:35,053
+There’s no zero case.
+
+14
+00:00:35,103 --> 00:00:37,716
+That's why a green result can coexist
+with the bug.
+
+15
+00:00:38,365 --> 00:00:42,465
+Record the checkout and the exact test
+command so we can repeat the check
+
+16
+00:00:42,515 --> 00:00:43,324
+consistently.
+
+17
+00:00:44,810 --> 00:00:48,875
+Open the issue, the validator, and the
+tests in VS Code.
+
+18
+00:00:48,950 --> 00:00:52,962
+In Copilot Plan, ask which expression
+could explain this behavior.
+
+19
+00:00:53,561 --> 00:00:56,961
+The proposed cause is the greater-than-
+or-equal comparison.
+
+20
+00:00:57,036 --> 00:00:59,286
+Read the line and substitute zero.
+
+21
+00:00:59,386 --> 00:01:01,940
+Zero equals zero, so the expression is
+true.
+
+22
+00:01:02,599 --> 00:01:04,324
+Now we have a prediction.
+
+23
+00:01:04,399 --> 00:01:08,326
+An assertion expecting false for zero
+should fail on the original revision.
+
+24
+00:01:09,835 --> 00:01:14,135
+Ask Agent to add just the zero
+regression to the existing test class.
+
+25
+00:01:14,210 --> 00:01:16,110
+Inspect the proposed patch.
+
+26
+00:01:16,185 --> 00:01:19,380
+It should call the public function with
+zero and expect false.
+
+27
+00:01:19,972 --> 00:01:23,897
+The validator itself should still have
+its original comparison.
+
+28
+00:01:23,972 --> 00:01:27,747
+This separation is useful because the
+next run will tell us whether the new
+
+29
+00:01:27,797 --> 00:01:31,761
+test can detect the reported behavior
+before any fix is applied.
+
+30
+00:01:33,272 --> 00:01:35,897
+Run the same suite with the new test
+present.
+
+31
+00:01:35,972 --> 00:01:39,197
+Look for the zero test name and the
+assertion message.
+
+32
+00:01:39,272 --> 00:01:41,558
+True was returned where false was
+expected.
+
+33
+00:01:42,151 --> 00:01:44,626
+That failure supports the hypothesis.
+
+34
+00:01:44,701 --> 00:01:47,126
+If the suite stops because of a missing
+import,
+
+35
+00:01:47,176 --> 00:01:49,826
+it hasn't shown that the boundary is
+wrong.
+
+36
+00:01:49,901 --> 00:01:54,281
+Fix the setup first and rerun until you
+have the failure you intended to test.
+
+37
+00:01:55,768 --> 00:01:59,468
+Change greater than or equal to zero to
+greater than zero.
+
+38
+00:01:59,543 --> 00:02:02,693
+Keep the assertion and the function
+signature as they are.
+
+39
+00:02:02,768 --> 00:02:05,743
+Rerun the same test command on the
+updated checkout.
+
+40
+00:02:06,402 --> 00:02:08,602
+Now all four cases should pass.
+
+41
+00:02:08,652 --> 00:02:11,402
+Check the source diff and the test diff
+together.
+
+42
+00:02:11,477 --> 00:02:14,198
+Each one should answer a part of the
+issue you started with.
+
+43
+00:02:15,668 --> 00:02:19,843
+Let’s turn the investigation into
+something another engineer can replay.
+
+44
+00:02:19,918 --> 00:02:24,587
+Record the zero input, the original
+comparison, and both test results.
+
+45
+00:02:25,246 --> 00:02:27,746
+Say which revision produced each output.
+
+46
+00:02:27,796 --> 00:02:31,871
+Then explain why one still passes and
+negative one still fails.
+
+47
+00:02:31,946 --> 00:02:34,321
+If you can answer from the source and
+the tests,
+
+48
+00:02:34,371 --> 00:02:37,586
+you've verified the change as well as
+the proposed diagnosis.

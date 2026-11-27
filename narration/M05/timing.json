@@ -1,0 +1,294 @@
+{
+  "fps": 24,
+  "voiceBuild": "abb398ed616ad6b0954e4b3daa2940f70752998be453afb48ec58130273d5246",
+  "paceBuild": "66722b3b143fb0cc0cab5cfdbdc5f563647ad65bd51c437a9f0911bdb3098d95",
+  "delivery": {
+    "targetWordsPerMinute": 146,
+    "inputWordsPerMinute": 159.71,
+    "tempo": 0.93396122,
+    "outputWordsPerMinute": 145.98
+  },
+  "audioSha256": "8de856ef452167c820ee81a290c6b7b8377b93d0f29131267ba6bc82bd6a48eb",
+  "captionsSha256": "d36e0ba5cb363c6443e51622b04c0650b4ceda4ab9dcaa841cee2c6743094c0f",
+  "scenes": [
+    {
+      "id": "select-procedure",
+      "scriptSha256": "522d5451e231b3cc19996aa941c358ccd7ec768d23e3f8ed3878f4be8aebae28",
+      "durationFrames": 517,
+      "cues": [
+        {
+          "start": 0.443,
+          "end": 3.95,
+          "text": "Think about what you do before handing\noff a pull request."
+        },
+        {
+          "start": 4.03,
+          "end": 8.327,
+          "text": "You check the issue, summarize the diff,\nand share the result of the tests."
+        },
+        {
+          "start": 8.973,
+          "end": 13.148,
+          "text": "If you ask for that same draft often,\nyou can give the assistant a skill with"
+        },
+        {
+          "start": 13.202,
+          "end": 14.728,
+          "text": "this procedure."
+        },
+        {
+          "start": 14.781,
+          "end": 19.251,
+          "text": "We’ll use a synthetic example and make\nthe output a draft that the human author"
+        },
+        {
+          "start": 19.305,
+          "end": 19.973,
+          "text": "can review."
+        }
+      ]
+    },
+    {
+      "id": "create",
+      "scriptSha256": "15c0d530f9643bdb820561273485f6801dba6130ca3322a6b4b5be45f511bff0",
+      "durationFrames": 586,
+      "cues": [
+        {
+          "start": 0.421,
+          "end": 4.73,
+          "text": "In the training repository, open the\nsupported project skills location for"
+        },
+        {
+          "start": 4.784,
+          "end": 6.149,
+          "text": "Copilot."
+        },
+        {
+          "start": 6.229,
+          "end": 11.329,
+          "text": "This example puts a folder named prepare\nP R evidence under dot GitHub skills."
+        },
+        {
+          "start": 11.975,
+          "end": 14.678,
+          "text": "Add a file named skill dot M D."
+        },
+        {
+          "start": 14.759,
+          "end": 18.399,
+          "text": "Give it a matching name and a short\ndescription that says which task it"
+        },
+        {
+          "start": 18.453,
+          "end": 19.523,
+          "text": "helps with."
+        },
+        {
+          "start": 19.604,
+          "end": 22.633,
+          "text": "Both of those fields are useful when you\nverify discovery."
+        }
+      ]
+    },
+    {
+      "id": "procedure",
+      "scriptSha256": "1f531c5e70b76cf1f9d377a4abfa99f1ab524b55278b898a678511cb475b7153",
+      "durationFrames": 564,
+      "cues": [
+        {
+          "start": 0.443,
+          "end": 4.1,
+          "text": "In the body, tell the skill to read the\nsupplied issue and diff,"
+        },
+        {
+          "start": 4.153,
+          "end": 8.463,
+          "text": "check the test output, and return a\ndraft with change and verification"
+        },
+        {
+          "start": 8.516,
+          "end": 9.164,
+          "text": "evidence."
+        },
+        {
+          "start": 9.821,
+          "end": 12.176,
+          "text": "Include a step for missing items."
+        },
+        {
+          "start": 12.256,
+          "end": 17.53,
+          "text": "If no test output is supplied, the draft\nshould say verification is missing."
+        },
+        {
+          "start": 17.61,
+          "end": 21.666,
+          "text": "Keep this first skill focused on\npreparing text for a human to review."
+        }
+      ]
+    },
+    {
+      "id": "invoke",
+      "scriptSha256": "7adcf5a39784b144d0edec18d4e2d7e69ab93c52012a6629b677cfe7507d6fae",
+      "durationFrames": 644,
+      "cues": [
+        {
+          "start": 0.421,
+          "end": 4.409,
+          "text": "Open a fresh Copilot chat and confirm\nthe skill is listed in the"
+        },
+        {
+          "start": 4.463,
+          "end": 6.444,
+          "text": "customizations view."
+        },
+        {
+          "start": 6.524,
+          "end": 10.051,
+          "text": "If your setup supports it, choose the\nskill from the slash menu."
+        },
+        {
+          "start": 10.706,
+          "end": 14.962,
+          "text": "Attach the synthetic issue, patch, and\npassing test output."
+        },
+        {
+          "start": 15.042,
+          "end": 18.121,
+          "text": "Now compare each draft claim with its\nsource."
+        },
+        {
+          "start": 18.201,
+          "end": 22.35,
+          "text": "In this example, the issue is seventeen,\nzero is rejected,"
+        },
+        {
+          "start": 22.403,
+          "end": 25.013,
+          "text": "and the supplied run shows four passing\ntests."
+        }
+      ]
+    },
+    {
+      "id": "missing-evidence",
+      "scriptSha256": "d8cdadcba12b87e373d596d161df72f1aca5d20267bff91bd491b1fd2e591997",
+      "durationFrames": 590,
+      "cues": [
+        {
+          "start": 0.421,
+          "end": 3.231,
+          "text": "Try again with the test output missing."
+        },
+        {
+          "start": 3.312,
+          "end": 6.069,
+          "text": "Read what the skill says about\nverification."
+        },
+        {
+          "start": 6.122,
+          "end": 9.685,
+          "text": "The expected result is a visible gap\nthat the author can fill."
+        },
+        {
+          "start": 10.368,
+          "end": 14.49,
+          "text": "If it claims the tests passed based only\non the PR description,"
+        },
+        {
+          "start": 14.543,
+          "end": 16.926,
+          "text": "revise the body and rerun."
+        },
+        {
+          "start": 17.006,
+          "end": 20.914,
+          "text": "Then try an unrelated request and see\nwhether the description makes the"
+        },
+        {
+          "start": 20.994,
+          "end": 22.758,
+          "text": "skill’s intended scope clear."
+        }
+      ]
+    },
+    {
+      "id": "map-controls",
+      "scriptSha256": "3fed3e4dc169de4440a247f727115dc6f5f2df930f44c5912292dd68188f2f98",
+      "durationFrames": 695,
+      "cues": [
+        {
+          "start": 0.421,
+          "end": 4.088,
+          "text": "Compare this skill with the repository\ninstruction file."
+        },
+        {
+          "start": 4.141,
+          "end": 8.371,
+          "text": "The instruction file describes\nconventions for work in this project."
+        },
+        {
+          "start": 8.424,
+          "end": 11.627,
+          "text": "The skill carries a repeatable procedure\nyou can invoke."
+        },
+        {
+          "start": 12.271,
+          "end": 16.983,
+          "text": "Tools let the agent perform actions such\nas reading a supplied file."
+        },
+        {
+          "start": 17.036,
+          "end": 21.125,
+          "text": "An approved M C P server can expose more\ntools or resources."
+        },
+        {
+          "start": 21.756,
+          "end": 24.888,
+          "text": "Our example works with supplied training\nevidence,"
+        },
+        {
+          "start": 24.941,
+          "end": 27.415,
+          "text": "and the environment still controls\naccess."
+        }
+      ]
+    },
+    {
+      "id": "small-exercise",
+      "scriptSha256": "1d535f5ec0ce22b63bda64f86bfe9ad0f72dbd00d54cc223bfc5bdab8c72f83d",
+      "durationFrames": 616,
+      "cues": [
+        {
+          "start": 0.417,
+          "end": 5.556,
+          "text": "Pick another repeated task, like\nsummarizing a failed test for an author."
+        },
+        {
+          "start": 5.636,
+          "end": 9.73,
+          "text": "Write a small skill with a clear\ntrigger, steps, and expected output."
+        },
+        {
+          "start": 10.364,
+          "end": 14.353,
+          "text": "Try it with complete input and again\nwith one item missing."
+        },
+        {
+          "start": 14.433,
+          "end": 17.993,
+          "text": "Ask a teammate to judge each result from\nthe evidence."
+        },
+        {
+          "start": 18.074,
+          "end": 21.714,
+          "text": "If they can explain when the skill\napplies and spot missing proof,"
+        },
+        {
+          "start": 21.767,
+          "end": 23.695,
+          "text": "you have a useful procedure to share."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+{
+  "fps": 24,
+  "voiceBuild": "c43128849b6d6c047958575b23bfe114f69ffdab235cb105b515e71fa719be35",
+  "paceBuild": "b29386c7e3bfa7986aff4bea03a569e3111a2fa4a5f33361bd3346d4447a2893",
+  "delivery": {
+    "targetWordsPerMinute": 146,
+    "inputWordsPerMinute": 164.98,
+    "tempo": 0.90842351,
+    "outputWordsPerMinute": 146.0
+  },
+  "audioSha256": "709887872a8047b498ad3aa234c85f5e68ad0568a3e6fdd880f502c3c00ba2a3",
+  "captionsSha256": "f2788ee45645f688a4a166ed15261671255dd8f33511badcc490b98e50f4240e",
+  "scenes": [
+    {
+      "id": "reviewer",
+      "scriptSha256": "54ade46ebfeb19bfffbda4af074c457a6bb1dba0404e43c7f9883c16063c1adf",
+      "durationFrames": 616,
+      "cues": [
+        {
+          "start": 0.433,
+          "end": 2.442,
+          "text": "This time you’re the reviewer."
+        },
+        {
+          "start": 2.524,
+          "end": 7.698,
+          "text": "In the approved remote terminal, confirm\nthat GitHub CLI is using your own"
+        },
+        {
+          "start": 7.781,
+          "end": 11.32,
+          "text": "authorized account and that you are in\nthe training repository."
+        },
+        {
+          "start": 11.971,
+          "end": 14.971,
+          "text": "The author sends you pull request forty-\ntwo."
+        },
+        {
+          "start": 15.054,
+          "end": 17.778,
+          "text": "Open that request for this exercise."
+        },
+        {
+          "start": 17.833,
+          "end": 20.849,
+          "text": "We’ll check the intent first, then the\nactual patch,"
+        },
+        {
+          "start": 21.047,
+          "end": 23.797,
+          "text": "and finally the checks for the revision\nyou’re reviewing."
+        }
+      ]
+    },
+    {
+      "id": "view",
+      "scriptSha256": "a198108ad74d008c42ed8f155a27772b876c3d554bee3b0dae19e1c3431c08cc",
+      "durationFrames": 572,
+      "cues": [
+        {
+          "start": 0.46,
+          "end": 4.891,
+          "text": "Run the GitHub CLI view command for pull\nrequest forty-two."
+        },
+        {
+          "start": 4.973,
+          "end": 7.23,
+          "text": "Read the title and the issue link."
+        },
+        {
+          "start": 7.285,
+          "end": 11.977,
+          "text": "The author says zero should be rejected\nand all four unit tests now pass."
+        },
+        {
+          "start": 12.675,
+          "end": 14.904,
+          "text": "That tells you what to look for."
+        },
+        {
+          "start": 14.986,
+          "end": 18.949,
+          "text": "Keep the issue open beside the terminal\nso you can compare the requested"
+        },
+        {
+          "start": 19.004,
+          "end": 22.012,
+          "text": "behavior with the change you’re about to\ninspect."
+        }
+      ]
+    },
+    {
+      "id": "diff",
+      "scriptSha256": "f4274ba910821b1010a730e0390f209c899d622aa10027b1dfb68ffc76df679b",
+      "durationFrames": 518,
+      "cues": [
+        {
+          "start": 0.483,
+          "end": 2.382,
+          "text": "Now view the actual diff."
+        },
+        {
+          "start": 2.437,
+          "end": 5.657,
+          "text": "The main change removes equality at the\nboundary."
+        },
+        {
+          "start": 5.712,
+          "end": 9.37,
+          "text": "The second change adds a test that calls\nthe validator with zero."
+        },
+        {
+          "start": 10.034,
+          "end": 13.832,
+          "text": "Ask yourself whether that test would\nfail on the old code."
+        },
+        {
+          "start": 13.914,
+          "end": 18.4,
+          "text": "This is the difference between seeing a\ntest name and seeing a test that proves"
+        },
+        {
+          "start": 18.455,
+          "end": 19.723,
+          "text": "the relevant behavior."
+        }
+      ]
+    },
+    {
+      "id": "checks",
+      "scriptSha256": "d66f6dd777b6f381da4683adbe6244e3887152e6f8bc200e9aafda9d69fa3495",
+      "durationFrames": 527,
+      "cues": [
+        {
+          "start": 0.46,
+          "end": 3.432,
+          "text": "Look up the pull request’s required\nchecks."
+        },
+        {
+          "start": 3.515,
+          "end": 7.175,
+          "text": "In the training example, the unit test\ncheck is required."
+        },
+        {
+          "start": 7.258,
+          "end": 10.779,
+          "text": "Open its run if you need to confirm\nwhich suite it executed."
+        },
+        {
+          "start": 11.466,
+          "end": 14.686,
+          "text": "If the checks are pending, wait for the\nresult."
+        },
+        {
+          "start": 14.768,
+          "end": 18.913,
+          "text": "If the author pushes again, refresh the\ndiff and checks for the new head before"
+        },
+        {
+          "start": 18.968,
+          "end": 20.15,
+          "text": "making your decision."
+        }
+      ]
+    },
+    {
+      "id": "request-changes",
+      "scriptSha256": "55fd93eb96265ec6554bdca1ef1cb2aab751f3c0236c0bf93f944a9d7e1562db",
+      "durationFrames": 601,
+      "cues": [
+        {
+          "start": 0.456,
+          "end": 2.74,
+          "text": "Here’s the alternate outcome."
+        },
+        {
+          "start": 2.795,
+          "end": 7.914,
+          "text": "The checks are green, but the test added\nin this version exercises one and never"
+        },
+        {
+          "start": 7.969,
+          "end": 9.745,
+          "text": "calls the validator with zero."
+        },
+        {
+          "start": 10.409,
+          "end": 12.693,
+          "text": "That leaves the bug untested."
+        },
+        {
+          "start": 12.776,
+          "end": 16.904,
+          "text": "Use the request-changes option and ask\nfor the missing assertion."
+        },
+        {
+          "start": 16.987,
+          "end": 19.794,
+          "text": "Give the author a specific behavior to\nverify."
+        },
+        {
+          "start": 20.526,
+          "end": 23.263,
+          "text": "Review the new revision after they\naddress it."
+        }
+      ]
+    },
+    {
+      "id": "approve",
+      "scriptSha256": "abfb5926a88f7b551c4f075a510951a8c1391dbdf501bc5352f8d478a23d913a",
+      "durationFrames": 548,
+      "cues": [
+        {
+          "start": 0.433,
+          "end": 5.221,
+          "text": "Return to the version with the right\ncondition and the actual zero test."
+        },
+        {
+          "start": 5.304,
+          "end": 8.193,
+          "text": "If you’ve checked the diff and the\nrequired results,"
+        },
+        {
+          "start": 8.248,
+          "end": 11.32,
+          "text": "you can approve with a short statement\nof what you verified."
+        },
+        {
+          "start": 12.045,
+          "end": 16.173,
+          "text": "Submit the review from your account,\nthen read back the reviews on the pull"
+        },
+        {
+          "start": 16.228,
+          "end": 17.467,
+          "text": "request."
+        },
+        {
+          "start": 17.549,
+          "end": 20.978,
+          "text": "Confirm your decision was saved to the\nintended request."
+        }
+      ]
+    },
+    {
+      "id": "exercise",
+      "scriptSha256": "520c5703956439cbbce7d042bdddc04b7b1c6e67d6a55789b2157d8e72624b9b",
+      "durationFrames": 573,
+      "cues": [
+        {
+          "start": 0.433,
+          "end": 3.405,
+          "text": "Pair up and swap author and reviewer\nroles."
+        },
+        {
+          "start": 3.46,
+          "end": 7.891,
+          "text": "Give each reviewer an issue, a pull\nrequest, and the check results."
+        },
+        {
+          "start": 7.973,
+          "end": 10.232,
+          "text": "In one run, the evidence is complete."
+        },
+        {
+          "start": 10.912,
+          "end": 14.176,
+          "text": "In the other, leave out the test for the\nkey input."
+        },
+        {
+          "start": 14.259,
+          "end": 18.167,
+          "text": "Ask the reviewer to explain their\ndecision in one sentence."
+        },
+        {
+          "start": 18.249,
+          "end": 21.871,
+          "text": "It should tell the author what was\nverified or what needs to change."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "id": "M03",
+  "title": "Review a Pull Request with GitHub CLI",
+  "subtitle": "Human peer review · Intermediate",
+  "sources": [
+    {
+      "label": "GitHub CLI pull request commands",
+      "url": "https://cli.github.com/manual/gh_pr"
+    },
+    {
+      "label": "Required checks with GitHub CLI",
+      "url": "https://cli.github.com/manual/gh_pr_checks"
+    },
+    {
+      "label": "Review options with GitHub CLI",
+      "url": "https://cli.github.com/manual/gh_pr_review"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "reviewer",
+      "kind": "terminal",
+      "eyebrow": "REVIEWER · APPROVED TERMINAL",
+      "title": "Start in the reviewer’s account",
+      "body": "Confirm the account and the training repository before review.",
+      "narration": "This time you’re the reviewer. In the approved remote terminal, confirm that GitHub CLI is using your own authorized account and that you are in the training repository. The author sends you pull request forty-two. Open that request for this exercise. We’ll check the intent first, then the actual patch, and finally the checks for the revision you’re reviewing.",
+      "code": "gh auth status\ngh repo view --json nameWithOwner",
+      "result": "Training context confirmed: orders-lab.",
+      "focus": "The reviewer account and training repository are visible",
+      "action": "Confirm GitHub CLI’s active account and repository.",
+      "durationFrames": 545,
+      "duration": 22.708333333333332,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 2.218,
+          "text": "This time you’re the reviewer."
+        },
+        {
+          "start": 2.293,
+          "end": 6.993,
+          "text": "In the approved remote terminal, confirm\nthat GitHub CLI is using your own"
+        },
+        {
+          "start": 7.068,
+          "end": 10.283,
+          "text": "authorized account and that you are in\nthe training repository."
+        },
+        {
+          "start": 10.875,
+          "end": 13.6,
+          "text": "The author sends you pull request forty-\ntwo."
+        },
+        {
+          "start": 13.675,
+          "end": 16.15,
+          "text": "Open that request for this exercise."
+        },
+        {
+          "start": 16.2,
+          "end": 18.94,
+          "text": "We’ll check the intent first, then the\nactual patch,"
+        },
+        {
+          "start": 19.12,
+          "end": 21.618,
+          "text": "and finally the checks for the revision\nyou’re reviewing."
+        }
+      ]
+    },
+    {
+      "id": "view",
+      "kind": "terminal",
+      "eyebrow": "GITHUB CLI · READ THE REQUEST",
+      "title": "Read the intent and the scope",
+      "body": "Find the linked issue, the change summary and test evidence.",
+      "narration": "Run the GitHub CLI view command for pull request forty-two. Read the title and the issue link. The author says zero should be rejected and all four unit tests now pass. That tells you what to look for. Keep the issue open beside the terminal so you can compare the requested behavior with the change you’re about to inspect.",
+      "code": "gh pr view 42",
+      "result": "Reject zero order quantities\nCloses #17\nValidation: four unit tests passed.",
+      "focus": "The PR describes the issue and the author’s claimed evidence",
+      "action": "Read the PR title, body and linked issue.",
+      "durationFrames": 506,
+      "duration": 21.083333333333332,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 4.443,
+          "text": "Run the GitHub CLI view command for pull\nrequest forty-two."
+        },
+        {
+          "start": 4.518,
+          "end": 6.568,
+          "text": "Read the title and the issue link."
+        },
+        {
+          "start": 6.618,
+          "end": 10.88,
+          "text": "The author says zero should be rejected\nand all four unit tests now pass."
+        },
+        {
+          "start": 11.514,
+          "end": 13.539,
+          "text": "That tells you what to look for."
+        },
+        {
+          "start": 13.614,
+          "end": 17.214,
+          "text": "Keep the issue open beside the terminal\nso you can compare the requested"
+        },
+        {
+          "start": 17.264,
+          "end": 19.996,
+          "text": "behavior with the change you’re about to\ninspect."
+        }
+      ]
+    },
+    {
+      "id": "diff",
+      "kind": "terminal",
+      "eyebrow": "GITHUB CLI · INSPECT THE PATCH",
+      "title": "Read the changed lines yourself",
+      "body": "Match the implementation and test to the stated behavior.",
+      "narration": "Now view the actual diff. The main change removes equality at the boundary. The second change adds a test that calls the validator with zero. Ask yourself whether that test would fail on the old code. This is the difference between seeing a test name and seeing a test that proves the relevant behavior.",
+      "code": "gh pr diff 42",
+      "result": "-    return quantity >= 0\n+    return quantity > 0\n+    self.assertFalse(is_valid_quantity(0))",
+      "focus": "The diff shows both the changed condition and a test for zero",
+      "action": "Read the patch and locate the assertion that detects the bug.",
+      "durationFrames": 456,
+      "duration": 19.0,
+      "cues": [
+        {
+          "start": 0.439,
+          "end": 2.164,
+          "text": "Now view the actual diff."
+        },
+        {
+          "start": 2.214,
+          "end": 5.139,
+          "text": "The main change removes equality at the\nboundary."
+        },
+        {
+          "start": 5.189,
+          "end": 8.512,
+          "text": "The second change adds a test that calls\nthe validator with zero."
+        },
+        {
+          "start": 9.115,
+          "end": 12.565,
+          "text": "Ask yourself whether that test would\nfail on the old code."
+        },
+        {
+          "start": 12.64,
+          "end": 16.715,
+          "text": "This is the difference between seeing a\ntest name and seeing a test that proves"
+        },
+        {
+          "start": 16.765,
+          "end": 17.917,
+          "text": "the relevant behavior."
+        }
+      ]
+    },
+    {
+      "id": "checks",
+      "kind": "terminal",
+      "eyebrow": "GITHUB CLI · REQUIRED CHECKS",
+      "title": "Confirm the configured checks",
+      "body": "Review the state of the checks for the current revision.",
+      "narration": "Look up the pull request’s required checks. In the training example, the unit test check is required. Open its run if you need to confirm which suite it executed. If the checks are pending, wait for the result. If the author pushes again, refresh the diff and checks for the new head before making your decision.",
+      "code": "gh pr checks 42 --required\ngh pr view 42 --json headRefOid",
+      "result": "Unit tests    pass\nHead revision recorded for this review.",
+      "focus": "The expected CI check applies to the reviewed head revision",
+      "action": "Check required statuses and note the current head revision.",
+      "durationFrames": 465,
+      "duration": 19.375,
+      "cues": [
+        {
+          "start": 0.418,
+          "end": 3.118,
+          "text": "Look up the pull request’s required\nchecks."
+        },
+        {
+          "start": 3.193,
+          "end": 6.518,
+          "text": "In the training example, the unit test\ncheck is required."
+        },
+        {
+          "start": 6.593,
+          "end": 9.792,
+          "text": "Open its run if you need to confirm\nwhich suite it executed."
+        },
+        {
+          "start": 10.416,
+          "end": 13.341,
+          "text": "If the checks are pending, wait for the\nresult."
+        },
+        {
+          "start": 13.416,
+          "end": 17.181,
+          "text": "If the author pushes again, refresh the\ndiff and checks for the new head before"
+        },
+        {
+          "start": 17.231,
+          "end": 18.305,
+          "text": "making your decision."
+        }
+      ]
+    },
+    {
+      "id": "request-changes",
+      "kind": "decision",
+      "eyebrow": "HUMAN DECISION · NEEDS WORK",
+      "title": "Request a specific correction",
+      "body": "Use this branch of the exercise if the evidence is incomplete.",
+      "narration": "Here’s the alternate outcome. The checks are green, but the test added in this version exercises one and never calls the validator with zero. That leaves the bug untested. Use the request-changes option and ask for the missing assertion. Give the author a specific behavior to verify. Review the new revision after they address it.",
+      "code": "gh pr review 42 --request-changes \\\n  --body 'Add a test that calls the validator with zero.'",
+      "result": "Record a request with an actionable reason.",
+      "focus": "An actionable review asks for the missing zero assertion",
+      "action": "In the alternate scenario, record a targeted change request.",
+      "durationFrames": 532,
+      "duration": 22.166666666666668,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 2.489,
+          "text": "Here’s the alternate outcome."
+        },
+        {
+          "start": 2.539,
+          "end": 7.189,
+          "text": "The checks are green, but the test added\nin this version exercises one and never"
+        },
+        {
+          "start": 7.239,
+          "end": 8.853,
+          "text": "calls the validator with zero."
+        },
+        {
+          "start": 9.456,
+          "end": 11.531,
+          "text": "That leaves the bug untested."
+        },
+        {
+          "start": 11.606,
+          "end": 15.356,
+          "text": "Use the request-changes option and ask\nfor the missing assertion."
+        },
+        {
+          "start": 15.431,
+          "end": 17.981,
+          "text": "Give the author a specific behavior to\nverify."
+        },
+        {
+          "start": 18.646,
+          "end": 21.133,
+          "text": "Review the new revision after they\naddress it."
+        }
+      ]
+    },
+    {
+      "id": "approve",
+      "kind": "decision",
+      "eyebrow": "HUMAN DECISION · APPROVAL",
+      "title": "Approve when the evidence supports it",
+      "body": "The authorized peer submits the review under their own identity.",
+      "narration": "Return to the version with the right condition and the actual zero test. If you’ve checked the diff and the required results, you can approve with a short statement of what you verified. Submit the review from your account, then read back the reviews on the pull request. Confirm your decision was saved to the intended request.",
+      "code": "gh pr review 42 --approve \\\n  --body 'Verified the zero regression and required checks.'\ngh pr view 42 --json reviews",
+      "result": "Review recorded for the peer account.",
+      "focus": "The saved review belongs to the authorized peer",
+      "action": "For sufficient evidence, submit and confirm your human approval.",
+      "durationFrames": 483,
+      "duration": 20.125,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.743,
+          "text": "Return to the version with the right\ncondition and the actual zero test."
+        },
+        {
+          "start": 4.818,
+          "end": 7.443,
+          "text": "If you’ve checked the diff and the\nrequired results,"
+        },
+        {
+          "start": 7.493,
+          "end": 10.283,
+          "text": "you can approve with a short statement\nof what you verified."
+        },
+        {
+          "start": 10.942,
+          "end": 14.692,
+          "text": "Submit the review from your account,\nthen read back the reviews on the pull"
+        },
+        {
+          "start": 14.742,
+          "end": 15.867,
+          "text": "request."
+        },
+        {
+          "start": 15.942,
+          "end": 19.057,
+          "text": "Confirm your decision was saved to the\nintended request."
+        }
+      ]
+    },
+    {
+      "id": "exercise",
+      "kind": "diagram",
+      "eyebrow": "PRACTICE · REVIEW RECEIPT",
+      "title": "Explain the evidence behind your decision",
+      "body": "Give a teammate enough detail to verify the review.",
+      "narration": "Pair up and swap author and reviewer roles. Give each reviewer an issue, a pull request, and the check results. In one run, the evidence is complete. In the other, leave out the test for the key input. Ask the reviewer to explain their decision in one sentence. It should tell the author what was verified or what needs to change.",
+      "code": "Intent → Diff → Required checks → Decision",
+      "result": "A human review with a verifiable reason.",
+      "focus": "The review reason names the requirement, patch and check",
+      "action": "Switch roles with a teammate and practice both decisions.",
+      "durationFrames": 513,
+      "duration": 21.375,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.093,
+          "text": "Pair up and swap author and reviewer\nroles."
+        },
+        {
+          "start": 3.143,
+          "end": 7.168,
+          "text": "Give each reviewer an issue, a pull\nrequest, and the check results."
+        },
+        {
+          "start": 7.243,
+          "end": 9.295,
+          "text": "In one run, the evidence is complete."
+        },
+        {
+          "start": 9.913,
+          "end": 12.878,
+          "text": "In the other, leave out the test for the\nkey input."
+        },
+        {
+          "start": 12.953,
+          "end": 16.503,
+          "text": "Ask the reviewer to explain their\ndecision in one sentence."
+        },
+        {
+          "start": 16.578,
+          "end": 19.868,
+          "text": "It should tell the author what was\nverified or what needs to change."
+        }
+      ]
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "durationFrames": 3500,
+  "voiceBuild": "c43128849b6d6c047958575b23bfe114f69ffdab235cb105b515e71fa719be35"
+}

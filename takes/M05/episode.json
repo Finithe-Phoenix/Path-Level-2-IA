@@ -1,0 +1,364 @@
+{
+  "id": "M05",
+  "title": "What Is a Skill? Build Your First One",
+  "subtitle": "Agent Skills in VS Code · Intermediate",
+  "sources": [
+    {
+      "label": "Create Agent Skills in VS Code",
+      "url": "https://code.visualstudio.com/docs/agent-customization/agent-skills"
+    },
+    {
+      "label": "Agent Skills format specification",
+      "url": "https://agentskills.io/specification"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "select-procedure",
+      "kind": "diagram",
+      "eyebrow": "AGENT SKILLS · CHOOSE A PROCEDURE",
+      "title": "Find a task the team repeats",
+      "body": "Package a pull request evidence checklist for reuse.",
+      "narration": "Think about what you do before handing off a pull request. You check the issue, summarize the diff, and share the result of the tests. If you ask for that same draft often, you can give the assistant a skill with this procedure. We’ll use a synthetic example and make the output a draft that the human author can review.",
+      "code": "Input: issue, diff and test output\nProcedure: check and summarize the evidence\nOutput: a draft for the human author",
+      "result": "Chosen skill: prepare pull request evidence.",
+      "focus": "An issue, diff and test output produce one reusable draft",
+      "action": "Choose the recurring PR evidence task for the first skill.",
+      "durationFrames": 474,
+      "duration": 19.75,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 3.689,
+          "text": "Think about what you do before handing\noff a pull request."
+        },
+        {
+          "start": 3.764,
+          "end": 7.777,
+          "text": "You check the issue, summarize the diff,\nand share the result of the tests."
+        },
+        {
+          "start": 8.38,
+          "end": 12.28,
+          "text": "If you ask for that same draft often,\nyou can give the assistant a skill with"
+        },
+        {
+          "start": 12.33,
+          "end": 13.755,
+          "text": "this procedure."
+        },
+        {
+          "start": 13.805,
+          "end": 17.98,
+          "text": "We’ll use a synthetic example and make\nthe output a draft that the human author"
+        },
+        {
+          "start": 18.03,
+          "end": 18.654,
+          "text": "can review."
+        }
+      ]
+    },
+    {
+      "id": "create",
+      "kind": "editor",
+      "eyebrow": "VS CODE · PROJECT SKILL",
+      "title": "Name the skill and say when it applies",
+      "body": "Use the skill folder supported by the Copilot setup.",
+      "narration": "In the training repository, open the supported project skills location for Copilot. This example puts a folder named prepare P R evidence under dot GitHub skills. Add a file named skill dot M D. Give it a matching name and a short description that says which task it helps with. Both of those fields are useful when you verify discovery.",
+      "code": "---\nname: prepare-pr-evidence\ndescription: Draft evidence for a training pull request.\n---",
+      "result": ".github/skills/prepare-pr-evidence/SKILL.md",
+      "focus": "The folder name and skill name match",
+      "action": "Create and name SKILL.md in the approved project skill folder.",
+      "durationFrames": 533,
+      "duration": 22.208333333333332,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.418,
+          "text": "In the training repository, open the\nsupported project skills location for"
+        },
+        {
+          "start": 4.468,
+          "end": 5.743,
+          "text": "Copilot."
+        },
+        {
+          "start": 5.818,
+          "end": 10.581,
+          "text": "This example puts a folder named prepare\nP R evidence under dot GitHub skills."
+        },
+        {
+          "start": 11.184,
+          "end": 13.709,
+          "text": "Add a file named skill dot M D."
+        },
+        {
+          "start": 13.784,
+          "end": 17.184,
+          "text": "Give it a matching name and a short\ndescription that says which task it"
+        },
+        {
+          "start": 17.234,
+          "end": 18.234,
+          "text": "helps with."
+        },
+        {
+          "start": 18.309,
+          "end": 21.138,
+          "text": "Both of those fields are useful when you\nverify discovery."
+        }
+      ]
+    },
+    {
+      "id": "procedure",
+      "kind": "editor",
+      "eyebrow": "SKILL.MD · WRITE THE BODY",
+      "title": "Define the steps and intended output",
+      "body": "Make missing evidence visible in the draft.",
+      "narration": "In the body, tell the skill to read the supplied issue and diff, check the test output, and return a draft with change and verification evidence. Include a step for missing items. If no test output is supplied, the draft should say verification is missing. Keep this first skill focused on preparing text for a human to review.",
+      "code": "1. Read the provided issue and diff.\n2. Check the supplied test output.\n3. Draft: Issue, Change, Verification, Gaps.\nIf data is missing, identify the gap.\nReturn text for the human author to review.",
+      "result": "The scope ends with a draft.",
+      "focus": "The skill describes inputs, steps and what to do when proof is missing",
+      "action": "Write the small procedure and its expected draft sections.",
+      "durationFrames": 512,
+      "duration": 21.333333333333332,
+      "cues": [
+        {
+          "start": 0.414,
+          "end": 3.829,
+          "text": "In the body, tell the skill to read the\nsupplied issue and diff,"
+        },
+        {
+          "start": 3.879,
+          "end": 7.904,
+          "text": "check the test output, and return a\ndraft with change and verification"
+        },
+        {
+          "start": 7.954,
+          "end": 8.559,
+          "text": "evidence."
+        },
+        {
+          "start": 9.172,
+          "end": 11.372,
+          "text": "Include a step for missing items."
+        },
+        {
+          "start": 11.447,
+          "end": 16.372,
+          "text": "If no test output is supplied, the draft\nshould say verification is missing."
+        },
+        {
+          "start": 16.447,
+          "end": 20.235,
+          "text": "Keep this first skill focused on\npreparing text for a human to review."
+        }
+      ]
+    },
+    {
+      "id": "invoke",
+      "kind": "editor",
+      "eyebrow": "COPILOT · INVOKE IN A FRESH CHAT",
+      "title": "Discover and try the skill",
+      "body": "Invoke it with the synthetic order validator change.",
+      "narration": "Open a fresh Copilot chat and confirm the skill is listed in the customizations view. If your setup supports it, choose the skill from the slash menu. Attach the synthetic issue, patch, and passing test output. Now compare each draft claim with its source. In this example, the issue is seventeen, zero is rejected, and the supplied run shows four passing tests.",
+      "code": "/prepare-pr-evidence\nAttach issue #17, the diff and the test output.",
+      "result": "Issue #17\nChange: zero is rejected.\nVerification: four unit tests passed.\nGaps: none in the supplied training evidence.",
+      "focus": "The draft’s claims match the supplied issue, diff and test output",
+      "action": "Invoke the skill in Copilot using the synthetic inputs.",
+      "durationFrames": 587,
+      "duration": 24.458333333333332,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 4.118,
+          "text": "Open a fresh Copilot chat and confirm\nthe skill is listed in the"
+        },
+        {
+          "start": 4.168,
+          "end": 6.018,
+          "text": "customizations view."
+        },
+        {
+          "start": 6.093,
+          "end": 9.387,
+          "text": "If your setup supports it, choose the\nskill from the slash menu."
+        },
+        {
+          "start": 9.999,
+          "end": 13.974,
+          "text": "Attach the synthetic issue, patch, and\npassing test output."
+        },
+        {
+          "start": 14.049,
+          "end": 16.924,
+          "text": "Now compare each draft claim with its\nsource."
+        },
+        {
+          "start": 16.999,
+          "end": 20.874,
+          "text": "In this example, the issue is seventeen,\nzero is rejected,"
+        },
+        {
+          "start": 20.924,
+          "end": 23.361,
+          "text": "and the supplied run shows four passing\ntests."
+        }
+      ]
+    },
+    {
+      "id": "missing-evidence",
+      "kind": "decision",
+      "eyebrow": "SKILL TEST · MISSING INPUT",
+      "title": "Check what happens when proof is missing",
+      "body": "Run the same skill with the test output omitted.",
+      "narration": "Try again with the test output missing. Read what the skill says about verification. The expected result is a visible gap that the author can fill. If it claims the tests passed based only on the PR description, revise the body and rerun. Then try an unrelated request and see whether the description makes the skill’s intended scope clear.",
+      "code": "Inputs: issue and diff only\nExpected: mark verification as missing",
+      "result": "Verification gap surfaced for the human author.",
+      "focus": "Missing test proof is flagged instead of reported as a pass",
+      "action": "Retry in a fresh chat without test output.",
+      "durationFrames": 537,
+      "duration": 22.375,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.018,
+          "text": "Try again with the test output missing."
+        },
+        {
+          "start": 3.093,
+          "end": 5.668,
+          "text": "Read what the skill says about\nverification."
+        },
+        {
+          "start": 5.718,
+          "end": 9.045,
+          "text": "The expected result is a visible gap\nthat the author can fill."
+        },
+        {
+          "start": 9.683,
+          "end": 13.533,
+          "text": "If it claims the tests passed based only\non the PR description,"
+        },
+        {
+          "start": 13.583,
+          "end": 15.808,
+          "text": "revise the body and rerun."
+        },
+        {
+          "start": 15.883,
+          "end": 19.533,
+          "text": "Then try an unrelated request and see\nwhether the description makes the"
+        },
+        {
+          "start": 19.608,
+          "end": 21.255,
+          "text": "skill’s intended scope clear."
+        }
+      ]
+    },
+    {
+      "id": "map-controls",
+      "kind": "diagram",
+      "eyebrow": "SKILLS · FIT WITH OTHER FEATURES",
+      "title": "Separate procedures from access",
+      "body": "A procedure can refer to tools inside the approved boundary.",
+      "narration": "Compare this skill with the repository instruction file. The instruction file describes conventions for work in this project. The skill carries a repeatable procedure you can invoke. Tools let the agent perform actions such as reading a supplied file. An approved M C P server can expose more tools or resources. Our example works with supplied training evidence, and the environment still controls access.",
+      "code": "Instructions → project conventions\nSkill → reusable procedure\nTool → callable action\nMCP → connection to a server",
+      "result": "Review the skill and its dependencies before sharing.",
+      "focus": "A skill provides steps while a tool provides a callable action",
+      "action": "Identify one instruction, skill, tool and connector example.",
+      "durationFrames": 640,
+      "duration": 26.666666666666668,
+      "cues": [
+        {
+          "start": 0.393,
+          "end": 3.818,
+          "text": "Compare this skill with the repository\ninstruction file."
+        },
+        {
+          "start": 3.868,
+          "end": 7.818,
+          "text": "The instruction file describes\nconventions for work in this project."
+        },
+        {
+          "start": 7.868,
+          "end": 10.859,
+          "text": "The skill carries a repeatable procedure\nyou can invoke."
+        },
+        {
+          "start": 11.461,
+          "end": 15.861,
+          "text": "Tools let the agent perform actions such\nas reading a supplied file."
+        },
+        {
+          "start": 15.911,
+          "end": 19.73,
+          "text": "An approved M C P server can expose more\ntools or resources."
+        },
+        {
+          "start": 20.319,
+          "end": 23.244,
+          "text": "Our example works with supplied training\nevidence,"
+        },
+        {
+          "start": 23.294,
+          "end": 25.605,
+          "text": "and the environment still controls\naccess."
+        }
+      ]
+    },
+    {
+      "id": "small-exercise",
+      "kind": "decision",
+      "eyebrow": "PRACTICE · CREATE A SKILL",
+      "title": "Write a second skill with two test cases",
+      "body": "Choose a recurring task and define its limits.",
+      "narration": "Pick another repeated task, like summarizing a failed test for an author. Write a small skill with a clear trigger, steps, and expected output. Try it with complete input and again with one item missing. Ask a teammate to judge each result from the evidence. If they can explain when the skill applies and spot missing proof, you have a useful procedure to share.",
+      "code": "Candidate: summarize a failing test\nCase A: failure output supplied\nCase B: failure output missing",
+      "result": "An invocable procedure with two observable tests.",
+      "focus": "Two test cases demonstrate when the skill is useful",
+      "action": "Draft a second skill and test complete and incomplete evidence.",
+      "durationFrames": 567,
+      "duration": 23.625,
+      "cues": [
+        {
+          "start": 0.389,
+          "end": 5.189,
+          "text": "Pick another repeated task, like\nsummarizing a failed test for an author."
+        },
+        {
+          "start": 5.264,
+          "end": 9.087,
+          "text": "Write a small skill with a clear\ntrigger, steps, and expected output."
+        },
+        {
+          "start": 9.68,
+          "end": 13.405,
+          "text": "Try it with complete input and again\nwith one item missing."
+        },
+        {
+          "start": 13.48,
+          "end": 16.805,
+          "text": "Ask a teammate to judge each result from\nthe evidence."
+        },
+        {
+          "start": 16.88,
+          "end": 20.28,
+          "text": "If they can explain when the skill\napplies and spot missing proof,"
+        },
+        {
+          "start": 20.33,
+          "end": 22.13,
+          "text": "you have a useful procedure to share."
+        }
+      ]
+    }
+  ],
+  "fps": 24,
+  "width": 1280,
+  "height": 720,
+  "durationFrames": 3850,
+  "voiceBuild": "abb398ed616ad6b0954e4b3daa2940f70752998be453afb48ec58130273d5246"
+}

@@ -1,0 +1,101 @@
+{
+  "lessonsSha256": "e4fb801e2d7b9e364331a040ed0245b6074487eb1d27e2c03fa55296c546091f",
+  "episodes": [
+    {
+      "id": "M01",
+      "title": "From Issue to Reviewed PR",
+      "frames": 5178,
+      "fps": 24,
+      "chapters": 9,
+      "sha256": {
+        "videos/M01.mp4": "0a63e7542f129ae6dd91b0ceb92e3f421ee1316890d0275175ba04f1a7a3f073",
+        "subtitles/M01.en.srt": "415c17b8000ff032cb914065761dc2d4b75f64fd119bb832c36e96803bf31594",
+        "narration/M01/narration.m4a": "494d2f2826ed87e779776605a0010efee48fe4f3362fe6cd22c3efdf41beee72",
+        "narration/M01/timing.json": "f27b3ddbc035a542ca4fc774fef5590c2699fcbc68f5dfbbf86127e8d5dbeffa",
+        "takes/M01/episode.json": "b222bed73e8b8479199c7be8d18cacf2c12a4faed4f4ca6414f8c9e370881fda",
+        "takes/M01/narration.m4a": "6a5e2c1801108148d7a6ad21a8382a9affc85dde2e9ddd109557d54074bf99b9",
+        "takes/M01/captions.srt": "0226fcb646d728600f4220b9d305b4017d08308a89877f270433f18be401de56"
+      }
+    },
+    {
+      "id": "M02",
+      "title": "Debug with a Failing Test",
+      "frames": 4103,
+      "fps": 24,
+      "chapters": 7,
+      "sha256": {
+        "videos/M02.mp4": "10893d445b51871dd9a7b872ad25190fffdec5b59b472af202501fc7443f36af",
+        "subtitles/M02.en.srt": "71df26e6a187e65c7a394afde488097737702b143021f91b874351814fd0ac51",
+        "narration/M02/narration.m4a": "e0395773a68a32eff611f2c1289f174566cf9787b683dfefd6aaa7af144059f4",
+        "narration/M02/timing.json": "5898223345410371099e2838ecfa43906cd07ae177d9d01ad7eb8b55f0a4bf39",
+        "takes/M02/episode.json": "a57479349fac1f5ab08948d9e6bfaf1d12911aa9eb56627cefdc9e5c0e4d7f8b",
+        "takes/M02/narration.m4a": "53d76224b4d8610440965888723e93eca4f39258f309404711707c88ac3b3b5c",
+        "takes/M02/captions.srt": "bdba79f5a4a0fb8d113b94112111fbe46f324d8f534b804f777317cca4122480"
+      }
+    },
+    {
+      "id": "M03",
+      "title": "Review a Pull Request with GitHub CLI",
+      "frames": 3955,
+      "fps": 24,
+      "chapters": 7,
+      "sha256": {
+        "videos/M03.mp4": "1a6f9218712e1558b8900bca95d785243cac8e71ba0657c966c652d2b23b68ea",
+        "subtitles/M03.en.srt": "f2788ee45645f688a4a166ed15261671255dd8f33511badcc490b98e50f4240e",
+        "narration/M03/narration.m4a": "709887872a8047b498ad3aa234c85f5e68ad0568a3e6fdd880f502c3c00ba2a3",
+        "narration/M03/timing.json": "3eadb82b9c33590ff3b9e4819e42fac62a479e13baf8b57154426a3a6b14ddbd",
+        "takes/M03/episode.json": "456c1bc56ceaba398edba1630a4be4f77021bdd4f7be8dd312a1990ad919922f",
+        "takes/M03/narration.m4a": "fd526d8d8d02dc8ebf2388d7ffe2cb444f21984cad178d3abab39888879f529d",
+        "takes/M03/captions.srt": "f3c76c061acc500adc8c03f8290695532a27d07e844105e4ea5abb342d2bd404"
+      }
+    },
+    {
+      "id": "M04",
+      "title": "Reusable Prompts and Repository Instructions",
+      "frames": 4212,
+      "fps": 24,
+      "chapters": 7,
+      "sha256": {
+        "videos/M04.mp4": "70a02166018ae72f2aa14cb043cdbb1d3eec1c975701a54341ec68abce1f8175",
+        "subtitles/M04.en.srt": "2bcc137f5a84a0a8188fee44f12f5155670e1b86c82847f8bf1ec34a28ef97d1",
+        "narration/M04/narration.m4a": "9afc60f8fa9e547d987686894b42f13818ff4e74de4c60da7ca5dd57e995129e",
+        "narration/M04/timing.json": "caf18b61d492a0e05d0f7fbdce8a30dc40bc5d8970433f86c8a309e47442f2bc",
+        "takes/M04/episode.json": "b1cbba17dc9b38a826e074bb7b90b27bed422037bfa305f83a4bfd19f381ef8e",
+        "takes/M04/narration.m4a": "5f0b00bed0face8cb3121218af9c4638af5577187eab44b9b4a4d0f74092c8b4",
+        "takes/M04/captions.srt": "9b1cb992c91d5c4cebc2123937f453c3b4aa73e5c8dccbf2af7792e04668c849"
+      }
+    },
+    {
+      "id": "M05",
+      "title": "What Is a Skill? Build Your First One",
+      "frames": 4212,
+      "fps": 24,
+      "chapters": 7,
+      "sha256": {
+        "videos/M05.mp4": "8f4a3cb228c4aad57deade35f5dfb84bc70297f8a2dde7371aaa825ae0623398",
+        "subtitles/M05.en.srt": "d36e0ba5cb363c6443e51622b04c0650b4ceda4ab9dcaa841cee2c6743094c0f",
+        "narration/M05/narration.m4a": "8de856ef452167c820ee81a290c6b7b8377b93d0f29131267ba6bc82bd6a48eb",
+        "narration/M05/timing.json": "ff6cc11b3500a50b4f59be3b96112d861dacb1759a2e7841344462d511ec4e75",
+        "takes/M05/episode.json": "858ef5149397aa3c4dce9f0102b9d0a723e5d649b6ffefb912762c30b8b6acb4",
+        "takes/M05/narration.m4a": "600b696f0c9549a6b037bcce76d280d8777aede714d89a83d9e98a8eeceb7293",
+        "takes/M05/captions.srt": "cfea621290f9a649978743945d76a3d2e48040ce35afe8ec9c3cf3c45919884f"
+      }
+    },
+    {
+      "id": "M06",
+      "title": "Build a Workflow with Review Checkpoints",
+      "frames": 4142,
+      "fps": 24,
+      "chapters": 7,
+      "sha256": {
+        "videos/M06.mp4": "6ca070878f0a478828fd2dd59a9deda238b5e4da6337d8baaf0673e122383d2e",
+        "subtitles/M06.en.srt": "2f86fb051991e4f1412715cfa2b720366b4240361f30a9c8dfd6f39966a223a5",
+        "narration/M06/narration.m4a": "1f053d4feddb2e018e4a264b86e48487f1241401c5afb50295a65c8c49414874",
+        "narration/M06/timing.json": "5414f652963d164b817d98aad03a9a43198305929386dbc8e4d4381c90ee4fef",
+        "takes/M06/episode.json": "d472d97e934783b512490fb9ccf9b77f3d7e9b77156dc1d56aa4e57509ca30ee",
+        "takes/M06/narration.m4a": "c344c3322ae47626ce4103698e6e46cdad6bdf349e65d6f56e93f2b357b293a3",
+        "takes/M06/captions.srt": "8129d71bdc4d5fcce439c65b1d8a7dbb76a6b33505c001a1d1a02ed077671c4b"
+      }
+    }
+  ]
+}

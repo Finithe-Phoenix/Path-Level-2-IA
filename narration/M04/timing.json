@@ -1,0 +1,299 @@
+{
+  "fps": 24,
+  "voiceBuild": "1157e729b25afbbd96d6e8aec0eadce15579894c9d3cacdc26b6d48c991e5d74",
+  "paceBuild": "62ca8d87bce560d65c0d3508124b749ca8a1d4756054acd93a1ac455591e65ae",
+  "delivery": {
+    "targetWordsPerMinute": 146,
+    "inputWordsPerMinute": 155.23,
+    "tempo": 0.96088841,
+    "outputWordsPerMinute": 145.98
+  },
+  "audioSha256": "9afc60f8fa9e547d987686894b42f13818ff4e74de4c60da7ca5dd57e995129e",
+  "captionsSha256": "2bcc137f5a84a0a8188fee44f12f5155670e1b86c82847f8bf1ec34a28ef97d1",
+  "scenes": [
+    {
+      "id": "sort-guidance",
+      "scriptSha256": "c903a009e68d51d9ac54b988e7a6b255f494061a977b6ad1d9630e103012081a",
+      "durationFrames": 592,
+      "cues": [
+        {
+          "start": 0.405,
+          "end": 3.085,
+          "text": "Picture two issues in the same\nrepository."
+        },
+        {
+          "start": 3.163,
+          "end": 5.296,
+          "text": "One is about zero quantities."
+        },
+        {
+          "start": 5.374,
+          "end": 7.95,
+          "text": "Another asks for a clearer error\nmessage."
+        },
+        {
+          "start": 8.002,
+          "end": 10.835,
+          "text": "The issue ID and expected behavior\nchange."
+        },
+        {
+          "start": 11.451,
+          "end": 15.458,
+          "text": "The location of the test suite may stay\nthe same across both."
+        },
+        {
+          "start": 15.51,
+          "end": 19.256,
+          "text": "Put recurring project conventions where\nthe agent can load them,"
+        },
+        {
+          "start": 19.308,
+          "end": 23.142,
+          "text": "and keep the individual issue details in\nthe prompt you send for that task."
+        }
+      ]
+    },
+    {
+      "id": "prompt-template",
+      "scriptSha256": "a498c7e80fd19ecba8df7a23001c46d6e333c05a08e8a21ceff5763698b85ef5",
+      "durationFrames": 543,
+      "cues": [
+        {
+          "start": 0.409,
+          "end": 3.869,
+          "text": "Open a Markdown template in the training\nrepository."
+        },
+        {
+          "start": 3.947,
+          "end": 8.259,
+          "text": "Write a request that takes an issue and\nthe current source and tests as inputs."
+        },
+        {
+          "start": 8.913,
+          "end": 13.455,
+          "text": "Ask for the proposed edit, the affected\nfiles, and a way to verify it."
+        },
+        {
+          "start": 13.507,
+          "end": 16.369,
+          "text": "The template should end at a plan you\ncan review."
+        },
+        {
+          "start": 16.473,
+          "end": 20.886,
+          "text": "On the approved Copilot setup, paste the\nfilled-in text into chat to run it."
+        }
+      ]
+    },
+    {
+      "id": "context-run",
+      "scriptSha256": "177826cd46b62a28c82ebad6d7a72a8983eb8e401e572240649f9f5ca41e784b",
+      "durationFrames": 622,
+      "cues": [
+        {
+          "start": 0.453,
+          "end": 4.225,
+          "text": "Start Plan in the current branch and\nattach the issue, validator,"
+        },
+        {
+          "start": 4.277,
+          "end": 6.046,
+          "text": "and matching test file."
+        },
+        {
+          "start": 6.125,
+          "end": 8.614,
+          "text": "Paste the template with the issue\nreference filled in."
+        },
+        {
+          "start": 9.236,
+          "end": 13.477,
+          "text": "The response should identify the\nexisting comparison and explain why a"
+        },
+        {
+          "start": 13.529,
+          "end": 15.715,
+          "text": "zero test would expose it."
+        },
+        {
+          "start": 15.793,
+          "end": 18.401,
+          "text": "Open the cited lines and check them\nyourself."
+        },
+        {
+          "start": 19.05,
+          "end": 23.655,
+          "text": "If a file name is unfamiliar, confirm it\nin the workspace before accepting the"
+        },
+        {
+          "start": 23.707,
+          "end": 24.169,
+          "text": "plan."
+        }
+      ]
+    },
+    {
+      "id": "instructions",
+      "scriptSha256": "c14c16ee3f4a5d289cf99bbced7e150829130ab69c8f30368236384f0682c659",
+      "durationFrames": 639,
+      "cues": [
+        {
+          "start": 0.409,
+          "end": 3.453,
+          "text": "Open the repository root in VS Code."
+        },
+        {
+          "start": 3.531,
+          "end": 8.526,
+          "text": "For this Copilot example, find or create\nthe project instructions file in the dot"
+        },
+        {
+          "start": 8.579,
+          "end": 9.546,
+          "text": "GitHub folder."
+        },
+        {
+          "start": 10.2,
+          "end": 15.273,
+          "text": "Add the convention that unit tests use\nthe existing unittest suite under tests."
+        },
+        {
+          "start": 15.351,
+          "end": 19.228,
+          "text": "Keep the rule short and include a\nreliable reference for the verification"
+        },
+        {
+          "start": 19.28,
+          "end": 19.779,
+          "text": "command."
+        },
+        {
+          "start": 20.438,
+          "end": 24.847,
+          "text": "If instructions already exist, edit the\nexisting guidance with your team."
+        }
+      ]
+    },
+    {
+      "id": "discovery",
+      "scriptSha256": "0ce9dec8c4dcf39897127c0dfe3471a06f8ddb130d9ac31708453d83bd09e90d",
+      "durationFrames": 588,
+      "cues": [
+        {
+          "start": 0.409,
+          "end": 4.806,
+          "text": "Open the agent customizations view and\nfind the instruction file."
+        },
+        {
+          "start": 4.884,
+          "end": 7.902,
+          "text": "Then start a fresh chat in the same\nworkspace."
+        },
+        {
+          "start": 7.98,
+          "end": 11.278,
+          "text": "Ask for a regression plan without\nrepeating the test convention."
+        },
+        {
+          "start": 11.916,
+          "end": 15.881,
+          "text": "Where your client shows references,\nconfirm the file was included."
+        },
+        {
+          "start": 15.959,
+          "end": 19.003,
+          "text": "Read the proposed test location and\nframework."
+        },
+        {
+          "start": 19.107,
+          "end": 22.707,
+          "text": "File discovery and correct use give you\ntwo different things to check."
+        }
+      ]
+    },
+    {
+      "id": "roles",
+      "scriptSha256": "65ccc201eeae87aae0a2c9cad9d4e7ed38c172d4167adccfd38e77c7a7fdae78",
+      "durationFrames": 670,
+      "cues": [
+        {
+          "start": 0.405,
+          "end": 3.293,
+          "text": "The prompt asks for a particular piece\nof work."
+        },
+        {
+          "start": 3.345,
+          "end": 7.326,
+          "text": "The instruction file supplies reusable\nproject conventions."
+        },
+        {
+          "start": 7.378,
+          "end": 11.278,
+          "text": "Required checks and actual tool\npermissions enforce separate boundaries."
+        },
+        {
+          "start": 11.974,
+          "end": 16.085,
+          "text": "Some VS Code versions also offer\nrunnable prompt files,"
+        },
+        {
+          "start": 16.137,
+          "end": 19.077,
+          "text": "with support depending on the selected\nharness."
+        },
+        {
+          "start": 19.129,
+          "end": 22.286,
+          "text": "The Markdown template in this example is\nready to paste."
+        },
+        {
+          "start": 22.956,
+          "end": 26.41,
+          "text": "In the next lesson, we’ll make a\nrecurring procedure into a skill."
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "scriptSha256": "bd700943736a121cd232dad223811821c1b17c9ab6c31043a3317e09a7c16562",
+      "durationFrames": 558,
+      "cues": [
+        {
+          "start": 0.435,
+          "end": 3.505,
+          "text": "Use the template for a second synthetic\nissue."
+        },
+        {
+          "start": 3.583,
+          "end": 7.512,
+          "text": "Swap the issue reference and attach the\ncurrent files for that task."
+        },
+        {
+          "start": 7.59,
+          "end": 11.675,
+          "text": "Compare the two plans and find one part\nthat changed because the requirement"
+        },
+        {
+          "start": 11.727,
+          "end": 12.389,
+          "text": "changed."
+        },
+        {
+          "start": 13.048,
+          "end": 16.092,
+          "text": "Then find the test convention that\ncarried over."
+        },
+        {
+          "start": 16.17,
+          "end": 19.813,
+          "text": "A teammate should be able to reproduce\nthat setup in a fresh session with the"
+        },
+        {
+          "start": 19.891,
+          "end": 21.276,
+          "text": "same project files."
+        }
+      ]
+    }
+  ]
+}
