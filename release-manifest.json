@@ -4,97 +4,97 @@
     {
       "id": "M01",
       "title": "From Issue to Reviewed PR",
-      "frames": 5178,
+      "frames": 5074,
       "fps": 24,
       "chapters": 9,
       "sha256": {
-        "videos/M01.mp4": "0a63e7542f129ae6dd91b0ceb92e3f421ee1316890d0275175ba04f1a7a3f073",
-        "subtitles/M01.en.srt": "415c17b8000ff032cb914065761dc2d4b75f64fd119bb832c36e96803bf31594",
-        "narration/M01/narration.m4a": "494d2f2826ed87e779776605a0010efee48fe4f3362fe6cd22c3efdf41beee72",
-        "narration/M01/timing.json": "f27b3ddbc035a542ca4fc774fef5590c2699fcbc68f5dfbbf86127e8d5dbeffa",
-        "takes/M01/episode.json": "b222bed73e8b8479199c7be8d18cacf2c12a4faed4f4ca6414f8c9e370881fda",
-        "takes/M01/narration.m4a": "6a5e2c1801108148d7a6ad21a8382a9affc85dde2e9ddd109557d54074bf99b9",
-        "takes/M01/captions.srt": "0226fcb646d728600f4220b9d305b4017d08308a89877f270433f18be401de56"
+        "videos/M01.mp4": "9fc0915e36360673a21354f07ed096f8714aeac8d224e7826b0bd0b0846ebdd7",
+        "subtitles/M01.en.srt": "c6f11953be1493fb5c9b35324dd1e9130f95fac17324eb6a0532af11bc5a662e",
+        "narration/M01/narration.m4a": "950e0079fd2188ba7828610d26dfb8aac8fa1f2db616e61d7c3dcf1820081131",
+        "narration/M01/timing.json": "352ce592b72309682eecffdeb9aab56a55f6ad2d62a31514cec3c7ca8b62b3ae",
+        "takes/M01/episode.json": "196656f26c94066c6819da778f4409442a2c48f1ede04d903fd5767c19f330d9",
+        "takes/M01/narration.m4a": "b952947eaa08b7e957eb6a555b8dff7dfbb0f1428bcc4738f43de53b9f78af70",
+        "takes/M01/captions.srt": "f7efa1ae5fe3ed5291dc3c428577df0308f803539d3c1a88b2bdc43d840aff63"
       }
     },
     {
       "id": "M02",
       "title": "Debug with a Failing Test",
-      "frames": 4103,
+      "frames": 4020,
       "fps": 24,
       "chapters": 7,
       "sha256": {
-        "videos/M02.mp4": "10893d445b51871dd9a7b872ad25190fffdec5b59b472af202501fc7443f36af",
-        "subtitles/M02.en.srt": "71df26e6a187e65c7a394afde488097737702b143021f91b874351814fd0ac51",
-        "narration/M02/narration.m4a": "e0395773a68a32eff611f2c1289f174566cf9787b683dfefd6aaa7af144059f4",
-        "narration/M02/timing.json": "5898223345410371099e2838ecfa43906cd07ae177d9d01ad7eb8b55f0a4bf39",
-        "takes/M02/episode.json": "a57479349fac1f5ab08948d9e6bfaf1d12911aa9eb56627cefdc9e5c0e4d7f8b",
-        "takes/M02/narration.m4a": "53d76224b4d8610440965888723e93eca4f39258f309404711707c88ac3b3b5c",
-        "takes/M02/captions.srt": "bdba79f5a4a0fb8d113b94112111fbe46f324d8f534b804f777317cca4122480"
+        "videos/M02.mp4": "d47bc13513cc37ddb6b9af3a602297e870d64f32407b546e0a94b861ede5e92a",
+        "subtitles/M02.en.srt": "4fd1082ea6287cea6ffa0c33b33f4f696eabd7c86b50f450be581737590a0a31",
+        "narration/M02/narration.m4a": "c97b0334ffa112a29fce333f34a6448ebadb38b72483907473135aed377de260",
+        "narration/M02/timing.json": "d0df6a3602aab5c057cda39ff15dfd591ae9e043ecda6c5fa3e9dad0f6b15403",
+        "takes/M02/episode.json": "b8df4c639d1d8227038a3b066c6cc165f851ad2bfb682a27d1ff3dc80b6d5ec3",
+        "takes/M02/narration.m4a": "5b4aecc57d456597fd82935a896f7483e0eed12477f930e6fb68993ca3d4e52c",
+        "takes/M02/captions.srt": "48e0363dd7b3578df5592d045d6c3888e105c6d36bff90feda0ae7291fed33d8"
       }
     },
     {
       "id": "M03",
       "title": "Review a Pull Request with GitHub CLI",
-      "frames": 3955,
+      "frames": 3875,
       "fps": 24,
       "chapters": 7,
       "sha256": {
-        "videos/M03.mp4": "1a6f9218712e1558b8900bca95d785243cac8e71ba0657c966c652d2b23b68ea",
-        "subtitles/M03.en.srt": "f2788ee45645f688a4a166ed15261671255dd8f33511badcc490b98e50f4240e",
-        "narration/M03/narration.m4a": "709887872a8047b498ad3aa234c85f5e68ad0568a3e6fdd880f502c3c00ba2a3",
-        "narration/M03/timing.json": "3eadb82b9c33590ff3b9e4819e42fac62a479e13baf8b57154426a3a6b14ddbd",
-        "takes/M03/episode.json": "456c1bc56ceaba398edba1630a4be4f77021bdd4f7be8dd312a1990ad919922f",
-        "takes/M03/narration.m4a": "fd526d8d8d02dc8ebf2388d7ffe2cb444f21984cad178d3abab39888879f529d",
-        "takes/M03/captions.srt": "f3c76c061acc500adc8c03f8290695532a27d07e844105e4ea5abb342d2bd404"
+        "videos/M03.mp4": "74fa54d382ff603f386a6bb6125043d9fbc833ebcf5ca2f109c554412d685ffb",
+        "subtitles/M03.en.srt": "554bd66fa87f71d0c4432813e1c44472228b32de560704fa53d4941855680f10",
+        "narration/M03/narration.m4a": "998264b49f79b485ac158030c8b019380acffe0b301c49e792512672975049f4",
+        "narration/M03/timing.json": "2864a3b6db2703aca3def87e5c0681e801468cc5115a569e12094a438ea53bf3",
+        "takes/M03/episode.json": "29920e18a51a9a1a35fb930373f2aedce9607043684cf483dcc761e642f882fb",
+        "takes/M03/narration.m4a": "b8440f79a2c53706f243181d92d4b16312e6aef284be3eef2784e3e5b33b770b",
+        "takes/M03/captions.srt": "97c98565a69940de8e0e4550253f5ce4b1a6a71c5c7b29a2304a6d672a2834ec"
       }
     },
     {
       "id": "M04",
       "title": "Reusable Prompts and Repository Instructions",
-      "frames": 4212,
+      "frames": 4127,
       "fps": 24,
       "chapters": 7,
       "sha256": {
-        "videos/M04.mp4": "70a02166018ae72f2aa14cb043cdbb1d3eec1c975701a54341ec68abce1f8175",
-        "subtitles/M04.en.srt": "2bcc137f5a84a0a8188fee44f12f5155670e1b86c82847f8bf1ec34a28ef97d1",
-        "narration/M04/narration.m4a": "9afc60f8fa9e547d987686894b42f13818ff4e74de4c60da7ca5dd57e995129e",
-        "narration/M04/timing.json": "caf18b61d492a0e05d0f7fbdce8a30dc40bc5d8970433f86c8a309e47442f2bc",
-        "takes/M04/episode.json": "b1cbba17dc9b38a826e074bb7b90b27bed422037bfa305f83a4bfd19f381ef8e",
-        "takes/M04/narration.m4a": "5f0b00bed0face8cb3121218af9c4638af5577187eab44b9b4a4d0f74092c8b4",
-        "takes/M04/captions.srt": "9b1cb992c91d5c4cebc2123937f453c3b4aa73e5c8dccbf2af7792e04668c849"
+        "videos/M04.mp4": "05db2b2c14df92fc66136677352a109d919f05cdaa61916c12bc2e302c5929ff",
+        "subtitles/M04.en.srt": "e6d4b16d34e37ed3b4d760722eb66fab4224a953c0140baff02040d4736f9064",
+        "narration/M04/narration.m4a": "dc6c51a6823daa64fd8c10a23ae5f651140b4548daec7779c65ee93679db5890",
+        "narration/M04/timing.json": "56a2f083ed960db82bf603313b479567956907b0c64f1cc34355cfd27f1da656",
+        "takes/M04/episode.json": "83b485aec74c097e7800c023fd6293853913d168e5d1a399b66c7a5419e442a7",
+        "takes/M04/narration.m4a": "968a72be068115cc2a60b046d58d02c2c9f8e471b64905a85a7f4edbb1c13a92",
+        "takes/M04/captions.srt": "5792177d1488b99a4449e4f61febee7b1b835d547ea62cda4eea23fbe4ef5d2f"
       }
     },
     {
       "id": "M05",
       "title": "What Is a Skill? Build Your First One",
-      "frames": 4212,
+      "frames": 4127,
       "fps": 24,
       "chapters": 7,
       "sha256": {
-        "videos/M05.mp4": "8f4a3cb228c4aad57deade35f5dfb84bc70297f8a2dde7371aaa825ae0623398",
-        "subtitles/M05.en.srt": "d36e0ba5cb363c6443e51622b04c0650b4ceda4ab9dcaa841cee2c6743094c0f",
-        "narration/M05/narration.m4a": "8de856ef452167c820ee81a290c6b7b8377b93d0f29131267ba6bc82bd6a48eb",
-        "narration/M05/timing.json": "ff6cc11b3500a50b4f59be3b96112d861dacb1759a2e7841344462d511ec4e75",
-        "takes/M05/episode.json": "858ef5149397aa3c4dce9f0102b9d0a723e5d649b6ffefb912762c30b8b6acb4",
-        "takes/M05/narration.m4a": "600b696f0c9549a6b037bcce76d280d8777aede714d89a83d9e98a8eeceb7293",
-        "takes/M05/captions.srt": "cfea621290f9a649978743945d76a3d2e48040ce35afe8ec9c3cf3c45919884f"
+        "videos/M05.mp4": "ebdfdeac4ebc73e05081efd46ff316cd345747ca3cee8742a096c423b588c77a",
+        "subtitles/M05.en.srt": "d7a5dbcc7e24a097bb153f0dc05708ad03334e1c4e7502859fe45d788c5d8d92",
+        "narration/M05/narration.m4a": "8c7c9ae81141ecad4912951471a36b8c656f5c7d67886057510217d0d4771136",
+        "narration/M05/timing.json": "4cad5b1b41abeb69f14b72494ddb913bd704f435f1140ba57cb10020640fd846",
+        "takes/M05/episode.json": "7bc917ac2cc7b8854eab6e959d78eb780ed0f72a864da0ef5867a4f4b11f0163",
+        "takes/M05/narration.m4a": "30fdf01d44bfac162508f213bea4320b6f88176e836edefe1bf0596024cf1606",
+        "takes/M05/captions.srt": "87876c2833e463711f0f4d0a1a85b7351587afd6c8627ce5cfed5ebfe08635f6"
       }
     },
     {
       "id": "M06",
       "title": "Build a Workflow with Review Checkpoints",
-      "frames": 4142,
+      "frames": 4059,
       "fps": 24,
       "chapters": 7,
       "sha256": {
-        "videos/M06.mp4": "6ca070878f0a478828fd2dd59a9deda238b5e4da6337d8baaf0673e122383d2e",
-        "subtitles/M06.en.srt": "2f86fb051991e4f1412715cfa2b720366b4240361f30a9c8dfd6f39966a223a5",
-        "narration/M06/narration.m4a": "1f053d4feddb2e018e4a264b86e48487f1241401c5afb50295a65c8c49414874",
-        "narration/M06/timing.json": "5414f652963d164b817d98aad03a9a43198305929386dbc8e4d4381c90ee4fef",
-        "takes/M06/episode.json": "d472d97e934783b512490fb9ccf9b77f3d7e9b77156dc1d56aa4e57509ca30ee",
-        "takes/M06/narration.m4a": "c344c3322ae47626ce4103698e6e46cdad6bdf349e65d6f56e93f2b357b293a3",
-        "takes/M06/captions.srt": "8129d71bdc4d5fcce439c65b1d8a7dbb76a6b33505c001a1d1a02ed077671c4b"
+        "videos/M06.mp4": "677d4cb2c03e7671b6fab8563ac68b78ff6c32fecc54127696bc5046eced9b66",
+        "subtitles/M06.en.srt": "97ed08538a61a2af48c13822645e27a59ee0438cd7892557de253890b9a1f19a",
+        "narration/M06/narration.m4a": "4dea61121d9e88c9ab6e22b97743cbb23fd1cf83910175a9843448f21c477792",
+        "narration/M06/timing.json": "5207e03b59b87c5dce0db1e62cdda98a260dc1e39bf2ecd99f971c1f0a1ea0b1",
+        "takes/M06/episode.json": "55c135b48b0693df1c5a8fafa9d323a88228354c00bbfaaa315dd28ebd9a8d8e",
+        "takes/M06/narration.m4a": "799f77c5608fc83dda16de78ffbd64f0a200e1959a42e9b9eceb06e1457399b7",
+        "takes/M06/captions.srt": "5e0131e9c388a628d0ce6a002d2a47afb283e59fa369b174a1d1f18afa056a1d"
       }
     }
   ]
