@@ -1,279 +1,267 @@
 1
-00:00:00,443 --> 00:00:03,763
+00:00:00,289 --> 00:00:03,286
 Here’s a small bug that makes a useful
 full walkthrough.
 
 2
-00:00:03,816 --> 00:00:06,306
-The order validator accepts zero.
+00:00:03,586 --> 00:00:08,383
+The order validator accepts zero. The
+issue says an order needs at least one
 
 3
-00:00:06,360 --> 00:00:08,887
-The issue says an order needs at least
-one item.
+00:00:08,395 --> 00:00:09,045
+item.
 
 4
-00:00:09,542 --> 00:00:13,531
+00:00:09,093 --> 00:00:12,493
 We’ll trace the cause in Copilot Plan,
 make the change in Agent,
 
 5
-00:00:13,681 --> 00:00:15,876
+00:00:12,619 --> 00:00:14,133
 and show both test runs.
 
 6
-00:00:15,957 --> 00:00:18,473
+00:00:14,612 --> 00:00:17,035
 Then we’ll hand the pull request to a
 teammate,
 
 7
-00:00:18,527 --> 00:00:20,892
+00:00:17,206 --> 00:00:20,175
 who reviews it with GitHub CLI.
 
 8
-00:00:22,838 --> 00:00:24,551
-Open the training issue.
+00:00:21,895 --> 00:00:25,407
+Open the training issue. We want one and
+five to pass,
 
 9
-00:00:24,605 --> 00:00:28,754
-We want one and five to pass, and zero
-and negative one to fail.
+00:00:25,714 --> 00:00:28,023
+and zero and negative one to fail.
 
 10
-00:00:28,808 --> 00:00:31,578
+00:00:28,557 --> 00:00:31,401
 We also want to keep the existing
 function signature.
 
 11
-00:00:32,236 --> 00:00:35,207
+00:00:31,772 --> 00:00:36,527
 Those details make the work easy to
-check.
+check. For your own training repository,
 
 12
-00:00:35,261 --> 00:00:39,765
-For your own training repository, use
-the actual issue number GitHub assigned.
+00:00:36,721 --> 00:00:39,436
+use the actual issue number GitHub
+assigned.
 
 13
-00:00:40,479 --> 00:00:43,051
+00:00:39,845 --> 00:00:42,091
 Seventeen is the number in this example.
 
 14
-00:00:45,031 --> 00:00:49,876
+00:00:43,581 --> 00:00:47,761
 In VS Code, open Copilot Chat and select
 Plan when it’s available.
 
 15
-00:00:49,957 --> 00:00:53,084
+00:00:48,149 --> 00:00:51,492
 Add the issue, the validator, and the
 existing tests.
 
 16
-00:00:53,778 --> 00:00:57,821
+00:00:52,141 --> 00:00:55,491
 Ask why zero gets through and which test
 would expose it.
 
 17
-00:00:57,874 --> 00:01:02,211
+00:00:55,889 --> 00:01:00,197
 The plan should point to the equality in
 the return line and propose a new zero
 
 18
-00:01:02,265 --> 00:01:02,766
+00:01:00,197 --> 00:01:00,847
 test.
 
 19
-00:01:03,446 --> 00:01:06,796
+00:01:01,077 --> 00:01:04,427
 Read both files and agree on the scope
 before changing them.
 
 20
-00:01:09,095 --> 00:01:12,120
+00:01:06,209 --> 00:01:11,051
 Switch to Agent and ask for the test
-first.
+first. Inspect the edit and confirm the
 
 21
-00:01:12,201 --> 00:01:16,698
-Inspect the edit and confirm the source
-comparison has stayed the same.
+00:01:11,051 --> 00:01:13,167
+source comparison has stayed the same.
 
 22
-00:01:16,778 --> 00:01:19,979
+00:01:13,577 --> 00:01:17,167
 Run the approved test command on a
 checkout with that edit.
 
 23
-00:01:20,663 --> 00:01:22,939
-Find the line for the zero test.
+00:01:17,700 --> 00:01:22,439
+Find the line for the zero test. We
+expected this failure because the old
 
 24
-00:01:22,993 --> 00:01:27,811
-We expected this failure because the old
+00:01:22,439 --> 00:01:24,931
 implementation still returns true.
 
 25
-00:01:27,892 --> 00:01:31,981
+00:01:25,419 --> 00:01:29,231
 If you see an import error instead, sort
 out the test setup first.
 
 26
-00:01:34,266 --> 00:01:36,515
-Now make the one-line fix.
+00:01:30,997 --> 00:01:34,129
+Now make the one-line fix. When we
+remove equality,
 
 27
-00:01:36,569 --> 00:01:40,879
-When we remove equality, zero no longer
-satisfies the condition.
+00:01:34,277 --> 00:01:36,589
+zero no longer satisfies the condition.
 
 28
-00:01:40,959 --> 00:01:44,265
+00:01:37,111 --> 00:01:40,743
 One and five still do, and negative one
 still fails it.
 
 29
-00:01:44,937 --> 00:01:47,962
+00:01:41,322 --> 00:01:45,961
 Run the same suite in the approved
-environment.
+environment. The result should say four
 
 30
-00:01:48,016 --> 00:01:51,309
-The result should say four tests ran and
-passed.
+00:01:45,961 --> 00:01:47,481
+tests ran and passed.
 
 31
-00:01:51,389 --> 00:01:55,137
+00:01:48,015 --> 00:01:52,388
 Keep the red and green results together
 so your teammate can see what the new
 
 32
-00:01:55,191 --> 00:01:56,050
+00:01:52,388 --> 00:01:53,212
 test proved.
 
 33
-00:01:58,296 --> 00:02:01,187
-Open Source Control in VS Code.
+00:01:55,001 --> 00:01:59,947
+Open Source Control in VS Code. Check
+the validator diff for the comparison
 
 34
-00:02:01,267 --> 00:02:04,212
-Check the validator diff for the
-comparison change,
+00:01:59,947 --> 00:02:04,051
+change, then open the test diff and find
+the zero assertion.
 
 35
-00:02:04,266 --> 00:02:07,242
-then open the test diff and find the
-zero assertion.
-
-36
-00:02:07,897 --> 00:02:10,949
+00:02:04,585 --> 00:02:06,805
 Check that no unrelated file came along.
 
-37
-00:02:11,029 --> 00:02:15,313
+36
+00:02:07,294 --> 00:02:11,756
 Commit these two changes on the training
 feature branch and publish the branch
 
-38
-00:02:15,366 --> 00:02:16,478
+37
+00:02:11,756 --> 00:02:13,080
 through Source Control.
 
-39
-00:02:17,179 --> 00:02:20,803
+38
+00:02:13,399 --> 00:02:16,867
 You now have a small patch, with each
 change tied to the issue.
 
-40
-00:02:23,068 --> 00:02:27,780
+39
+00:02:18,497 --> 00:02:23,448
 In the approved remote terminal, use an
 authorized author account and a checkout
 
-41
-00:02:27,807 --> 00:02:29,440
+40
+00:02:23,448 --> 00:02:24,625
 of the published branch.
 
-42
-00:02:29,493 --> 00:02:31,512
+41
+00:02:25,033 --> 00:02:28,634
 Prepare a short pull request body.
+Include the change,
+
+42
+00:02:28,804 --> 00:02:31,882
+the red and green test evidence, and the
+issue link.
 
 43
-00:02:32,167 --> 00:02:36,515
-Include the change, the red and green
-test evidence, and the issue link.
-
-44
-00:02:36,595 --> 00:02:39,861
+00:02:32,530 --> 00:02:38,810
 Open the pull request with GitHub CLI.
-
-45
-00:02:39,915 --> 00:02:42,137
 Our example receives number forty-two.
 
-46
-00:02:42,813 --> 00:02:45,662
+44
+00:02:39,237 --> 00:02:42,536
 Give that number to a separate
 authorized teammate.
 
-47
-00:02:47,838 --> 00:02:51,586
+45
+00:02:44,224 --> 00:02:47,702
 The reviewer uses their own account in
 the approved terminal.
 
-48
-00:02:51,666 --> 00:02:56,346
+46
+00:02:48,020 --> 00:02:52,734
 Read the pull request, inspect the diff,
 and check the required results for that
 
-49
-00:02:56,399 --> 00:02:56,965
+47
+00:02:52,734 --> 00:02:53,384
 revision.
 
-50
-00:02:57,633 --> 00:03:01,729
+48
+00:02:53,797 --> 00:02:57,900
 If the evidence supports approval, the
 human reviewer records it.
 
-51
-00:03:01,809 --> 00:03:05,236
+49
+00:02:58,411 --> 00:03:01,361
 If something is missing, they request a
 specific change.
 
+50
+00:03:01,799 --> 00:03:06,333
+This is the teammate’s decision. We’ll
+practice both outcomes in the dedicated
+
+51
+00:03:06,333 --> 00:03:07,167
+review lesson.
+
 52
-00:03:05,316 --> 00:03:06,967
-This is the teammate’s decision.
+00:03:08,956 --> 00:03:13,262
+Look back at what you can hand over.
+There’s an issue with clear inputs,
 
 53
-00:03:07,632 --> 00:03:10,985
-We’ll practice both outcomes in the
-dedicated review lesson.
+00:03:13,636 --> 00:03:18,169
+a small diff, a test that failed then
+passed, and a peer decision.
 
 54
-00:03:13,262 --> 00:03:15,511
-Look back at what you can hand over.
-
-55
-00:03:15,564 --> 00:03:18,504
-There’s an issue with clear inputs, a
-small diff,
-
-56
-00:03:18,557 --> 00:03:21,511
-a test that failed then passed, and a
-peer decision.
-
-57
-00:03:22,157 --> 00:03:25,530
+00:03:18,726 --> 00:03:21,582
 Try the same workflow on another
 synthetic issue.
 
-58
-00:03:25,610 --> 00:03:29,465
+55
+00:03:22,069 --> 00:03:25,969
 Replace the example identifiers with
 your own training issue and pull
 
-59
-00:03:29,519 --> 00:03:30,188
+56
+00:03:25,969 --> 00:03:26,619
 request.
 
-60
-00:03:30,890 --> 00:03:33,850
+57
+00:03:27,022 --> 00:03:29,954
 Ask your teammate to tell you which
 evidence they used.

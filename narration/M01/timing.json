@@ -1,54 +1,56 @@
 {
+  "audioEdition": 3,
   "fps": 24,
-  "voiceBuild": "cb70a66ae86b50101712ca0d134fb3cb3121af0d21d36a492061605125346c7c",
-  "paceBuild": "920936a2c21a26543d207c3409887d00ac17a0be3305251cf41d1f3a1b6910c8",
+  "voiceBuild": "fb29aa7b64c375b52385f91d1dae90fe619c721609f2c780eaf3895605a96c27",
+  "paceBuild": "38c0508c20e8bd9478a3e1da580b929e3c70386dc2112315fa1a77dc0cdaf5d3",
   "delivery": {
-    "targetWordsPerMinute": 146,
-    "inputWordsPerMinute": 160.07,
-    "tempo": 0.93384173,
-    "outputWordsPerMinute": 146.0
+    "targetWordsPerMinute": 149,
+    "inputWordsPerMinute": 173.04,
+    "tempo": 0.88203013,
+    "outputWordsPerMinute": 148.99
   },
-  "audioSha256": "494d2f2826ed87e779776605a0010efee48fe4f3362fe6cd22c3efdf41beee72",
-  "captionsSha256": "415c17b8000ff032cb914065761dc2d4b75f64fd119bb832c36e96803bf31594",
+  "audioSha256": "950e0079fd2188ba7828610d26dfb8aac8fa1f2db616e61d7c3dcf1820081131",
+  "captionsSha256": "c6f11953be1493fb5c9b35324dd1e9130f95fac17324eb6a0532af11bc5a662e",
   "scenes": [
     {
       "id": "intro",
       "scriptSha256": "c1456afb2b6c73caf4290aabdbc0d28757b6f654d047d148bbb84e3682bdfb3c",
-      "durationFrames": 538,
+      "durationFrames": 518,
       "cues": [
         {
-          "start": 0.443,
-          "end": 3.763,
+          "start": 0.289,
+          "end": 3.286,
           "text": "Here’s a small bug that makes a useful\nfull walkthrough."
         },
         {
-          "start": 3.816,
-          "end": 6.306,
-          "text": "The order validator accepts zero."
+          "start": 3.586,
+          "end": 8.383,
+          "text": "The order validator accepts zero. The\nissue says an order needs at least one"
         },
         {
-          "start": 6.36,
-          "end": 8.887,
-          "text": "The issue says an order needs at least\none item."
+          "start": 8.395,
+          "end": 9.045,
+          "text": "item.",
+          "speechEnd": 8.724
         },
         {
-          "start": 9.542,
-          "end": 13.531,
+          "start": 9.093,
+          "end": 12.493,
           "text": "We’ll trace the cause in Copilot Plan,\nmake the change in Agent,"
         },
         {
-          "start": 13.681,
-          "end": 15.876,
+          "start": 12.619,
+          "end": 14.133,
           "text": "and show both test runs."
         },
         {
-          "start": 15.957,
-          "end": 18.473,
+          "start": 14.612,
+          "end": 17.035,
           "text": "Then we’ll hand the pull request to a\nteammate,"
         },
         {
-          "start": 18.527,
-          "end": 20.892,
+          "start": 17.206,
+          "end": 20.175,
           "text": "who reviews it with GitHub CLI."
         }
       ]
@@ -56,36 +58,36 @@
     {
       "id": "issue",
       "scriptSha256": "3b2dd31e56bd3b8d5dd31ab60887761a9c356e905a1f782009b508a58cdb4943",
-      "durationFrames": 532,
+      "durationFrames": 521,
       "cues": [
         {
-          "start": 0.421,
-          "end": 2.134,
-          "text": "Open the training issue."
+          "start": 0.312,
+          "end": 3.824,
+          "text": "Open the training issue. We want one and\nfive to pass,"
         },
         {
-          "start": 2.188,
-          "end": 6.337,
-          "text": "We want one and five to pass, and zero\nand negative one to fail."
+          "start": 4.131,
+          "end": 6.44,
+          "text": "and zero and negative one to fail."
         },
         {
-          "start": 6.391,
-          "end": 9.161,
+          "start": 6.974,
+          "end": 9.818,
           "text": "We also want to keep the existing\nfunction signature."
         },
         {
-          "start": 9.819,
-          "end": 12.79,
-          "text": "Those details make the work easy to\ncheck."
+          "start": 10.189,
+          "end": 14.944,
+          "text": "Those details make the work easy to\ncheck. For your own training repository,"
         },
         {
-          "start": 12.844,
-          "end": 17.348,
-          "text": "For your own training repository, use\nthe actual issue number GitHub assigned."
+          "start": 15.138,
+          "end": 17.853,
+          "text": "use the actual issue number GitHub\nassigned."
         },
         {
-          "start": 18.062,
-          "end": 20.634,
+          "start": 18.262,
+          "end": 20.508,
           "text": "Seventeen is the number in this example."
         }
       ]
@@ -93,36 +95,37 @@
     {
       "id": "plan",
       "scriptSha256": "edca6c9c543d272a9b6a34fd4e8c07ba3b5ad7e9d6c6a7af6a415da844a76efd",
-      "durationFrames": 577,
+      "durationFrames": 542,
       "cues": [
         {
-          "start": 0.448,
-          "end": 5.293,
+          "start": 0.289,
+          "end": 4.469,
           "text": "In VS Code, open Copilot Chat and select\nPlan when it’s available."
         },
         {
-          "start": 5.374,
-          "end": 8.501,
+          "start": 4.857,
+          "end": 8.2,
           "text": "Add the issue, the validator, and the\nexisting tests."
         },
         {
-          "start": 9.195,
-          "end": 13.238,
+          "start": 8.849,
+          "end": 12.199,
           "text": "Ask why zero gets through and which test\nwould expose it."
         },
         {
-          "start": 13.291,
-          "end": 17.628,
+          "start": 12.597,
+          "end": 16.905,
           "text": "The plan should point to the equality in\nthe return line and propose a new zero"
         },
         {
-          "start": 17.682,
-          "end": 18.183,
-          "text": "test."
+          "start": 16.905,
+          "end": 17.555,
+          "text": "test.",
+          "speechEnd": 17.308
         },
         {
-          "start": 18.863,
-          "end": 22.213,
+          "start": 17.785,
+          "end": 21.135,
           "text": "Read both files and agree on the scope\nbefore changing them."
         }
       ]
@@ -130,35 +133,35 @@
     {
       "id": "regression",
       "scriptSha256": "4b606716902609d131df4cc75ba58b00eb61b5d52bcc2664fb5cb9bd5dcec279",
-      "durationFrames": 604,
+      "durationFrames": 596,
       "cues": [
         {
-          "start": 0.47,
-          "end": 3.495,
-          "text": "Switch to Agent and ask for the test\nfirst."
+          "start": 0.334,
+          "end": 5.176,
+          "text": "Switch to Agent and ask for the test\nfirst. Inspect the edit and confirm the"
         },
         {
-          "start": 3.576,
-          "end": 8.073,
-          "text": "Inspect the edit and confirm the source\ncomparison has stayed the same."
+          "start": 5.176,
+          "end": 7.292,
+          "text": "source comparison has stayed the same."
         },
         {
-          "start": 8.153,
-          "end": 11.354,
+          "start": 7.702,
+          "end": 11.292,
           "text": "Run the approved test command on a\ncheckout with that edit."
         },
         {
-          "start": 12.038,
-          "end": 14.314,
-          "text": "Find the line for the zero test."
+          "start": 11.825,
+          "end": 16.564,
+          "text": "Find the line for the zero test. We\nexpected this failure because the old"
         },
         {
-          "start": 14.368,
-          "end": 19.186,
-          "text": "We expected this failure because the old\nimplementation still returns true."
+          "start": 16.564,
+          "end": 19.056,
+          "text": "implementation still returns true."
         },
         {
-          "start": 19.267,
+          "start": 19.544,
           "end": 23.356,
           "text": "If you see an import error instead, sort\nout the test setup first."
         }
@@ -167,41 +170,41 @@
     {
       "id": "fix",
       "scriptSha256": "663d837eb7b6bce591e8bc54e2715872b8945ed2f1ee2f30ca5fec7f636feb59",
-      "durationFrames": 578,
+      "durationFrames": 575,
       "cues": [
         {
-          "start": 0.474,
-          "end": 2.723,
-          "text": "Now make the one-line fix."
+          "start": 0.289,
+          "end": 3.421,
+          "text": "Now make the one-line fix. When we\nremove equality,"
         },
         {
-          "start": 2.777,
-          "end": 7.087,
-          "text": "When we remove equality, zero no longer\nsatisfies the condition."
+          "start": 3.569,
+          "end": 5.881,
+          "text": "zero no longer satisfies the condition."
         },
         {
-          "start": 7.167,
-          "end": 10.473,
+          "start": 6.403,
+          "end": 10.035,
           "text": "One and five still do, and negative one\nstill fails it."
         },
         {
-          "start": 11.145,
-          "end": 14.17,
-          "text": "Run the same suite in the approved\nenvironment."
+          "start": 10.614,
+          "end": 15.253,
+          "text": "Run the same suite in the approved\nenvironment. The result should say four"
         },
         {
-          "start": 14.224,
-          "end": 17.517,
-          "text": "The result should say four tests ran and\npassed."
+          "start": 15.253,
+          "end": 16.773,
+          "text": "tests ran and passed."
         },
         {
-          "start": 17.597,
-          "end": 21.345,
+          "start": 17.307,
+          "end": 21.68,
           "text": "Keep the red and green results together\nso your teammate can see what the new"
         },
         {
-          "start": 21.399,
-          "end": 22.258,
+          "start": 21.68,
+          "end": 22.504,
           "text": "test proved."
         }
       ]
@@ -209,41 +212,36 @@
     {
       "id": "diff",
       "scriptSha256": "40bc58909c940e6ebf88793870c741f9ca954dd6ff475308e165d3b94e8b9760",
-      "durationFrames": 594,
+      "durationFrames": 565,
       "cues": [
         {
-          "start": 0.421,
-          "end": 3.312,
-          "text": "Open Source Control in VS Code."
+          "start": 0.334,
+          "end": 5.28,
+          "text": "Open Source Control in VS Code. Check\nthe validator diff for the comparison"
         },
         {
-          "start": 3.392,
-          "end": 6.337,
-          "text": "Check the validator diff for the\ncomparison change,"
+          "start": 5.28,
+          "end": 9.384,
+          "text": "change, then open the test diff and find\nthe zero assertion."
         },
         {
-          "start": 6.391,
-          "end": 9.367,
-          "text": "then open the test diff and find the\nzero assertion."
-        },
-        {
-          "start": 10.022,
-          "end": 13.074,
+          "start": 9.918,
+          "end": 12.138,
           "text": "Check that no unrelated file came along."
         },
         {
-          "start": 13.154,
-          "end": 17.438,
+          "start": 12.627,
+          "end": 17.089,
           "text": "Commit these two changes on the training\nfeature branch and publish the branch"
         },
         {
-          "start": 17.491,
-          "end": 18.603,
+          "start": 17.089,
+          "end": 18.413,
           "text": "through Source Control."
         },
         {
-          "start": 19.304,
-          "end": 22.928,
+          "start": 18.732,
+          "end": 22.2,
           "text": "You now have a small patch, with each\nchange tied to the issue."
         }
       ]
@@ -251,41 +249,36 @@
     {
       "id": "pr",
       "scriptSha256": "f7d1ea904ea0cf57704e45ef46068588f5778a70335027137db9c054887b16e8",
-      "durationFrames": 595,
+      "durationFrames": 618,
       "cues": [
         {
-          "start": 0.443,
-          "end": 5.155,
+          "start": 0.289,
+          "end": 5.24,
           "text": "In the approved remote terminal, use an\nauthorized author account and a checkout"
         },
         {
-          "start": 5.182,
-          "end": 6.815,
+          "start": 5.24,
+          "end": 6.417,
           "text": "of the published branch."
         },
         {
-          "start": 6.868,
-          "end": 8.887,
-          "text": "Prepare a short pull request body."
+          "start": 6.825,
+          "end": 10.426,
+          "text": "Prepare a short pull request body.\nInclude the change,"
         },
         {
-          "start": 9.542,
-          "end": 13.89,
-          "text": "Include the change, the red and green\ntest evidence, and the issue link."
+          "start": 10.596,
+          "end": 13.674,
+          "text": "the red and green test evidence, and the\nissue link."
         },
         {
-          "start": 13.97,
-          "end": 17.236,
-          "text": "Open the pull request with GitHub CLI."
+          "start": 14.322,
+          "end": 20.602,
+          "text": "Open the pull request with GitHub CLI.\nOur example receives number forty-two."
         },
         {
-          "start": 17.29,
-          "end": 19.512,
-          "text": "Our example receives number forty-two."
-        },
-        {
-          "start": 20.188,
-          "end": 23.037,
+          "start": 21.029,
+          "end": 24.328,
           "text": "Give that number to a separate\nauthorized teammate."
         }
       ]
@@ -293,83 +286,80 @@
     {
       "id": "review",
       "scriptSha256": "01787cdb2123c8fa596b1c99931a633407859fe056505a3a9249b7c80073d54b",
-      "durationFrames": 609,
+      "durationFrames": 593,
       "cues": [
         {
-          "start": 0.421,
-          "end": 4.169,
+          "start": 0.266,
+          "end": 3.744,
           "text": "The reviewer uses their own account in\nthe approved terminal."
         },
         {
-          "start": 4.249,
-          "end": 8.929,
+          "start": 4.062,
+          "end": 8.776,
           "text": "Read the pull request, inspect the diff,\nand check the required results for that"
         },
         {
-          "start": 8.982,
-          "end": 9.548,
-          "text": "revision."
+          "start": 8.776,
+          "end": 9.426,
+          "text": "revision.",
+          "speechEnd": 9.373
         },
         {
-          "start": 10.216,
-          "end": 14.312,
+          "start": 9.839,
+          "end": 13.942,
           "text": "If the evidence supports approval, the\nhuman reviewer records it."
         },
         {
-          "start": 14.392,
-          "end": 17.819,
+          "start": 14.453,
+          "end": 17.403,
           "text": "If something is missing, they request a\nspecific change."
         },
         {
-          "start": 17.899,
-          "end": 19.55,
-          "text": "This is the teammate’s decision."
+          "start": 17.841,
+          "end": 22.375,
+          "text": "This is the teammate’s decision. We’ll\npractice both outcomes in the dedicated"
         },
         {
-          "start": 20.215,
-          "end": 23.568,
-          "text": "We’ll practice both outcomes in the\ndedicated review lesson."
+          "start": 22.375,
+          "end": 23.209,
+          "text": "review lesson."
         }
       ]
     },
     {
       "id": "closure",
       "scriptSha256": "a270cb2726b5d153a77fa26c2f4df5b3c5022190f48116e055dc051be4901c1e",
-      "durationFrames": 551,
+      "durationFrames": 546,
       "cues": [
         {
-          "start": 0.47,
-          "end": 2.719,
-          "text": "Look back at what you can hand over."
+          "start": 0.289,
+          "end": 4.595,
+          "text": "Look back at what you can hand over.\nThere’s an issue with clear inputs,"
         },
         {
-          "start": 2.772,
-          "end": 5.712,
-          "text": "There’s an issue with clear inputs, a\nsmall diff,"
+          "start": 4.969,
+          "end": 9.502,
+          "text": "a small diff, a test that failed then\npassed, and a peer decision."
         },
         {
-          "start": 5.765,
-          "end": 8.719,
-          "text": "a test that failed then passed, and a\npeer decision."
-        },
-        {
-          "start": 9.365,
-          "end": 12.738,
+          "start": 10.059,
+          "end": 12.915,
           "text": "Try the same workflow on another\nsynthetic issue."
         },
         {
-          "start": 12.818,
-          "end": 16.673,
+          "start": 13.402,
+          "end": 17.302,
           "text": "Replace the example identifiers with\nyour own training issue and pull"
         },
         {
-          "start": 16.727,
-          "end": 17.396,
-          "text": "request."
+          "start": 17.302,
+          "end": 17.952,
+          "text": "request.",
+          "speechEnd": 17.832
         },
         {
-          "start": 18.098,
-          "end": 21.058,
+          "start": 18.355,
+          "end": 21.287,
           "text": "Ask your teammate to tell you which\nevidence they used."
         }
       ]
