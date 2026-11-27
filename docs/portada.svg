@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="440" viewBox="0 0 1440 440" role="img" aria-labelledby="title desc">
+<title id="title">RUTA DE IA  /  MEDIO · Del issue al PR</title>
+<desc id="desc">Cambio de comparación tras una prueba fallida. 6 videos · 17 min 55 s</desc>
+<defs>
+<pattern id="dots" width="13" height="13" patternUnits="userSpaceOnUse">
+<circle cx="2" cy="2" r="0.85" fill="#15202a" opacity=".15"/>
+</pattern>
+<pattern id="graph" width="23" height="23" patternUnits="userSpaceOnUse">
+<path d="M23 0H0V23" fill="none" stroke="#cbcadd" stroke-width="1"/>
+</pattern>
+</defs>
+<rect x="0" y="0" width="1440" height="440" rx="0" fill="#15202a" />
+<rect x="589" y="0" width="851" height="440" rx="0" fill="#f3e7c8" />
+<rect x="589" y="0" width="851" height="440" rx="0" fill="url(#dots)" />
+<g transform="translate(52 51)">
+<path d="M0 5L8 0L8 17L0 22Z" fill="#f1ce83" stroke-linejoin="round"/>
+<path d="M10 0L18 5L18 22L10 17Z" fill="#f1ce83" stroke-linejoin="round"/>
+<path d="M20 5L28 0L28 17L20 22Z" fill="#f1ce83" stroke-linejoin="round"/>
+</g>
+<text x="98" y="69" font-family="DejaVu Sans Mono,monospace" font-size="19" font-weight="700" fill="#f7f5ed" text-anchor="start" letter-spacing="1.3">RUTA DE IA  /  MEDIO</text>
+<text x="48" y="192" font-family="Open Sans,DejaVu Sans,sans-serif" font-size="80" font-weight="700" fill="#f7f5ed" text-anchor="start" letter-spacing="-4">Del issue</text>
+<text x="48" y="280" font-family="Open Sans,DejaVu Sans,sans-serif" font-size="80" font-weight="700" fill="#f1ce83" text-anchor="start" letter-spacing="-4">al PR</text>
+<path d="M52 339L526 339" fill="none" stroke="#495661" stroke-width="1.7" />
+<path d="M54 363L54 381L68 372Z" fill="#f1ce83" />
+<text x="83" y="380" font-family="DejaVu Sans Mono,monospace" font-size="21" font-weight="400" fill="#e5e8df" text-anchor="start" >6 videos · 17 min 55 s</text>
+<path d="M618 30L631 30" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M618 30L618 43" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M1411 30L1398 30" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M1411 30L1411 43" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M618 410L631 410" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M618 410L618 397" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M1411 410L1398 410" fill="none" stroke="#15202a" stroke-width="1.5" />
+<path d="M1411 410L1411 397" fill="none" stroke="#15202a" stroke-width="1.5" />
+<text x="652" y="69" font-family="DejaVu Sans Mono,monospace" font-size="19" font-weight="700" fill="#15202a" text-anchor="start" letter-spacing="1.1">UNA PRUEBA DE REGRESIÓN</text>
+<rect x="661" y="108" width="479" height="223" rx="9" fill="#15202a" />
+<rect x="652" y="99" width="479" height="223" rx="9" fill="#fffae9" stroke="#15202a" stroke-width="2.6" />
+<text x="679" y="133" font-family="DejaVu Sans Mono,monospace" font-size="21" font-weight="700" fill="#15202a" text-anchor="start" >order_quantity.py</text>
+<path d="M653 151L1130 151" fill="none" stroke="#15202a" stroke-width="2" />
+<rect x="669" y="169" width="444" height="53" rx="5" fill="#fbd4c3" />
+<rect x="669" y="232" width="444" height="53" rx="5" fill="#c7ecc9" />
+<text x="685" y="203" font-family="DejaVu Sans Mono,monospace" font-size="31" font-weight="700" fill="#963f33" text-anchor="start" >−</text>
+<text x="731" y="203" font-family="DejaVu Sans Mono,monospace" font-size="26" font-weight="400" fill="#15202a" text-anchor="start" >return quantity &gt;= 0</text>
+<text x="685" y="268" font-family="DejaVu Sans Mono,monospace" font-size="31" font-weight="700" fill="#24623f" text-anchor="start" >+</text>
+<text x="731" y="268" font-family="DejaVu Sans Mono,monospace" font-size="26" font-weight="400" fill="#15202a" text-anchor="start" >return quantity &gt; 0</text>
+<path d="M903 331V358Q903 373 919 373H1235Q1250 373 1250 357V324" fill="none" stroke="#15202a" stroke-width="3.5" />
+<path d="M1242 338L1250 324L1258 338" fill="none" stroke="#15202a" stroke-width="3.5" />
+<rect x="1170" y="124" width="180" height="201" rx="12" fill="#15202a" />
+<rect x="1161" y="115" width="180" height="201" rx="12" fill="#b4df95" stroke="#15202a" stroke-width="2.6" />
+<circle cx="1251" cy="164" r="26" fill="#eff6d5" stroke="#15202a" stroke-width="2.4"/>
+<path d="M1238 164l9 9 17-20" fill="none" stroke="#15202a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1250" y="239" font-family="DejaVu Sans Mono,monospace" font-size="45" font-weight="700" fill="#15202a" text-anchor="middle" >4/4</text>
+<text x="1250" y="278" font-family="DejaVu Sans Mono,monospace" font-size="22" font-weight="400" fill="#15202a" text-anchor="middle" >pruebas</text>
+</svg>

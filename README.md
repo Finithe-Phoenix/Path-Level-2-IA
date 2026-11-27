@@ -1,55 +1,41 @@
-# Path de IA · Medio
+# Medio · Del issue al pull request
 
-Lleva un issue desde el plan hasta la revisión humana con GitHub CLI. Convierte los pasos repetidos en instrucciones, skills y workflows que puedas revisar.
+![Tras cambiar >= por > en el validador, las cuatro pruebas de cantidades pasan.](docs/portada.png)
 
-Cada episodio tiene narración y subtítulos en inglés. El MP4 incluye capítulos para volver a un paso. [Descargar el episodio de muestra M01](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M01.mp4).
+Sigue un defecto desde su reporte hasta la revisión de un compañero. Usarás Plan y Agent de Copilot en VS Code, reunirás pruebas de la corrección y verás cómo una persona revisa el PR con GitHub CLI desde el terminal autorizado.
 
-[![Fragmentos del episodio M01](preview.gif)](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M01.mp4)
+**6 episodios · 17:55 en total.** Narración y subtítulos en inglés. Cada MP4 incluye capítulos para repetir un paso.
 
-| Episodio | Demostración | Duración | Archivos |
-|---|---|---:|---|
-| M01 | From Issue to Reviewed PR | 3:36 | [MP4](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M01.mp4) · [SRT](subtitles/M01.en.srt) |
-| M02 | Debug with a Failing Test | 2:51 | [MP4](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M02.mp4) · [SRT](subtitles/M02.en.srt) |
-| M03 | Review a Pull Request with GitHub CLI | 2:45 | [MP4](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M03.mp4) · [SRT](subtitles/M03.en.srt) |
-| M04 | Reusable Prompts and Repository Instructions | 2:56 | [MP4](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M04.mp4) · [SRT](subtitles/M04.en.srt) |
-| M05 | What Is a Skill? Build Your First One | 2:56 | [MP4](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M05.mp4) · [SRT](subtitles/M05.en.srt) |
-| M06 | Build a Workflow with Review Checkpoints | 2:53 | [MP4](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/refs/heads/main/videos/M06.mp4) · [SRT](subtitles/M06.en.srt) |
+[Descargar el primer episodio (M01)](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M01.mp4) · [Editar o reconstruir los videos](PRODUCCION.md)
 
-## Reconstruir un episodio en GCP
+## Temario
 
-En el workspace remoto, abre la raíz del repositorio. La producción utiliza Linux, Node.js 24, Python 3.12, FFmpeg y DejaVu Sans. La pista de voz, los subtítulos y los tiempos ya están en Git.
+Selecciona el título para descargar el video. Puedes activar los subtítulos en tu reproductor o descargar el archivo SRT de cada episodio.
 
-```bash
-npm ci --prefix engine
-python3 studio.py list
-python3 studio.py render M01
-python3 studio.py verify M01 --decode
-```
+| Episodio | Qué harás en pantalla |
+| --- | --- |
+| **M01** · [From Issue to Reviewed PR](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M01.mp4)<br>3:36 · [SRT](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/subtitles/M01.en.srt) | Planifica una corrección, observa la prueba fallar y presenta el diff y los resultados en un PR. |
+| **M02** · [Debug with a Failing Test](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M02.mp4)<br>2:51 · [SRT](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/subtitles/M02.en.srt) | Convierte el síntoma en una prueba que falla para cero y verifica que pasa tras cambiar la condición. |
+| **M03** · [Review a Pull Request with GitHub CLI](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M03.mp4)<br>2:45 · [SRT](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/subtitles/M03.en.srt) | Inspecciona el diff y los checks con `gh`. Justifica por qué pedirías un cambio o aprobarías el PR. |
+| **M04** · [Reusable Prompts and Repository Instructions](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M04.mp4)<br>2:56 · [SRT](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/subtitles/M04.en.srt) | Guarda una plantilla para tareas repetidas y registra en las instrucciones del repositorio la convención de pruebas. |
+| **M05** · [What Is a Skill? Build Your First One](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M05.mp4)<br>2:56 · [SRT](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/subtitles/M05.en.srt) | Escribe un `SKILL.md` para preparar la evidencia de un PR. Pruébalo también cuando falten resultados. |
+| **M06** · [Build a Workflow with Review Checkpoints](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/videos/M06.mp4)<br>2:53 · [SRT](https://github.com/Finithe-Phoenix/Path-Level-2-IA/raw/videos-v2.0.0/subtitles/M06.en.srt) | Diseña un workflow que detiene la entrega si las pruebas fallan y reserva la decisión del PR al revisor. |
 
-El MP4 se escribe en `videos/M01.mp4`. Para renderizar el path completo, usa `python3 studio.py render all`. Para generar el proyecto HTML editable y su vista previa, ejecuta `python3 studio.py project M01` y abre `build/M01/preview.html`. Las instrucciones de HyperFrames y Remotion están en [engine/README.md](engine/README.md).
+<details>
+<summary>Ver un fragmento animado de M01</summary>
 
-## Cambiar lo que se explica o cómo suena
+![Fragmento de la demostración M01](preview.gif)
 
-Edita el guion, las acciones y los resultados de pantalla en [lessons/episodes.json](lessons/episodes.json). Cada episodio enlaza sus fuentes técnicas. El estilo, el ritmo y la mezcla de voces están en [voice/profile.json](voice/profile.json). Si cambias el texto hablado o el orden de las escenas, regenera la voz antes del render.
+</details>
 
-```bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r voice/requirements.txt
-python voice/assets.py
-python studio.py voice M01
-python studio.py render M01
-python studio.py verify M01 --decode
-```
+## Laboratorio de práctica
 
-Para cambiar solo el ritmo, usa la toma original guardada en `takes/`. Por ejemplo, ejecuta `python3 studio.py pace M01 --target-wpm 142` y vuelve a renderizar. Este ajuste conserva el tono y recalcula escenas y subtítulos. La síntesis de voz descarga dos archivos de modelo con hashes fijados y los reutiliza. Las pistas AAC ya publicadas permiten editar la animación y volver a exportar sin sintetizar voz. [Detalles de narración](voice/README.md).
+El proyecto incluye el validador de cantidades y tres pruebas iniciales. Puedes reproducir el fallo con un pedido de cero unidades y comprobar el resultado de tu arreglo en el workspace autorizado. [Abrir el laboratorio](lab/README.md).
 
-## Versionar la siguiente edición
+## Fuentes editables
 
-Crea una rama para el cambio y conserva el ID de cada episodio. Tras revisar el video, ejecuta `python3 studio.py manifest` para renovar el inventario y `python3 studio.py verify all --release` para cotejar los archivos. Si el episodio editado aparece en la vista previa del README, regenera ese fragmento con `python3 preview.py`. Incluye las fuentes y los archivos generados en el mismo PR. La guía de trabajo está en [AGENTS.md](AGENTS.md).
+Para preparar una nueva edición, empieza por el guion y las referencias técnicas de cada escena. El repositorio también guarda los dibujos, la toma original de voz, el audio final y sus marcas de tiempo. [Guiones y referencias](lessons/episodes.json) · [Guía de producción](PRODUCCION.md) · [Guía para agentes](AGENTS.md) · [Descargar las fuentes de v2.0.0 en ZIP](https://github.com/Finithe-Phoenix/Path-Level-2-IA/archive/refs/tags/v2.0.0.zip).
 
-Las pantallas y los datos del curso son simulaciones didácticas. Los PR del ejemplo los revisa una persona mediante `gh` en el terminal autorizado. Claude Code y OpenCode se ejecutan dentro del workspace de GCP.
+## Otras rutas
 
-Puedes consultar los [materiales de producción de la edición 1](archive/v1/) y los [videos originales](https://github.com/Finithe-Phoenix/Path-Level-2-IA/releases/tag/v1.0.0).
-
-El validador y sus tres pruebas iniciales están en el [laboratorio de práctica](lab/).
+[Básico](https://github.com/Finithe-Phoenix/Path-Level-1-IA) · [Avanzado](https://github.com/Finithe-Phoenix/Path-Level-3-IA) · [Managers](https://github.com/Finithe-Phoenix/Path-Level-Managers-IA)
