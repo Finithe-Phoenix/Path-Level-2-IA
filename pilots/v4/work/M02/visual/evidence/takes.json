@@ -1,0 +1,215 @@
+{
+  "originRevision": "5d0254a9f129834b8d0a8d7c8c1e59bb7367335b",
+  "fixtureRevision": "55f51e3f56850977d316839127b2fea358a3a52b",
+  "runtime": "Python 3.12.14",
+  "takes": {
+    "baseline": {
+      "command": "python -B -m unittest discover -s tests -v",
+      "lines": [
+        "test_accepts_five (test_order_quantity.OrderQuantityTests.test_accepts_five) ... ok",
+        "test_accepts_one (test_order_quantity.OrderQuantityTests.test_accepts_one) ... ok",
+        "test_rejects_negative_one (test_order_quantity.OrderQuantityTests.test_rejects_negative_one) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 3 tests in 0.000s",
+        "",
+        "OK"
+      ],
+      "tests": [
+        {
+          "name": "test_accepts_five",
+          "status": "ok"
+        },
+        {
+          "name": "test_accepts_one",
+          "status": "ok"
+        },
+        {
+          "name": "test_rejects_negative_one",
+          "status": "ok"
+        }
+      ],
+      "original": "baseline.cast"
+    },
+    "probe": {
+      "command": "python -B -c \"from order_quantity import is_valid_quantity; print(is_valid_quantity(0))\"",
+      "lines": [
+        "True"
+      ],
+      "tests": [],
+      "original": "probe.cast"
+    },
+    "source": {
+      "command": "nl -ba order_quantity.py",
+      "lines": [
+        "     1\tdef is_valid_quantity(quantity: int) -> bool:",
+        "     2\t    \"\"\"Return whether an integer order quantity is valid.\"\"\"",
+        "     3\t    return quantity >= 0"
+      ],
+      "tests": [],
+      "original": "source.cast"
+    },
+    "regression": {
+      "command": "git diff -- tests/test_order_quantity.py",
+      "lines": [
+        "diff --git a/tests/test_order_quantity.py b/tests/test_order_quantity.py",
+        "index 963e5a4..4d20b3c 100644",
+        "--- a/tests/test_order_quantity.py",
+        "+++ b/tests/test_order_quantity.py",
+        "@@ -12,3 +12,6 @@ class OrderQuantityTests(unittest.TestCase):",
+        " ",
+        "     def test_rejects_negative_one(self):",
+        "         self.assertFalse(is_valid_quantity(-1))",
+        "+",
+        "+    def test_rejects_zero(self):",
+        "+        self.assertFalse(is_valid_quantity(0))"
+      ],
+      "tests": [],
+      "original": "regression.cast"
+    },
+    "red": {
+      "command": "python -B -m unittest discover -s tests -v",
+      "lines": [
+        "test_accepts_five (test_order_quantity.OrderQuantityTests.test_accepts_five) ... ok",
+        "test_accepts_one (test_order_quantity.OrderQuantityTests.test_accepts_one) ... ok",
+        "test_rejects_negative_one (test_order_quantity.OrderQuantityTests.test_rejects_negative_one) ... ok",
+        "test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero) ... FAIL",
+        "",
+        "======================================================================",
+        "FAIL: test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero)",
+        "----------------------------------------------------------------------",
+        "Traceback (most recent call last):",
+        "  File \"/tmp/quantity-lab-itv_3e95/red/tests/test_order_quantity.py\", line 17, in test_rejects_zero",
+        "    self.assertFalse(is_valid_quantity(0))",
+        "AssertionError: True is not false",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 4 tests in 0.001s",
+        "",
+        "FAILED (failures=1)"
+      ],
+      "tests": [
+        {
+          "name": "test_accepts_five",
+          "status": "ok"
+        },
+        {
+          "name": "test_accepts_one",
+          "status": "ok"
+        },
+        {
+          "name": "test_rejects_negative_one",
+          "status": "ok"
+        },
+        {
+          "name": "test_rejects_zero",
+          "status": "FAIL"
+        }
+      ],
+      "original": "red.cast"
+    },
+    "patch": {
+      "command": "git diff -- order_quantity.py",
+      "lines": [
+        "diff --git a/order_quantity.py b/order_quantity.py",
+        "index f874c3b..42dd87e 100644",
+        "--- a/order_quantity.py",
+        "+++ b/order_quantity.py",
+        "@@ -1,3 +1,3 @@",
+        " def is_valid_quantity(quantity: int) -> bool:",
+        "     \"\"\"Return whether an integer order quantity is valid.\"\"\"",
+        "-    return quantity >= 0",
+        "+    return quantity > 0"
+      ],
+      "tests": [],
+      "original": "patch.cast"
+    },
+    "green": {
+      "command": "python -B -m unittest discover -s tests -v",
+      "lines": [
+        "test_accepts_five (test_order_quantity.OrderQuantityTests.test_accepts_five) ... ok",
+        "test_accepts_one (test_order_quantity.OrderQuantityTests.test_accepts_one) ... ok",
+        "test_rejects_negative_one (test_order_quantity.OrderQuantityTests.test_rejects_negative_one) ... ok",
+        "test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 4 tests in 0.001s",
+        "",
+        "OK"
+      ],
+      "tests": [
+        {
+          "name": "test_accepts_five",
+          "status": "ok"
+        },
+        {
+          "name": "test_accepts_one",
+          "status": "ok"
+        },
+        {
+          "name": "test_rejects_negative_one",
+          "status": "ok"
+        },
+        {
+          "name": "test_rejects_zero",
+          "status": "ok"
+        }
+      ],
+      "original": "green.cast"
+    },
+    "transfer": {
+      "command": "python -B -c \"for q in (99, 100, 101): print(q, 0 < q < 100, 0 < q <= 100)\"",
+      "lines": [
+        "99 True True",
+        "100 False True",
+        "101 False False"
+      ],
+      "tests": [],
+      "original": "transfer.cast"
+    },
+    "upper-red": {
+      "command": "python -B -m unittest -v test_practice",
+      "lines": [
+        "test_accepts_upper_limit (test_practice.UpperLimitTests.test_accepts_upper_limit) ... FAIL",
+        "",
+        "======================================================================",
+        "FAIL: test_accepts_upper_limit (test_practice.UpperLimitTests.test_accepts_upper_limit)",
+        "----------------------------------------------------------------------",
+        "Traceback (most recent call last):",
+        "  File \"/tmp/quantity-lab-u9g9zd15/practice-red/test_practice.py\", line 6, in test_accepts_upper_limit",
+        "    self.assertTrue(accepts(100))",
+        "AssertionError: False is not true",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 1 test in 0.004s",
+        "",
+        "FAILED (failures=1)"
+      ],
+      "tests": [
+        {
+          "name": "test_accepts_upper_limit",
+          "status": "FAIL"
+        }
+      ],
+      "original": "upper-red.cast"
+    },
+    "upper-green": {
+      "command": "python -B -m unittest -v test_practice",
+      "lines": [
+        "test_accepts_upper_limit (test_practice.UpperLimitTests.test_accepts_upper_limit) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 1 test in 0.010s",
+        "",
+        "OK"
+      ],
+      "tests": [
+        {
+          "name": "test_accepts_upper_limit",
+          "status": "ok"
+        }
+      ],
+      "original": "upper-green.cast"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "M02",
+  "seconds": 296.375,
+  "scenes": 8,
+  "beats": 23,
+  "cues": 83,
+  "authoredHolds": [
+    {
+      "scene": "baseline",
+      "beat": "coverage",
+      "seconds": 2.0
+    },
+    {
+      "scene": "prediction",
+      "beat": "substitute",
+      "seconds": 1.5
+    },
+    {
+      "scene": "patch",
+      "beat": "predict",
+      "seconds": 1.5
+    },
+    {
+      "scene": "transfer",
+      "beat": "challenge",
+      "seconds": 5.0
+    }
+  ],
+  "sha256": "3bf49b0d1e8c9cfe595d7c431d24bd59cb5b08fd80e70c865a856b1a73bdb98f",
+  "captionsSha256": "af0d71126410a46c1f4df08c29dc719e0a53df5399580c4289f520c10fa5a5ab",
+  "integratedLUFS": -18.02,
+  "truePeakDBTP": -1.66,
+  "loudnessRangeLU": 2.7
+}

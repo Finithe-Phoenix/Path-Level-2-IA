@@ -1,0 +1,9 @@
+[
+  {"id":"clip01","text":"An order for zero items just went through. Before we change the code, what should the validator do with zero?","intent":"question","seed":41001},
+  {"id":"clip02","text":"Hold that answer. Open the test file and find the case for a single item.","intent":"action","seed":41002},
+  {"id":"clip03","text":"Copy that test. Change the quantity to zero, and change the expected result to false.","intent":"action","seed":41003},
+  {"id":"clip04","text":"Now run just that test. See the two values on the screen?","intent":"question","seed":41004},
+  {"id":"clip05","text":"We expected false. We got true. That red line gives us a case we can reproduce.","intent":"evidence","seed":41005},
+  {"id":"clip06","text":"Replace greater than or equal to zero with greater than zero. Run the same test again.","intent":"action","seed":41006},
+  {"id":"clip07","text":"This time it passes. Before we call the fix complete, which neighboring value would you check next?","intent":"question","seed":41007}
+]

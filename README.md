@@ -1,5 +1,7 @@
 # Medio · Del issue al pull request
 
+**Piloto en evaluación.** [Ver M02 de la edición 4 y sus fuentes](pilots/v4/README.md).
+
 ![Tras cambiar >= por > en el validador, las cuatro pruebas de cantidades pasan.](docs/portada.png)
 
 Sigue un defecto desde su reporte hasta la revisión de un compañero. Usarás Plan y Agent de Copilot en VS Code, reunirás pruebas de la corrección y verás cómo una persona revisa el PR con GitHub CLI desde el terminal autorizado.

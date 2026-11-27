@@ -1,0 +1,388 @@
+WEBVTT
+
+1
+00:00:00.255 --> 00:00:05.038
+An order went through with zero items.
+The ticket says the smallest valid
+
+2
+00:00:05.049 --> 00:00:05.881
+order is one.
+
+3
+00:00:06.361 --> 00:00:09.036
+Open the training checkout in Visual
+Studio Code,
+
+4
+00:00:09.367 --> 00:00:12.102
+with its terminal connected to the
+approved workspace.
+
+5
+00:00:12.872 --> 00:00:17.238
+Run the command on screen from the
+directory containing the validator and
+
+6
+00:00:17.238 --> 00:00:17.955
+its tests.
+
+7
+00:00:18.616 --> 00:00:23.213
+Keep that command handy. We will use
+exactly the same one twice more.
+
+8
+00:00:23.884 --> 00:00:27.985
+Three tests pass. Read their names
+with me. They try five, one,
+
+9
+00:00:28.437 --> 00:00:29.529
+and negative one.
+
+10
+00:00:30.341 --> 00:00:33.237
+Which test would catch an order for
+zero items?
+
+11
+00:00:35.797 --> 00:00:39.938
+Try the missing value directly. Import
+the same public function that the
+
+12
+00:00:39.938 --> 00:00:40.746
+tests use.
+
+13
+00:00:41.187 --> 00:00:45.589
+Call it with zero and print the return
+value. There it is. True.
+
+14
+00:00:46.339 --> 00:00:50.451
+Read the ticket beside that result. An
+order with zero items must be
+
+15
+00:00:50.451 --> 00:00:52.620
+rejected, so we expected false.
+
+16
+00:00:53.360 --> 00:00:57.594
+The existing tests can all pass while
+this particular call gives
+
+17
+00:00:57.624 --> 00:00:58.735
+the wrong answer.
+
+18
+00:00:59.406 --> 00:01:01.901
+Leave the source as it is for a
+moment.
+
+19
+00:01:02.332 --> 00:01:06.567
+This is our chance to find out whether
+a new test can actually
+
+20
+00:01:06.567 --> 00:01:07.755
+detect the defect.
+
+21
+00:01:08.922 --> 00:01:12.243
+Here is a question you can put to
+Copilot in Plan mode.
+
+22
+00:01:12.844 --> 00:01:17.620
+Which expression admits zero, and what
+will happen if we assert that zero
+
+23
+00:01:17.771 --> 00:01:18.802
+must be rejected?
+
+24
+00:01:19.992 --> 00:01:22.687
+Include the issue, the validator, and
+its tests.
+
+25
+00:01:23.397 --> 00:01:27.463
+Check the prediction yourself on line
+three. Substitute zero for quantity.
+
+26
+00:01:28.045 --> 00:01:30.250
+Is zero greater than or equal to zero?
+
+27
+00:01:31.482 --> 00:01:34.646
+Yes. The equality part is enough to
+let it through.
+
+28
+00:01:36.578 --> 00:01:41.287
+Now try one and negative one in your
+head. One is greater than zero.
+
+29
+00:01:41.849 --> 00:01:45.487
+Negative one is smaller. The equality
+at the boundary explains
+
+30
+00:01:45.578 --> 00:01:46.610
+all three outcomes.
+
+31
+00:01:47.867 --> 00:01:52.570
+Give Agent a small first job. Add one
+zero regression to the existing test
+
+32
+00:01:52.570 --> 00:01:54.977
+class and leave the validator
+untouched.
+
+33
+00:01:55.577 --> 00:01:57.799
+You can also type the two lines shown
+here.
+
+34
+00:01:58.591 --> 00:02:02.680
+Read the assertion from the inside
+out. The function receives zero.
+
+35
+00:02:03.161 --> 00:02:05.875
+The assertion requires its result to
+be false.
+
+36
+00:02:06.746 --> 00:02:12.030
+A test that simply checks whether zero
+is false would tell us nothing about
+
+37
+00:02:12.041 --> 00:02:12.872
+our validator.
+
+38
+00:02:13.603 --> 00:02:16.402
+Before running it, inspect the changed
+file list.
+
+39
+00:02:16.834 --> 00:02:18.810
+You should see the test file alone.
+
+40
+00:02:19.210 --> 00:02:23.051
+That lets us attribute the next
+failure to the behavior already
+
+41
+00:02:23.082 --> 00:02:24.636
+present in the starting code.
+
+42
+00:02:26.084 --> 00:02:28.945
+Run the same command again. First
+check the total.
+
+43
+00:02:29.337 --> 00:02:30.913
+Four tests ran this time.
+
+44
+00:02:31.594 --> 00:02:35.766
+Now find the failure and follow it
+back to the line that calls the
+
+45
+00:02:35.766 --> 00:02:37.187
+validator with zero.
+
+46
+00:02:38.159 --> 00:02:40.834
+Read the assertion message. True is
+not false.
+
+47
+00:02:41.225 --> 00:02:43.300
+That is the observation we predicted.
+
+48
+00:02:43.881 --> 00:02:47.342
+The three earlier cases still pass.
+Keep this output with
+
+49
+00:02:47.342 --> 00:02:48.492
+the test-only patch.
+
+50
+00:02:49.464 --> 00:02:52.739
+Suppose the runner had stopped at an
+import error.
+
+51
+00:02:53.150 --> 00:02:54.802
+What would you know about zero?
+
+52
+00:02:56.273 --> 00:03:00.554
+Very little. Fix the setup and rerun
+until the assertion itself executes.
+
+53
+00:03:01.735 --> 00:03:05.181
+Now the regression can catch the bug.
+Open the production diff.
+
+54
+00:03:05.693 --> 00:03:06.888
+Remove the equals sign.
+
+55
+00:03:07.349 --> 00:03:10.251
+The expression now asks whether
+quantity is strictly
+
+56
+00:03:10.251 --> 00:03:11.268
+greater than zero.
+
+57
+00:03:11.608 --> 00:03:15.870
+Keep the public function signature and
+the new assertion as they are.
+
+58
+00:03:16.580 --> 00:03:20.455
+Make a prediction before the next run.
+Zero is equal to zero,
+
+59
+00:03:20.845 --> 00:03:22.998
+so the new expression returns false.
+
+60
+00:03:23.698 --> 00:03:28.319
+Five and one should still pass.
+Negative one should still be rejected.
+
+61
+00:03:30.378 --> 00:03:34.616
+Run that saved command a third time.
+The zero test now passes,
+
+62
+00:03:35.027 --> 00:03:36.580
+and the total is still four.
+
+63
+00:03:37.381 --> 00:03:40.261
+Compare the failure and the pass side
+by side.
+
+64
+00:03:40.592 --> 00:03:43.471
+The method name and its assertion are
+identical.
+
+65
+00:03:44.302 --> 00:03:47.154
+For a handoff, give your teammate the
+starting checkout,
+
+66
+00:03:47.485 --> 00:03:51.938
+the test-only diff and its failing
+output, then the source diff and its
+
+67
+00:03:51.948 --> 00:03:52.959
+passing output.
+
+68
+00:03:53.540 --> 00:03:57.841
+They can apply the changes in that
+order and repeat your result.
+
+69
+00:03:59.027 --> 00:04:01.141
+Try the same method on a separate
+exercise.
+
+70
+00:04:01.552 --> 00:04:06.210
+An order may contain one through one
+hundred items, including one hundred.
+
+71
+00:04:06.891 --> 00:04:10.419
+The draft on screen uses a strict
+comparison at each end.
+
+72
+00:04:11.210 --> 00:04:15.163
+Pause the video here. Write the
+expected answers for ninety-nine,
+
+73
+00:04:15.474 --> 00:04:17.785
+one hundred, and one hundred and one.
+
+74
+00:04:18.266 --> 00:04:21.752
+Which single regression would expose
+the mistake before you
+
+75
+00:04:21.782 --> 00:04:22.716
+edit the function?
+
+76
+00:04:27.930 --> 00:04:28.345
+Ready?
+
+77
+00:04:29.699 --> 00:04:34.818
+The answers are true, true, and false.
+The draft rejects exactly one of those
+
+78
+00:04:34.818 --> 00:04:36.708
+valid examples, one hundred.
+
+79
+00:04:37.559 --> 00:04:41.001
+Write an assertion that accepts one
+hundred. Watch it fail,
+
+80
+00:04:41.392 --> 00:04:44.433
+then include equality at the upper
+limit and rerun.
+
+81
+00:04:45.224 --> 00:04:48.132
+Notice how the ticket decided which
+way equality belongs.
+
+82
+00:04:48.734 --> 00:04:53.392
+Reading the rule, testing the edge,
+and replaying the same check will
+
+83
+00:04:53.392 --> 00:04:55.342
+serve you at either end of a range.

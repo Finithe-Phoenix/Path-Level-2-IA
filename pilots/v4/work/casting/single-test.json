@@ -1,0 +1,5 @@
+{
+  "command": "python -B -m unittest discover -s tests -k rejects_zero -v",
+  "before": "test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero) ... FAIL\n\n======================================================================\nFAIL: test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"tests/test_order_quantity.py\", line 17, in test_rejects_zero\n    self.assertFalse(is_valid_quantity(0))\nAssertionError: True is not false\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+  "after": "test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK\n"
+}

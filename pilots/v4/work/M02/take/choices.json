@@ -1,0 +1,38 @@
+{
+  "baseline_run_02": {
+    "alternate": true,
+    "seed": 2998872739,
+    "speed": 0.922,
+    "splitSentences": false
+  },
+  "probe_gap_01": {
+    "alternate": true,
+    "seed": 1911955168,
+    "speed": 0.918,
+    "splitSentences": false
+  },
+  "prediction_plan_01": {
+    "alternate": true,
+    "seed": 1267567916,
+    "speed": 0.918,
+    "splitSentences": false
+  },
+  "patch_edit_01": {
+    "alternate": true,
+    "seed": 1735244379,
+    "speed": 0.918,
+    "splitSentences": true
+  },
+  "green_replay_01": {
+    "alternate": true,
+    "seed": 1737847733,
+    "speed": 0.898,
+    "splitSentences": false
+  },
+  "transfer_why_01": {
+    "alternate": true,
+    "seed": 2451957371,
+    "speed": 0.918,
+    "splitSentences": false
+  }
+}

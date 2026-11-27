@@ -1,0 +1,274 @@
+{
+  "id": "M02",
+  "title": "Debug with a Failing Test",
+  "subtitle": "A boundary regression in the order validator",
+  "level": "Intermediate engineering",
+  "language": "en-US",
+  "edition": 4,
+  "learningObjective": "Use a failing boundary test to verify a proposed cause, then prove the correction with the same runner.",
+  "productionNotes": {
+    "setting": "Synthetic training issue and Python checkout, viewed from VS Code. Run terminal actions in the approved workspace.",
+    "capture": "Use the actual terminal recordings, source files and diff from the training fixture. Plan and Agent prompts are examples the learner can use.",
+    "direction": "Teach one engineer seated beside you. Leave a beat after an invitation to predict. Read the meaning of a code expression. The screen carries its exact spelling."
+  },
+  "sources": [
+    {
+      "label": "Python documentation · Test discovery and assertions",
+      "url": "https://docs.python.org/3/library/unittest.html",
+      "use": "Test discovery, assertFalse, and interpreting assertion failures."
+    },
+    {
+      "label": "VS Code documentation · Test-driven development with AI",
+      "url": "https://code.visualstudio.com/docs/agents/guides/test-driven-development-guide",
+      "use": "A reproducible red and green loop with Copilot in VS Code."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "baseline",
+      "title": "Three tests pass",
+      "kind": "terminal",
+      "narration": "An order went through with zero items. The ticket says the smallest valid order is one. Open the training checkout in Visual Studio Code, with its terminal connected to the approved workspace. Run the command on screen from the directory containing the validator and its tests. Keep that command handy. We will use exactly the same one twice more. Three tests pass. Read their names with me. They try five, one, and negative one. Which test would catch an order for zero items?",
+      "action": "Run the starting suite and read the test names.",
+      "focus": "The three passing cases exercise five, one and negative one.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "3 tests passed on the starting checkout.",
+      "voiceDirection": "Start in the middle of a real review. Let the last sentence invite curiosity.",
+      "beats": [
+        {
+          "id": "run",
+          "text": "An order went through with zero items. The ticket says the smallest valid order is one. Open the training checkout in Visual Studio Code, with its terminal connected to the approved workspace.",
+          "shot": "Open the synthetic issue alongside the starting checkout. Hold the minimum-one requirement, then switch focus to the terminal.",
+          "voiceDirection": "Quiet, matter-of-fact opening."
+        },
+        {
+          "id": "method",
+          "text": "Run the command on screen from the directory containing the validator and its tests. Keep that command handy. We will use exactly the same one twice more.",
+          "shot": "Execute the displayed command in the captured checkout. Preserve its complete flags and working directory in the terminal source.",
+          "voiceDirection": "Give the viewer time to locate the command."
+        },
+        {
+          "id": "coverage",
+          "text": "Three tests pass. Read their names with me. They try five, one, and negative one. Which test would catch an order for zero items?",
+          "shot": "Track the three names in real runner order. Hold on the gap after the last test before the next shot.",
+          "voiceDirection": "Slight lift on the question. Let it land.",
+          "practiceHoldSeconds": 2
+        }
+      ]
+    },
+    {
+      "id": "probe",
+      "title": "Call the validator with zero",
+      "kind": "terminal",
+      "narration": "Try the missing value directly. Import the same public function that the tests use. Call it with zero and print the return value. There it is. True. Read the ticket beside that result. An order with zero items must be rejected, so we expected false. The existing tests can all pass while this particular call gives the wrong answer. Leave the source as it is for a moment. This is our chance to find out whether a new test can actually detect the defect.",
+      "action": "Run a single read-only call. Compare the returned value with the ticket.",
+      "focus": "A call with zero returns True on the original source.",
+      "code": "from order_quantity import is_valid_quantity\nprint(is_valid_quantity(0))",
+      "result": "Observed True. The issue requires False.",
+      "voiceDirection": "Slow enough to hear the difference between the observation and the requirement.",
+      "beats": [
+        {
+          "id": "probe",
+          "text": "Try the missing value directly. Import the same public function that the tests use. Call it with zero and print the return value. There it is. True.",
+          "shot": "Use the captured probe and its original output. Isolate the actual literal True and keep the zero argument in the same frame.",
+          "voiceDirection": "Pause briefly before True."
+        },
+        {
+          "id": "expected",
+          "text": "Read the ticket beside that result. An order with zero items must be rejected, so we expected false. The existing tests can all pass while this particular call gives the wrong answer.",
+          "shot": "Align the observed output with the stated expectation. Mark zero on the same number line used in later scenes.",
+          "voiceDirection": "Stress expected, then return to conversational pace."
+        },
+        {
+          "id": "gap",
+          "text": "Leave the source as it is for a moment. This is our chance to find out whether a new test can actually detect the defect.",
+          "shot": "Return to the unmodified source and tests. Leave their contents visible before asking for a prediction.",
+          "voiceDirection": "Take a short breath after moment."
+        }
+      ]
+    },
+    {
+      "id": "prediction",
+      "title": "Predict what the comparison does",
+      "kind": "editor",
+      "narration": "Here is a question you can put to Copilot in Plan mode. Which expression admits zero, and what will happen if we assert that zero must be rejected? Include the issue, the validator, and its tests. Check the prediction yourself on line three. Substitute zero for quantity. Is zero greater than or equal to zero? Yes. The equality part is enough to let it through. Now try one and negative one in your head. One is greater than zero. Negative one is smaller. The equality at the boundary explains all three outcomes.",
+      "action": "Ask Plan for a prediction, then evaluate the actual source line.",
+      "focus": "Equality makes the original expression true at exactly zero.",
+      "code": "Plan prompt: Read the issue, validator, and tests. Which expression admits zero? Predict the assertion outcome before proposing edits.\nreturn quantity >= 0",
+      "result": "At zero, the original comparison evaluates to True.",
+      "voiceDirection": "Sound like someone thinking at the reader’s elbow. Give the equality a little space.",
+      "beats": [
+        {
+          "id": "plan",
+          "text": "Here is a question you can put to Copilot in Plan mode. Which expression admits zero, and what will happen if we assert that zero must be rejected? Include the issue, the validator, and its tests.",
+          "shot": "Show an editable Plan prompt with the three pieces of context. Label the prompt as an example, then cut to actual source.",
+          "voiceDirection": "Read the question in one connected phrase."
+        },
+        {
+          "id": "substitute",
+          "text": "Check the prediction yourself on line three. Substitute zero for quantity. Is zero greater than or equal to zero? Yes. The equality part is enough to let it through.",
+          "shot": "Substitute the probe value over quantity in the captured original expression. Isolate the equality stroke while the full operator stays legible.",
+          "voiceDirection": "Leave room for the learner to answer.",
+          "practiceHoldSeconds": 1.5
+        },
+        {
+          "id": "neighbors",
+          "text": "Now try one and negative one in your head. One is greater than zero. Negative one is smaller. The equality at the boundary explains all three outcomes.",
+          "shot": "Mark each original comparison explicitly. Negative one returns False, zero returns True, and one returns True.",
+          "voiceDirection": "Warm, deliberate explanation."
+        }
+      ]
+    },
+    {
+      "id": "regression",
+      "title": "Add the test first",
+      "kind": "editor",
+      "narration": "Give Agent a small first job. Add one zero regression to the existing test class and leave the validator untouched. You can also type the two lines shown here. Read the assertion from the inside out. The function receives zero. The assertion requires its result to be false. A test that simply checks whether zero is false would tell us nothing about our validator. Before running it, inspect the changed file list. You should see the test file alone. That lets us attribute the next failure to the behavior already present in the starting code.",
+      "action": "Ask Agent for one regression and inspect the test-only diff.",
+      "focus": "The added assertion calls the public function with zero and expects False.",
+      "code": "def test_rejects_zero(self):\n    self.assertFalse(is_valid_quantity(0))",
+      "result": "Only tests/test_order_quantity.py changes at this step.",
+      "voiceDirection": "Read the intention behind the assertion. Let the viewer inspect the diff.",
+      "beats": [
+        {
+          "id": "scope",
+          "text": "Give Agent a small first job. Add one zero regression to the existing test class and leave the validator untouched. You can also type the two lines shown here.",
+          "shot": "Show the editable Agent request, then the captured baseline-to-red file diff. Keep the source file out of the changed-files list.",
+          "voiceDirection": "Conversational request, then a short breath."
+        },
+        {
+          "id": "assert",
+          "text": "Read the assertion from the inside out. The function receives zero. The assertion requires its result to be false. A test that simply checks whether zero is false would tell us nothing about our validator.",
+          "shot": "Trace the nested zero argument into the function first and then into assertFalse. Reuse the exact recorded source spelling.",
+          "voiceDirection": "Small emphasis on our validator."
+        },
+        {
+          "id": "inspect",
+          "text": "Before running it, inspect the changed file list. You should see the test file alone. That lets us attribute the next failure to the behavior already present in the starting code.",
+          "shot": "Use the actual file list for this stage. Finish on the untouched production line beside the new test.",
+          "voiceDirection": "Even and precise."
+        }
+      ]
+    },
+    {
+      "id": "red",
+      "title": "Find the intended failure",
+      "kind": "terminal",
+      "narration": "Run the same command again. First check the total. Four tests ran this time. Now find the failure and follow it back to the line that calls the validator with zero. Read the assertion message. True is not false. That is the observation we predicted. The three earlier cases still pass. Keep this output with the test-only patch. Suppose the runner had stopped at an import error. What would you know about zero? Very little. Fix the setup and rerun until the assertion itself executes.",
+      "action": "Rerun the baseline command and locate the failing assertion.",
+      "focus": "The newly discovered fourth test executes and fails for the expected reason.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false\nRan 4 tests. FAILED (failures=1)",
+      "voiceDirection": "Keep the failure reassuring. It supplies evidence.",
+      "beats": [
+        {
+          "id": "run",
+          "text": "Run the same command again. First check the total. Four tests ran this time. Now find the failure and follow it back to the line that calls the validator with zero.",
+          "shot": "Show the actual failing run. Mark the suite total, then follow the failure name and the trace to the assertFalse line.",
+          "voiceDirection": "Use first and now as audible guideposts."
+        },
+        {
+          "id": "reason",
+          "text": "Read the assertion message. True is not false. That is the observation we predicted. The three earlier cases still pass. Keep this output with the test-only patch.",
+          "shot": "Hold on the original assertion message and the three passing cases. Preserve full command output in editable evidence.",
+          "voiceDirection": "Read the Python message naturally, with a beat on either side."
+        },
+        {
+          "id": "setup",
+          "text": "Suppose the runner had stopped at an import error. What would you know about zero? Very little. Fix the setup and rerun until the assertion itself executes.",
+          "shot": "Point back to the trace line actually observed. Treat the import error as a labeled counterexample, never fabricated terminal output.",
+          "voiceDirection": "Give the question half a beat before answering."
+        }
+      ]
+    },
+    {
+      "id": "patch",
+      "title": "Remove the equality",
+      "kind": "editor",
+      "narration": "Now the regression can catch the bug. Open the production diff. Remove the equals sign. The expression now asks whether quantity is strictly greater than zero. Keep the public function signature and the new assertion as they are. Make a prediction before the next run. Zero is equal to zero, so the new expression returns false. Five and one should still pass. Negative one should still be rejected.",
+      "action": "Change the boundary operator and keep the test and signature intact.",
+      "focus": "Removing the equality changes the outcome at zero.",
+      "code": "-    return quantity >= 0\n+    return quantity > 0",
+      "result": "The fix changes one comparison in order_quantity.py.",
+      "voiceDirection": "Small movement, plain delivery. Let the change be visually obvious.",
+      "beats": [
+        {
+          "id": "edit",
+          "text": "Now the regression can catch the bug. Open the production diff. Remove the equals sign. The expression now asks whether quantity is strictly greater than zero. Keep the public function signature and the new assertion as they are.",
+          "shot": "Show the real red-to-green source diff. Magnify only the changing operator, then restore the surrounding function.",
+          "voiceDirection": "Stress strictly once."
+        },
+        {
+          "id": "predict",
+          "text": "Make a prediction before the next run. Zero is equal to zero, so the new expression returns false. Five and one should still pass. Negative one should still be rejected.",
+          "shot": "Drive zero through before and after expressions, then briefly show the neighbor values unchanged. Do not show the final run output yet.",
+          "voiceDirection": "Let the learner anticipate each result.",
+          "practiceHoldSeconds": 1.5
+        }
+      ]
+    },
+    {
+      "id": "green",
+      "title": "Replay the same four tests",
+      "kind": "terminal",
+      "narration": "Run that saved command a third time. The zero test now passes, and the total is still four. Compare the failure and the pass side by side. The method name and its assertion are identical. For a handoff, give your teammate the starting checkout, the test-only diff and its failing output, then the source diff and its passing output. They can apply the changes in that order and repeat your result.",
+      "action": "Verify the passing zero test and the three original cases.",
+      "focus": "The regression switches from FAIL to ok with its assertion unchanged.",
+      "code": "python -B -m unittest discover -s tests -v",
+      "result": "test_rejects_zero ... ok\nRan 4 tests. OK",
+      "voiceDirection": "Release the tension at the passing run. Stay exact about what the evidence covers.",
+      "beats": [
+        {
+          "id": "replay",
+          "text": "Run that saved command a third time. The zero test now passes, and the total is still four. Compare the failure and the pass side by side. The method name and its assertion are identical.",
+          "shot": "Replay actual green run. Align zero across red and green captures. Keep the four-test totals readable.",
+          "voiceDirection": "Slight pause after four."
+        },
+        {
+          "id": "handoff",
+          "text": "For a handoff, give your teammate the starting checkout, the test-only diff and its failing output, then the source diff and its passing output. They can apply the changes in that order and repeat your result.",
+          "shot": "Use the captured checkout provenance, two diffs and two logs. Do not invent a hash for an intermediate unstaged change.",
+          "voiceDirection": "Even pace through the order of replay."
+        }
+      ]
+    },
+    {
+      "id": "transfer",
+      "title": "Try a boundary at the other end",
+      "kind": "decision",
+      "narration": "Try the same method on a separate exercise. An order may contain one through one hundred items, including one hundred. The draft on screen uses a strict comparison at each end. Pause the video here. Write the expected answers for ninety-nine, one hundred, and one hundred and one. Which single regression would expose the mistake before you edit the function? Ready? The answers are true, true, and false. The draft rejects exactly one of those valid examples, one hundred. Write an assertion that accepts one hundred. Watch it fail, then include equality at the upper limit and rerun. Notice how the ticket decided which way equality belongs. Reading the rule, testing the edge, and replaying the same check will serve you at either end of a range.",
+      "action": "Pause and predict the outputs for 99, 100 and 101.",
+      "focus": "A new inclusive maximum reveals a different equality error.",
+      "code": "Practice only: accept integers from 1 through 100.\nStarting expression: 0 < quantity < 100\nProbe 99, 100, 101. Write the equality regression.",
+      "result": "Expected True, True, False. The original exercise expression rejects 100. Fix the upper comparison to <=.",
+      "voiceDirection": "Leave a genuine work pause after the prompt. Let the reveal feel like checking together.",
+      "beats": [
+        {
+          "id": "rule",
+          "text": "Try the same method on a separate exercise. An order may contain one through one hundred items, including one hundred. The draft on screen uses a strict comparison at each end.",
+          "shot": "Open a separate practice fixture, distinctly labeled. Never add this cap to the original ticket patch.",
+          "voiceDirection": "Fresh and invitational."
+        },
+        {
+          "id": "challenge",
+          "text": "Pause the video here. Write the expected answers for ninety-nine, one hundred, and one hundred and one. Which single regression would expose the mistake before you edit the function?",
+          "shot": "Hold the challenge with three empty answer slots and the unchanged hypothetical expression. Place the pause before any answers.",
+          "voiceDirection": "Unhurried, leave silence for the attempt.",
+          "practiceHoldSeconds": 5
+        },
+        {
+          "id": "reveal",
+          "text": "Ready? The answers are true, true, and false. The draft rejects exactly one of those valid examples, one hundred. Write an assertion that accepts one hundred. Watch it fail, then include equality at the upper limit and rerun.",
+          "shot": "Reveal the recorded transfer outputs, method-sized assertion and before/after comparisons. Use the actual captured boundary results.",
+          "voiceDirection": "Separate the three answers; give one hundred natural emphasis."
+        },
+        {
+          "id": "why",
+          "text": "Notice how the ticket decided which way equality belongs. Reading the rule, testing the edge, and replaying the same check will serve you at either end of a range.",
+          "shot": "End with the rule and the single input that discriminates between the two expressions. Leave the original patch readily distinguishable.",
+          "voiceDirection": "Gentle finish."
+        }
+      ]
+    }
+  ]
+}

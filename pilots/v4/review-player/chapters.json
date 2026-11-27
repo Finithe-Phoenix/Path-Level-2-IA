@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Three tests pass",
+    "start": 0.0,
+    "end": 35.542
+  },
+  {
+    "title": "Call the validator with zero",
+    "start": 35.542,
+    "end": 68.667
+  },
+  {
+    "title": "Predict what the comparison does",
+    "start": 68.667,
+    "end": 107.667
+  },
+  {
+    "title": "Add the test first",
+    "start": 107.667,
+    "end": 145.708
+  },
+  {
+    "title": "Find the intended failure",
+    "start": 145.708,
+    "end": 181.5
+  },
+  {
+    "title": "Remove the equality",
+    "start": 181.5,
+    "end": 210.083
+  },
+  {
+    "title": "Replay the same four tests",
+    "start": 210.083,
+    "end": 238.792
+  },
+  {
+    "title": "Try a boundary at the other end",
+    "start": 238.792,
+    "end": 296.375
+  }
+]

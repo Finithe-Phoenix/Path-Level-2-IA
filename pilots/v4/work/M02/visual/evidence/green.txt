@@ -1,0 +1,9 @@
+test_accepts_five (test_order_quantity.OrderQuantityTests.test_accepts_five) ... ok
+test_accepts_one (test_order_quantity.OrderQuantityTests.test_accepts_one) ... ok
+test_rejects_negative_one (test_order_quantity.OrderQuantityTests.test_rejects_negative_one) ... ok
+test_rejects_zero (test_order_quantity.OrderQuantityTests.test_rejects_zero) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

@@ -1,0 +1,11 @@
+diff --git a/tests/test_order_quantity.py b/tests/test_order_quantity.py
+index 963e5a4..4d20b3c 100644
+--- a/tests/test_order_quantity.py
++++ b/tests/test_order_quantity.py
+@@ -12,3 +12,6 @@ class OrderQuantityTests(unittest.TestCase):
+ 
+     def test_rejects_negative_one(self):
+         self.assertFalse(is_valid_quantity(-1))
++
++    def test_rejects_zero(self):
++        self.assertFalse(is_valid_quantity(0))

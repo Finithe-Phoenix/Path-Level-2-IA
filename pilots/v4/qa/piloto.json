@@ -1,0 +1,115 @@
+{
+  "file": "M02.mp4",
+  "bytes": 18704971,
+  "sha256": "75f25554787d18075e89f9e273fc5dd4900fc9e2ca10c5ff0e14028af670f765",
+  "width": 1920,
+  "height": 1080,
+  "fps": "24/1",
+  "frames": 7113,
+  "duration": 296.375,
+  "videoPayload": "92591067ceacdc855f8170b2c0f78ce978ffde6936f4287eb6198f346dc4c61d",
+  "audioPayload": "d80670dd794876887931549262cc61ee821ad7fe9cdff4ba23378928c89cd4e6",
+  "captions": true,
+  "chapters": [
+    {
+      "title": "Three tests pass",
+      "start": 0.0,
+      "end": 35.542
+    },
+    {
+      "title": "Call the validator with zero",
+      "start": 35.542,
+      "end": 68.667
+    },
+    {
+      "title": "Predict what the comparison does",
+      "start": 68.667,
+      "end": 107.667
+    },
+    {
+      "title": "Add the test first",
+      "start": 107.667,
+      "end": 145.708
+    },
+    {
+      "title": "Find the intended failure",
+      "start": 145.708,
+      "end": 181.5
+    },
+    {
+      "title": "Remove the equality",
+      "start": 181.5,
+      "end": 210.083
+    },
+    {
+      "title": "Replay the same four tests",
+      "start": 210.083,
+      "end": 238.792
+    },
+    {
+      "title": "Try a boundary at the other end",
+      "start": 238.792,
+      "end": 296.375
+    }
+  ],
+  "sound": {
+    "integratedLufs": -18.02,
+    "truePeakDbtp": -1.66,
+    "rangeLu": 2.7
+  },
+  "cueCount": 83,
+  "spokenWords": 705,
+  "motion": [
+    {
+      "chapter": "Three tests pass",
+      "comparisons": 135,
+      "workbenchActivityPct": 40.0,
+      "changeOver2Pct": 15.6
+    },
+    {
+      "chapter": "Call the validator with zero",
+      "comparisons": 126,
+      "workbenchActivityPct": 34.1,
+      "changeOver2Pct": 25.4
+    },
+    {
+      "chapter": "Predict what the comparison does",
+      "comparisons": 150,
+      "workbenchActivityPct": 23.3,
+      "changeOver2Pct": 2.0
+    },
+    {
+      "chapter": "Add the test first",
+      "comparisons": 146,
+      "workbenchActivityPct": 3.4,
+      "changeOver2Pct": 2.1
+    },
+    {
+      "chapter": "Find the intended failure",
+      "comparisons": 136,
+      "workbenchActivityPct": 25.0,
+      "changeOver2Pct": 24.3
+    },
+    {
+      "chapter": "Remove the equality",
+      "comparisons": 108,
+      "workbenchActivityPct": 46.3,
+      "changeOver2Pct": 34.3
+    },
+    {
+      "chapter": "Replay the same four tests",
+      "comparisons": 108,
+      "workbenchActivityPct": 47.2,
+      "changeOver2Pct": 17.6
+    },
+    {
+      "chapter": "Try a boundary at the other end",
+      "comparisons": 224,
+      "workbenchActivityPct": 8.5,
+      "changeOver2Pct": 2.2
+    }
+  ],
+  "cleanStemIdentity": true,
+  "fullDecode": true,
+  "subtitleTextAndTiming": true
+}

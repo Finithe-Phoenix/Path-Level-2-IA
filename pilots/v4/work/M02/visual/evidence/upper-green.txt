@@ -1,0 +1,6 @@
+test_accepts_upper_limit (test_practice.UpperLimitTests.test_accepts_upper_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+OK

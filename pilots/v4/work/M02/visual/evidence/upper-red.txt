@@ -1,0 +1,14 @@
+test_accepts_upper_limit (test_practice.UpperLimitTests.test_accepts_upper_limit) ... FAIL
+
+======================================================================
+FAIL: test_accepts_upper_limit (test_practice.UpperLimitTests.test_accepts_upper_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/quantity-lab-u9g9zd15/practice-red/test_practice.py", line 6, in test_accepts_upper_limit
+    self.assertTrue(accepts(100))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.004s
+
+FAILED (failures=1)

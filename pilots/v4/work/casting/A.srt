@@ -1,0 +1,57 @@
+1
+00:00:00,235 --> 00:00:05,153
+An order for zero items just went
+through. Before we change the code,
+
+2
+00:00:05,383 --> 00:00:07,717
+what should the validator do with
+zero?
+
+3
+00:00:09,673 --> 00:00:14,826
+Hold that answer. Open the test file
+and find the case for a single item.
+
+4
+00:00:16,028 --> 00:00:19,125
+Copy that test. Change the quantity to
+zero,
+
+5
+00:00:19,476 --> 00:00:21,730
+and change the expected result to
+false.
+
+6
+00:00:23,174 --> 00:00:27,166
+Now run just that test. See the two
+values on the screen?
+
+7
+00:00:29,092 --> 00:00:34,091
+We expected false. We got true. That
+red line gives us a case
+
+8
+00:00:34,091 --> 00:00:35,127
+we can reproduce.
+
+9
+00:00:36,548 --> 00:00:40,331
+Replace greater than or equal to zero
+with greater than zero.
+
+10
+00:00:40,863 --> 00:00:42,398
+Run the same test again.
+
+11
+00:00:43,550 --> 00:00:47,424
+This time it passes. Before we call
+the fix complete,
+
+12
+00:00:47,835 --> 00:00:50,288
+which neighboring value would you
+check next?

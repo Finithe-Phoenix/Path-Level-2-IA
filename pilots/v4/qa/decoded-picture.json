@@ -1,0 +1,8 @@
+{
+  "episode": "M02",
+  "absoluteFrame": 3875,
+  "encodedFirstFrameNormalizedMeanError": {
+    "remotion": 0.004099355482933914,
+    "hyperframes": 0.010790872367465504
+  }
+}
