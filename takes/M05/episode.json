@@ -24,37 +24,37 @@
       "result": "Chosen skill: prepare pull request evidence.",
       "focus": "An issue, diff and test output produce one reusable draft",
       "action": "Choose the recurring PR evidence task for the first skill.",
-      "durationFrames": 474,
-      "duration": 19.75,
+      "durationFrames": 425,
+      "duration": 17.708333333333332,
       "cues": [
         {
-          "start": 0.414,
-          "end": 3.689,
+          "start": 0.235,
+          "end": 2.761,
           "text": "Think about what you do before handing\noff a pull request."
         },
         {
-          "start": 3.764,
-          "end": 7.777,
+          "start": 3.123,
+          "end": 7.174,
           "text": "You check the issue, summarize the diff,\nand share the result of the tests."
         },
         {
-          "start": 8.38,
-          "end": 12.28,
+          "start": 7.685,
+          "end": 11.472,
           "text": "If you ask for that same draft often,\nyou can give the assistant a skill with"
         },
         {
-          "start": 12.33,
-          "end": 13.755,
+          "start": 11.472,
+          "end": 12.209,
           "text": "this procedure."
         },
         {
-          "start": 13.805,
-          "end": 17.98,
+          "start": 12.53,
+          "end": 16.484,
           "text": "We’ll use a synthetic example and make\nthe output a draft that the human author"
         },
         {
-          "start": 18.03,
-          "end": 18.654,
+          "start": 16.484,
+          "end": 16.981,
           "text": "can review."
         }
       ]
@@ -70,42 +70,37 @@
       "result": ".github/skills/prepare-pr-evidence/SKILL.md",
       "focus": "The folder name and skill name match",
       "action": "Create and name SKILL.md in the approved project skill folder.",
-      "durationFrames": 533,
-      "duration": 22.208333333333332,
+      "durationFrames": 503,
+      "duration": 20.958333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.418,
+          "start": 0.235,
+          "end": 4.239,
           "text": "In the training repository, open the\nsupported project skills location for"
         },
         {
-          "start": 4.468,
-          "end": 5.743,
+          "start": 4.239,
+          "end": 4.875,
           "text": "Copilot."
         },
         {
-          "start": 5.818,
-          "end": 10.581,
+          "start": 5.196,
+          "end": 9.812,
           "text": "This example puts a folder named prepare\nP R evidence under dot GitHub skills."
         },
         {
-          "start": 11.184,
-          "end": 13.709,
-          "text": "Add a file named skill dot M D."
+          "start": 10.362,
+          "end": 15.14,
+          "text": "Add a file named skill dot M D. Give it\na matching name and a short description"
         },
         {
-          "start": 13.784,
-          "end": 17.184,
-          "text": "Give it a matching name and a short\ndescription that says which task it"
+          "start": 15.251,
+          "end": 16.984,
+          "text": "that says which task it helps with."
         },
         {
-          "start": 17.234,
-          "end": 18.234,
-          "text": "helps with."
-        },
-        {
-          "start": 18.309,
-          "end": 21.138,
+          "start": 17.419,
+          "end": 20.176,
           "text": "Both of those fields are useful when you\nverify discovery."
         }
       ]
@@ -121,37 +116,37 @@
       "result": "The scope ends with a draft.",
       "focus": "The skill describes inputs, steps and what to do when proof is missing",
       "action": "Write the small procedure and its expected draft sections.",
-      "durationFrames": 512,
-      "duration": 21.333333333333332,
+      "durationFrames": 490,
+      "duration": 20.416666666666668,
       "cues": [
         {
-          "start": 0.414,
-          "end": 3.829,
+          "start": 0.255,
+          "end": 3.775,
           "text": "In the body, tell the skill to read the\nsupplied issue and diff,"
         },
         {
-          "start": 3.879,
-          "end": 7.904,
+          "start": 4.166,
+          "end": 8.168,
           "text": "check the test output, and return a\ndraft with change and verification"
         },
         {
-          "start": 7.954,
-          "end": 8.559,
+          "start": 8.198,
+          "end": 8.649,
           "text": "evidence."
         },
         {
-          "start": 9.172,
-          "end": 11.372,
-          "text": "Include a step for missing items."
+          "start": 9.24,
+          "end": 13.019,
+          "text": "Include a step for missing items. If no\ntest output is supplied,"
         },
         {
-          "start": 11.447,
-          "end": 16.372,
-          "text": "If no test output is supplied, the draft\nshould say verification is missing."
+          "start": 13.31,
+          "end": 15.585,
+          "text": "the draft should say verification is\nmissing."
         },
         {
-          "start": 16.447,
-          "end": 20.235,
+          "start": 15.91,
+          "end": 19.741,
           "text": "Keep this first skill focused on\npreparing text for a human to review."
         }
       ]
@@ -167,42 +162,42 @@
       "result": "Issue #17\nChange: zero is rejected.\nVerification: four unit tests passed.\nGaps: none in the supplied training evidence.",
       "focus": "The draft’s claims match the supplied issue, diff and test output",
       "action": "Invoke the skill in Copilot using the synthetic inputs.",
-      "durationFrames": 587,
-      "duration": 24.458333333333332,
+      "durationFrames": 539,
+      "duration": 22.458333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.118,
+          "start": 0.295,
+          "end": 4.048,
           "text": "Open a fresh Copilot chat and confirm\nthe skill is listed in the"
         },
         {
-          "start": 4.168,
-          "end": 6.018,
+          "start": 4.048,
+          "end": 5.316,
           "text": "customizations view."
         },
         {
-          "start": 6.093,
-          "end": 9.387,
+          "start": 5.726,
+          "end": 8.876,
           "text": "If your setup supports it, choose the\nskill from the slash menu."
         },
         {
-          "start": 9.999,
-          "end": 13.974,
+          "start": 9.238,
+          "end": 12.557,
           "text": "Attach the synthetic issue, patch, and\npassing test output."
         },
         {
-          "start": 14.049,
-          "end": 16.924,
+          "start": 13.048,
+          "end": 15.373,
           "text": "Now compare each draft claim with its\nsource."
         },
         {
-          "start": 16.999,
-          "end": 20.874,
+          "start": 15.755,
+          "end": 19.035,
           "text": "In this example, the issue is seventeen,\nzero is rejected,"
         },
         {
-          "start": 20.924,
-          "end": 23.361,
+          "start": 19.387,
+          "end": 21.684,
           "text": "and the supplied run shows four passing\ntests."
         }
       ]
@@ -218,42 +213,42 @@
       "result": "Verification gap surfaced for the human author.",
       "focus": "Missing test proof is flagged instead of reported as a pass",
       "action": "Retry in a fresh chat without test output.",
-      "durationFrames": 537,
-      "duration": 22.375,
+      "durationFrames": 504,
+      "duration": 21.0,
       "cues": [
         {
-          "start": 0.393,
-          "end": 3.018,
-          "text": "Try again with the test output missing."
+          "start": 0.275,
+          "end": 4.339,
+          "text": "Try again with the test output missing.\nRead what the skill says about"
         },
         {
-          "start": 3.093,
-          "end": 5.668,
-          "text": "Read what the skill says about\nverification."
+          "start": 4.339,
+          "end": 5.256,
+          "text": "verification."
         },
         {
-          "start": 5.718,
-          "end": 9.045,
+          "start": 5.666,
+          "end": 9.001,
           "text": "The expected result is a visible gap\nthat the author can fill."
         },
         {
-          "start": 9.683,
-          "end": 13.533,
+          "start": 9.532,
+          "end": 13.111,
           "text": "If it claims the tests passed based only\non the PR description,"
         },
         {
-          "start": 13.583,
-          "end": 15.808,
+          "start": 13.403,
+          "end": 14.896,
           "text": "revise the body and rerun."
         },
         {
-          "start": 15.883,
-          "end": 19.533,
+          "start": 15.177,
+          "end": 18.616,
           "text": "Then try an unrelated request and see\nwhether the description makes the"
         },
         {
-          "start": 19.608,
-          "end": 21.255,
+          "start": 18.616,
+          "end": 20.313,
           "text": "skill’s intended scope clear."
         }
       ]
@@ -269,42 +264,42 @@
       "result": "Review the skill and its dependencies before sharing.",
       "focus": "A skill provides steps while a tool provides a callable action",
       "action": "Identify one instruction, skill, tool and connector example.",
-      "durationFrames": 640,
-      "duration": 26.666666666666668,
+      "durationFrames": 593,
+      "duration": 24.708333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 3.818,
+          "start": 0.235,
+          "end": 3.394,
           "text": "Compare this skill with the repository\ninstruction file."
         },
         {
-          "start": 3.868,
-          "end": 7.818,
+          "start": 3.81,
+          "end": 7.32,
           "text": "The instruction file describes\nconventions for work in this project."
         },
         {
-          "start": 7.868,
-          "end": 10.859,
+          "start": 7.681,
+          "end": 10.516,
           "text": "The skill carries a repeatable procedure\nyou can invoke."
         },
         {
-          "start": 11.461,
-          "end": 15.861,
+          "start": 10.857,
+          "end": 14.416,
           "text": "Tools let the agent perform actions such\nas reading a supplied file."
         },
         {
-          "start": 15.911,
-          "end": 19.73,
+          "start": 14.737,
+          "end": 18.24,
           "text": "An approved M C P server can expose more\ntools or resources."
         },
         {
-          "start": 20.319,
-          "end": 23.244,
+          "start": 18.661,
+          "end": 21.095,
           "text": "Our example works with supplied training\nevidence,"
         },
         {
-          "start": 23.294,
-          "end": 25.605,
+          "start": 21.546,
+          "end": 23.821,
           "text": "and the environment still controls\naccess."
         }
       ]
@@ -320,37 +315,37 @@
       "result": "An invocable procedure with two observable tests.",
       "focus": "Two test cases demonstrate when the skill is useful",
       "action": "Draft a second skill and test complete and incomplete evidence.",
-      "durationFrames": 567,
-      "duration": 23.625,
+      "durationFrames": 540,
+      "duration": 22.5,
       "cues": [
         {
-          "start": 0.389,
-          "end": 5.189,
+          "start": 0.235,
+          "end": 4.239,
           "text": "Pick another repeated task, like\nsummarizing a failed test for an author."
         },
         {
-          "start": 5.264,
-          "end": 9.087,
+          "start": 4.484,
+          "end": 8.715,
           "text": "Write a small skill with a clear\ntrigger, steps, and expected output."
         },
         {
-          "start": 9.68,
-          "end": 13.405,
+          "start": 9.226,
+          "end": 12.305,
           "text": "Try it with complete input and again\nwith one item missing."
         },
         {
-          "start": 13.48,
-          "end": 16.805,
+          "start": 12.856,
+          "end": 15.434,
           "text": "Ask a teammate to judge each result from\nthe evidence."
         },
         {
-          "start": 16.88,
-          "end": 20.28,
+          "start": 16.005,
+          "end": 19.259,
           "text": "If they can explain when the skill\napplies and spot missing proof,"
         },
         {
-          "start": 20.33,
-          "end": 22.13,
+          "start": 19.59,
+          "end": 21.562,
           "text": "you have a useful procedure to share."
         }
       ]
@@ -359,6 +354,6 @@
   "fps": 24,
   "width": 1280,
   "height": 720,
-  "durationFrames": 3850,
-  "voiceBuild": "abb398ed616ad6b0954e4b3daa2940f70752998be453afb48ec58130273d5246"
+  "durationFrames": 3594,
+  "voiceBuild": "8b96cd5e01366fa5f1448ac7e480d79789dde49b2f5f2178269707c27fbef753"
 }
