@@ -1,0 +1,61 @@
+1
+00:00:00,306 --> 00:00:05,135
+Run the same suite with the new test
+present. Look for the zero test name and
+
+2
+00:00:05,135 --> 00:00:06,257
+the assertion message.
+
+3
+00:00:06,826 --> 00:00:11,322
+True was returned where false was
+expected. That failure supports the
+
+4
+00:00:11,322 --> 00:00:12,119
+hypothesis.
+
+5
+00:00:12,709 --> 00:00:15,398
+If the suite stops because of a missing
+import,
+
+6
+00:00:15,744 --> 00:00:17,987
+it hasn't shown that the boundary is
+wrong.
+
+7
+00:00:18,578 --> 00:00:22,917
+Fix the setup first and rerun until you
+have the failure you intended to test.
+
+8
+00:00:24,742 --> 00:00:27,905
+Change greater than or equal to zero to
+greater than zero.
+
+9
+00:00:28,218 --> 00:00:31,791
+Keep the assertion and the function
+signature as they are.
+
+10
+00:00:32,203 --> 00:00:35,023
+Rerun the same test command on the
+updated checkout.
+
+11
+00:00:35,358 --> 00:00:39,617
+Now all four cases should pass. Check
+the source diff and the test diff
+
+12
+00:00:39,617 --> 00:00:40,267
+together.
+
+13
+00:00:40,527 --> 00:00:43,734
+Each one should answer a part of the
+issue you started with.

@@ -1,0 +1,39 @@
+{
+  "pilot": "M02",
+  "status": "candidate-awaiting-human-review",
+  "baseline": "0a2625b65b1b740c99a46c44becc17cb06e0ebd2",
+  "durationSeconds": 296.375,
+  "size": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "frames": 7113,
+  "chapters": [
+    "Three tests pass",
+    "Call the validator with zero",
+    "Predict what the comparison does",
+    "Add the test first",
+    "Find the intended failure",
+    "Remove the equality",
+    "Replay the same four tests",
+    "Try a boundary at the other end"
+  ],
+  "captionCount": 83,
+  "sha256": {
+    "media/M02.mp4": "75f25554787d18075e89f9e273fc5dd4900fc9e2ca10c5ff0e14028af670f765",
+    "work/M02/audio/narration.m4a": "3bf49b0d1e8c9cfe595d7c431d24bd59cb5b08fd80e70c865a856b1a73bdb98f",
+    "work/M02/audio/captions.srt": "af0d71126410a46c1f4df08c29dc719e0a53df5399580c4289f520c10fa5a5ab",
+    "work/M02/audio/episode.json": "0167750dca91ac8eb23ececefa169ddf82c5029105e33241bc3ce888418fe962",
+    "work/M02/lesson.json": "b2b2c7bb39241d0d842193a1ae13f3b18a5d216ae1cbcaeeb60bbd3eb338f53d",
+    "work/M02/visual/scene.cjs": "3a366df5c07299e5fb81873de9fd83c3544c6742fc4714927833d737ee937eda",
+    "work/M02/take/raw-wavs.zip": "f84941f0466c39f7aed33f92687e71836fed529a18f3281456ca306b76591283",
+    "review/montaje-X.mp4": "bf7ae7d17a1eec944b799022ca04cd1de6993237fe3dcae5b3f302db66b889ea",
+    "review/montaje-Y.mp4": "c1162ad8956556bc854c6fa9e47b37c3d5b3f3ad359034bbb07c9580eeaa9993",
+    "review/voz-A.mp4": "1f1ebe1c09ec07322d29ab90e71e884f807b383b0a55239eab905447a869ce8c",
+    "review/voz-B.mp4": "0520e339b529d25c809e6051c9648b08c1c8186979276418edc07a1c99da2065",
+    "review/voz-C.mp4": "eeaee266a376a4b20562abaad14f2ad89f938429970b75cc4ba9a7f7861c2440",
+    "review/participants/K.zip": "420b1bd1abf8a340bf53798bc74bc31053025ec0016b0f838f60729d0c4ca279",
+    "review/participants/R.zip": "e18a38b74626678c092c8b4209f720a4ba790fa2b2fdc51dd996de67ef4c9793"
+  }
+}
