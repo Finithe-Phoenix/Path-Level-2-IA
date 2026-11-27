@@ -24,47 +24,42 @@
       "result": "Boundary case identified: zero units.",
       "focus": "The observed value and required value disagree at zero",
       "action": "Read the training issue and write down the exact failing example.",
-      "durationFrames": 520,
-      "duration": 21.666666666666668,
+      "durationFrames": 474,
+      "duration": 19.75,
       "cues": [
         {
-          "start": 0.389,
-          "end": 2.989,
-          "text": "The report says zero orders slip\nthrough."
+          "start": 0.235,
+          "end": 3.695,
+          "text": "The report says zero orders slip\nthrough. Let’s translate that into a"
         },
         {
-          "start": 3.064,
-          "end": 5.814,
-          "text": "Let’s translate that into a call we can\ntest."
+          "start": 3.695,
+          "end": 4.511,
+          "text": "call we can test."
         },
         {
-          "start": 5.864,
-          "end": 9.167,
+          "start": 4.876,
+          "end": 7.979,
           "text": "When the validator receives zero, it\ncurrently returns true."
         },
         {
-          "start": 9.779,
-          "end": 11.629,
-          "text": "The issue requires false."
+          "start": 8.239,
+          "end": 12.239,
+          "text": "The issue requires false. The inputs one\nand five should still pass,"
         },
         {
-          "start": 11.679,
-          "end": 13.954,
-          "text": "The inputs one and five should still\npass,"
-        },
-        {
-          "start": 14.004,
-          "end": 16.229,
+          "start": 12.47,
+          "end": 14.164,
           "text": "and negative one should still fail."
         },
         {
-          "start": 16.304,
-          "end": 19.654,
+          "start": 14.445,
+          "end": 18.268,
           "text": "Keep that expected behavior in view\nwhile we investigate what the code"
         },
         {
-          "start": 19.704,
-          "end": 20.565,
+          "start": 18.268,
+          "end": 19.036,
           "text": "actually does."
         }
       ]
@@ -80,47 +75,37 @@
       "result": "test_accepts_one ... ok\ntest_accepts_five ... ok\ntest_rejects_negative_one ... ok\nRan 3 tests. OK",
       "focus": "Three tests pass and none calls the validator with zero",
       "action": "Run the baseline tests in the approved runner.",
-      "durationFrames": 546,
-      "duration": 22.75,
+      "durationFrames": 487,
+      "duration": 20.291666666666668,
       "cues": [
         {
-          "start": 0.439,
-          "end": 4.564,
+          "start": 0.255,
+          "end": 4.515,
           "text": "Run the existing tests from the training\ncheckout in the approved environment."
         },
         {
-          "start": 4.614,
-          "end": 6.114,
-          "text": "The suite goes green."
+          "start": 4.986,
+          "end": 9.21,
+          "text": "The suite goes green. Now read the test\nnames. There’s one test each for one,"
         },
         {
-          "start": 6.199,
-          "end": 7.562,
-          "text": "Now read the test names."
+          "start": 9.28,
+          "end": 10.534,
+          "text": "five, and negative one."
         },
         {
-          "start": 8.186,
-          "end": 11.686,
-          "text": "There’s one test each for one, five, and\nnegative one."
+          "start": 10.78,
+          "end": 14.514,
+          "text": "There’s no zero case. That's why a green\nresult can coexist with the bug."
         },
         {
-          "start": 11.736,
-          "end": 13.386,
-          "text": "There’s no zero case."
-        },
-        {
-          "start": 13.436,
-          "end": 16.049,
-          "text": "That's why a green result can coexist\nwith the bug."
-        },
-        {
-          "start": 16.698,
-          "end": 20.798,
+          "start": 15.065,
+          "end": 18.828,
           "text": "Record the checkout and the exact test\ncommand so we can repeat the check"
         },
         {
-          "start": 20.848,
-          "end": 21.657,
+          "start": 18.828,
+          "end": 19.637,
           "text": "consistently."
         }
       ]
@@ -136,43 +121,38 @@
       "result": "Hypothesis: the equality admits zero.\nPrediction: an assertFalse for zero will fail.",
       "focus": "The comparison makes a testable prediction for zero",
       "action": "Ask Plan to predict the result from the return line.",
-      "durationFrames": 600,
-      "duration": 25.0,
+      "durationFrames": 560,
+      "duration": 23.333333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.458,
+          "start": 0.296,
+          "end": 3.682,
           "text": "Open the issue, the validator, and the\ntests in VS Code."
         },
         {
-          "start": 4.533,
-          "end": 8.545,
+          "start": 4.133,
+          "end": 8.045,
           "text": "In Copilot Plan, ask which expression\ncould explain this behavior."
         },
         {
-          "start": 9.144,
-          "end": 12.544,
-          "text": "The proposed cause is the greater-than-\nor-equal comparison."
+          "start": 8.305,
+          "end": 11.428,
+          "text": "The proposed cause is the\ngreater-than-or-equal comparison."
         },
         {
-          "start": 12.619,
-          "end": 14.869,
-          "text": "Read the line and substitute zero."
+          "start": 11.789,
+          "end": 16.381,
+          "text": "Read the line and substitute zero. Zero\nequals zero, so the expression is true."
         },
         {
-          "start": 14.969,
-          "end": 17.523,
-          "text": "Zero equals zero, so the expression is\ntrue."
+          "start": 16.812,
+          "end": 21.592,
+          "text": "Now we have a prediction. An assertion\nexpecting false for zero should fail on"
         },
         {
-          "start": 18.182,
-          "end": 19.907,
-          "text": "Now we have a prediction."
-        },
-        {
-          "start": 19.982,
-          "end": 23.909,
-          "text": "An assertion expecting false for zero\nshould fail on the original revision."
+          "start": 21.592,
+          "end": 22.6,
+          "text": "the original revision."
         }
       ]
     },
@@ -187,37 +167,37 @@
       "result": "Changed file: tests/test_order_quantity.py",
       "focus": "The test-only diff adds one assertion against the public function",
       "action": "Request the regression test and inspect the test-only patch.",
-      "durationFrames": 562,
-      "duration": 23.416666666666668,
+      "durationFrames": 533,
+      "duration": 22.208333333333332,
       "cues": [
         {
-          "start": 0.418,
-          "end": 4.718,
+          "start": 0.296,
+          "end": 3.926,
           "text": "Ask Agent to add just the zero\nregression to the existing test class."
         },
         {
-          "start": 4.793,
-          "end": 6.693,
-          "text": "Inspect the proposed patch."
+          "start": 4.417,
+          "end": 8.307,
+          "text": "Inspect the proposed patch. It should\ncall the public function with zero and"
         },
         {
-          "start": 6.768,
-          "end": 9.963,
-          "text": "It should call the public function with\nzero and expect false."
+          "start": 8.307,
+          "end": 9.053,
+          "text": "expect false."
         },
         {
-          "start": 10.555,
-          "end": 14.48,
+          "start": 9.584,
+          "end": 13.019,
           "text": "The validator itself should still have\nits original comparison."
         },
         {
-          "start": 14.555,
-          "end": 18.33,
+          "start": 13.46,
+          "end": 17.593,
           "text": "This separation is useful because the\nnext run will tell us whether the new"
         },
         {
-          "start": 18.38,
-          "end": 22.344,
+          "start": 17.593,
+          "end": 21.566,
           "text": "test can detect the reported behavior\nbefore any fix is applied."
         }
       ]
@@ -233,42 +213,42 @@
       "result": "test_rejects_zero ... FAIL\nAssertionError: True is not false\nRan 4 tests. FAILED (failures=1)",
       "focus": "The expected assertion fails for the expected reason",
       "action": "Run the updated suite and find the zero assertion failure.",
-      "durationFrames": 541,
-      "duration": 22.541666666666668,
+      "durationFrames": 513,
+      "duration": 21.375,
       "cues": [
         {
-          "start": 0.439,
-          "end": 3.064,
-          "text": "Run the same suite with the new test\npresent."
+          "start": 0.275,
+          "end": 4.615,
+          "text": "Run the same suite with the new test\npresent. Look for the zero test name and"
         },
         {
-          "start": 3.139,
-          "end": 6.364,
-          "text": "Look for the zero test name and the\nassertion message."
+          "start": 4.615,
+          "end": 5.623,
+          "text": "the assertion message."
         },
         {
-          "start": 6.439,
-          "end": 8.725,
-          "text": "True was returned where false was\nexpected."
+          "start": 6.134,
+          "end": 10.175,
+          "text": "True was returned where false was\nexpected. That failure supports the"
         },
         {
-          "start": 9.318,
-          "end": 11.793,
-          "text": "That failure supports the hypothesis."
+          "start": 10.175,
+          "end": 10.891,
+          "text": "hypothesis."
         },
         {
-          "start": 11.868,
-          "end": 14.293,
+          "start": 11.421,
+          "end": 13.838,
           "text": "If the suite stops because of a missing\nimport,"
         },
         {
-          "start": 14.343,
-          "end": 16.993,
+          "start": 14.149,
+          "end": 16.165,
           "text": "it hasn't shown that the boundary is\nwrong."
         },
         {
-          "start": 17.068,
-          "end": 21.448,
+          "start": 16.696,
+          "end": 20.595,
           "text": "Fix the setup first and rerun until you\nhave the failure you intended to test."
         }
       ]
@@ -284,37 +264,37 @@
       "result": "test_rejects_zero ... ok\nRan 4 tests. OK",
       "focus": "The same four-case suite passes after the one-line fix",
       "action": "Apply the one-line fix and rerun the same command.",
-      "durationFrames": 477,
-      "duration": 19.875,
+      "durationFrames": 433,
+      "duration": 18.041666666666668,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.093,
+          "start": 0.255,
+          "end": 3.098,
           "text": "Change greater than or equal to zero to\ngreater than zero."
         },
         {
-          "start": 4.168,
-          "end": 7.318,
+          "start": 3.379,
+          "end": 6.59,
           "text": "Keep the assertion and the function\nsignature as they are."
         },
         {
-          "start": 7.393,
-          "end": 10.368,
+          "start": 6.96,
+          "end": 9.495,
           "text": "Rerun the same test command on the\nupdated checkout."
         },
         {
-          "start": 11.027,
-          "end": 13.227,
-          "text": "Now all four cases should pass."
+          "start": 9.796,
+          "end": 13.623,
+          "text": "Now all four cases should pass. Check\nthe source diff and the test diff"
         },
         {
-          "start": 13.277,
-          "end": 16.027,
-          "text": "Check the source diff and the test diff\ntogether."
+          "start": 13.623,
+          "end": 14.14,
+          "text": "together."
         },
         {
-          "start": 16.102,
-          "end": 18.823,
+          "start": 14.441,
+          "end": 17.323,
           "text": "Each one should answer a part of the\nissue you started with."
         }
       ]
@@ -330,37 +310,37 @@
       "result": "A testable explanation of the change.",
       "focus": "A teammate can replay the failure and the passing run",
       "action": "Write a short reproduction note from the two outputs.",
-      "durationFrames": 572,
-      "duration": 23.833333333333332,
+      "durationFrames": 527,
+      "duration": 21.958333333333332,
       "cues": [
         {
-          "start": 0.418,
-          "end": 4.593,
+          "start": 0.235,
+          "end": 3.566,
           "text": "Let’s turn the investigation into\nsomething another engineer can replay."
         },
         {
-          "start": 4.668,
-          "end": 9.337,
+          "start": 3.887,
+          "end": 8.018,
           "text": "Record the zero input, the original\ncomparison, and both test results."
         },
         {
-          "start": 9.996,
-          "end": 12.496,
-          "text": "Say which revision produced each output."
+          "start": 8.69,
+          "end": 13.343,
+          "text": "Say which revision produced each output.\nThen explain why one still passes and"
         },
         {
-          "start": 12.546,
-          "end": 16.621,
-          "text": "Then explain why one still passes and\nnegative one still fails."
+          "start": 13.343,
+          "end": 14.97,
+          "text": "negative one still fails."
         },
         {
-          "start": 16.696,
-          "end": 19.071,
+          "start": 15.541,
+          "end": 17.615,
           "text": "If you can answer from the source and\nthe tests,"
         },
         {
-          "start": 19.121,
-          "end": 22.336,
+          "start": 17.906,
+          "end": 21.002,
           "text": "you've verified the change as well as\nthe proposed diagnosis."
         }
       ]
@@ -369,6 +349,6 @@
   "fps": 24,
   "width": 1280,
   "height": 720,
-  "durationFrames": 3818,
-  "voiceBuild": "6e4491b49b52c5155ddd1ddc0e7dd8dacb82710a65a63be05fafe35a68a5acb4"
+  "durationFrames": 3527,
+  "voiceBuild": "222780121ee38d00511610003bd6dc6f2f2fc25a41b9d16c028e8fb5cb80f054"
 }

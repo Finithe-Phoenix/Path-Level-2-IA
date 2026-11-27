@@ -1,59 +1,55 @@
 {
+  "audioEdition": 3,
   "fps": 24,
-  "voiceBuild": "6e4491b49b52c5155ddd1ddc0e7dd8dacb82710a65a63be05fafe35a68a5acb4",
-  "paceBuild": "abebcb4b504d167ca7ffba708e66aa5980a98bf39b8d4ecbd37d4963525ec31f",
+  "voiceBuild": "222780121ee38d00511610003bd6dc6f2f2fc25a41b9d16c028e8fb5cb80f054",
+  "paceBuild": "af8b957af8b058efbed3de5cd2fdeb9cb14ecdff04d836109a27c2e00a04aa5d",
   "delivery": {
-    "targetWordsPerMinute": 146,
-    "inputWordsPerMinute": 156.9,
-    "tempo": 0.95277222,
-    "outputWordsPerMinute": 146.0
+    "targetWordsPerMinute": 149,
+    "inputWordsPerMinute": 169.84,
+    "tempo": 0.89868054,
+    "outputWordsPerMinute": 149.01
   },
-  "audioSha256": "e0395773a68a32eff611f2c1289f174566cf9787b683dfefd6aaa7af144059f4",
-  "captionsSha256": "71df26e6a187e65c7a394afde488097737702b143021f91b874351814fd0ac51",
+  "audioSha256": "c97b0334ffa112a29fce333f34a6448ebadb38b72483907473135aed377de260",
+  "captionsSha256": "4fd1082ea6287cea6ffa0c33b33f4f696eabd7c86b50f450be581737590a0a31",
   "scenes": [
     {
       "id": "symptom",
       "scriptSha256": "c107bae7fda847af1c013ba946548757ab15d1f492e9285c30a3153dc4dc943d",
-      "durationFrames": 555,
+      "durationFrames": 537,
       "cues": [
         {
-          "start": 0.408,
-          "end": 3.137,
-          "text": "The report says zero orders slip\nthrough."
+          "start": 0.261,
+          "end": 4.112,
+          "text": "The report says zero orders slip\nthrough. Let’s translate that into a"
         },
         {
-          "start": 3.216,
-          "end": 6.102,
-          "text": "Let’s translate that into a call we can\ntest."
+          "start": 4.112,
+          "end": 5.02,
+          "text": "call we can test."
         },
         {
-          "start": 6.155,
-          "end": 9.621,
+          "start": 5.426,
+          "end": 8.879,
           "text": "When the validator receives zero, it\ncurrently returns true."
         },
         {
-          "start": 10.264,
-          "end": 12.205,
-          "text": "The issue requires false."
+          "start": 9.168,
+          "end": 13.619,
+          "text": "The issue requires false. The inputs one\nand five should still pass,"
         },
         {
-          "start": 12.258,
-          "end": 14.646,
-          "text": "The inputs one and five should still\npass,"
-        },
-        {
-          "start": 14.698,
-          "end": 17.033,
+          "start": 13.876,
+          "end": 15.761,
           "text": "and negative one should still fail."
         },
         {
-          "start": 17.112,
-          "end": 20.628,
+          "start": 16.074,
+          "end": 20.328,
           "text": "Keep that expected behavior in view\nwhile we investigate what the code"
         },
         {
-          "start": 20.681,
-          "end": 21.584,
+          "start": 20.328,
+          "end": 21.182,
           "text": "actually does."
         }
       ]
@@ -61,46 +57,36 @@
     {
       "id": "baseline",
       "scriptSha256": "b71656a732009ea8702d90678b3a346d347b4e837330a5f303151ee11d990b8a",
-      "durationFrames": 589,
+      "durationFrames": 557,
       "cues": [
         {
-          "start": 0.461,
-          "end": 4.79,
+          "start": 0.284,
+          "end": 5.024,
           "text": "Run the existing tests from the training\ncheckout in the approved environment."
         },
         {
-          "start": 4.843,
-          "end": 6.417,
-          "text": "The suite goes green."
+          "start": 5.548,
+          "end": 10.248,
+          "text": "The suite goes green. Now read the test\nnames. There’s one test each for one,"
         },
         {
-          "start": 6.506,
-          "end": 7.937,
-          "text": "Now read the test names."
+          "start": 10.326,
+          "end": 11.722,
+          "text": "five, and negative one."
         },
         {
-          "start": 8.592,
-          "end": 12.265,
-          "text": "There’s one test each for one, five, and\nnegative one."
+          "start": 11.995,
+          "end": 16.15,
+          "text": "There’s no zero case. That's why a green\nresult can coexist with the bug."
         },
         {
-          "start": 12.318,
-          "end": 14.05,
-          "text": "There’s no zero case."
-        },
-        {
-          "start": 14.102,
-          "end": 16.845,
-          "text": "That's why a green result can coexist\nwith the bug."
-        },
-        {
-          "start": 17.526,
-          "end": 21.829,
+          "start": 16.763,
+          "end": 20.951,
           "text": "Record the checkout and the exact test\ncommand so we can repeat the check"
         },
         {
-          "start": 21.881,
-          "end": 22.731,
+          "start": 20.951,
+          "end": 21.851,
           "text": "consistently."
         }
       ]
@@ -108,78 +94,73 @@
     {
       "id": "hypothesis",
       "scriptSha256": "b6fb7ef271ef72f41bf5690783272c7f1349e3a63da97771dee8842b12dd6501",
-      "durationFrames": 645,
+      "durationFrames": 639,
       "cues": [
         {
-          "start": 0.412,
-          "end": 4.679,
+          "start": 0.329,
+          "end": 4.097,
           "text": "Open the issue, the validator, and the\ntests in VS Code."
         },
         {
-          "start": 4.758,
-          "end": 8.969,
+          "start": 4.599,
+          "end": 8.952,
           "text": "In Copilot Plan, ask which expression\ncould explain this behavior."
         },
         {
-          "start": 9.597,
-          "end": 13.166,
-          "text": "The proposed cause is the greater-than-\nor-equal comparison."
+          "start": 9.241,
+          "end": 12.716,
+          "text": "The proposed cause is the\ngreater-than-or-equal comparison."
         },
         {
-          "start": 13.245,
-          "end": 15.606,
-          "text": "Read the line and substitute zero."
+          "start": 13.118,
+          "end": 18.228,
+          "text": "Read the line and substitute zero. Zero\nequals zero, so the expression is true."
         },
         {
-          "start": 15.711,
-          "end": 18.392,
-          "text": "Zero equals zero, so the expression is\ntrue."
+          "start": 18.707,
+          "end": 24.026,
+          "text": "Now we have a prediction. An assertion\nexpecting false for zero should fail on"
         },
         {
-          "start": 19.083,
-          "end": 20.894,
-          "text": "Now we have a prediction."
-        },
-        {
-          "start": 20.972,
-          "end": 25.094,
-          "text": "An assertion expecting false for zero\nshould fail on the original revision."
+          "start": 24.026,
+          "end": 25.148,
+          "text": "the original revision."
         }
       ]
     },
     {
       "id": "red-test",
       "scriptSha256": "53aa14251c1b79c3ee4eb0d3db8e143fef0c99a9420eb118d81b72d51e4bff36",
-      "durationFrames": 605,
+      "durationFrames": 608,
       "cues": [
         {
-          "start": 0.439,
-          "end": 4.952,
+          "start": 0.329,
+          "end": 4.369,
           "text": "Ask Agent to add just the zero\nregression to the existing test class."
         },
         {
-          "start": 5.031,
-          "end": 7.025,
-          "text": "Inspect the proposed patch."
+          "start": 4.915,
+          "end": 9.244,
+          "text": "Inspect the proposed patch. It should\ncall the public function with zero and"
         },
         {
-          "start": 7.103,
-          "end": 10.457,
-          "text": "It should call the public function with\nzero and expect false."
+          "start": 9.244,
+          "end": 10.074,
+          "text": "expect false."
         },
         {
-          "start": 11.078,
-          "end": 15.198,
+          "start": 10.665,
+          "end": 14.487,
           "text": "The validator itself should still have\nits original comparison."
         },
         {
-          "start": 15.276,
-          "end": 19.239,
+          "start": 14.978,
+          "end": 19.576,
           "text": "This separation is useful because the\nnext run will tell us whether the new"
         },
         {
-          "start": 19.291,
-          "end": 23.452,
+          "start": 19.576,
+          "end": 23.997,
           "text": "test can detect the reported behavior\nbefore any fix is applied."
         }
       ]
@@ -187,41 +168,41 @@
     {
       "id": "read-red",
       "scriptSha256": "9cd6071a8ae5eee0e4e02a0ba78b65d1ecabb7310c4359bee2d8b767990f5f98",
-      "durationFrames": 584,
+      "durationFrames": 587,
       "cues": [
         {
-          "start": 0.461,
-          "end": 3.216,
-          "text": "Run the same suite with the new test\npresent."
+          "start": 0.306,
+          "end": 5.135,
+          "text": "Run the same suite with the new test\npresent. Look for the zero test name and"
         },
         {
-          "start": 3.295,
-          "end": 6.679,
-          "text": "Look for the zero test name and the\nassertion message."
+          "start": 5.135,
+          "end": 6.257,
+          "text": "the assertion message."
         },
         {
-          "start": 6.758,
-          "end": 9.157,
-          "text": "True was returned where false was\nexpected."
+          "start": 6.826,
+          "end": 11.322,
+          "text": "True was returned where false was\nexpected. That failure supports the"
         },
         {
-          "start": 9.78,
-          "end": 12.378,
-          "text": "That failure supports the hypothesis."
+          "start": 11.322,
+          "end": 12.119,
+          "text": "hypothesis."
         },
         {
-          "start": 12.456,
-          "end": 15.001,
+          "start": 12.709,
+          "end": 15.398,
           "text": "If the suite stops because of a missing\nimport,"
         },
         {
-          "start": 15.054,
-          "end": 17.835,
+          "start": 15.744,
+          "end": 17.987,
           "text": "it hasn't shown that the boundary is\nwrong."
         },
         {
-          "start": 17.914,
-          "end": 22.511,
+          "start": 18.578,
+          "end": 22.917,
           "text": "Fix the setup first and rerun until you\nhave the failure you intended to test."
         }
       ]
@@ -229,36 +210,37 @@
     {
       "id": "fix-green",
       "scriptSha256": "2ae8c20d808fa5a1c5ee57c2c98252a68a12bf7ef93f6e49d1546f357e27af1c",
-      "durationFrames": 516,
+      "durationFrames": 497,
       "cues": [
         {
-          "start": 0.412,
-          "end": 4.296,
+          "start": 0.284,
+          "end": 3.447,
           "text": "Change greater than or equal to zero to\ngreater than zero."
         },
         {
-          "start": 4.375,
-          "end": 7.681,
+          "start": 3.76,
+          "end": 7.333,
           "text": "Keep the assertion and the function\nsignature as they are."
         },
         {
-          "start": 7.759,
-          "end": 10.882,
+          "start": 7.745,
+          "end": 10.565,
           "text": "Rerun the same test command on the\nupdated checkout."
         },
         {
-          "start": 11.574,
-          "end": 13.883,
-          "text": "Now all four cases should pass."
+          "start": 10.9,
+          "end": 15.159,
+          "text": "Now all four cases should pass. Check\nthe source diff and the test diff"
         },
         {
-          "start": 13.935,
-          "end": 16.821,
-          "text": "Check the source diff and the test diff\ntogether."
+          "start": 15.159,
+          "end": 15.809,
+          "text": "together.",
+          "speechEnd": 15.734
         },
         {
-          "start": 16.9,
-          "end": 19.756,
+          "start": 16.069,
+          "end": 19.276,
           "text": "Each one should answer a part of the\nissue you started with."
         }
       ]
@@ -266,36 +248,36 @@
     {
       "id": "practice",
       "scriptSha256": "1965760c5eb783328922f0c05860cb647b2c7e42f7952a70a51ab7fe0ee9578a",
-      "durationFrames": 609,
+      "durationFrames": 595,
       "cues": [
         {
-          "start": 0.439,
-          "end": 4.821,
+          "start": 0.261,
+          "end": 3.968,
           "text": "Let’s turn the investigation into\nsomething another engineer can replay."
         },
         {
-          "start": 4.899,
-          "end": 9.8,
+          "start": 4.325,
+          "end": 8.922,
           "text": "Record the zero input, the original\ncomparison, and both test results."
         },
         {
-          "start": 10.491,
-          "end": 13.115,
-          "text": "Say which revision produced each output."
+          "start": 9.67,
+          "end": 14.847,
+          "text": "Say which revision produced each output.\nThen explain why one still passes and"
         },
         {
-          "start": 13.168,
-          "end": 17.445,
-          "text": "Then explain why one still passes and\nnegative one still fails."
+          "start": 14.847,
+          "end": 16.658,
+          "text": "negative one still fails."
         },
         {
-          "start": 17.524,
-          "end": 20.016,
+          "start": 17.293,
+          "end": 19.601,
           "text": "If you can answer from the source and\nthe tests,"
         },
         {
-          "start": 20.069,
-          "end": 23.443,
+          "start": 19.925,
+          "end": 23.37,
           "text": "you've verified the change as well as\nthe proposed diagnosis."
         }
       ]
