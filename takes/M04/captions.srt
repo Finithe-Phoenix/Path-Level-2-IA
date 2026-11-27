@@ -1,225 +1,214 @@
 1
-00:00:00,389 --> 00:00:02,964
+00:00:00,235 --> 00:00:03,789
 Picture two issues in the same
-repository.
+repository. One is about zero
 
 2
-00:00:03,039 --> 00:00:05,089
-One is about zero quantities.
+00:00:03,789 --> 00:00:04,415
+quantities.
 
 3
-00:00:05,164 --> 00:00:07,639
+00:00:04,816 --> 00:00:09,029
 Another asks for a clearer error
-message.
+message. The issue ID and expected
 
 4
-00:00:07,689 --> 00:00:10,411
-The issue ID and expected behavior
-change.
+00:00:09,029 --> 00:00:09,896
+behavior change.
 
 5
-00:00:11,003 --> 00:00:14,853
+00:00:10,411 --> 00:00:13,477
 The location of the test suite may stay
 the same across both.
 
 6
-00:00:14,903 --> 00:00:18,503
+00:00:13,803 --> 00:00:16,976
 Put recurring project conventions where
 the agent can load them,
 
 7
-00:00:18,553 --> 00:00:22,237
+00:00:17,288 --> 00:00:21,108
 and keep the individual issue details in
 the prompt you send for that task.
 
 8
-00:00:23,726 --> 00:00:27,051
+00:00:22,149 --> 00:00:24,938
 Open a Markdown template in the training
 repository.
 
 9
-00:00:27,126 --> 00:00:31,269
+00:00:25,390 --> 00:00:29,486
 Write a request that takes an issue and
 the current source and tests as inputs.
 
 10
-00:00:31,897 --> 00:00:36,262
+00:00:29,966 --> 00:00:34,001
 Ask for the proposed edit, the affected
 files, and a way to verify it.
 
 11
-00:00:36,312 --> 00:00:39,062
+00:00:34,321 --> 00:00:36,639
 The template should end at a plan you
 can review.
 
 12
-00:00:39,162 --> 00:00:43,402
+00:00:37,000 --> 00:00:41,207
 On the approved Copilot setup, paste the
 filled-in text into chat to run it.
 
 13
-00:00:44,893 --> 00:00:48,518
+00:00:42,213 --> 00:00:45,798
 Start Plan in the current branch and
 attach the issue, validator,
 
 14
-00:00:48,568 --> 00:00:50,268
+00:00:45,989 --> 00:00:47,224
 and matching test file.
 
 15
-00:00:50,343 --> 00:00:52,735
+00:00:47,605 --> 00:00:50,111
 Paste the template with the issue
 reference filled in.
 
 16
-00:00:53,333 --> 00:00:57,408
+00:00:50,377 --> 00:00:54,345
 The response should identify the
 existing comparison and explain why a
 
 17
-00:00:57,458 --> 00:00:59,558
+00:00:54,345 --> 00:00:55,853
 zero test would expose it.
 
 18
-00:00:59,633 --> 00:01:02,139
+00:00:56,213 --> 00:01:00,328
 Open the cited lines and check them
-yourself.
+yourself. If a file name is unfamiliar,
 
 19
-00:01:02,763 --> 00:01:07,188
-If a file name is unfamiliar, confirm it
-in the workspace before accepting the
+00:01:00,718 --> 00:01:03,531
+confirm it in the workspace before
+accepting the plan.
 
 20
-00:01:07,238 --> 00:01:07,682
-plan.
+00:01:04,567 --> 00:01:08,705
+Open the repository root in VS Code. For
+this Copilot example,
 
 21
-00:01:09,143 --> 00:01:12,068
-Open the repository root in VS Code.
+00:01:09,036 --> 00:01:13,074
+find or create the project instructions
+file in the dot GitHub folder.
 
 22
-00:01:12,143 --> 00:01:16,943
-For this Copilot example, find or create
-the project instructions file in the dot
-
-23
-00:01:16,993 --> 00:01:17,923
-GitHub folder.
-
-24
-00:01:18,551 --> 00:01:23,426
+00:01:13,564 --> 00:01:17,840
 Add the convention that unit tests use
 the existing unittest suite under tests.
 
-25
-00:01:23,501 --> 00:01:27,226
+23
+00:01:18,310 --> 00:01:22,304
 Keep the rule short and include a
 reliable reference for the verification
 
-26
-00:01:27,276 --> 00:01:27,755
+24
+00:01:22,304 --> 00:01:22,790
 command.
 
-27
-00:01:28,389 --> 00:01:32,625
+25
+00:01:23,281 --> 00:01:27,004
 If instructions already exist, edit the
 existing guidance with your team.
 
-28
-00:01:34,101 --> 00:01:38,326
+26
+00:01:28,045 --> 00:01:31,781
 Open the agent customizations view and
 find the instruction file.
 
-29
-00:01:38,401 --> 00:01:41,301
+27
+00:01:32,176 --> 00:01:36,128
 Then start a fresh chat in the same
-workspace.
+workspace. Ask for a regression plan
 
-30
-00:01:41,376 --> 00:01:44,545
-Ask for a regression plan without
-repeating the test convention.
+28
+00:01:36,139 --> 00:01:37,992
+without repeating the test convention.
 
-31
-00:01:45,158 --> 00:01:48,968
+29
+00:01:38,337 --> 00:01:41,720
 Where your client shows references,
 confirm the file was included.
 
-32
-00:01:49,043 --> 00:01:51,968
+30
+00:01:42,041 --> 00:01:46,340
 Read the proposed test location and
-framework.
+framework. File discovery and correct
+
+31
+00:01:46,471 --> 00:01:48,606
+use give you two different things to
+check.
+
+32
+00:01:49,568 --> 00:01:53,809
+The prompt asks for a particular piece
+of work. The instruction file supplies
 
 33
-00:01:52,068 --> 00:01:55,527
-File discovery and correct use give you
-two different things to check.
+00:01:53,839 --> 00:01:55,473
+reusable project conventions.
 
 34
-00:01:57,014 --> 00:01:59,789
-The prompt asks for a particular piece
-of work.
-
-35
-00:01:59,839 --> 00:02:03,664
-The instruction file supplies reusable
-project conventions.
-
-36
-00:02:03,714 --> 00:02:07,462
+00:01:55,874 --> 00:01:59,733
 Required checks and actual tool
 permissions enforce separate boundaries.
 
-37
-00:02:08,131 --> 00:02:12,081
+35
+00:02:00,074 --> 00:02:03,348
 Some VS Code versions also offer
 runnable prompt files,
 
-38
-00:02:12,131 --> 00:02:14,956
+36
+00:02:03,658 --> 00:02:05,750
 with support depending on the selected
 harness.
 
-39
-00:02:15,006 --> 00:02:18,039
+37
+00:02:06,251 --> 00:02:08,921
 The Markdown template in this example is
 ready to paste.
 
-40
-00:02:18,683 --> 00:02:22,002
+38
+00:02:09,283 --> 00:02:12,505
 In the next lesson, we’ll make a
 recurring procedure into a skill.
 
-41
-00:02:23,501 --> 00:02:26,451
+39
+00:02:13,525 --> 00:02:18,026
 Use the template for a second synthetic
-issue.
+issue. Swap the issue reference and
 
-42
-00:02:26,526 --> 00:02:30,301
-Swap the issue reference and attach the
-current files for that task.
+40
+00:02:18,026 --> 00:02:20,078
+attach the current files for that task.
 
-43
-00:02:30,376 --> 00:02:34,301
+41
+00:02:20,549 --> 00:02:24,323
 Compare the two plans and find one part
 that changed because the requirement
 
-44
-00:02:34,351 --> 00:02:34,987
+42
+00:02:24,323 --> 00:02:24,809
 changed.
 
-45
-00:02:35,621 --> 00:02:38,546
+43
+00:02:25,244 --> 00:02:27,422
 Then find the test convention that
 carried over.
 
-46
-00:02:38,621 --> 00:02:42,121
+44
+00:02:27,762 --> 00:02:31,422
 A teammate should be able to reproduce
 that setup in a fresh session with the
 
-47
-00:02:42,196 --> 00:02:43,527
+45
+00:02:31,422 --> 00:02:32,659
 same project files.

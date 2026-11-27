@@ -28,42 +28,42 @@
       "result": "Task inputs and durable conventions identified.",
       "focus": "The issue changes but the test convention carries across tasks",
       "action": "Sort the task details and enduring project conventions.",
-      "durationFrames": 560,
-      "duration": 23.333333333333332,
+      "durationFrames": 524,
+      "duration": 21.833333333333332,
       "cues": [
         {
-          "start": 0.389,
-          "end": 2.964,
-          "text": "Picture two issues in the same\nrepository."
+          "start": 0.235,
+          "end": 3.789,
+          "text": "Picture two issues in the same\nrepository. One is about zero"
         },
         {
-          "start": 3.039,
-          "end": 5.089,
-          "text": "One is about zero quantities."
+          "start": 3.789,
+          "end": 4.415,
+          "text": "quantities."
         },
         {
-          "start": 5.164,
-          "end": 7.639,
-          "text": "Another asks for a clearer error\nmessage."
+          "start": 4.816,
+          "end": 9.029,
+          "text": "Another asks for a clearer error\nmessage. The issue ID and expected"
         },
         {
-          "start": 7.689,
-          "end": 10.411,
-          "text": "The issue ID and expected behavior\nchange."
+          "start": 9.029,
+          "end": 9.896,
+          "text": "behavior change."
         },
         {
-          "start": 11.003,
-          "end": 14.853,
+          "start": 10.411,
+          "end": 13.477,
           "text": "The location of the test suite may stay\nthe same across both."
         },
         {
-          "start": 14.903,
-          "end": 18.503,
+          "start": 13.803,
+          "end": 16.976,
           "text": "Put recurring project conventions where\nthe agent can load them,"
         },
         {
-          "start": 18.553,
-          "end": 22.237,
+          "start": 17.288,
+          "end": 21.108,
           "text": "and keep the individual issue details in\nthe prompt you send for that task."
         }
       ]
@@ -79,32 +79,32 @@
       "result": "Template: docs/prompts/plan-a-fix.md",
       "focus": "The reusable template exposes its variable inputs",
       "action": "Save a plain Markdown planning prompt with placeholders.",
-      "durationFrames": 507,
-      "duration": 21.125,
+      "durationFrames": 482,
+      "duration": 20.083333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 3.718,
+          "start": 0.316,
+          "end": 3.105,
           "text": "Open a Markdown template in the training\nrepository."
         },
         {
-          "start": 3.793,
-          "end": 7.936,
+          "start": 3.557,
+          "end": 7.653,
           "text": "Write a request that takes an issue and\nthe current source and tests as inputs."
         },
         {
-          "start": 8.564,
-          "end": 12.929,
+          "start": 8.133,
+          "end": 12.168,
           "text": "Ask for the proposed edit, the affected\nfiles, and a way to verify it."
         },
         {
-          "start": 12.979,
-          "end": 15.729,
+          "start": 12.488,
+          "end": 14.806,
           "text": "The template should end at a plan you\ncan review."
         },
         {
-          "start": 15.829,
-          "end": 20.069,
+          "start": 15.167,
+          "end": 19.374,
           "text": "On the approved Copilot setup, paste the\nfilled-in text into chat to run it."
         }
       ]
@@ -120,48 +120,43 @@
       "result": "Plan names the condition and the missing zero test.",
       "focus": "The plan traces observations to the three current attachments",
       "action": "Fill the prompt and attach the original issue, function and tests.",
-      "durationFrames": 583,
-      "duration": 24.291666666666668,
+      "durationFrames": 537,
+      "duration": 22.375,
       "cues": [
         {
-          "start": 0.435,
-          "end": 4.06,
+          "start": 0.296,
+          "end": 3.881,
           "text": "Start Plan in the current branch and\nattach the issue, validator,"
         },
         {
-          "start": 4.11,
-          "end": 5.81,
+          "start": 4.072,
+          "end": 5.307,
           "text": "and matching test file."
         },
         {
-          "start": 5.885,
-          "end": 8.277,
+          "start": 5.688,
+          "end": 8.194,
           "text": "Paste the template with the issue\nreference filled in."
         },
         {
-          "start": 8.875,
-          "end": 12.95,
+          "start": 8.46,
+          "end": 12.428,
           "text": "The response should identify the\nexisting comparison and explain why a"
         },
         {
-          "start": 13.0,
-          "end": 15.1,
+          "start": 12.428,
+          "end": 13.936,
           "text": "zero test would expose it."
         },
         {
-          "start": 15.175,
-          "end": 17.681,
-          "text": "Open the cited lines and check them\nyourself."
+          "start": 14.296,
+          "end": 18.411,
+          "text": "Open the cited lines and check them\nyourself. If a file name is unfamiliar,"
         },
         {
-          "start": 18.305,
-          "end": 22.73,
-          "text": "If a file name is unfamiliar, confirm it\nin the workspace before accepting the"
-        },
-        {
-          "start": 22.78,
-          "end": 23.224,
-          "text": "plan."
+          "start": 18.801,
+          "end": 21.614,
+          "text": "confirm it in the workspace before\naccepting the plan."
         }
       ]
     },
@@ -176,42 +171,37 @@
       "result": "Saved: .github/copilot-instructions.md",
       "focus": "The repository instructions name test location and framework",
       "action": "Add one concrete convention to the supported instruction file.",
-      "durationFrames": 599,
-      "duration": 24.958333333333332,
+      "durationFrames": 563,
+      "duration": 23.458333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 3.318,
-          "text": "Open the repository root in VS Code."
+          "start": 0.275,
+          "end": 4.413,
+          "text": "Open the repository root in VS Code. For\nthis Copilot example,"
         },
         {
-          "start": 3.393,
-          "end": 8.193,
-          "text": "For this Copilot example, find or create\nthe project instructions file in the dot"
+          "start": 4.744,
+          "end": 8.782,
+          "text": "find or create the project instructions\nfile in the dot GitHub folder."
         },
         {
-          "start": 8.243,
-          "end": 9.173,
-          "text": "GitHub folder."
-        },
-        {
-          "start": 9.801,
-          "end": 14.676,
+          "start": 9.272,
+          "end": 13.548,
           "text": "Add the convention that unit tests use\nthe existing unittest suite under tests."
         },
         {
-          "start": 14.751,
-          "end": 18.476,
+          "start": 14.018,
+          "end": 18.012,
           "text": "Keep the rule short and include a\nreliable reference for the verification"
         },
         {
-          "start": 18.526,
-          "end": 19.005,
+          "start": 18.012,
+          "end": 18.498,
           "text": "command."
         },
         {
-          "start": 19.639,
-          "end": 23.875,
+          "start": 18.989,
+          "end": 22.712,
           "text": "If instructions already exist, edit the\nexisting guidance with your team."
         }
       ]
@@ -227,38 +217,38 @@
       "result": "File discovered. Plan uses the existing unittest suite.",
       "focus": "A fresh session discovers the file and proposes the expected test",
       "action": "Verify the instruction is loaded and test a fresh plan.",
-      "durationFrames": 550,
-      "duration": 22.916666666666668,
+      "durationFrames": 518,
+      "duration": 21.583333333333332,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.618,
+          "start": 0.295,
+          "end": 4.031,
           "text": "Open the agent customizations view and\nfind the instruction file."
         },
         {
-          "start": 4.693,
-          "end": 7.593,
-          "text": "Then start a fresh chat in the same\nworkspace."
+          "start": 4.426,
+          "end": 8.378,
+          "text": "Then start a fresh chat in the same\nworkspace. Ask for a regression plan"
         },
         {
-          "start": 7.668,
-          "end": 10.837,
-          "text": "Ask for a regression plan without\nrepeating the test convention."
+          "start": 8.389,
+          "end": 10.242,
+          "text": "without repeating the test convention."
         },
         {
-          "start": 11.45,
-          "end": 15.26,
+          "start": 10.587,
+          "end": 13.97,
           "text": "Where your client shows references,\nconfirm the file was included."
         },
         {
-          "start": 15.335,
-          "end": 18.26,
-          "text": "Read the proposed test location and\nframework."
+          "start": 14.291,
+          "end": 18.59,
+          "text": "Read the proposed test location and\nframework. File discovery and correct"
         },
         {
-          "start": 18.36,
-          "end": 21.819,
-          "text": "File discovery and correct use give you\ntwo different things to check."
+          "start": 18.721,
+          "end": 20.856,
+          "text": "use give you two different things to\ncheck."
         }
       ]
     },
@@ -273,42 +263,42 @@
       "result": "Review each file where its behavior is observable.",
       "focus": "Task prompts, conventions and permission controls have distinct jobs",
       "action": "Connect each piece of guidance to what it affects.",
-      "durationFrames": 635,
-      "duration": 26.458333333333332,
+      "durationFrames": 574,
+      "duration": 23.916666666666668,
       "cues": [
         {
-          "start": 0.389,
-          "end": 3.164,
-          "text": "The prompt asks for a particular piece\nof work."
+          "start": 0.235,
+          "end": 4.476,
+          "text": "The prompt asks for a particular piece\nof work. The instruction file supplies"
         },
         {
-          "start": 3.214,
-          "end": 7.039,
-          "text": "The instruction file supplies reusable\nproject conventions."
+          "start": 4.506,
+          "end": 6.14,
+          "text": "reusable project conventions."
         },
         {
-          "start": 7.089,
-          "end": 10.837,
+          "start": 6.541,
+          "end": 10.4,
           "text": "Required checks and actual tool\npermissions enforce separate boundaries."
         },
         {
-          "start": 11.506,
-          "end": 15.456,
+          "start": 10.741,
+          "end": 14.015,
           "text": "Some VS Code versions also offer\nrunnable prompt files,"
         },
         {
-          "start": 15.506,
-          "end": 18.331,
+          "start": 14.325,
+          "end": 16.417,
           "text": "with support depending on the selected\nharness."
         },
         {
-          "start": 18.381,
-          "end": 21.414,
+          "start": 16.918,
+          "end": 19.588,
           "text": "The Markdown template in this example is\nready to paste."
         },
         {
-          "start": 22.058,
-          "end": 25.377,
+          "start": 19.95,
+          "end": 23.172,
           "text": "In the next lesson, we’ll make a\nrecurring procedure into a skill."
         }
       ]
@@ -324,42 +314,42 @@
       "result": "A teammate can reproduce the setup in a fresh chat.",
       "focus": "A new issue changes the plan while the test convention remains",
       "action": "Run the same template with a second issue and fresh attachments.",
-      "durationFrames": 527,
-      "duration": 21.958333333333332,
+      "durationFrames": 489,
+      "duration": 20.375,
       "cues": [
         {
-          "start": 0.418,
-          "end": 3.368,
-          "text": "Use the template for a second synthetic\nissue."
+          "start": 0.275,
+          "end": 4.776,
+          "text": "Use the template for a second synthetic\nissue. Swap the issue reference and"
         },
         {
-          "start": 3.443,
-          "end": 7.218,
-          "text": "Swap the issue reference and attach the\ncurrent files for that task."
+          "start": 4.776,
+          "end": 6.828,
+          "text": "attach the current files for that task."
         },
         {
-          "start": 7.293,
-          "end": 11.218,
+          "start": 7.299,
+          "end": 11.073,
           "text": "Compare the two plans and find one part\nthat changed because the requirement"
         },
         {
-          "start": 11.268,
-          "end": 11.904,
+          "start": 11.073,
+          "end": 11.559,
           "text": "changed."
         },
         {
-          "start": 12.538,
-          "end": 15.463,
+          "start": 11.994,
+          "end": 14.172,
           "text": "Then find the test convention that\ncarried over."
         },
         {
-          "start": 15.538,
-          "end": 19.038,
+          "start": 14.512,
+          "end": 18.172,
           "text": "A teammate should be able to reproduce\nthat setup in a fresh session with the"
         },
         {
-          "start": 19.113,
-          "end": 20.444,
+          "start": 18.172,
+          "end": 19.409,
           "text": "same project files."
         }
       ]
@@ -368,6 +358,6 @@
   "fps": 24,
   "width": 1280,
   "height": 720,
-  "durationFrames": 3961,
-  "voiceBuild": "1157e729b25afbbd96d6e8aec0eadce15579894c9d3cacdc26b6d48c991e5d74"
+  "durationFrames": 3687,
+  "voiceBuild": "53981be501bbe620612c4f8ea8914661005b2d49ed337eff1fbea06643e9e61c"
 }
