@@ -1,207 +1,201 @@
 1
-00:00:00,393 --> 00:00:02,218
+00:00:00,220 --> 00:00:01,468
 This time you’re the reviewer.
 
 2
-00:00:02,293 --> 00:00:06,993
+00:00:01,730 --> 00:00:07,255
 In the approved remote terminal, confirm
 that GitHub CLI is using your own
 
 3
-00:00:07,068 --> 00:00:10,283
+00:00:07,255 --> 00:00:10,516
 authorized account and that you are in
 the training repository.
 
 4
-00:00:10,875 --> 00:00:13,600
-The author sends you pull request forty-
-two.
+00:00:10,837 --> 00:00:14,256
+The author sends you pull request
+forty-two. Open that request for this
 
 5
-00:00:13,675 --> 00:00:16,150
-Open that request for this exercise.
+00:00:14,256 --> 00:00:14,904
+exercise.
 
 6
-00:00:16,200 --> 00:00:18,940
+00:00:15,285 --> 00:00:17,800
 We’ll check the intent first, then the
 actual patch,
 
 7
-00:00:19,120 --> 00:00:21,618
+00:00:18,051 --> 00:00:20,345
 and finally the checks for the revision
 you’re reviewing.
 
 8
-00:00:23,126 --> 00:00:27,151
+00:00:21,297 --> 00:00:25,605
 Run the GitHub CLI view command for pull
 request forty-two.
 
 9
-00:00:27,226 --> 00:00:29,276
-Read the title and the issue link.
+00:00:26,016 --> 00:00:30,464
+Read the title and the issue link. The
+author says zero should be rejected and
 
 10
-00:00:29,326 --> 00:00:33,588
-The author says zero should be rejected
-and all four unit tests now pass.
+00:00:30,464 --> 00:00:32,204
+all four unit tests now pass.
 
 11
-00:00:34,222 --> 00:00:36,247
+00:00:32,700 --> 00:00:34,117
 That tells you what to look for.
 
 12
-00:00:36,322 --> 00:00:39,922
+00:00:34,378 --> 00:00:37,886
 Keep the issue open beside the terminal
 so you can compare the requested
 
 13
-00:00:39,972 --> 00:00:42,704
+00:00:37,886 --> 00:00:40,370
 behavior with the change you’re about to
 inspect.
 
 14
-00:00:44,231 --> 00:00:45,956
-Now view the actual diff.
+00:00:41,338 --> 00:00:45,186
+Now view the actual diff. The main
+change removes equality at the boundary.
 
 15
-00:00:46,006 --> 00:00:48,931
-The main change removes equality at the
-boundary.
-
-16
-00:00:48,981 --> 00:00:52,304
+00:00:45,447 --> 00:00:48,797
 The second change adds a test that calls
 the validator with zero.
 
-17
-00:00:52,907 --> 00:00:56,357
+16
+00:00:49,159 --> 00:00:51,868
 Ask yourself whether that test would
 fail on the old code.
 
-18
-00:00:56,432 --> 00:01:00,507
+17
+00:00:52,285 --> 00:00:56,246
 This is the difference between seeing a
 test name and seeing a test that proves
 
-19
-00:01:00,557 --> 00:01:01,709
+18
+00:00:56,246 --> 00:00:57,244
 the relevant behavior.
 
-20
-00:01:03,210 --> 00:01:05,910
+19
+00:00:58,213 --> 00:01:01,632
 Look up the pull request’s required
-checks.
+checks. In the training example,
+
+20
+00:01:01,863 --> 00:01:03,698
+the unit test check is required.
 
 21
-00:01:05,985 --> 00:01:09,310
-In the training example, the unit test
-check is required.
-
-22
-00:01:09,385 --> 00:01:12,584
+00:01:04,148 --> 00:01:07,307
 Open its run if you need to confirm
 which suite it executed.
 
-23
-00:01:13,208 --> 00:01:16,133
+22
+00:01:07,778 --> 00:01:09,984
 If the checks are pending, wait for the
 result.
 
-24
-00:01:16,208 --> 00:01:19,973
+23
+00:01:10,496 --> 00:01:14,418
 If the author pushes again, refresh the
 diff and checks for the new head before
 
-25
-00:01:20,023 --> 00:01:21,097
+24
+00:01:14,418 --> 00:01:15,528
 making your decision.
 
+25
+00:01:16,387 --> 00:01:18,835
+Here’s the alternate outcome. The checks
+are green,
+
 26
-00:01:22,581 --> 00:01:24,656
-Here’s the alternate outcome.
+00:01:19,085 --> 00:01:22,884
+but the test added in this version
+exercises one and never calls the
 
 27
-00:01:24,706 --> 00:01:29,356
-The checks are green, but the test added
-in this version exercises one and never
+00:01:22,884 --> 00:01:24,000
+validator with zero.
 
 28
-00:01:29,406 --> 00:01:31,020
-calls the validator with zero.
+00:01:24,461 --> 00:01:28,651
+That leaves the bug untested. Use the
+request-changes option and ask for the
 
 29
-00:01:31,623 --> 00:01:33,698
-That leaves the bug untested.
+00:01:28,651 --> 00:01:29,408
+missing assertion.
 
 30
-00:01:33,773 --> 00:01:37,523
-Use the request-changes option and ask
-for the missing assertion.
+00:01:29,854 --> 00:01:34,430
+Give the author a specific behavior to
+verify. Review the new revision after
 
 31
-00:01:37,598 --> 00:01:40,148
-Give the author a specific behavior to
-verify.
+00:01:34,430 --> 00:01:35,098
+they address it.
 
 32
-00:01:40,813 --> 00:01:43,300
-Review the new revision after they
-address it.
-
-33
-00:01:44,726 --> 00:01:49,076
+00:01:36,047 --> 00:01:39,566
 Return to the version with the right
 condition and the actual zero test.
 
-34
-00:01:49,151 --> 00:01:51,776
+33
+00:01:39,967 --> 00:01:42,180
 If you’ve checked the diff and the
 required results,
 
-35
-00:01:51,826 --> 00:01:54,616
+34
+00:01:42,611 --> 00:01:45,344
 you can approve with a short statement
 of what you verified.
 
-36
-00:01:55,275 --> 00:01:59,025
+35
+00:01:45,705 --> 00:01:49,225
 Submit the review from your account,
 then read back the reviews on the pull
 
-37
-00:01:59,075 --> 00:02:00,200
+36
+00:01:49,225 --> 00:01:49,671
 request.
 
-38
-00:02:00,275 --> 00:02:03,390
+37
+00:01:50,053 --> 00:01:52,839
 Confirm your decision was saved to the
 intended request.
 
-39
-00:02:04,851 --> 00:02:07,551
+38
+00:01:53,803 --> 00:01:57,918
 Pair up and swap author and reviewer
-roles.
+roles. Give each reviewer an issue,
+
+39
+00:01:58,109 --> 00:02:00,103
+a pull request, and the check results.
 
 40
-00:02:07,601 --> 00:02:11,626
-Give each reviewer an issue, a pull
-request, and the check results.
+00:02:00,484 --> 00:02:03,464
+In one run, the evidence is complete. In
+the other,
 
 41
-00:02:11,701 --> 00:02:13,753
-In one run, the evidence is complete.
+00:02:03,636 --> 00:02:05,432
+leave out the test for the key input.
 
 42
-00:02:14,371 --> 00:02:17,336
-In the other, leave out the test for the
-key input.
-
-43
-00:02:17,411 --> 00:02:20,961
+00:02:06,003 --> 00:02:08,873
 Ask the reviewer to explain their
 decision in one sentence.
 
-44
-00:02:21,036 --> 00:02:24,326
+43
+00:02:09,384 --> 00:02:12,647
 It should tell the author what was
 verified or what needs to change.

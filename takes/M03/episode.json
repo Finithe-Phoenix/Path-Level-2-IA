@@ -28,42 +28,42 @@
       "result": "Training context confirmed: orders-lab.",
       "focus": "The reviewer account and training repository are visible",
       "action": "Confirm GitHub CLI’s active account and repository.",
-      "durationFrames": 545,
-      "duration": 22.708333333333332,
+      "durationFrames": 505,
+      "duration": 21.041666666666668,
       "cues": [
         {
-          "start": 0.393,
-          "end": 2.218,
+          "start": 0.22,
+          "end": 1.468,
           "text": "This time you’re the reviewer."
         },
         {
-          "start": 2.293,
-          "end": 6.993,
+          "start": 1.73,
+          "end": 7.255,
           "text": "In the approved remote terminal, confirm\nthat GitHub CLI is using your own"
         },
         {
-          "start": 7.068,
-          "end": 10.283,
+          "start": 7.255,
+          "end": 10.516,
           "text": "authorized account and that you are in\nthe training repository."
         },
         {
-          "start": 10.875,
-          "end": 13.6,
-          "text": "The author sends you pull request forty-\ntwo."
+          "start": 10.837,
+          "end": 14.256,
+          "text": "The author sends you pull request\nforty-two. Open that request for this"
         },
         {
-          "start": 13.675,
-          "end": 16.15,
-          "text": "Open that request for this exercise."
+          "start": 14.256,
+          "end": 14.904,
+          "text": "exercise."
         },
         {
-          "start": 16.2,
-          "end": 18.94,
+          "start": 15.285,
+          "end": 17.8,
           "text": "We’ll check the intent first, then the\nactual patch,"
         },
         {
-          "start": 19.12,
-          "end": 21.618,
+          "start": 18.051,
+          "end": 20.345,
           "text": "and finally the checks for the revision\nyou’re reviewing."
         }
       ]
@@ -79,37 +79,37 @@
       "result": "Reject zero order quantities\nCloses #17\nValidation: four unit tests passed.",
       "focus": "The PR describes the issue and the author’s claimed evidence",
       "action": "Read the PR title, body and linked issue.",
-      "durationFrames": 506,
-      "duration": 21.083333333333332,
+      "durationFrames": 481,
+      "duration": 20.041666666666668,
       "cues": [
         {
-          "start": 0.418,
-          "end": 4.443,
+          "start": 0.255,
+          "end": 4.563,
           "text": "Run the GitHub CLI view command for pull\nrequest forty-two."
         },
         {
-          "start": 4.518,
-          "end": 6.568,
-          "text": "Read the title and the issue link."
+          "start": 4.974,
+          "end": 9.422,
+          "text": "Read the title and the issue link. The\nauthor says zero should be rejected and"
         },
         {
-          "start": 6.618,
-          "end": 10.88,
-          "text": "The author says zero should be rejected\nand all four unit tests now pass."
+          "start": 9.422,
+          "end": 11.162,
+          "text": "all four unit tests now pass."
         },
         {
-          "start": 11.514,
-          "end": 13.539,
+          "start": 11.658,
+          "end": 13.075,
           "text": "That tells you what to look for."
         },
         {
-          "start": 13.614,
-          "end": 17.214,
+          "start": 13.336,
+          "end": 16.844,
           "text": "Keep the issue open beside the terminal\nso you can compare the requested"
         },
         {
-          "start": 17.264,
-          "end": 19.996,
+          "start": 16.844,
+          "end": 19.328,
           "text": "behavior with the change you’re about to\ninspect."
         }
       ]
@@ -125,37 +125,32 @@
       "result": "-    return quantity >= 0\n+    return quantity > 0\n+    self.assertFalse(is_valid_quantity(0))",
       "focus": "The diff shows both the changed condition and a test for zero",
       "action": "Read the patch and locate the assertion that detects the bug.",
-      "durationFrames": 456,
-      "duration": 19.0,
+      "durationFrames": 405,
+      "duration": 16.875,
       "cues": [
         {
-          "start": 0.439,
-          "end": 2.164,
-          "text": "Now view the actual diff."
+          "start": 0.255,
+          "end": 4.103,
+          "text": "Now view the actual diff. The main\nchange removes equality at the boundary."
         },
         {
-          "start": 2.214,
-          "end": 5.139,
-          "text": "The main change removes equality at the\nboundary."
-        },
-        {
-          "start": 5.189,
-          "end": 8.512,
+          "start": 4.364,
+          "end": 7.714,
           "text": "The second change adds a test that calls\nthe validator with zero."
         },
         {
-          "start": 9.115,
-          "end": 12.565,
+          "start": 8.076,
+          "end": 10.785,
           "text": "Ask yourself whether that test would\nfail on the old code."
         },
         {
-          "start": 12.64,
-          "end": 16.715,
+          "start": 11.202,
+          "end": 15.163,
           "text": "This is the difference between seeing a\ntest name and seeing a test that proves"
         },
         {
-          "start": 16.765,
-          "end": 17.917,
+          "start": 15.163,
+          "end": 16.161,
           "text": "the relevant behavior."
         }
       ]
@@ -171,37 +166,37 @@
       "result": "Unit tests    pass\nHead revision recorded for this review.",
       "focus": "The expected CI check applies to the reviewed head revision",
       "action": "Check required statuses and note the current head revision.",
-      "durationFrames": 465,
-      "duration": 19.375,
+      "durationFrames": 437,
+      "duration": 18.208333333333332,
       "cues": [
         {
-          "start": 0.418,
-          "end": 3.118,
-          "text": "Look up the pull request’s required\nchecks."
+          "start": 0.255,
+          "end": 3.674,
+          "text": "Look up the pull request’s required\nchecks. In the training example,"
         },
         {
-          "start": 3.193,
-          "end": 6.518,
-          "text": "In the training example, the unit test\ncheck is required."
+          "start": 3.905,
+          "end": 5.74,
+          "text": "the unit test check is required."
         },
         {
-          "start": 6.593,
-          "end": 9.792,
+          "start": 6.19,
+          "end": 9.349,
           "text": "Open its run if you need to confirm\nwhich suite it executed."
         },
         {
-          "start": 10.416,
-          "end": 13.341,
+          "start": 9.82,
+          "end": 12.026,
           "text": "If the checks are pending, wait for the\nresult."
         },
         {
-          "start": 13.416,
-          "end": 17.181,
+          "start": 12.538,
+          "end": 16.46,
           "text": "If the author pushes again, refresh the\ndiff and checks for the new head before"
         },
         {
-          "start": 17.231,
-          "end": 18.305,
+          "start": 16.46,
+          "end": 17.57,
           "text": "making your decision."
         }
       ]
@@ -217,43 +212,43 @@
       "result": "Record a request with an actionable reason.",
       "focus": "An actionable review asks for the missing zero assertion",
       "action": "In the alternate scenario, record a targeted change request.",
-      "durationFrames": 532,
-      "duration": 22.166666666666668,
+      "durationFrames": 471,
+      "duration": 19.625,
       "cues": [
         {
-          "start": 0.414,
-          "end": 2.489,
-          "text": "Here’s the alternate outcome."
+          "start": 0.22,
+          "end": 2.668,
+          "text": "Here’s the alternate outcome. The checks\nare green,"
         },
         {
-          "start": 2.539,
-          "end": 7.189,
-          "text": "The checks are green, but the test added\nin this version exercises one and never"
+          "start": 2.918,
+          "end": 6.717,
+          "text": "but the test added in this version\nexercises one and never calls the"
         },
         {
-          "start": 7.239,
-          "end": 8.853,
-          "text": "calls the validator with zero."
+          "start": 6.717,
+          "end": 7.833,
+          "text": "validator with zero."
         },
         {
-          "start": 9.456,
-          "end": 11.531,
-          "text": "That leaves the bug untested."
+          "start": 8.294,
+          "end": 12.484,
+          "text": "That leaves the bug untested. Use the\nrequest-changes option and ask for the"
         },
         {
-          "start": 11.606,
-          "end": 15.356,
-          "text": "Use the request-changes option and ask\nfor the missing assertion."
+          "start": 12.484,
+          "end": 13.241,
+          "text": "missing assertion."
         },
         {
-          "start": 15.431,
-          "end": 17.981,
-          "text": "Give the author a specific behavior to\nverify."
+          "start": 13.687,
+          "end": 18.263,
+          "text": "Give the author a specific behavior to\nverify. Review the new revision after"
         },
         {
-          "start": 18.646,
-          "end": 21.133,
-          "text": "Review the new revision after they\naddress it."
+          "start": 18.263,
+          "end": 18.931,
+          "text": "they address it."
         }
       ]
     },
@@ -268,37 +263,37 @@
       "result": "Review recorded for the peer account.",
       "focus": "The saved review belongs to the authorized peer",
       "action": "For sufficient evidence, submit and confirm your human approval.",
-      "durationFrames": 483,
-      "duration": 20.125,
+      "durationFrames": 427,
+      "duration": 17.791666666666668,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.743,
+          "start": 0.255,
+          "end": 3.774,
           "text": "Return to the version with the right\ncondition and the actual zero test."
         },
         {
-          "start": 4.818,
-          "end": 7.443,
+          "start": 4.175,
+          "end": 6.388,
           "text": "If you’ve checked the diff and the\nrequired results,"
         },
         {
-          "start": 7.493,
-          "end": 10.283,
+          "start": 6.819,
+          "end": 9.552,
           "text": "you can approve with a short statement\nof what you verified."
         },
         {
-          "start": 10.942,
-          "end": 14.692,
+          "start": 9.913,
+          "end": 13.433,
           "text": "Submit the review from your account,\nthen read back the reviews on the pull"
         },
         {
-          "start": 14.742,
-          "end": 15.867,
+          "start": 13.433,
+          "end": 13.879,
           "text": "request."
         },
         {
-          "start": 15.942,
-          "end": 19.057,
+          "start": 14.261,
+          "end": 17.047,
           "text": "Confirm your decision was saved to the\nintended request."
         }
       ]
@@ -314,37 +309,37 @@
       "result": "A human review with a verifiable reason.",
       "focus": "The review reason names the requirement, patch and check",
       "action": "Switch roles with a teammate and practice both decisions.",
-      "durationFrames": 513,
-      "duration": 21.375,
+      "durationFrames": 481,
+      "duration": 20.041666666666668,
       "cues": [
         {
-          "start": 0.393,
-          "end": 3.093,
-          "text": "Pair up and swap author and reviewer\nroles."
+          "start": 0.22,
+          "end": 4.335,
+          "text": "Pair up and swap author and reviewer\nroles. Give each reviewer an issue,"
         },
         {
-          "start": 3.143,
-          "end": 7.168,
-          "text": "Give each reviewer an issue, a pull\nrequest, and the check results."
+          "start": 4.526,
+          "end": 6.52,
+          "text": "a pull request, and the check results."
         },
         {
-          "start": 7.243,
-          "end": 9.295,
-          "text": "In one run, the evidence is complete."
+          "start": 6.901,
+          "end": 9.881,
+          "text": "In one run, the evidence is complete. In\nthe other,"
         },
         {
-          "start": 9.913,
-          "end": 12.878,
-          "text": "In the other, leave out the test for the\nkey input."
+          "start": 10.053,
+          "end": 11.849,
+          "text": "leave out the test for the key input."
         },
         {
-          "start": 12.953,
-          "end": 16.503,
+          "start": 12.42,
+          "end": 15.29,
           "text": "Ask the reviewer to explain their\ndecision in one sentence."
         },
         {
-          "start": 16.578,
-          "end": 19.868,
+          "start": 15.801,
+          "end": 19.064,
           "text": "It should tell the author what was\nverified or what needs to change."
         }
       ]
@@ -353,6 +348,6 @@
   "fps": 24,
   "width": 1280,
   "height": 720,
-  "durationFrames": 3500,
-  "voiceBuild": "c43128849b6d6c047958575b23bfe114f69ffdab235cb105b515e71fa719be35"
+  "durationFrames": 3207,
+  "voiceBuild": "4cd3eda636b7d4f0bd9cdc4b1605aa35aee627ba219e3c03f6c4bc4d0e2ceec6"
 }
