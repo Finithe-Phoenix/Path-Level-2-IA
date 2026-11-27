@@ -28,37 +28,37 @@
       "result": "Each handoff has evidence and an owner.",
       "focus": "Every handoff names a decision owner and evidence",
       "action": "Draw the workflow from issue through independent review.",
-      "durationFrames": 481,
-      "duration": 20.041666666666668,
+      "durationFrames": 441,
+      "duration": 18.375,
       "cues": [
         {
-          "start": 0.418,
-          "end": 2.543,
-          "text": "Let’s put the earlier lessons together."
+          "start": 0.255,
+          "end": 4.402,
+          "text": "Let’s put the earlier lessons together.\nA workflow tells us what happens next"
         },
         {
-          "start": 2.618,
-          "end": 6.168,
-          "text": "A workflow tells us what happens next\nand when we should stop."
+          "start": 4.593,
+          "end": 5.587,
+          "text": "and when we should stop."
         },
         {
-          "start": 6.243,
-          "end": 9.939,
+          "start": 5.948,
+          "end": 9.384,
           "text": "Begin with the issue and plan, then\nprove the bug with a failing test."
         },
         {
-          "start": 10.573,
-          "end": 14.498,
+          "start": 9.744,
+          "end": 12.823,
           "text": "Apply the fix, run the suite, and hand\noff the pull request."
         },
         {
-          "start": 14.573,
-          "end": 18.228,
+          "start": 13.244,
+          "end": 17.004,
           "text": "At each point, name the person who\nchecks the evidence before the next step"
         },
         {
-          "start": 18.278,
-          "end": 18.971,
+          "start": 17.004,
+          "end": 17.68,
           "text": "goes ahead."
         }
       ]
@@ -74,42 +74,37 @@
       "result": "Author accepts scope after checking the issue.",
       "focus": "The author approves a specific scope with an unchanged signature",
       "action": "Compare the Plan output with the issue before allowing edits.",
-      "durationFrames": 521,
-      "duration": 21.708333333333332,
+      "durationFrames": 486,
+      "duration": 20.25,
       "cues": [
         {
-          "start": 0.414,
-          "end": 4.079,
+          "start": 0.296,
+          "end": 3.326,
           "text": "Start in Plan and supply the issue,\nsource, and tests."
         },
         {
-          "start": 4.129,
-          "end": 7.754,
+          "start": 3.652,
+          "end": 7.985,
           "text": "The proposal should add one assertion\nand change one comparison while keeping"
         },
         {
-          "start": 7.779,
-          "end": 8.829,
+          "start": 8.016,
+          "end": 9.108,
           "text": "the public signature."
         },
         {
-          "start": 9.442,
-          "end": 12.167,
-          "text": "The author reads the plan against the\nissue."
+          "start": 9.388,
+          "end": 13.512,
+          "text": "The author reads the plan against the\nissue. If a new dependency or signature"
         },
         {
-          "start": 12.242,
-          "end": 15.167,
-          "text": "If a new dependency or signature change\nappears,"
+          "start": 13.512,
+          "end": 16.313,
+          "text": "change appears, send the plan back for\nrevision."
         },
         {
-          "start": 15.242,
-          "end": 16.815,
-          "text": "send the plan back for revision."
-        },
-        {
-          "start": 17.414,
-          "end": 20.63,
+          "start": 16.794,
+          "end": 19.557,
           "text": "Begin editing once the proposed scope\nfits the requirement."
         }
       ]
@@ -125,37 +120,37 @@
       "result": "Expected before the fix\ntest_rejects_zero ... FAIL\nAssertionError: True is not false",
       "focus": "The red check proves the specific regression before the fix",
       "action": "Run the test-only revision and confirm the expected assertion failure.",
-      "durationFrames": 510,
-      "duration": 21.25,
+      "durationFrames": 480,
+      "duration": 20.0,
       "cues": [
         {
-          "start": 0.393,
-          "end": 4.143,
+          "start": 0.275,
+          "end": 3.51,
           "text": "Add the regression test and run it in\nthe approved environment."
         },
         {
-          "start": 4.193,
-          "end": 8.213,
+          "start": 4.026,
+          "end": 7.861,
           "text": "The useful failure names zero and shows\nthat the validator returned true."
         },
         {
-          "start": 8.827,
-          "end": 12.277,
+          "start": 8.181,
+          "end": 10.899,
           "text": "If the test command never ran, or an\nimport failed,"
         },
         {
-          "start": 12.327,
-          "end": 14.727,
+          "start": 11.15,
+          "end": 12.825,
           "text": "return to the setup and repeat it."
         },
         {
-          "start": 14.777,
-          "end": 18.002,
+          "start": 13.126,
+          "end": 17.334,
           "text": "The author should be able to point to\nevidence that this assertion detects"
         },
         {
-          "start": 18.052,
-          "end": 20.168,
+          "start": 17.334,
+          "end": 19.275,
           "text": "this defect on the original revision."
         }
       ]
@@ -171,42 +166,37 @@
       "result": "All four tests pass in the completed example.",
       "focus": "A failing verification returns the work to the author",
       "action": "Rerun the suite and choose whether the workflow can continue.",
-      "durationFrames": 550,
-      "duration": 22.916666666666668,
+      "durationFrames": 509,
+      "duration": 21.208333333333332,
       "cues": [
         {
-          "start": 0.414,
-          "end": 2.964,
-          "text": "After the fix, rerun the same tests."
+          "start": 0.315,
+          "end": 4.973,
+          "text": "After the fix, rerun the same tests. If\nthe zero case still fails or an existing"
         },
         {
-          "start": 3.039,
-          "end": 6.264,
-          "text": "If the zero case still fails or an\nexisting case breaks,"
+          "start": 4.973,
+          "end": 7.485,
+          "text": "case breaks, pause and inspect the\nchange."
         },
         {
-          "start": 6.339,
-          "end": 7.979,
-          "text": "pause and inspect the change."
-        },
-        {
-          "start": 8.616,
-          "end": 12.866,
+          "start": 8.015,
+          "end": 11.479,
           "text": "If all four pass, check the remaining\ndiff and save the run output."
         },
         {
-          "start": 12.941,
-          "end": 16.241,
+          "start": 11.764,
+          "end": 14.394,
           "text": "This checkpoint uses the result of the\nactual suite."
         },
         {
-          "start": 16.316,
-          "end": 20.616,
+          "start": 14.865,
+          "end": 19.215,
           "text": "A plausible summary from the agent can\nexplain the change while the test output"
         },
         {
-          "start": 20.666,
-          "end": 21.831,
+          "start": 19.215,
+          "end": 20.341,
           "text": "provides the evidence."
         }
       ]
@@ -222,37 +212,37 @@
       "result": "PR #42 is ready for separate peer review.",
       "focus": "The PR ties the issue, exact diff and run output together",
       "action": "Run the evidence skill and check the resulting draft.",
-      "durationFrames": 543,
-      "duration": 22.625,
+      "durationFrames": 531,
+      "duration": 22.125,
       "cues": [
         {
-          "start": 0.439,
-          "end": 4.064,
+          "start": 0.356,
+          "end": 3.782,
           "text": "Use the skill from the previous lesson\nto organize the handover."
         },
         {
-          "start": 4.139,
-          "end": 7.594,
+          "start": 4.138,
+          "end": 7.449,
           "text": "Give it the issue, the patch, and the\ntest output you verified."
         },
         {
-          "start": 8.222,
-          "end": 11.447,
+          "start": 7.749,
+          "end": 10.375,
           "text": "Read its draft and correct any\nunsupported claim."
         },
         {
-          "start": 11.497,
-          "end": 15.347,
+          "start": 10.887,
+          "end": 13.965,
           "text": "The author then opens the pull request\nthrough the approved workflow."
         },
         {
-          "start": 15.422,
-          "end": 19.322,
+          "start": 14.386,
+          "end": 18.906,
           "text": "In the training repository, the\nconfigured CI checks provide additional"
         },
         {
-          "start": 19.372,
-          "end": 21.543,
+          "start": 18.906,
+          "end": 21.44,
           "text": "evidence about the revision the peer\nwill see."
         }
       ]
@@ -268,42 +258,42 @@
       "result": "Peer decision: approve or request a specific change.",
       "focus": "The human reviewer decides after checking the current PR and CI",
       "action": "Let the peer inspect the PR and submit their own decision.",
-      "durationFrames": 550,
-      "duration": 22.916666666666668,
+      "durationFrames": 496,
+      "duration": 20.666666666666668,
       "cues": [
         {
-          "start": 0.439,
-          "end": 3.264,
+          "start": 0.276,
+          "end": 2.325,
           "text": "Now hand the pull request number to a\nteammate."
         },
         {
-          "start": 3.314,
-          "end": 6.964,
+          "start": 2.611,
+          "end": 5.766,
           "text": "They use their authorized terminal\naccount to read the PR,"
         },
         {
-          "start": 7.014,
-          "end": 9.792,
+          "start": 6.037,
+          "end": 8.695,
           "text": "inspect the patch, and check the\nrequired results."
         },
         {
-          "start": 10.395,
-          "end": 13.695,
+          "start": 9.021,
+          "end": 11.746,
           "text": "They decide whether to approve or ask\nfor a correction."
         },
         {
-          "start": 13.77,
-          "end": 17.395,
+          "start": 12.067,
+          "end": 15.611,
           "text": "Their review and the configured merge\nrules are part of the workflow."
         },
         {
-          "start": 17.445,
-          "end": 19.82,
+          "start": 15.891,
+          "end": 17.97,
           "text": "The author's agent can assist with the\ndraft,"
         },
         {
-          "start": 19.87,
-          "end": 21.821,
+          "start": 18.161,
+          "end": 19.999,
           "text": "while the peer records their own\ndecision."
         }
       ]
@@ -319,37 +309,37 @@
       "result": "A documented workflow with a tested stop condition.",
       "focus": "The rehearsal demonstrates both success and a justified stop",
       "action": "Dry-run a passing case and a case with missing evidence.",
-      "durationFrames": 532,
-      "duration": 22.166666666666668,
+      "durationFrames": 501,
+      "duration": 20.875,
       "cues": [
         {
-          "start": 0.393,
-          "end": 2.693,
-          "text": "Try the workflow twice with a teammate."
+          "start": 0.255,
+          "end": 2.79,
+          "text": "Try the workflow twice with a teammate.\nOnce,"
         },
         {
-          "start": 2.768,
-          "end": 6.983,
-          "text": "Once, run it with the complete evidence\nand record the review outcome."
+          "start": 3.12,
+          "end": 6.456,
+          "text": "run it with the complete evidence and\nrecord the review outcome."
         },
         {
-          "start": 7.083,
-          "end": 11.361,
+          "start": 6.947,
+          "end": 10.866,
           "text": "Again, remove the regression output or\nsimulate a failing required check."
         },
         {
-          "start": 12.02,
-          "end": 14.895,
+          "start": 11.288,
+          "end": 13.593,
           "text": "Say where work stops and what would let\nit resume."
         },
         {
-          "start": 14.945,
-          "end": 18.81,
+          "start": 13.874,
+          "end": 17.799,
           "text": "The rehearsal is successful when both of\nyou can name the owner, evidence,"
         },
         {
-          "start": 18.86,
-          "end": 20.688,
+          "start": 17.91,
+          "end": 19.927,
           "text": "and next action for either outcome."
         }
       ]
@@ -358,6 +348,6 @@
   "fps": 24,
   "width": 1280,
   "height": 720,
-  "durationFrames": 3687,
-  "voiceBuild": "dd084b2f843c5f888be9f1980fd093c910367abc5eeb9dc2dd27c737cd8e4b5e"
+  "durationFrames": 3444,
+  "voiceBuild": "1ff8a03f5e8e285ed5c1d7c6787b61c22b64529a31a61f00561af69b26b357b5"
 }

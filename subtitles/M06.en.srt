@@ -1,213 +1,207 @@
 1
-00:00:00,460 --> 00:00:02,796
+00:00:00,294 --> 00:00:05,074
 Let’s put the earlier lessons together.
+A workflow tells us what happens next
 
 2
-00:00:02,878 --> 00:00:06,781
-A workflow tells us what happens next
+00:00:05,294 --> 00:00:06,440
 and when we should stop.
 
 3
-00:00:06,863 --> 00:00:10,926
+00:00:06,856 --> 00:00:10,817
 Begin with the issue and plan, then
 prove the bug with a failing test.
 
 4
-00:00:11,623 --> 00:00:15,938
+00:00:11,232 --> 00:00:14,781
 Apply the fix, run the suite, and hand
 off the pull request.
 
 5
-00:00:16,020 --> 00:00:20,038
+00:00:15,266 --> 00:00:19,600
 At each point, name the person who
 checks the evidence before the next step
 
 6
-00:00:20,093 --> 00:00:20,855
+00:00:19,600 --> 00:00:20,379
 goes ahead.
 
 7
-00:00:22,872 --> 00:00:26,901
+00:00:21,883 --> 00:00:25,376
 Start in Plan and supply the issue,
 source, and tests.
 
 8
-00:00:26,956 --> 00:00:30,941
+00:00:25,752 --> 00:00:30,746
 The proposal should add one assertion
 and change one comparison while keeping
 
 9
-00:00:30,969 --> 00:00:32,123
+00:00:30,782 --> 00:00:32,040
 the public signature.
 
 10
-00:00:32,797 --> 00:00:35,792
+00:00:32,363 --> 00:00:37,117
 The author reads the plan against the
-issue.
+issue. If a new dependency or signature
 
 11
-00:00:35,875 --> 00:00:39,090
-If a new dependency or signature change
-appears,
+00:00:37,117 --> 00:00:40,345
+change appears, send the plan back for
+revision.
 
 12
-00:00:39,173 --> 00:00:40,902
-send the plan back for revision.
-
-13
-00:00:41,561 --> 00:00:45,096
+00:00:40,900 --> 00:00:44,085
 Begin editing once the proposed scope
 fits the requirement.
 
-14
-00:00:47,349 --> 00:00:51,471
+13
+00:00:45,859 --> 00:00:49,588
 Add the regression test and run it in
 the approved environment.
 
-15
-00:00:51,526 --> 00:00:55,946
+14
+00:00:50,183 --> 00:00:54,603
 The useful failure names zero and shows
 that the validator returned true.
 
-16
-00:00:56,621 --> 00:01:00,413
+15
+00:00:54,972 --> 00:00:58,105
 If the test command never ran, or an
 import failed,
 
-17
-00:01:00,468 --> 00:01:03,107
+16
+00:00:58,394 --> 00:01:00,325
 return to the setup and repeat it.
 
-18
-00:01:03,162 --> 00:01:06,707
+17
+00:01:00,672 --> 00:01:05,522
 The author should be able to point to
 evidence that this assertion detects
 
-19
-00:01:06,762 --> 00:01:09,088
+18
+00:01:05,522 --> 00:01:07,760
 this defect on the original revision.
 
+19
+00:01:09,613 --> 00:01:14,982
+After the fix, rerun the same tests. If
+the zero case still fails or an existing
+
 20
-00:01:11,372 --> 00:01:14,175
-After the fix, rerun the same tests.
+00:01:14,982 --> 00:01:17,878
+case breaks, pause and inspect the
+change.
 
 21
-00:01:14,258 --> 00:01:17,803
-If the zero case still fails or an
-existing case breaks,
-
-22
-00:01:17,886 --> 00:01:19,688
-pause and inspect the change.
-
-23
-00:01:20,389 --> 00:01:25,061
+00:01:18,489 --> 00:01:22,481
 If all four pass, check the remaining
 diff and save the run output.
 
-24
-00:01:25,143 --> 00:01:28,771
+22
+00:01:22,810 --> 00:01:25,841
 This checkpoint uses the result of the
 actual suite.
 
-25
-00:01:28,853 --> 00:01:33,581
+23
+00:01:26,384 --> 00:01:31,398
 A plausible summary from the agent can
 explain the change while the test output
 
-26
-00:01:33,636 --> 00:01:34,916
+24
+00:01:31,398 --> 00:01:32,696
 provides the evidence.
 
-27
-00:01:37,275 --> 00:01:41,260
+25
+00:01:34,743 --> 00:01:38,692
 Use the skill from the previous lesson
 to organize the handover.
 
-28
-00:01:41,342 --> 00:01:45,140
+26
+00:01:39,103 --> 00:01:42,919
 Give it the issue, the patch, and the
 test output you verified.
 
-29
-00:01:45,831 --> 00:01:49,376
+27
+00:01:43,265 --> 00:01:46,292
 Read its draft and correct any
 unsupported claim.
 
-30
-00:01:49,431 --> 00:01:53,663
+28
+00:01:46,882 --> 00:01:50,430
 The author then opens the pull request
 through the approved workflow.
 
-31
-00:01:53,746 --> 00:01:58,033
+29
+00:01:50,915 --> 00:01:56,125
 In the training repository, the
 configured CI checks provide additional
 
-32
-00:01:58,088 --> 00:02:00,475
+30
+00:01:56,125 --> 00:01:59,046
 evidence about the revision the peer
 will see.
 
-33
-00:02:02,525 --> 00:02:05,630
+31
+00:02:00,568 --> 00:02:02,930
 Now hand the pull request number to a
 teammate.
 
-34
-00:02:05,685 --> 00:02:09,698
+32
+00:02:03,260 --> 00:02:06,896
 They use their authorized terminal
 account to read the PR,
 
-35
-00:02:09,753 --> 00:02:12,807
+33
+00:02:07,209 --> 00:02:10,272
 inspect the patch, and check the
 required results.
 
-36
-00:02:13,469 --> 00:02:17,097
+34
+00:02:10,648 --> 00:02:13,789
 They decide whether to approve or ask
 for a correction.
 
-37
-00:02:17,180 --> 00:02:21,165
+35
+00:02:14,159 --> 00:02:18,244
 Their review and the configured merge
 rules are part of the workflow.
 
-38
-00:02:21,220 --> 00:02:23,830
+36
+00:02:18,567 --> 00:02:20,963
 The author's agent can assist with the
 draft,
 
-39
-00:02:23,885 --> 00:02:26,030
+37
+00:02:21,184 --> 00:02:23,302
 while the peer records their own
 decision.
 
-40
-00:02:28,307 --> 00:02:30,835
+38
+00:02:25,002 --> 00:02:27,924
 Try the workflow twice with a teammate.
+Once,
 
-41
-00:02:30,918 --> 00:02:35,552
-Once, run it with the complete evidence
-and record the review outcome.
+39
+00:02:28,304 --> 00:02:32,150
+run it with the complete evidence and
+record the review outcome.
 
-42
-00:02:35,661 --> 00:02:40,364
+40
+00:02:32,716 --> 00:02:37,233
 Again, remove the regression output or
 simulate a failing required check.
 
-43
-00:02:41,089 --> 00:02:44,249
+41
+00:02:37,719 --> 00:02:40,376
 Say where work stops and what would let
 it resume.
 
-44
-00:02:44,304 --> 00:02:48,553
+42
+00:02:40,700 --> 00:02:45,224
 The rehearsal is successful when both of
 you can name the owner, evidence,
 
-45
-00:02:48,608 --> 00:02:50,618
+43
+00:02:45,352 --> 00:02:47,677
 and next action for either outcome.
